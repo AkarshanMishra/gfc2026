@@ -2,6 +2,25 @@
    GRILLISTA - Franchise Business Hub & Store Locator Stylesheet (Light Theme)
    ========================================================================== */
 
+/* Heading Typography Styles (Matching Screenshot) */
+.section-headline-italic {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.1rem, 4.8vw, 3.2rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: #111111;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.section-headline-italic .highlight-red,
+.highlight-red {
+  color: #D32323 !important;
+  font-style: italic;
+}
+
 .franchise-section {
   padding: 90px 0;
   background: var(--bg-main);
