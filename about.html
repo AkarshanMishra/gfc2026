@@ -91,64 +91,134 @@
     .team-section {
       background: #F8F9FB;
       border-top: 1px solid var(--border-color);
-      padding: 60px 20px 80px;
+      padding: 70px 20px 90px;
     }
 
-    .team-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
+    .directors-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 36px;
-      box-shadow: var(--shadow-md);
-      max-width: 980px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      max-width: 1080px;
       margin: 36px auto 0;
+    }
+
+    .director-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .director-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #D32323, #FFC72C);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .director-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(211, 35, 35, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+    }
+
+    .director-card:hover::before {
+      opacity: 1;
+    }
+
+    .director-header {
+      display: flex;
       align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #F1F5F9;
     }
 
-    .team-img-wrap {
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-      background: #E2E8F0;
+    .director-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%);
+      color: #FFC72C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(15, 76, 42, 0.25);
+      border: 2px solid #FFC72C;
     }
 
-    .team-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .director-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 900;
+      color: #D32323;
+      background: rgba(211, 35, 35, 0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 4px;
     }
 
-    .team-info {
-      padding: 32px 36px 32px 0;
-    }
-
-    .team-name-title {
-      font-family: var(--font-display);
-      font-size: 1.7rem;
+    .director-name {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: 1.45rem;
       font-weight: 900;
       font-style: italic;
-      color: #D32323;
+      color: #0F172A;
+      margin: 0;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
+      letter-spacing: -0.3px;
     }
 
-    .team-bio {
-      font-size: 1rem;
+    .director-bio {
+      font-size: 0.94rem;
       line-height: 1.75;
-      color: #4A5568;
+      color: #475569;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .director-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px dashed #E2E8F0;
+    }
+
+    .director-pill {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #0F4C2A;
+      background: rgba(15, 76, 42, 0.06);
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(15, 76, 42, 0.12);
     }
 
     @media (max-width: 768px) {
-      .team-card {
+      .directors-grid {
         grid-template-columns: 1fr;
       }
-      .team-info {
-        padding: 24px;
+      .director-card {
+        padding: 26px 20px;
       }
     }
   </style>
@@ -246,30 +316,67 @@
       </div>
     </section>
 
-    <!-- MEET OUR TEAM SECTION -->
+    <!-- MEET OUR DIRECTORS & LEADERSHIP SECTION -->
     <section class="team-section">
       <div class="container">
-        <div style="text-align: center; margin-bottom: 20px;">
+        <div style="text-align: center; max-width: 860px; margin: 0 auto 30px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(211, 35, 35, 0.08); color: #D32323; padding: 6px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; border: 1px solid rgba(211, 35, 35, 0.2); margin-bottom: 12px;">
+            <span>👑</span> EXECUTIVE LEADERSHIP
+          </div>
           <h2 class="about-main-title">
-            MEET OUR <span class="highlight-red">TEAM</span>
+            MEET OUR <span class="highlight-red">DIRECTORS</span>
           </h2>
+          <p style="color: #64748B; font-size: 1.02rem; margin-top: 8px;">
+            The visionary leadership driving Grillista's rapid expansion, unit-level profitability, and culinary excellence.
+          </p>
         </div>
 
-        <div class="team-card">
-          <div class="team-img-wrap">
-            <img src="assets/hero-restaurant.jpg" alt="Grillista Restaurant Operations" class="team-img">
-          </div>
-          <div class="team-info">
-            <h3 class="team-name-title">GRILLISTA - FOUNDING & OPERATIONS TEAM</h3>
-            <p class="team-bio">
-              Driven by a deep passion for culinary craftsmanship and disciplined food retail management. Having built and operated successful high-footfall restaurants in Kanpur, our leadership brings hands-on expertise in supply-chain management, kitchen efficiency, staff training, and unit-level profitability.
+        <div class="directors-grid">
+          <!-- 1. Managing Director: Mr. Rajesh Upadhyay -->
+          <div class="director-card">
+            <div class="director-header">
+              <div class="director-avatar">RU</div>
+              <div>
+                <span class="director-tag">MANAGING DIRECTOR</span>
+                <h3 class="director-name">MR. RAJESH UPADHYAY</h3>
+                <span style="font-size: 0.82rem; color: #64748B; font-weight: 700;">Grillista Foods Private Limited</span>
+              </div>
+            </div>
+            <p class="director-bio">
+              Serial entrepreneur and strategic visionary steering RK Group of Industries and Grillista Foods. With extensive leadership in business expansion, retail food operations, and corporate strategy, Mr. Rajesh Upadhyay spearheaded the setup and sustainable unit economics of Grillista’s flagship company-owned restaurants in Kakadeo and Barra, Kanpur. He leads our national expansion roadmap, ensuring high EBITDA returns and low CapEx execution for all franchise partners.
             </p>
-            <div style="margin-top: 20px;">
-              <a href="index.html#franchise" class="btn btn-sm btn-primary" style="font-weight: 800;">
-                💼 Partner With Our Team →
-              </a>
+            <div class="director-pillars">
+              <span class="director-pill">🎯 Strategic Expansion</span>
+              <span class="director-pill">💼 Unit Economics & P&L</span>
+              <span class="director-pill">🤝 Franchise Partner Success</span>
             </div>
           </div>
+
+          <!-- 2. Director: Mrs. Shiva Upadhyay -->
+          <div class="director-card">
+            <div class="director-header">
+              <div class="director-avatar">SU</div>
+              <div>
+                <span class="director-tag">DIRECTOR</span>
+                <h3 class="director-name">MRS. SHIVA UPADHYAY</h3>
+                <span style="font-size: 0.82rem; color: #64748B; font-weight: 700;">Grillista Foods Private Limited</span>
+              </div>
+            </div>
+            <p class="director-bio">
+              Director at Grillista Foods, Mrs. Shiva Upadhyay spearheads culinary standardization, standard operating procedures (SOPs), brand governance, and quality control. Passionate about culinary craftsmanship and hospitality excellence, she has been central to designing Grillista’s secret recipe formulations and customer-first dining experiences, ensuring every franchise outlet upholds uncompromised taste, hygiene, and customer satisfaction.
+            </p>
+            <div class="director-pillars">
+              <span class="director-pill">🍔 Recipe Standardization</span>
+              <span class="director-pill">📋 Quality & Hygiene Audits</span>
+              <span class="director-pill">⭐ Customer Experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="franchise.html" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px; border-radius: 30px; font-weight: 900; box-shadow: 0 8px 25px rgba(211, 35, 35, 0.3);">
+            <span>💼 Partner With Our Directors & Team →</span>
+          </a>
         </div>
       </div>
     </section>
