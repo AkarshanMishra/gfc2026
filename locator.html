@@ -93,34 +93,35 @@
       margin-bottom: 36px;
     }
 
+    /* Modern Sleek Outlets Grid */
     .outlets-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 30px;
-      max-width: 1080px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 1060px;
       margin: 0 auto;
     }
 
     .outlet-card {
       background: #FFFFFF;
-      border-radius: 16px;
-      border: 1.5px solid #E2E8F0;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .outlet-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+      border-color: #CBD5E1;
     }
 
     .outlet-card-img-wrap {
       position: relative;
-      height: 220px;
-      background: #111111;
+      height: 230px;
       overflow: hidden;
     }
 
@@ -128,134 +129,136 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
     }
 
     .outlet-card:hover .outlet-card-img {
-      transform: scale(1.05);
+      transform: scale(1.06);
+    }
+
+    .outlet-card-img-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px 20px;
+    }
+
+    .outlet-img-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      font-style: italic;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .outlet-img-sub {
+      font-size: 0.82rem;
+      color: #CBD5E1;
+      font-weight: 600;
+      margin-top: 2px;
     }
 
     .outlet-live-badge {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: rgba(17, 17, 17, 0.92);
-      backdrop-filter: blur(4px);
+      background: rgba(17, 24, 39, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: #FFFFFF;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       display: flex;
       align-items: center;
       gap: 6px;
-      border: 1px solid rgba(255, 199, 44, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .outlet-live-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       background: #22C55E;
       border-radius: 50%;
-      box-shadow: 0 0 8px #22C55E;
+      box-shadow: 0 0 6px #22C55E;
     }
 
     .outlet-body {
-      padding: 26px;
+      padding: 22px 24px;
       flex: 1;
       display: flex;
       flex-direction: column;
+      gap: 14px;
     }
 
-    .outlet-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 900;
-      font-style: italic;
-      text-transform: uppercase;
-      color: #111111;
-      margin-bottom: 6px;
-    }
-
-    .outlet-type-badge {
-      display: inline-block;
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #D32323;
-      background: #FEE2E2;
-      padding: 4px 10px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      width: fit-content;
-    }
-
-    .outlet-info-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 24px;
+    .outlet-meta-row {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      align-items: center;
+      gap: 8px;
       font-size: 0.92rem;
-      color: #2D3748;
+      color: #475569;
     }
 
-    .outlet-info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
-    }
-
-    .outlet-info-item .icon {
-      font-size: 1.15rem;
+    .outlet-meta-row svg {
       flex-shrink: 0;
-      margin-top: 1px;
+      color: #64748B;
     }
 
     .outlet-actions {
-      margin-top: auto;
       display: flex;
-      gap: 12px;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid #F1F5F9;
     }
 
     .outlet-btn {
       flex: 1;
       text-align: center;
       padding: 10px 14px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 800;
       font-size: 0.84rem;
       text-transform: uppercase;
       text-decoration: none;
       transition: all 0.2s ease;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
     }
 
     .outlet-btn-primary {
-      background: #D32323;
+      background: #111827;
       color: #FFFFFF;
     }
 
     .outlet-btn-primary:hover {
-      background: #B91C1C;
+      background: #D32323;
+      transform: translateY(-1px);
     }
 
     .outlet-btn-secondary {
-      background: #FFFFFF;
-      color: #111111;
-      border: 1.5px solid #CBD5E1;
+      background: #F8FAFC;
+      color: #1E293B;
+      border: 1px solid #E2E8F0;
     }
 
     .outlet-btn-secondary:hover {
-      background: #F8FAFC;
-      border-color: #111111;
+      background: #E2E8F0;
+      color: #000000;
     }
 
     /* Available Franchise Cities Section */
@@ -559,84 +562,50 @@
       </div>
     </section>
 
-    <!-- SECTION 1: OUR ACTIVE COMPANY OUTLETS (RECREATED) -->
+    <!-- SECTION 1: OUR ACTIVE COMPANY OUTLETS (CLEAN MODERN DESIGN) -->
     <section class="outlets-section">
       <div class="container">
         
-        <div style="text-align: center; margin-bottom: 36px;">
-          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(211, 35, 35, 0.08); color: #D32323; padding: 6px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; border: 1px solid rgba(211, 35, 35, 0.2); margin-bottom: 10px;">
-            <span>📍</span> LIVE COMPANY-OWNED RESTAURANTS
-          </div>
+        <div style="text-align: center; margin-bottom: 32px;">
           <h2 class="section-inner-heading">OUR RUNNING <span style="color: #D32323;">OUTLETS</span></h2>
-          <p class="section-inner-sub">Visit and experience the benchmark culinary and operational excellence of Grillista firsthand in Kanpur, Uttar Pradesh.</p>
-          
-          <!-- Running Outlets Metric Stats Bar -->
-          <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 18px;">
-            <span style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; color: #1E293B; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-              🏬 2 Flagship Locations
-            </span>
-            <span style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; color: #1E293B; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-              👨‍🍳 10,000+ Happy Foodies Served
-            </span>
-            <span style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; color: #1E293B; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-              ⭐ 4.8 / 5.0 Rating (5,000+ Reviews)
-            </span>
-            <span style="background: #FFFFFF; border: 1px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 800; color: #1E293B; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
-              ⏰ Open 7 Days (11 AM – 11:30 PM)
-            </span>
-          </div>
+          <p class="section-inner-sub" style="margin: 0; font-size: 0.95rem; color: #64748B;">Visit our active company-owned restaurants in Kanpur</p>
         </div>
 
         <div class="outlets-grid">
           <!-- Outlet 1: Kakadeo -->
           <div class="outlet-card">
             <div class="outlet-card-img-wrap">
-              <img src="assets/hero-restaurant.jpg" alt="Grillista Kakadeo Flagship Outlet Ambience" class="outlet-card-img">
+              <img src="assets/hero-restaurant.jpg" alt="Grillista Kakadeo Restaurant" class="outlet-card-img">
               <div class="outlet-live-badge">
-                <span class="outlet-live-dot"></span> LIVE & OPERATING (SINCE 2021)
+                <span class="outlet-live-dot"></span> OPEN NOW • 11 AM – 11:30 PM
+              </div>
+              <div class="outlet-card-img-overlay">
+                <h3 class="outlet-img-title">KAKADEO, KANPUR</h3>
+                <span class="outlet-img-sub">Flagship Bistro & Dine-In Lounge</span>
               </div>
             </div>
             <div class="outlet-body">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                <h3 class="outlet-title">GRILLISTA - KAKADEO</h3>
-                <span style="background: #FEF3C7; color: #92400E; font-size: 0.72rem; font-weight: 900; padding: 3px 8px; border-radius: 12px; text-transform: uppercase;">
-                  ORIGINAL HUB #1
-                </span>
+              <div class="outlet-meta-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>117/N/70, Kakadeo Main Market, Kanpur - 208025</span>
               </div>
-              <span class="outlet-type-badge">🏢 Flagship Dine-In & Bistro Lounge</span>
 
-              <ul class="outlet-info-list">
-                <li class="outlet-info-item">
-                  <span class="icon">📍</span>
-                  <span><strong>Address:</strong> 117/N/70, Kakadeo Main Market (Near Coaching Hub), Kanpur, UP – 208025</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">⏰</span>
-                  <span><strong>Operational Hours:</strong> 11:00 AM – 11:30 PM (All 7 Days Open)</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">📞</span>
-                  <span><strong>Store Hotline:</strong> <a href="tel:+918767121212" style="color: #111; font-weight: 800; text-decoration: none;">+91 87671 21212</a></span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">🍽️</span>
-                  <span><strong>Service Modes:</strong> Dine-In • Takeaway • Swiggy • Zomato Delivery</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">⭐</span>
-                  <span><strong>Customer Rating:</strong> <strong style="color: #D32323;">4.8 / 5.0</strong> (5,000+ Verified Foodies)</span>
-                </li>
-              </ul>
+              <div class="outlet-meta-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span><strong>+91 87671 21212</strong> • ⭐ 4.8 (5k+ reviews)</span>
+              </div>
 
               <div class="outlet-actions">
                 <a href="https://maps.google.com/?q=Grillista+Kakadeo+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
-                  <span>🗺️ Google Maps Directions ↗</span>
+                  <span>📍 Get Directions ↗</span>
                 </a>
                 <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
                   <span>📞 Call Store</span>
-                </a>
-                <a href="https://wa.me/919029020888?text=Hello%20Grillista%20Kakadeo%2C%20I%20want%20to%20place%20an%20order%20or%20reserve%20a%20table." target="_blank" rel="noopener noreferrer" class="outlet-btn" style="background: #25D366; color: #FFFFFF; flex: 0.6;">
-                  <span>💬 WhatsApp</span>
                 </a>
               </div>
             </div>
@@ -645,52 +614,37 @@
           <!-- Outlet 2: Barra -->
           <div class="outlet-card">
             <div class="outlet-card-img-wrap">
-              <img src="assets/hero-restaurant.jpg" alt="Grillista Barra Hub Outlet Ambience" class="outlet-card-img">
+              <img src="assets/hero-restaurant.jpg" alt="Grillista Barra Restaurant" class="outlet-card-img">
               <div class="outlet-live-badge">
-                <span class="outlet-live-dot"></span> LIVE & OPERATING (SINCE 2024)
+                <span class="outlet-live-dot"></span> OPEN NOW • 11 AM – 11:30 PM
+              </div>
+              <div class="outlet-card-img-overlay">
+                <h3 class="outlet-img-title">BARRA, KANPUR</h3>
+                <span class="outlet-img-sub">Express QSR & Delivery Hub</span>
               </div>
             </div>
             <div class="outlet-body">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                <h3 class="outlet-title">GRILLISTA - BARRA</h3>
-                <span style="background: #DBEAFE; color: #1E40AF; font-size: 0.72rem; font-weight: 900; padding: 3px 8px; border-radius: 12px; text-transform: uppercase;">
-                  EXPANSION HUB #2
-                </span>
+              <div class="outlet-meta-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Barra 2, Near CISF Camp Road, Kanpur - 208027</span>
               </div>
-              <span class="outlet-type-badge">🚀 Company-Owned Express & Dine-In Hub</span>
 
-              <ul class="outlet-info-list">
-                <li class="outlet-info-item">
-                  <span class="icon">📍</span>
-                  <span><strong>Address:</strong> Barra 2, Near CISF Camp Road, South Kanpur, UP – 208027</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">⏰</span>
-                  <span><strong>Operational Hours:</strong> 11:00 AM – 11:30 PM (All 7 Days Open)</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">📞</span>
-                  <span><strong>Store Hotline:</strong> <a href="tel:+918767121212" style="color: #111; font-weight: 800; text-decoration: none;">+91 87671 21212</a></span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">🍽️</span>
-                  <span><strong>Service Modes:</strong> Dine-In • Takeaway • Swiggy • Zomato Delivery</span>
-                </li>
-                <li class="outlet-info-item">
-                  <span class="icon">⭐</span>
-                  <span><strong>Customer Rating:</strong> <strong style="color: #D32323;">4.8 / 5.0</strong> (5,000+ Verified Foodies)</span>
-                </li>
-              </ul>
+              <div class="outlet-meta-row">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span><strong>+91 87671 21212</strong> • ⭐ 4.8 (5k+ reviews)</span>
+              </div>
 
               <div class="outlet-actions">
                 <a href="https://maps.google.com/?q=Grillista+Barra+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
-                  <span>🗺️ Google Maps Directions ↗</span>
+                  <span>📍 Get Directions ↗</span>
                 </a>
                 <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
                   <span>📞 Call Store</span>
-                </a>
-                <a href="https://wa.me/919029020888?text=Hello%20Grillista%20Barra%2C%20I%20want%20to%20place%20an%20order%20or%20reserve%20a%20table." target="_blank" rel="noopener noreferrer" class="outlet-btn" style="background: #25D366; color: #FFFFFF; flex: 0.6;">
-                  <span>💬 WhatsApp</span>
                 </a>
               </div>
             </div>
