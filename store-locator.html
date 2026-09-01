@@ -1142,9 +1142,7 @@
         <a href="index.html#home" class="mobile-logo-link" aria-label="Grillista Home">
           <img src="assets/logo.png" alt="Grillista Logo" class="mobile-logo-img">
         </a>
-        <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
-          ☰
-        </button>
+        <button class="mobile-toggle" id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle Navigation Menu">☰</button>
       </div>
 
     </div>
@@ -1509,10 +1507,45 @@
           </div>
         </div>
 
+                <div>
+          <h4 class="footer-col-title" style="display: flex; align-items: center; gap: 8px;">
+            <span>📍</span> OUR OUTLET DIRECTIONS:
+          </h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- Kakadeo Outlet -->
+            <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 12px 14px;">
+              <div style="font-weight: 800; color: #FFFFFF; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between;">
+                <span>🔴 Kakadeo Flagship</span>
+                <span style="background: #22C55E; color: #000; font-size: 0.68rem; font-weight: 900; padding: 2px 6px; border-radius: 4px;">OPEN NOW</span>
+              </div>
+              <p style="color: #94A3B8; font-size: 0.82rem; margin: 4px 0 8px; line-height: 1.4;">
+                117/N/70, Kakadeo Main Market, Kanpur, UP – 208025
+              </p>
+              <a href="https://maps.google.com/?q=Grillista+Kakadeo+Kanpur" target="_blank" rel="noopener noreferrer" style="color: #FFC72C; font-weight: 800; font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <span>🗺️ Get Kakadeo Directions ↗</span>
+              </a>
+            </div>
+
+            <!-- Barra Outlet -->
+            <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 12px 14px;">
+              <div style="font-weight: 800; color: #FFFFFF; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between;">
+                <span>🔴 Barra Hub</span>
+                <span style="background: #22C55E; color: #000; font-size: 0.68rem; font-weight: 900; padding: 2px 6px; border-radius: 4px;">OPEN NOW</span>
+              </div>
+              <p style="color: #94A3B8; font-size: 0.82rem; margin: 4px 0 8px; line-height: 1.4;">
+                Barra 2, CISF Camp Road, Yadav Market, Kanpur, UP – 208027
+              </p>
+              <a href="https://maps.google.com/?q=Grillista+Barra+Kanpur" target="_blank" rel="noopener noreferrer" style="color: #FFC72C; font-weight: 800; font-size: 0.82rem; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <span>🗺️ Get Barra Directions ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div>
           <h4 class="footer-col-title">Useful Links:</h4>
           <ul class="bs-footer-links">
-            <li><a href="javascript:void(0)" onclick="openProfitSimulatorModal()" style="color: #00E676; font-weight: 800; cursor: pointer;">📊 Franchise ROI Calculator 🧮</a></li>
+            <li><a href="franchise.html" style="color: #00E676; font-weight: 800;">📊 Franchise ROI Calculator</a></li>
             <li><a href="locator.html">📍 Store Locator & Map</a></li>
             <li><a href="menu.html">🍔 Full Food Menu</a></li>
             <li><a href="gallery.html">📸 Photo Gallery</a></li>
@@ -1559,6 +1592,28 @@
   </aside>
 
   <script>
+    
+    function toggleMobileNav() {
+      const navMenu = document.querySelector('.bs-nav-cluster');
+      const toggleBtn = document.getElementById('mobile-nav-toggle');
+      let backdrop = document.querySelector('.mobile-nav-backdrop');
+      if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.className = 'mobile-nav-backdrop';
+        document.body.appendChild(backdrop);
+        backdrop.onclick = function() {
+          navMenu?.classList.remove('mobile-open');
+          toggleBtn?.classList.remove('is-active');
+          backdrop.classList.remove('active');
+          document.body.style.overflow = '';
+        };
+      }
+      const isOpen = navMenu?.classList.toggle('mobile-open');
+      toggleBtn?.classList.toggle('is-active', isOpen);
+      backdrop?.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
     function toggleQuickSidebar() {
       document.getElementById('floating-quick-sidebar')?.classList.toggle('collapsed');
     }
