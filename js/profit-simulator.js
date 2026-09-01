@@ -254,18 +254,12 @@ window.updateSimulatorCalc = function() {
   const waBtn = document.getElementById('sim-btn-whatsapp-apply');
   if (waBtn) {
     const msg = encodeURIComponent(
-      'Hi Grillista Team, I used the Advanced Profit Simulator for ' + model.name + ':
-' +
-      '• Projected Footfall: ' + cust + ' customers/day
-' +
-      '• Avg Ticket Size: ₹' + ticket + '
-' +
-      '• Projected Monthly Sales: ' + fmt(monthlySale) + '
-' +
-      '• Estimated Net Profit: ' + fmt(netMonthlyProfit) + '/mo
-' +
-      '• Estimated Payback: ~' + paybackMonths + ' Months
-' +
+      'Hi Grillista Team, I used the Advanced Profit Simulator for ' + model.name + ':\n' +
+      '• Projected Footfall: ' + cust + ' customers/day\n' +
+      '• Avg Ticket Size: ₹' + ticket + '\n' +
+      '• Projected Monthly Sales: ' + fmt(monthlySale) + '\n' +
+      '• Estimated Net Profit: ' + fmt(netMonthlyProfit) + '/mo\n' +
+      '• Estimated Payback: ~' + paybackMonths + ' Months\n' +
       'I would like to apply for franchise allotment in my target city.'
     );
     waBtn.href = 'https://wa.me/916386818682?text=' + msg;
@@ -284,74 +278,75 @@ window.downloadSimulatorProspectus = function() {
   const netHoliday = monthlySale - (foodCost + opex);
   const fmt = (n) => 'Rs. ' + Math.round(n).toLocaleString('en-IN');
 
-  const text = 
-=============================================================
-           GRILLISTA FOODS - OFFICIAL FRANCHISE PROSPECTUS
-                UNIT ECONOMICS & P&L FINANCIAL SIMULATION
-=============================================================
-Generated On: 
-Model Selected: 
-Required Floor Space: 
-Total Setup Investment (Capex): 
+  const lines = [
+    '=============================================================',
+    '           GRILLISTA FOODS - OFFICIAL FRANCHISE PROSPECTUS',
+    '                UNIT ECONOMICS & P&L FINANCIAL SIMULATION',
+    '=============================================================',
+    'Generated On: ' + new Date().toLocaleString('en-IN'),
+    'Model Selected: ' + m.name.toUpperCase(),
+    'Required Floor Space: ' + m.space,
+    'Total Setup Investment (Capex): ' + fmt(m.capex),
+    '',
+    '-------------------------------------------------------------',
+    '1. REVENUE DRIVERS',
+    '-------------------------------------------------------------',
+    '• Daily Customer Footfall: ' + s.customers + ' Customers / Day',
+    '• Average Ticket / Billing Size: Rs. ' + s.ticket + ' / Order',
+    '• Average Daily Sale: ' + fmt(dailySale),
+    '• Monthly Gross Sales (30-Day Cycle): ' + fmt(monthlySale),
+    '',
+    '-------------------------------------------------------------',
+    '2. MONTHLY EXPENSES & COGS BREAKDOWN',
+    '-------------------------------------------------------------',
+    '• Food Cost (COGS @ 30%): - ' + fmt(foodCost),
+    '• Brand Royalty (5% - 6 Months Free Holiday): - ' + fmt(royalty),
+    '• Store Rent: - ' + fmt(s.rent),
+    '• Staff Wages & Kitchen Team: - ' + fmt(s.staff),
+    '• Electricity & Utilities: - ' + fmt(s.electricity),
+    '• Local Marketing & Promotion: - ' + fmt(s.marketing),
+    '• Miscellaneous Contingency: - ' + fmt(s.misc),
+    '• Total Monthly Overheads: - ' + fmt(foodCost + royalty + opex),
+    '',
+    '-------------------------------------------------------------',
+    '3. ESTIMATED NET PROFITABILITY & ROI',
+    '-------------------------------------------------------------',
+    '• Net Monthly Profit (Standard 5% Royalty): ' + fmt(netStandard) + ' / month',
+    '• Net Monthly Profit (First 6 Months @ 0% Royalty): ' + fmt(netHoliday) + ' / month',
+    '• Annual Net Profit (Year 1 with Royalty Holiday): ' + fmt((netHoliday * 6) + (netStandard * 6)) + ' / year',
+    '• Estimated Capital Payback Period: ~' + ((m.capex) / (netStandard > 0 ? netStandard : 1)).toFixed(1) + ' Months',
+    '• Net Profit Margin: ' + ((netStandard / monthlySale) * 100).toFixed(1) + '%',
+    '',
+    '-------------------------------------------------------------',
+    '4. FRANCHISE SUPPORT INCLUDED',
+    '-------------------------------------------------------------',
+    '✓ Master Kitchen Raw Material Supply (100% Quality Controlled)',
+    '✓ Store Location Scouting & Architect 3D Layout Assistance',
+    '✓ 14-Day Comprehensive Staff & Chef Training in Kanpur',
+    '✓ POS Billing Software, Inventory Automation & CRM Setup',
+    '✓ Zomato & Swiggy Onboarding with High-Conversion Menu SEO',
+    '✓ 360-Degree Digital Marketing & Hyperlocal Grand Launch Campaigns',
+    '',
+    '=============================================================',
+    'Corporate Headquarters:',
+    'RK Group of Industries, VR Tower, Juhi Kala, Kanpur, UP - 208014',
+    'Phone: +91 63868 18682 | Email: grillistakanpur@gmail.com',
+    'Official Portal: https://grillista.in',
+    '============================================================='
+  ];
 
--------------------------------------------------------------
-1. REVENUE DRIVERS
--------------------------------------------------------------
-• Daily Customer Footfall:  Customers / Day
-• Average Ticket / Billing Size: Rs.  / Order
-• Average Daily Sale: 
-• Monthly Gross Sales (30-Day Cycle): 
-
--------------------------------------------------------------
-2. MONTHLY EXPENSES & COGS BREAKDOWN
--------------------------------------------------------------
-• Food Cost (COGS @ 30%): - 
-• Brand Royalty (5% - 6 Months Free Holiday): - 
-• Store Rent: - 
-• Staff Wages & Kitchen Team: - 
-• Electricity & Utilities: - 
-• Local Marketing & Promotion: - 
-• Miscellaneous Contingency: - 
-• Total Monthly Overheads: - 
-
--------------------------------------------------------------
-3. ESTIMATED NET PROFITABILITY & ROI
--------------------------------------------------------------
-• Net Monthly Profit (Standard 5% Royalty):  / month
-• Net Monthly Profit (First 6 Months @ 0% Royalty):  / month
-• Annual Net Profit (Year 1 with Royalty Holiday):  / year
-• Estimated Capital Payback Period: ~ Months
-• Net Profit Margin: %
-
--------------------------------------------------------------
-4. FRANCHISE SUPPORT INCLUDED
--------------------------------------------------------------
-✓ Master Kitchen Raw Material Supply (100% Quality Controlled)
-✓ Store Location Scouting & Architect 3D Layout Assistance
-✓ 14-Day Comprehensive Staff & Chef Training in Kanpur
-✓ POS Billing Software, Inventory Automation & CRM Setup
-✓ Zomato & Swiggy Onboarding with High-Conversion Menu SEO
-✓ 360-Degree Digital Marketing & Hyperlocal Grand Launch Campaigns
-
-=============================================================
-Corporate Headquarters:
-RK Group of Industries, VR Tower, Juhi Kala, Kanpur, UP - 208014
-Phone: +91 63868 18682 | Email: grillistakanpur@gmail.com
-Official Portal: https://grillista.in
-=============================================================;
-
-  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const blob = new Blob([lines.join('\\n')], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = Grillista__Financial_Prospectus.txt;
+  a.download = 'Grillista_' + m.name.replace(/\\s+/g, '_') + '_Financial_Prospectus.txt';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 };
 
-// Auto-bind Escape and Backdrop clicks
+// Bind Model Cards on franchise.html to also launch the simulator with that model!
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('profit-simulator-modal');
   modal?.addEventListener('click', (e) => {
@@ -362,5 +357,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal?.classList.contains('active')) {
       window.closeProfitSimulatorModal();
     }
+  });
+
+  // Attach click to franchise model cards
+  document.querySelectorAll('.franchise-model-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const model = card.getAttribute('data-model') || 'express';
+      window.openProfitSimulatorModal(model);
+    });
   });
 });
