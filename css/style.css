@@ -694,9 +694,9 @@ img {
 
 .bs-footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 60px;
-  max-width: 960px;
+  grid-template-columns: 1.25fr 1.25fr 0.9fr;
+  gap: 36px;
+  max-width: 1180px;
   margin: 0 auto 40px;
 }
 
