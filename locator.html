@@ -830,6 +830,200 @@
       transform: translateY(-1px);
     }
 
+    /* Autocomplete dropdown */
+    .territory-input-bar-wrap {
+      position: relative;
+    }
+
+    .territory-autocomplete-list {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      z-index: 1000;
+      max-height: 290px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .territory-autocomplete-list.active {
+      display: block;
+    }
+
+    .territory-autocomplete-item {
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      border-bottom: 1px solid #F1F5F9;
+      transition: background 0.15s ease;
+    }
+
+    .territory-autocomplete-item:last-child {
+      border-bottom: none;
+    }
+
+    .territory-autocomplete-item:hover, .territory-autocomplete-item.selected {
+      background: #FEF2F2;
+    }
+
+    .autocomplete-city-name {
+      font-weight: 800;
+      color: #0F172A;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .autocomplete-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .autocomplete-badge-green {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .autocomplete-badge-gold {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    /* Radar scan effect */
+    .territory-radar-scan {
+      text-align: center;
+      padding: 36px 20px;
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1.5px solid #E2E8F0;
+      margin-top: 24px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+    }
+
+    .radar-icon-pulse {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #FEF2F2;
+      border: 2px solid #FCA5A5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+      animation: radarPulse 1.2s infinite ease-in-out;
+    }
+
+    @keyframes radarPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 35, 35, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(211, 35, 35, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 35, 35, 0); }
+    }
+
+    /* Multi-Tab Navigation inside Result */
+    .territory-tabs-nav {
+      display: flex;
+      gap: 6px;
+      border-bottom: 1.5px solid #E2E8F0;
+      margin: 20px 0 16px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .territory-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: #64748B;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .territory-tab-btn.active {
+      color: #D32323;
+      border-bottom-color: #D32323;
+    }
+
+    .territory-tab-panel {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .territory-tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* In-Page Google Form Lightbox Modal */
+    .gform-lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .gform-lightbox-modal.active {
+      display: flex;
+    }
+
+    .gform-modal-container {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 780px;
+      height: 90vh;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      border: 1px solid #E2E8F0;
+    }
+
+    .gform-modal-topbar {
+      background: #0F172A;
+      color: #FFFFFF;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .gform-modal-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #FFFFFF;
+    }
+
     @media (max-width: 640px) {
       .territory-input-bar {
         flex-direction: column;
@@ -1107,16 +1301,21 @@
         </div>
 
         <div class="territory-checker-wrap">
-          <!-- Territory Input Search Bar -->
-          <div class="territory-input-bar">
-            <span style="font-size: 1.25rem;">🔍</span>
-            <input type="text" id="territory-search-input" class="territory-input" placeholder="Enter city, state, or PIN code (e.g., Lucknow, Kanpur, Noida, Varanasi, Patna, Indore)...">
-            <button type="button" class="territory-detect-btn" onclick="detectTerritoryLocation()">
-              <span>📍</span> Use My City
-            </button>
-            <button type="button" class="territory-check-btn" onclick="checkFranchiseTerritory()">
-              Check Availability
-            </button>
+          <!-- Territory Input Search Bar with Autocomplete Dropdown -->
+          <div class="territory-input-bar-wrap">
+            <div class="territory-input-bar">
+              <span style="font-size: 1.25rem;">🔍</span>
+              <input type="text" id="territory-search-input" class="territory-input" placeholder="Enter city, state, or PIN code (e.g., Lucknow, Kanpur, Noida, Varanasi, Patna, Indore)..." autocomplete="off">
+              <button type="button" class="territory-detect-btn" onclick="detectTerritoryLocation()">
+                <span>📍</span> Use My City
+              </button>
+              <button type="button" class="territory-check-btn" onclick="checkFranchiseTerritory()">
+                Check Availability
+              </button>
+            </div>
+
+            <!-- Real-Time Autocomplete Suggestions Menu -->
+            <div id="territory-autocomplete-list" class="territory-autocomplete-list"></div>
           </div>
 
           <!-- Quick Search Pills -->
@@ -1141,6 +1340,24 @@
 
       </div>
     </section>
+
+    <!-- IN-PAGE GOOGLE FORM LIGHTBOX MODAL -->
+    <div class="gform-lightbox-modal" id="gform-lightbox-modal" role="dialog" aria-modal="true" aria-label="Official Franchise Application">
+      <div class="gform-modal-container">
+        <div class="gform-modal-topbar">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">
+            <span>📝</span> OFFICIAL GRILLISTA FRANCHISE APPLICATION
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" style="color: #FFC72C; font-size: 0.82rem; font-weight: 800; text-decoration: none;">
+              Open in New Tab ↗
+            </a>
+            <button type="button" id="gform-modal-close" style="background: transparent; border: none; color: #94A3B8; font-size: 1.6rem; cursor: pointer; line-height: 1;" aria-label="Close Modal">&times;</button>
+          </div>
+        </div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform?embedded=true" class="gform-modal-iframe" title="Grillista Franchise Application Form" loading="lazy">Loading Google Form…</iframe>
+      </div>
+    </div>
   </main>
 
   <!-- FOOTER -->
@@ -1522,9 +1739,103 @@
       `;
     }
 
-    /* Territory Availability Checker Logic */
+    /* Advanced Territory Intelligence Database */
+    const CITIES_DATABASE = [
+      { name: "Kanpur", state: "Uttar Pradesh", hubs: "Swaroop Nagar, Kidwai Nagar, Civil Lines, Kalyanpur, Shyam Nagar", score: 98, isKanpur: true, tag: "2 Active Flagships (Phase 2 Open)" },
+      { name: "Lucknow", state: "Uttar Pradesh", hubs: "Hazratganj, Gomti Nagar, Aliganj, Indira Nagar, Chowk", score: 96, isKanpur: false, tag: "Tier 1 Priority Launch" },
+      { name: "Varanasi", state: "Uttar Pradesh", hubs: "Assi Ghat, Sigra, Lanka, Mahmoorganj, Bhelupur", score: 95, isKanpur: false, tag: "High Tourist & Student Hub" },
+      { name: "Prayagraj", state: "Uttar Pradesh", hubs: "Civil Lines, Katra, Georgetown, Ashok Nagar", score: 94, isKanpur: false, tag: "Metro Catchment Available" },
+      { name: "Noida / Gr. Noida", state: "Delhi NCR", hubs: "Sector 18, Sector 62, Sector 137, Pari Chowk", score: 96, isKanpur: false, tag: "High AOV IT Corridor" },
+      { name: "Delhi", state: "Delhi NCR", hubs: "Connaught Place, South Ext, Dwarka, Rohini, Laxmi Nagar", score: 97, isKanpur: false, tag: "Capital Metro Territory" },
+      { name: "Gurugram", state: "Delhi NCR", hubs: "DLF Cyber Hub, Sector 29, Golf Course Road, Sohna Rd", score: 96, isKanpur: false, tag: "Millennial Corporate Hub" },
+      { name: "Ghaziabad", state: "Delhi NCR", hubs: "Indirapuram, Raj Nagar Ext, Vaishali", score: 92, isKanpur: false, tag: "NCR Satellite Open" },
+      { name: "Faridabad", state: "Delhi NCR", hubs: "Sector 15 Market, NIT Faridabad", score: 91, isKanpur: false, tag: "Open Catchment" },
+      { name: "Agra", state: "Uttar Pradesh", hubs: "Sanjay Place, Fatehabad Road, Kamla Nagar", score: 93, isKanpur: false, tag: "Tourism Hotspot" },
+      { name: "Gorakhpur", state: "Uttar Pradesh", hubs: "Golghar, Medical College Road, Rapti Nagar", score: 92, isKanpur: false, tag: "Fast Growing Regional Hub" },
+      { name: "Meerut", state: "Uttar Pradesh", hubs: "Shastri Nagar, Abu Lane, Delhi Road", score: 91, isKanpur: false, tag: "Highway Corridor Open" },
+      { name: "Bareilly", state: "Uttar Pradesh", hubs: "Civil Lines, Rajendra Nagar, DD Puram", score: 90, isKanpur: false, tag: "High Opportunity Market" },
+      { name: "Patna", state: "Bihar", hubs: "Boring Road, Bailey Road, Kankarbagh, Fraser Road", score: 95, isKanpur: false, tag: "High ROI State Capital" },
+      { name: "Ranchi", state: "Jharkhand", hubs: "Lalpur, Main Road, Harmu, Kanke Road", score: 92, isKanpur: false, tag: "Untapped State Capital" },
+      { name: "Jamshedpur", state: "Jharkhand", hubs: "Bistupur, Sakchi, Kadma, Telco Colony", score: 91, isKanpur: false, tag: "Premium Steel City" },
+      { name: "Indore", state: "Madhya Pradesh", hubs: "Vijay Nagar, 56 Dukan, Bhawarkua, Sarafa Bazaar", score: 96, isKanpur: false, tag: "Foodie Capital of India" },
+      { name: "Bhopal", state: "Madhya Pradesh", hubs: "MP Nagar, Arera Colony, New Market", score: 93, isKanpur: false, tag: "Lake City Metro Hub" },
+      { name: "Jaipur", state: "Rajasthan", hubs: "Malviya Nagar, Vaishali Nagar, Raja Park, C-Scheme", score: 96, isKanpur: false, tag: "Pink City Tourist Density" },
+      { name: "Gwalior", state: "Madhya Pradesh", hubs: "City Center, Lashkar, Morar", score: 90, isKanpur: false, tag: "Heritage Hub Open" },
+      { name: "Chandigarh / Mohali", state: "Punjab / Haryana", hubs: "Sector 35, Sector 8, Phase 7 Mohali, Panchkula Sec 9", score: 95, isKanpur: false, tag: "High AOV Modern City" },
+      { name: "Ludhiana", state: "Punjab", hubs: "Sarabha Nagar Market, Model Town, Ferozepur Rd", score: 94, isKanpur: false, tag: "High Purchasing Power" },
+      { name: "Amritsar", state: "Punjab", hubs: "Lawrence Road, Ranjit Avenue, Mall Road", score: 93, isKanpur: false, tag: "Food & Tourism Hub" },
+      { name: "Pune", state: "Maharashtra", hubs: "FC Road, Koregaon Park, Baner, Viman Nagar", score: 95, isKanpur: false, tag: "Student & IT Capital" },
+      { name: "Mumbai", state: "Maharashtra", hubs: "Bandra, Andheri, Powai, Thane, Navi Mumbai", score: 97, isKanpur: false, tag: "Metro Commercial Hub" },
+      { name: "Bengaluru", state: "Karnataka", hubs: "Koramangala, Indiranagar, HSR Layout, Whitefield", score: 96, isKanpur: false, tag: "Tech Capital" }
+    ];
+
+    /* Autocomplete Engine */
+    function initTerritoryAutocomplete() {
+      const searchInput = document.getElementById('territory-search-input');
+      const dropdown = document.getElementById('territory-autocomplete-list');
+      if (!searchInput || !dropdown) return;
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        if (query.length < 1) {
+          dropdown.classList.remove('active');
+          dropdown.innerHTML = '';
+          return;
+        }
+
+        const matches = CITIES_DATABASE.filter(c => 
+          c.name.toLowerCase().includes(query) || 
+          c.state.toLowerCase().includes(query) ||
+          c.hubs.toLowerCase().includes(query)
+        ).slice(0, 6);
+
+        if (matches.length === 0) {
+          dropdown.innerHTML = `
+            <div class="territory-autocomplete-item" onclick="selectAutocompleteItem('${e.target.value.trim()}')">
+              <span class="autocomplete-city-name">📍 Search custom city "${e.target.value.trim()}"</span>
+              <span class="autocomplete-badge autocomplete-badge-gold">Analyze Feasibility ↗</span>
+            </div>
+          `;
+          dropdown.classList.add('active');
+          return;
+        }
+
+        dropdown.innerHTML = matches.map(c => `
+          <div class="territory-autocomplete-item" onclick="selectAutocompleteItem('${c.name}')">
+            <div>
+              <div class="autocomplete-city-name">
+                <span>📍</span> ${c.name}, ${c.state}
+              </div>
+              <div style="font-size: 0.76rem; color: #64748B; margin-top: 2px;">Prime hubs: ${c.hubs.split(',').slice(0, 3).join(', ')}...</div>
+            </div>
+            <span class="autocomplete-badge ${c.isKanpur ? 'autocomplete-badge-green' : 'autocomplete-badge-gold'}">
+              ${c.tag}
+            </span>
+          </div>
+        `).join('');
+
+        dropdown.classList.add('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+    }
+
+    function selectAutocompleteItem(cityName) {
+      const searchInput = document.getElementById('territory-search-input');
+      const dropdown = document.getElementById('territory-autocomplete-list');
+      if (searchInput) searchInput.value = cityName;
+      if (dropdown) dropdown.classList.remove('active');
+      processTerritoryCity(cityName);
+    }
+
     function checkFranchiseTerritory() {
       const input = document.getElementById('territory-search-input');
+      const dropdown = document.getElementById('territory-autocomplete-list');
+      if (dropdown) dropdown.classList.remove('active');
       const rawCity = input?.value?.trim() || '';
       if (!rawCity) {
         input?.focus();
@@ -1535,19 +1846,28 @@
 
     function quickCheckTerritory(cityName) {
       const input = document.getElementById('territory-search-input');
+      const dropdown = document.getElementById('territory-autocomplete-list');
+      if (dropdown) dropdown.classList.remove('active');
       if (input) input.value = cityName;
       processTerritoryCity(cityName);
     }
 
     function detectTerritoryLocation() {
       const input = document.getElementById('territory-search-input');
+      const dropdown = document.getElementById('territory-autocomplete-list');
+      if (dropdown) dropdown.classList.remove('active');
       const resultEl = document.getElementById('territory-result-container');
       
       if (resultEl) {
         resultEl.innerHTML = `
-          <div style="text-align: center; padding: 24px; background: #FFF; border-radius: 16px; border: 1px solid #E2E8F0; margin-top: 20px;">
-            <div style="font-size: 1.4rem; margin-bottom: 8px;">🔄</div>
-            <div style="font-weight: 800; color: #0F172A;">Detecting your city location...</div>
+          <div class="territory-radar-scan">
+            <div class="radar-icon-pulse">🛰️</div>
+            <h4 style="font-size: 1.1rem; font-weight: 800; color: #0F172A; margin: 0 0 6px;">
+              Detecting Your City GPS Coordinates...
+            </h4>
+            <p style="font-size: 0.86rem; color: #64748B; margin: 0;">
+              Connecting to Indian satellite territory locator.
+            </p>
           </div>
         `;
       }
@@ -1568,7 +1888,26 @@
     function processTerritoryCity(cityName) {
       const normalized = cityName.toLowerCase().trim();
       const isKanpur = normalized.includes('kanpur') || normalized.includes('cawnpore') || normalized.includes('2080');
-      renderTerritoryResult(cityName, isKanpur);
+      
+      // Radar scanning loading effect
+      const resultContainer = document.getElementById('territory-result-container');
+      if (resultContainer) {
+        resultContainer.innerHTML = `
+          <div class="territory-radar-scan">
+            <div class="radar-icon-pulse">📡</div>
+            <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0 0 6px;">
+              Analyzing Satellite Demographics for ${cityName}...
+            </h4>
+            <p style="font-size: 0.86rem; color: #64748B; margin: 0;">
+              Calculating youth population density, QSR competition, and commissary dispatch logistics.
+            </p>
+          </div>
+        `;
+      }
+
+      setTimeout(() => {
+        renderTerritoryResult(cityName, isKanpur);
+      }, 350);
     }
 
     function resetTerritorySearch() {
@@ -1593,141 +1932,230 @@
       }
     }
 
+    /* Multi-Tab Switchers */
+    function switchTerritoryTab(tabId) {
+      document.querySelectorAll('.territory-tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.territory-tab-panel').forEach(panel => panel.classList.remove('active'));
+
+      document.getElementById(`tab-btn-${tabId}`)?.classList.add('active');
+      document.getElementById(`tab-panel-${tabId}`)?.classList.add('active');
+    }
+
+    function switchRoiFormat(format) {
+      const expressCard = document.getElementById('roi-card-express');
+      const bistroCard = document.getElementById('roi-card-bistro');
+      const signatureCard = document.getElementById('roi-card-signature');
+      
+      const btnExp = document.getElementById('roi-btn-express');
+      const btnBis = document.getElementById('roi-btn-bistro');
+      const btnSig = document.getElementById('roi-btn-signature');
+
+      [expressCard, bistroCard, signatureCard].forEach(c => { if(c) c.style.display = 'none'; });
+      [btnExp, btnBis, btnSig].forEach(b => { if(b) { b.style.background = '#F1F5F9'; b.style.color = '#475569'; } });
+
+      if (format === 'express') {
+        if(expressCard) expressCard.style.display = 'block';
+        if(btnExp) { btnExp.style.background = '#D32323'; btnExp.style.color = '#FFF'; }
+      } else if (format === 'bistro') {
+        if(bistroCard) bistroCard.style.display = 'block';
+        if(btnBis) { btnBis.style.background = '#D32323'; btnBis.style.color = '#FFF'; }
+      } else if (format === 'signature') {
+        if(signatureCard) signatureCard.style.display = 'block';
+        if(btnSig) { btnSig.style.background = '#D32323'; btnSig.style.color = '#FFF'; }
+      }
+    }
+
+    function openInPageGoogleForm() {
+      const modal = document.getElementById('gform-lightbox-modal');
+      modal?.classList.add('active');
+    }
+
     function renderTerritoryResult(cityName, isKanpur) {
       const resultContainer = document.getElementById('territory-result-container');
       if (!resultContainer) return;
 
       const formattedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-      // Official Google Form link provided by Grillista
       const directGoogleForm = `https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform`;
       const whatsappUrl = `https://wa.me/916386818682?text=Hello%20Grillista%20Franchise%20Team%2C%20I%20am%20interested%20in%20applying%20for%20a%20Franchise%20in%20${encodeURIComponent(formattedName)}.`;
 
-      if (isKanpur) {
-        resultContainer.innerHTML = `
-          <div class="territory-result-box" style="border-left: 6px solid #22C55E;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-              <div class="territory-expansion-badge" style="margin-bottom: 0;">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 6px #22C55E;"></span>
-                2 ACTIVE OUTLETS • PHASE 2 CLUSTERS AVAILABLE
-              </div>
-              <div style="background: #F0FDF4; border: 1px solid #BBF7D0; color: #166534; font-size: 0.76rem; font-weight: 800; padding: 4px 10px; border-radius: 8px; text-transform: uppercase;">
-                FEASIBILITY SCORE: 98/100
-              </div>
+      // Lookup known hub info if present
+      const matchedData = CITIES_DATABASE.find(c => c.name.toLowerCase() === formattedName.toLowerCase());
+      const score = matchedData ? matchedData.score : (isKanpur ? 98 : 94);
+      const hubsText = matchedData ? matchedData.hubs : (isKanpur ? "Swaroop Nagar, Kidwai Nagar, Civil Lines, Kalyanpur, Shyam Nagar" : `Main Market Hubs, High-Footfall Commercial Streets, University Campuses in ${formattedName}`);
+
+      resultContainer.innerHTML = `
+        <div class="territory-result-box" style="border-left: 6px solid ${isKanpur ? '#22C55E' : '#D32323'};">
+          
+          <!-- Header Status Bar -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+            <div class="${isKanpur ? 'territory-expansion-badge' : 'territory-open-badge'}" style="margin-bottom: 0;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: ${isKanpur ? '#22C55E' : '#F59E0B'}; box-shadow: 0 0 6px ${isKanpur ? '#22C55E' : '#F59E0B'};"></span>
+              ${isKanpur ? '2 ACTIVE OUTLETS • MULTI-UNIT EXPANSION LIVE' : '100% EXCLUSIVE UNTAPPED TERRITORY AVAILABLE'}
             </div>
             
-            <h3 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; color: #0F172A; text-transform: uppercase; margin: 0 0 8px;">
-              ${formattedName}, Uttar Pradesh — Multi-Unit Franchise Expansion
-            </h3>
-            
-            <p style="font-size: 0.92rem; color: #475569; line-height: 1.6; margin: 0 0 16px;">
-              Grillista already commands massive local popularity in Kanpur with 2 active high-footfall company restaurants (<strong>Kakadeo Flagship</strong> & <strong>Barra Hub</strong>). High-density suburban catchments are now open for Phase 2 multi-unit franchise allocation.
-            </p>
+            <div style="background: ${isKanpur ? '#F0FDF4' : '#FFFBEB'}; border: 1px solid ${isKanpur ? '#BBF7D0' : '#FDE68A'}; color: ${isKanpur ? '#166534' : '#B45309'}; font-size: 0.78rem; font-weight: 900; padding: 4px 12px; border-radius: 8px; text-transform: uppercase;">
+              ⚡ FEASIBILITY SCORE: ${score}/100
+            </div>
+          </div>
+          
+          <h3 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; color: #0F172A; text-transform: uppercase; margin: 0 0 6px;">
+            ${formattedName} — ${isKanpur ? 'Cluster Franchise Expansion' : 'Exclusive Territorial Franchise Launch'}
+          </h3>
+          
+          <p style="font-size: 0.92rem; color: #475569; line-height: 1.6; margin: 0 0 16px;">
+            ${isKanpur 
+              ? `Grillista already commands massive local brand dominance in Kanpur with 2 active high-footfall company flagships in <strong>Kakadeo</strong> & <strong>Barra</strong>. Phase 2 exclusive suburban cluster slots are now open.` 
+              : `Zero direct competition! Be the <strong>exclusive first-mover business partner</strong> to launch Grillista's award-winning craft burgers, loaded pizzas, sizzlers & bistro shakes in <strong>${formattedName}</strong> with 100% protected city rights.`
+            }
+          </p>
 
-            <!-- Advanced Metrics Scorecard -->
+          <!-- Interactive Multi-Tab Navigation -->
+          <div class="territory-tabs-nav">
+            <button type="button" class="territory-tab-btn active" id="tab-btn-feasibility" onclick="switchTerritoryTab('feasibility')">
+              📊 Feasibility & Demographics
+            </button>
+            <button type="button" class="territory-tab-btn" id="tab-btn-roi" onclick="switchTerritoryTab('roi')">
+              💰 Investment & ROI Calculator
+            </button>
+            <button type="button" class="territory-tab-btn" id="tab-btn-catchments" onclick="switchTerritoryTab('catchments')">
+              🎯 Prime Catchments
+            </button>
+          </div>
+
+          <!-- TAB PANEL 1: FEASIBILITY -->
+          <div class="territory-tab-panel active" id="tab-panel-feasibility">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px;">
               <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Supply Chain</div>
-                <div style="font-weight: 900; color: #0F172A; font-size: 0.92rem;">Same-Day Dispatch</div>
+                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Youth Density</div>
+                <div style="font-weight: 900; color: #0F172A; font-size: 0.95rem;">Very High (85%+)</div>
               </div>
               <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Recommended Format</div>
-                <div style="font-weight: 900; color: #0F172A; font-size: 0.92rem;">Bistro & Express</div>
+                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Supply Chain Hub</div>
+                <div style="font-weight: 900; color: #16A34A; font-size: 0.95rem;">Direct Commissary Route</div>
               </div>
               <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Target Break-Even</div>
-                <div style="font-weight: 900; color: #16A34A; font-size: 0.92rem;">8 – 12 Months</div>
+                <div style="font-size: 0.72rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Competition Index</div>
+                <div style="font-weight: 900; color: #D32323; font-size: 0.95rem;">Low / High Monopoly</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB PANEL 2: INVESTMENT & ROI CALCULATOR -->
+          <div class="territory-tab-panel" id="tab-panel-roi">
+            <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+              <button type="button" id="roi-btn-express" onclick="switchRoiFormat('express')" style="background: #D32323; color: #FFF; border: none; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 0.78rem; cursor: pointer;">
+                Express (₹10 - 12L)
+              </button>
+              <button type="button" id="roi-btn-bistro" onclick="switchRoiFormat('bistro')" style="background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 0.78rem; cursor: pointer;">
+                Bistro (₹16 - 18L)
+              </button>
+              <button type="button" id="roi-btn-signature" onclick="switchRoiFormat('signature')" style="background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 0.78rem; cursor: pointer;">
+                Signature (₹38 - 40L)
+              </button>
+            </div>
+
+            <!-- Format 1: Express -->
+            <div id="roi-card-express" style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Required Space:</span>
+                <strong style="color: #0F172A;">200 – 400 sq.ft</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Estimated Monthly Revenue:</span>
+                <strong style="color: #16A34A;">₹3,50,000 – ₹5,00,000 / mo</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Payback Timeline:</span>
+                <strong style="color: #D32323;">8 – 12 Months</strong>
               </div>
             </div>
 
-            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px;">
-              <strong style="color: #0F172A; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-bottom: 6px;">
-                🎯 Available Expansion Catchments in ${formattedName}:
+            <!-- Format 2: Bistro -->
+            <div id="roi-card-bistro" style="display: none; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Required Space:</span>
+                <strong style="color: #0F172A;">500 – 800 sq.ft</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Estimated Monthly Revenue:</span>
+                <strong style="color: #16A34A;">₹6,00,000 – ₹9,00,000 / mo</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Payback Timeline:</span>
+                <strong style="color: #D32323;">10 – 14 Months</strong>
+              </div>
+            </div>
+
+            <!-- Format 3: Signature -->
+            <div id="roi-card-signature" style="display: none; background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Required Space:</span>
+                <strong style="color: #0F172A;">1000 – 2000 sq.ft</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Estimated Monthly Revenue:</span>
+                <strong style="color: #16A34A;">₹12,00,000 – ₹20,00,000 / mo</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.88rem;">
+                <span style="color: #64748B; font-weight: 700;">Payback Timeline:</span>
+                <strong style="color: #D32323;">12 – 16 Months</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB PANEL 3: CATCHMENTS -->
+          <div class="territory-tab-panel" id="tab-panel-catchments">
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px;">
+              <strong style="color: #0F172A; font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-bottom: 8px;">
+                🎯 Recommended Catchments in ${formattedName}:
               </strong>
-              <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.84rem; color: #334155; font-weight: 700;">
-                <span style="background: #E2E8F0; padding: 3px 10px; border-radius: 6px;">Swaroop Nagar</span>
-                <span style="background: #E2E8F0; padding: 3px 10px; border-radius: 6px;">Kidwai Nagar</span>
-                <span style="background: #E2E8F0; padding: 3px 10px; border-radius: 6px;">Civil Lines</span>
-                <span style="background: #E2E8F0; padding: 3px 10px; border-radius: 6px;">Kalyanpur / IIT Hub</span>
-                <span style="background: #E2E8F0; padding: 3px 10px; border-radius: 6px;">Shyam Nagar</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                ${hubsText.split(',').map(hub => `
+                  <span style="background: #E2E8F0; color: #1E293B; font-weight: 800; font-size: 0.82rem; padding: 4px 10px; border-radius: 6px;">
+                    📍 ${hub.trim()}
+                  </span>
+                `).join('')}
               </div>
-            </div>
-
-            <!-- Action Buttons Grid -->
-            <div class="territory-actions-grid">
-              <a href="${directGoogleForm}" target="_blank" rel="noopener noreferrer" class="territory-gform-btn" title="Open Google Form Application">
-                <span>📝 OPEN GOOGLE FORM ↗</span>
-              </a>
-              <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="territory-whatsapp-btn" title="Chat on WhatsApp">
-                <span>💬 WHATSAPP DESK ↗</span>
-              </a>
-              <button type="button" class="territory-reset-btn" onclick="resetTerritorySearch()">
-                <span>🔄 TRY NEW LOCATION / CHECK ANOTHER CITY</span>
-              </button>
             </div>
           </div>
-        `;
-      } else {
-        resultContainer.innerHTML = `
-          <div class="territory-result-box" style="border-left: 6px solid #F59E0B;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-              <div class="territory-open-badge" style="margin-bottom: 0;">
-                <span>🌟</span> 100% UNTAPPED EXCLUSIVE TERRITORY AVAILABLE
-              </div>
-              <div style="background: #FEF3C7; border: 1px solid #FDE68A; color: #92400E; font-size: 0.76rem; font-weight: 800; padding: 4px 10px; border-radius: 8px; text-transform: uppercase;">
-                FEASIBILITY SCORE: 94/100
-              </div>
-            </div>
-            
-            <h3 style="font-family: var(--font-display); font-size: 1.45rem; font-weight: 900; color: #0F172A; text-transform: uppercase; margin: 0 0 8px;">
-              ${formattedName} — Exclusive First-Mover Franchise Launch
-            </h3>
-            
-            <p style="font-size: 0.92rem; color: #475569; line-height: 1.6; margin: 0 0 16px;">
-              Zero direct competition! Be the <strong>pioneering master franchise partner</strong> to launch Grillista's award-winning craft burgers, loaded pizzas, sizzlers, and thick shakes in <strong>${formattedName}</strong> with 100% protected territorial monopoly.
-            </p>
 
-            <!-- Advanced Metrics Scorecard -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px;">
-              <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #B45309; text-transform: uppercase;">Territory Rights</div>
-                <div style="font-weight: 900; color: #78350F; font-size: 0.92rem;">Exclusive City Rights</div>
-              </div>
-              <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #15803D; text-transform: uppercase;">Target ROI</div>
-                <div style="font-weight: 900; color: #14532D; font-size: 0.92rem;">10 – 14 Months Payback</div>
-              </div>
-              <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 10px; padding: 12px;">
-                <div style="font-size: 0.72rem; font-weight: 800; color: #1D4ED8; text-transform: uppercase;">Turnkey Kitchen Setup</div>
-                <div style="font-weight: 900; color: #1E3A8A; font-size: 0.92rem;">100% Equipment + Staff</div>
-              </div>
-            </div>
-
-            <!-- Action Buttons Grid -->
-            <div class="territory-actions-grid">
-              <a href="${directGoogleForm}" target="_blank" rel="noopener noreferrer" class="territory-gform-btn" title="Open Google Form Application">
-                <span>📝 OPEN GOOGLE FORM ↗</span>
-              </a>
-              <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="territory-whatsapp-btn" title="Chat on WhatsApp">
-                <span>💬 WHATSAPP DESK ↗</span>
-              </a>
-              <button type="button" class="territory-reset-btn" onclick="resetTerritorySearch()">
-                <span>🔄 TRY NEW LOCATION / CHECK ANOTHER CITY</span>
-              </button>
-            </div>
+          <!-- Action Buttons Grid -->
+          <div class="territory-actions-grid">
+            <button type="button" class="territory-gform-btn" onclick="openInPageGoogleForm()" title="Open In-Page Application Form">
+              <span>📝 FILL GOOGLE FORM (IN-PAGE) ↗</span>
+            </button>
+            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="territory-whatsapp-btn" title="Chat on WhatsApp">
+              <span>💬 WHATSAPP DESK ↗</span>
+            </a>
+            <button type="button" class="territory-reset-btn" onclick="resetTerritorySearch()">
+              <span>🔄 TRY NEW LOCATION / CHECK ANOTHER CITY</span>
+            </button>
           </div>
-        `;
-      }
+        </div>
+      `;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Initialize default territory display with Lucknow / general
+      // 1. Initialize Real-Time Autocomplete
+      initTerritoryAutocomplete();
+
+      // 2. Initialize default territory display with Lucknow
       renderTerritoryResult('Lucknow', false);
 
-      // Handle Enter key on search input
+      // 3. Handle Enter key on search input
       document.getElementById('territory-search-input')?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') checkFranchiseTerritory();
       });
-      // Lightbox Controls
+
+      // 4. In-Page Google Form Modal Close Handlers
+      const gformModal = document.getElementById('gform-lightbox-modal');
+      const gformClose = document.getElementById('gform-modal-close');
+      gformClose?.addEventListener('click', () => gformModal?.classList.remove('active'));
+      gformModal?.addEventListener('click', (e) => {
+        if (e.target === gformModal) gformModal.classList.remove('active');
+      });
+
+      // 5. Lightbox Controls
       const lightboxModal = document.getElementById('outlet-photos-lightbox');
       const lightboxClose = document.getElementById('outlet-lightbox-close');
       const prevBtn = document.getElementById('outlet-gallery-prev');
@@ -1741,7 +2169,7 @@
         if (e.target === lightboxModal) lightboxModal.classList.remove('active');
       });
 
-      // Smart Food Order Modal Controls
+      // 6. Smart Food Order Modal Controls
       const foodModal = document.getElementById('smart-food-order-modal');
       const foodModalClose = document.getElementById('food-modal-close');
       foodModalClose?.addEventListener('click', () => foodModal?.classList.remove('active'));
@@ -1750,16 +2178,17 @@
       });
 
       document.addEventListener('keydown', (e) => {
-        if (foodModal?.classList.contains('active') && e.key === 'Escape') {
-          foodModal.classList.remove('active');
+        if (e.key === 'Escape') {
+          gformModal?.classList.remove('active');
+          foodModal?.classList.remove('active');
+          lightboxModal?.classList.remove('active');
         }
         if (!lightboxModal?.classList.contains('active')) return;
-        if (e.key === 'Escape') lightboxModal.classList.remove('active');
         if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
         if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
       });
 
-      // Mobile Menu Toggle
+      // 7. Mobile Menu Toggle
       document.getElementById('mobile-nav-toggle')?.addEventListener('click', () => {
         document.querySelector('.bs-nav-cluster')?.classList.toggle('mobile-open');
       });
