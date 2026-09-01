@@ -837,25 +837,32 @@ img {
 }
 
 /* ==========================================================================
-   FLOATING DOCKED QUICK SIDEBAR (EXACT REFERENCE SCREENSHOT)
+   FLOATING DOCKED QUICK SIDEBAR (ULTRA-RESPONSIVE ACROSS ALL DEVICES)
    ========================================================================== */
 .floating-quick-sidebar {
   position: fixed;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 9999;
+  z-index: 9990;
   display: flex;
   flex-direction: column;
-  border-top-left-radius: 16px;
-  border-bottom-left-radius: 16px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
   overflow: hidden;
-  box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .floating-quick-sidebar.collapsed .sidebar-action-item {
-  display: none;
+  display: none !important;
+}
+
+.floating-quick-sidebar.collapsed .sidebar-toggle-btn {
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
 }
 
 .floating-quick-sidebar.collapsed .sidebar-toggle-btn svg {
@@ -864,8 +871,8 @@ img {
 
 .sidebar-toggle-btn,
 .sidebar-action-item {
-  width: 46px;
-  height: 48px;
+  width: 44px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -873,7 +880,7 @@ img {
   border: none;
   cursor: pointer;
   outline: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   box-sizing: border-box;
 }
@@ -902,7 +909,7 @@ img {
 
 .sidebar-whatsapp-btn:hover {
   background: #1A1A1A;
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .sidebar-phone-btn {
@@ -912,7 +919,7 @@ img {
 
 .sidebar-phone-btn:hover {
   background: #F5B81C;
-  transform: scale(1.06);
+  transform: scale(1.08);
 }
 
 .sidebar-email-btn {
@@ -922,7 +929,45 @@ img {
 
 .sidebar-email-btn:hover {
   background: #233147;
-  transform: scale(1.06);
+  transform: scale(1.08);
+}
+
+/* Mobile & Tablet Responsiveness for Floating Quick Sidebar */
+@media (max-width: 768px) {
+  .floating-quick-sidebar {
+    top: 55%;
+    box-shadow: -2px 4px 14px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar-toggle-btn,
+  .sidebar-action-item {
+    width: 38px;
+    height: 40px;
+  }
+
+  .sidebar-toggle-btn svg,
+  .sidebar-action-item svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-quick-sidebar {
+    top: 58%;
+  }
+
+  .sidebar-toggle-btn,
+  .sidebar-action-item {
+    width: 36px;
+    height: 38px;
+  }
+
+  .sidebar-toggle-btn svg,
+  .sidebar-action-item svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* ==========================================================================

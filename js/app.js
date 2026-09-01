@@ -661,9 +661,10 @@ class App {
     const sidebar = document.getElementById('floating-quick-sidebar');
     if (!toggleBtn || !sidebar) return;
 
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.onclick = (e) => {
+      if (e) e.preventDefault();
       sidebar.classList.toggle('collapsed');
-    });
+    };
   }
 
   // -------------------------------------------------------------
