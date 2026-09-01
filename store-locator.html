@@ -2469,114 +2469,216 @@
     });
   </script>
 
-  <!-- DEDICATED PROFIT SIMULATOR LIGHTBOX MODAL (MATCHING USER SPECIFICATION) -->
+  <!-- ADVANCED GRILLISTA PROFIT SIMULATOR & P&L ENGINE v2.0 -->
   <div id="profit-simulator-modal" class="profit-simulator-lightbox" role="dialog" aria-modal="true" aria-labelledby="profit-sim-title">
-    <div class="profit-simulator-dialog">
+    <div class="profit-simulator-dialog" style="max-width: 920px; border-radius: 24px; overflow: hidden; background: #FFFFFF;">
       
       <!-- Topbar Header -->
-      <div class="profit-simulator-topbar">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.4rem;">🧮</span>
+      <div class="profit-simulator-topbar" style="background: #090D16; border-bottom: 2px solid #FFC72C; padding: 18px 24px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 199, 44, 0.15); border: 1.5px solid #FFC72C; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            🧮
+          </div>
           <div>
-            <h3 id="profit-sim-title" style="margin: 0; font-size: 1.2rem; font-weight: 900; color: #FFFFFF; font-family: var(--font-display); text-transform: uppercase;">
-              GRILLISTA <span style="color: #FFC72C;">PROFIT SIMULATOR</span>
-            </h3>
-            <span style="font-size: 0.76rem; color: #94A3B8; font-weight: 600;">Interactive Franchise Unit Economics & P&L Engine</span>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 id="profit-sim-title" style="margin: 0; font-size: 1.25rem; font-weight: 900; color: #FFFFFF; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.5px;">
+                GRILLISTA <span style="color: #FFC72C;">PROFIT SIMULATOR PRO</span>
+              </h3>
+              <span style="background: #22C55E; color: #000; font-size: 0.68rem; font-weight: 900; padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px;">
+                LIVE P&L ENGINE
+              </span>
+            </div>
+            <span style="font-size: 0.8rem; color: #94A3B8; font-weight: 600;">
+              Interactive Unit Economics & Multi-Year Forecast for Franchise Investors
+            </span>
           </div>
         </div>
-        <button type="button" id="profit-sim-close" onclick="closeProfitSimulatorModal()" aria-label="Close" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; width: 36px; height: 36px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease;">
+        <button type="button" id="profit-sim-close" onclick="closeProfitSimulatorModal()" aria-label="Close" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; width: 38px; height: 38px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
           ✕
         </button>
       </div>
 
       <!-- Simulator Body -->
-      <div class="profit-simulator-body">
+      <div class="profit-simulator-body" style="padding: 24px 28px 30px; max-height: calc(90vh - 80px); overflow-y: auto;">
         
-        <!-- Model Selection Tabs -->
-        <div style="display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
-          <button type="button" id="sim-tab-express" onclick="switchSimulatorModel('express')" style="flex: 1; min-width: 140px; padding: 10px 16px; border-radius: 12px; border: 2px solid #D32323; background: #D32323; color: #FFF; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease;">
-            🚀 Express (₹10 - 12L)
-          </button>
-          <button type="button" id="sim-tab-bistro" onclick="switchSimulatorModel('bistro')" style="flex: 1; min-width: 140px; padding: 10px 16px; border-radius: 12px; border: 2px solid #E2E8F0; background: #F8FAFC; color: #475569; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease;">
-            🌟 Bistro (₹16 - 18L)
-          </button>
-          <button type="button" id="sim-tab-signature" onclick="switchSimulatorModel('signature')" style="flex: 1; min-width: 140px; padding: 10px 16px; border-radius: 12px; border: 2px solid #E2E8F0; background: #F8FAFC; color: #475569; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease;">
-            👑 Signature (₹38 - 40L)
+        <!-- STEP 1: Model Selection Bar -->
+        <div style="margin-bottom: 20px;">
+          <div style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+            1. Select Franchise Store Format:
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+            <button type="button" id="sim-tab-express" onclick="switchSimulatorModel('express')" style="padding: 12px 14px; border-radius: 12px; border: 2px solid #D32323; background: #D32323; color: #FFF; font-weight: 900; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; text-align: left;">
+              <div>🚀 Express Model</div>
+              <div style="font-size: 0.74rem; opacity: 0.85; font-weight: 600;">200 sq.ft • ₹10 - 12 Lakh</div>
+            </button>
+            <button type="button" id="sim-tab-bistro" onclick="switchSimulatorModel('bistro')" style="padding: 12px 14px; border-radius: 12px; border: 2px solid #CBD5E1; background: #F8FAFC; color: #475569; font-weight: 900; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; text-align: left;">
+              <div>🌟 Bistro Model</div>
+              <div style="font-size: 0.74rem; opacity: 0.85; font-weight: 600;">500 - 800 sq.ft • ₹16 - 18 Lakh</div>
+            </button>
+            <button type="button" id="sim-tab-signature" onclick="switchSimulatorModel('signature')" style="padding: 12px 14px; border-radius: 12px; border: 2px solid #CBD5E1; background: #F8FAFC; color: #475569; font-weight: 900; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; text-align: left;">
+              <div>👑 Signature Dine-In</div>
+              <div style="font-size: 0.74rem; opacity: 0.85; font-weight: 600;">1000 - 2000 sq.ft • ₹38 - 40 Lakh</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Scenario Presets Bar -->
+        <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Scenario Preset:</span>
+            <div style="display: inline-flex; background: #F1F5F9; padding: 3px; border-radius: 10px; border: 1px solid #E2E8F0;">
+              <button type="button" id="sim-scen-conservative" onclick="setSimulatorScenario('conservative')" style="padding: 6px 14px; border-radius: 8px; border: 1px solid #FFC72C; background: #0F172A; color: #FFC72C; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                Conservative (Base)
+              </button>
+              <button type="button" id="sim-scen-moderate" onclick="setSimulatorScenario('moderate')" style="padding: 6px 14px; border-radius: 8px; border: 1px solid #E2E8F0; background: #F1F5F9; color: #64748B; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                Expected Target
+              </button>
+              <button type="button" id="sim-scen-aggressive" onclick="setSimulatorScenario('aggressive')" style="padding: 6px 14px; border-radius: 8px; border: 1px solid #E2E8F0; background: #F1F5F9; color: #64748B; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                Peak Hub Volume
+              </button>
+            </div>
+          </div>
+
+          <!-- Royalty Holiday Toggle Pill -->
+          <button type="button" id="sim-royalty-toggle-pill" onclick="toggleRoyaltyHoliday()" style="background: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; cursor: pointer; transition: all 0.2s ease;">
+            ⭐ First 6 Months 0% Royalty Active (₹0)
           </button>
         </div>
 
-        <!-- Sliders Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 14px; padding: 18px 20px;">
+        <!-- STEP 3: Primary Revenue Sliders Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 18px 20px;">
           <!-- Slider 1: Customers -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 0.84rem; font-weight: 800; color: #334155;">Daily Customer Footfall:</span>
-              <strong id="sim-cust-display" style="font-size: 1.05rem; font-weight: 900; color: #D32323;">50 Cust / Day</strong>
+              <span style="font-size: 0.84rem; font-weight: 800; color: #1E293B;">Daily Customer Footfall:</span>
+              <strong id="sim-cust-display" style="font-size: 1.1rem; font-weight: 900; color: #D32323;">50 Orders / Day</strong>
             </div>
-            <input type="range" id="sim-cust-slider" min="30" max="250" step="5" value="50" oninput="updateSimulatorCalc()" style="width: 100%; accent-color: #D32323; cursor: pointer;">
+            <input type="range" id="sim-cust-slider" min="30" max="300" step="5" value="50" oninput="updateSimulatorCalc()" style="width: 100%; accent-color: #D32323; cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #94A3B8; margin-top: 4px;">
+              <span>30 / day</span>
+              <span>150 / day</span>
+              <span>300 / day</span>
+            </div>
           </div>
 
           <!-- Slider 2: Average Ticket Size -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 0.84rem; font-weight: 800; color: #334155;">Average Ticket Size:</span>
-              <strong id="sim-ticket-display" style="font-size: 1.05rem; font-weight: 900; color: #0F4C2A;">₹170 / bill</strong>
+              <span style="font-size: 0.84rem; font-weight: 800; color: #1E293B;">Average Ticket Size:</span>
+              <strong id="sim-ticket-display" style="font-size: 1.1rem; font-weight: 900; color: #0F4C2A;">₹ 170 / bill</strong>
             </div>
             <input type="range" id="sim-ticket-slider" min="120" max="350" step="5" value="170" oninput="updateSimulatorCalc()" style="width: 100%; accent-color: #0F4C2A; cursor: pointer;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #94A3B8; margin-top: 4px;">
+              <span>₹120 (Budget)</span>
+              <span>₹170 (Average)</span>
+              <span>₹350 (Combo Dining)</span>
+            </div>
           </div>
         </div>
 
-        <!-- Real-Time Metrics Output Grid -->
+        <!-- Optional OPEX Fine-Tuning Drawer -->
+        <div style="margin-bottom: 20px;">
+          <button type="button" id="sim-opex-toggle-btn" onclick="toggleCustomOpex()" style="width: 100%; background: #F1F5F9; border: 1px dashed #CBD5E1; color: #475569; font-weight: 800; font-size: 0.82rem; padding: 8px 16px; border-radius: 10px; cursor: pointer;">
+            ⚙️ Fine-Tune Local Rent & Staff Costs ▼
+          </button>
+          <div id="sim-custom-opex-drawer" style="display: none; margin-top: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 4px;">
+                  <span>Monthly Store Rent:</span>
+                  <strong id="sim-rent-display" style="color: #0F172A;">₹ 50,000 / mo</strong>
+                </div>
+                <input type="range" id="sim-rent-slider" min="20000" max="120000" step="5000" value="50000" oninput="updateSimulatorCalc()" style="width: 100%; accent-color: #334155; cursor: pointer;">
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 4px;">
+                  <span>Monthly Staff Wages:</span>
+                  <strong id="sim-staff-display" style="color: #0F172A;">₹ 40,000 / mo</strong>
+                </div>
+                <input type="range" id="sim-staff-slider" min="20000" max="90000" step="5000" value="40000" oninput="updateSimulatorCalc()" style="width: 100%; accent-color: #334155; cursor: pointer;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Live P&L Financial Statement Cards -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px;">
             <div style="font-size: 0.74rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Average Daily Sale</div>
-            <div id="sim-daily-sale" style="font-size: 1.2rem; font-weight: 900; color: #0F172A; margin-top: 4px;">₹ 8,500</div>
+            <div id="sim-daily-sale" style="font-size: 1.25rem; font-weight: 900; color: #0F172A; margin-top: 4px;">₹ 8,500</div>
           </div>
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px;">
             <div style="font-size: 0.74rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Monthly Gross Sales</div>
-            <div id="sim-monthly-sale" style="font-size: 1.2rem; font-weight: 900; color: #0F4C2A; margin-top: 4px;">₹ 2,55,000</div>
+            <div id="sim-monthly-sale" style="font-size: 1.25rem; font-weight: 900; color: #0F4C2A; margin-top: 4px;">₹ 2,55,000</div>
           </div>
           <div style="background: #FEF2F2; border: 1px solid #FECACA; border-radius: 12px; padding: 14px;">
             <div style="font-size: 0.74rem; font-weight: 800; color: #B91C1C; text-transform: uppercase;">Food Cost (30%)</div>
-            <div id="sim-food-cost" style="font-size: 1.2rem; font-weight: 900; color: #DC2626; margin-top: 4px;">- ₹ 76,500</div>
+            <div id="sim-food-cost" style="font-size: 1.25rem; font-weight: 900; color: #DC2626; margin-top: 4px;">- ₹ 76,500</div>
           </div>
           <div style="background: #FEF3C7; border: 1px solid #FDE68A; border-radius: 12px; padding: 14px;">
-            <div style="font-size: 0.74rem; font-weight: 800; color: #B45309; text-transform: uppercase;">Royalty (5% - 6 mos free)</div>
-            <div id="sim-royalty" style="font-size: 1.2rem; font-weight: 900; color: #D97706; margin-top: 4px;">- ₹ 12,750</div>
+            <div style="font-size: 0.74rem; font-weight: 800; color: #B45309; text-transform: uppercase;">Brand Royalty</div>
+            <div id="sim-royalty" style="font-size: 1.15rem; font-weight: 900; color: #D97706; margin-top: 4px;">₹ 0 (100% Free Promo)</div>
           </div>
         </div>
 
-        <!-- Overheads Summary List -->
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; font-size: 0.84rem; color: #475569; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;">
-          <span>🏠 Rent: <strong style="color:#0F172A;">₹50,000</strong></span>
-          <span>👨‍🍳 Staff: <strong style="color:#0F172A;">₹40,000</strong></span>
-          <span>⚡ Electricity: <strong style="color:#0F172A;">₹10,000</strong></span>
-          <span>📢 Marketing: <strong style="color:#0F172A;">₹10,000</strong></span>
-          <span>📦 Misc: <strong style="color:#0F172A;">₹10,000</strong></span>
+        <!-- STEP 5: Big Highlight Net Monthly Profit Card with Multi-Year Growth Forecast -->
+        <div style="background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%); border-radius: 18px; padding: 22px 26px; color: #FFFFFF; margin-bottom: 22px; box-shadow: 0 12px 35px rgba(15, 76, 42, 0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 16px; margin-bottom: 16px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.8rem; font-weight: 900; color: #86EFAC; text-transform: uppercase; letter-spacing: 0.6px;">
+                  ESTIMATED NET MONTHLY PROFIT
+                </span>
+                <span id="sim-margin-badge" style="background: rgba(255,255,255,0.15); color: #FFC72C; font-size: 0.74rem; font-weight: 900; padding: 2px 8px; border-radius: 12px;">
+                  22.9% Net Margin
+                </span>
+              </div>
+              <div id="sim-net-profit" style="font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 900; color: #FFFFFF; line-height: 1.1; margin-top: 4px;">
+                ₹ 45,750 <sub>/ mo</sub>
+              </div>
+              <div id="sim-net-profit-initial" style="font-size: 0.88rem; font-weight: 800; color: #86EFAC; margin-top: 6px;">
+                ⭐ First 6 Months: ₹ 58,500 / mo (100% Royalty Free)
+              </div>
+            </div>
+
+            <!-- Capital Payback Gauge -->
+            <div style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 16px; min-width: 190px;">
+              <div style="font-size: 0.74rem; font-weight: 800; color: #94A3B8; text-transform: uppercase;">Capital Payback Period</div>
+              <div id="sim-payback-badge" style="font-size: 1.35rem; font-weight: 900; color: #FFC72C; margin: 2px 0 6px;">~22.4 Months</div>
+              <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden;">
+                <div id="sim-payback-progress-bar" style="width: 55%; height: 100%; background: #FFC72C; border-radius: 3px; transition: width 0.3s ease;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Year Wealth Accumulation Row -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center;">
+            <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px;">
+              <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700; text-transform: uppercase;">Year 1 Net Cashflow</div>
+              <div id="sim-year1-val" style="font-size: 1.15rem; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₹ 6,25,500</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px;">
+              <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700; text-transform: uppercase;">Year 2 (+10% Growth)</div>
+              <div id="sim-year2-val" style="font-size: 1.15rem; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₹ 6,03,900</div>
+            </div>
+            <div style="background: rgba(255, 199, 44, 0.15); border: 1px solid rgba(255, 199, 44, 0.3); padding: 10px; border-radius: 10px;">
+              <div style="font-size: 0.72rem; color: #FFC72C; font-weight: 800; text-transform: uppercase;">3-Year Cumulative Returns</div>
+              <div id="sim-year3-val" style="font-size: 1.25rem; font-weight: 900; color: #FFC72C; margin-top: 2px;">₹ 18,99,000</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Big Highlight Net Profit Banner -->
-        <div style="background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%); border: 2px solid #86EFAC; border-radius: 16px; padding: 20px 24px; margin-bottom: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-          <div>
-            <div style="font-size: 0.8rem; font-weight: 900; color: #15803D; text-transform: uppercase; letter-spacing: 0.5px;">ESTIMATED NET TAKE-HOME PROFIT</div>
-            <div id="sim-net-profit" style="font-size: 2.1rem; font-weight: 900; color: #14532D; line-height: 1.1;">₹ 45,750 <sub>/ month</sub></div>
-            <div id="sim-net-profit-initial" style="font-size: 0.85rem; font-weight: 800; color: #166534; margin-top: 4px;">⭐ ₹58,500 / mo during first 6 months (100% Royalty Free)</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="font-size: 0.78rem; font-weight: 800; color: #15803D; text-transform: uppercase;">Annual Net Return</div>
-            <div id="sim-annual-profit" style="font-size: 1.5rem; font-weight: 900; color: #14532D;">₹ 5,49,000 / yr</div>
-            <div id="sim-payback" style="font-size: 0.82rem; font-weight: 800; color: #166534; margin-top: 2px;">Payback: ~22.4 Months</div>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" style="background: #D32323; color: #FFF; padding: 12px 18px; border-radius: 12px; font-weight: 900; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(211,35,35,0.25);">
-            <span>📝 APPLY FOR FRANCHISE (GOOGLE FORM) ↗</span>
+        <!-- STEP 6: Action CTAs -->
+        <div style="display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 12px;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" style="background: #D32323; color: #FFF; padding: 12px 14px; border-radius: 12px; font-weight: 900; font-size: 0.88rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(211,35,35,0.25); text-align: center;">
+            <span>📝 Apply On Google Form ↗</span>
           </a>
-          <a href="https://wa.me/916386818682?text=Hi%20Grillista%20Team%2C%20I%20tested%20the%20Profit%20Simulator%20and%20want%20to%20apply%20for%20a%20Franchise." target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFF; padding: 12px 18px; border-radius: 12px; font-weight: 900; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(37,211,102,0.25);">
-            <span>💬 WHATSAPP FRANCHISE DESK ↗</span>
+          <a id="sim-btn-whatsapp-apply" href="https://wa.me/916386818682" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFF; padding: 12px 14px; border-radius: 12px; font-weight: 900; font-size: 0.88rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(37,211,102,0.25); text-align: center;">
+            <span>💬 WhatsApp With These Numbers ↗</span>
           </a>
+          <button type="button" onclick="downloadSimulatorProspectus()" style="background: #F1F5F9; border: 1.5px solid #CBD5E1; color: #1E293B; padding: 12px 14px; border-radius: 12px; font-weight: 900; font-size: 0.84rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
+            <span>📄 Export Prospectus (.txt)</span>
+          </button>
         </div>
 
       </div>
