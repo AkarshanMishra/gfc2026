@@ -730,6 +730,218 @@ img {
 }
 
 /* ==========================================================================
+   HOMEPAGE DEDICATED FRANCHISE APPLICATION SECTION & FORM
+   ========================================================================== */
+.franchise-application-section {
+  padding: clamp(60px, 8vw, 95px) 0;
+  background: #F8F9FB;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+}
+
+.franchise-app-header-box {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 40px;
+}
+
+.franchise-app-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FEE2E2;
+  color: #D32323;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1px solid rgba(211, 35, 35, 0.2);
+  margin-bottom: 12px;
+}
+
+.franchise-app-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: #111111;
+  margin: 0 0 12px;
+}
+
+.franchise-app-subtext {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: #4A5568;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.franchise-trust-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.franchise-trust-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1E293B;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.franchise-app-card {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 18px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.06);
+  padding: clamp(24px, 5vw, 44px);
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.franchise-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.franchise-form-full {
+  grid-column: 1 / -1;
+}
+
+.form-label-custom {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin-bottom: 6px;
+}
+
+.form-label-custom span.req {
+  color: #D32323;
+}
+
+.form-input-custom,
+.form-select-custom,
+.form-textarea-custom {
+  width: 100%;
+  padding: 12px 16px;
+  background: #F8FAFC;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #111111;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input-custom:focus,
+.form-select-custom:focus,
+.form-textarea-custom:focus {
+  border-color: #D32323;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(211, 35, 35, 0.12);
+}
+
+.btn-submit-franchise-app {
+  width: 100%;
+  background: #D32323;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(211, 35, 35, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-submit-franchise-app:hover {
+  background: #B91C1C;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(211, 35, 35, 0.4);
+}
+
+.btn-submit-franchise-app:active {
+  transform: scale(0.98);
+}
+
+.google-form-alt-banner {
+  margin-top: 20px;
+  background: #F1F5F9;
+  border: 1px dashed #94A3B8;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.google-form-alt-link {
+  color: #111111;
+  background: #FFC72C;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.google-form-alt-link:hover {
+  transform: scale(1.04);
+}
+
+.franchise-form-success-box {
+  display: none;
+  text-align: center;
+  padding: 30px 20px;
+  background: #F0FDF4;
+  border: 2px solid #22C55E;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.franchise-form-success-box.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .franchise-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
    FAQ EXACT ACCORDION SECTION (DISTINCT MODERN BLUE & SLATE PALETTE)
    Avoids navbar green (#0F4C2A) and logo colors (#FFC72C, #D32323)
    ========================================================================== */

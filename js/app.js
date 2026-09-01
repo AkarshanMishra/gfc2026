@@ -32,6 +32,7 @@ class App {
     this.setupMobileMenu();
     this.setupLiveTicker();
     this.setupFaqAccordion();
+    this.setupHomeFranchiseForm();
 
     console.log(`%c 🍔 ${CONFIG.BRAND.name} %c Desi Burgers, Global Swag - Ready!`, 'background: #0F4C2A; color: #fff; font-weight: bold; padding: 4px 8px; border-radius: 4px;', 'color: #FFA000;');
   }
@@ -662,6 +663,56 @@ class App {
 
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
+    });
+  }
+
+  // -------------------------------------------------------------
+  // HOMEPAGE FRANCHISE APPLICATION HANDLER
+  // -------------------------------------------------------------
+  setupHomeFranchiseForm() {
+    const form = document.getElementById('home-franchise-form');
+    const successBox = document.getElementById('franchise-success-message');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('f-name')?.value.trim();
+      const phone = document.getElementById('f-phone')?.value.trim();
+      const email = document.getElementById('f-email')?.value.trim();
+      const city = document.getElementById('f-city')?.value.trim();
+      const model = document.getElementById('f-model')?.value;
+      const budget = document.getElementById('f-budget')?.value;
+      const property = document.getElementById('f-property')?.value;
+      const message = document.getElementById('f-message')?.value.trim();
+
+      if (!name || !phone || !email || !city || !model || !budget || !property) {
+        this.showToast('Please fill out all required application fields.', 'error');
+        return;
+      }
+
+      const inquiry = {
+        name: Security.escapeHTML(name),
+        phone: Security.escapeHTML(phone),
+        email: Security.escapeHTML(email),
+        city: Security.escapeHTML(city),
+        model,
+        budget,
+        property,
+        message: Security.escapeHTML(message || ''),
+        submittedAt: new Date().toISOString()
+      };
+
+      const existing = Security.storage.get('grillista_franchise_inquiries', []);
+      existing.unshift(inquiry);
+      Security.storage.set('grillista_franchise_inquiries', existing);
+
+      this.showToast('🎉 Franchise application submitted successfully! Our team will contact you.', 'success', 5000);
+      
+      form.style.display = 'none';
+      if (successBox) {
+        successBox.classList.add('active');
+      }
     });
   }
 }
