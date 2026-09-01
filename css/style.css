@@ -730,6 +730,95 @@ img {
 }
 
 /* ==========================================================================
+   FLOATING DOCKED QUICK SIDEBAR (EXACT REFERENCE SCREENSHOT)
+   ========================================================================== */
+.floating-quick-sidebar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  overflow: hidden;
+  box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-quick-sidebar.collapsed .sidebar-action-item {
+  display: none;
+}
+
+.floating-quick-sidebar.collapsed .sidebar-toggle-btn svg {
+  transform: rotate(180deg);
+}
+
+.sidebar-toggle-btn,
+.sidebar-action-item {
+  width: 46px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.sidebar-toggle-btn {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #1A1A1A;
+}
+
+.sidebar-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #FFFFFF;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.sidebar-whatsapp-btn {
+  background: #000000;
+  color: #25D366;
+}
+
+.sidebar-whatsapp-btn:hover {
+  background: #1A1A1A;
+  transform: scale(1.06);
+}
+
+.sidebar-phone-btn {
+  background: #FFC72C;
+  color: #000000;
+}
+
+.sidebar-phone-btn:hover {
+  background: #F5B81C;
+  transform: scale(1.06);
+}
+
+.sidebar-email-btn {
+  background: #182232;
+  color: #FFFFFF;
+}
+
+.sidebar-email-btn:hover {
+  background: #233147;
+  transform: scale(1.06);
+}
+
+/* ==========================================================================
    HOMEPAGE DEDICATED FRANCHISE APPLICATION SECTION & FORM
    ========================================================================== */
 .franchise-application-section {
