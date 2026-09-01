@@ -576,221 +576,22 @@
       color: #FFC72C;
     }
 
-    /* Available Franchise Cities Section */
-    .franchise-cities-section {
-      padding: 60px 20px 80px;
-      background: #FFFFFF;
-    }
-
-    .city-search-filter-wrap {
-      max-width: 920px;
-      margin: 0 auto 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .city-search-bar {
-      display: flex;
-      background: #F8FAFC;
-      border: 2px solid #E2E8F0;
-      border-radius: 30px;
-      padding: 6px 10px 6px 20px;
-      align-items: center;
-      transition: border-color 0.2s ease;
-    }
-
-    .city-search-bar:focus-within {
-      border-color: #D32323;
-      background: #FFFFFF;
-    }
-
-    .city-search-input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-size: 1rem;
-      font-family: inherit;
-      outline: none;
-      color: #111111;
-    }
-
-    .state-tabs-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-    }
-
-    .state-tab-btn {
-      background: #F1F5F9;
-      color: #475569;
-      border: 1px solid #E2E8F0;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .state-tab-btn:hover {
-      background: #E2E8F0;
-      color: #0F172A;
-    }
-
-    .state-tab-btn.active {
-      background: #D32323;
-      color: #FFFFFF;
-      border-color: #D32323;
-    }
-
-    .cities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .city-card {
-      background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 14px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-    }
-
-    .city-card:hover {
-      transform: translateY(-4px);
-      border-color: #D32323;
-      box-shadow: 0 10px 24px rgba(211, 35, 35, 0.08);
-    }
-
-    .city-state-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #64748B;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-
-    .city-name {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 900;
-      font-style: italic;
-      color: #111111;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .city-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #ECFDF5;
-      color: #065F46;
-      font-size: 0.74rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 12px;
-      margin-bottom: 14px;
-      width: fit-content;
-    }
-
-    .city-status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10B981;
-    }
-
-    .city-key-locations {
-      font-size: 0.82rem;
-      color: #475569;
-      line-height: 1.45;
-      margin-bottom: 16px;
-      flex: 1;
-    }
-
-    .city-key-locations strong {
-      color: #1E293B;
-    }
-
-    .city-apply-btn {
-      background: #111111;
-      color: #FFC72C;
-      text-align: center;
-      padding: 9px 14px;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .city-apply-btn:hover {
-      background: #D32323;
-      color: #FFFFFF;
-    }
-
-    .empty-cities-state {
-      text-align: center;
-      grid-column: 1 / -1;
-      padding: 40px 20px;
-      color: #64748B;
-      display: none;
-    }
-
     @media (max-width: 768px) {
       .locator-page-header {
         padding: 40px 16px 20px;
       }
       .outlets-section {
-        padding: 36px 0 45px;
+        padding: 36px 0 60px;
       }
       .outlets-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
       .outlet-card-img-wrap {
-        height: 190px;
+        height: 200px;
       }
-      .franchise-cities-section {
-        padding: 40px 16px 60px;
-      }
-      .state-tabs-list {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 6px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .state-tabs-list::-webkit-scrollbar {
-        display: none;
-      }
-      .state-tab-btn {
-        flex-shrink: 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .cities-grid {
-        grid-template-columns: 1fr;
-      }
-      .outlet-actions {
+      .outlet-two-actions {
         flex-direction: column;
-      }
-      .outlet-btn {
-        width: 100%;
-        padding: 12px 14px;
       }
     }
   </style>
@@ -866,13 +667,13 @@
     <section class="locator-page-header">
       <div class="container">
         <div class="locator-tag-pill">
-          <span>📍</span> OUTLETS & FRANCHISE EXPANSION NETWORK
+          <span>📍</span> ACTIVE OUTLETS & FLAGSHIP RESTAURANTS
         </div>
         <h1 class="locator-main-title">
           STORE <span class="highlight-red">LOCATOR</span>
         </h1>
         <p class="locator-subtext">
-          Visit our active company-owned flagship restaurants in Kanpur or check city-wide territory availability for franchise expansion across India.
+          Visit our active company-owned flagship restaurants in Kanpur or order fresh hot food directly to your doorstep.
         </p>
       </div>
     </section>
@@ -1016,7 +817,7 @@
         </div>
         
         <div class="food-order-modal-body" id="food-modal-body-content">
-          <!-- Dynamic Content injected via JS: Checking Location / In Kanpur / Outside Kanpur -->
+          <!-- Dynamic Content injected via JS: Automated Location Detection -->
         </div>
       </div>
     </div>
@@ -1039,232 +840,6 @@
       <!-- Thumbnail Strip -->
       <div id="outlet-thumbnails-strip" style="display: flex; gap: 8px; margin-top: 14px; overflow-x: auto; max-width: 90vw; padding: 4px;"></div>
     </div>
-
-    <!-- SECTION 2: CITIES AVAILABLE FOR FRANCHISE EXPANSION -->
-    <section class="franchise-cities-section" id="franchise-cities">
-      <div class="container">
-        <h2 class="section-inner-heading">AVAILABLE CITIES FOR <span style="color: #D32323;">FRANCHISE</span></h2>
-        <p class="section-inner-sub">Prime territories open for exclusive Express, Bistro, and Signature format allocation.</p>
-
-        <!-- Search & Filter Controls -->
-        <div class="city-search-filter-wrap">
-          <div class="city-search-bar">
-            <span style="font-size: 1.15rem; margin-right: 8px;">🔍</span>
-            <input type="text" id="city-search-box" class="city-search-input" placeholder="Search city (e.g. Lucknow, Varanasi, Noida, Patna, Indore)...">
-          </div>
-
-          <div class="state-tabs-list">
-            <button class="state-tab-btn active" data-state="all">All Regions</button>
-            <button class="state-tab-btn" data-state="up">Uttar Pradesh (Priority)</button>
-            <button class="state-tab-btn" data-state="ncr">Delhi NCR</button>
-            <button class="state-tab-btn" data-state="bihar">Bihar & Jharkhand</button>
-            <button class="state-tab-btn" data-state="mp">MP & Rajasthan</button>
-            <button class="state-tab-btn" data-state="north">Punjab & Haryana</button>
-          </div>
-        </div>
-
-        <!-- Cities Grid -->
-        <div class="cities-grid" id="cities-grid-container">
-          
-          <!-- UTTAR PRADESH -->
-          <div class="city-card" data-state="up" data-city="lucknow">
-            <div class="city-state-tag">Uttar Pradesh • Tier 1</div>
-            <h3 class="city-name">Lucknow</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> 3 Catchments Open</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Hazratganj, Gomti Nagar, Aliganj, Indira Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Lucknow →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="kanpur">
-            <div class="city-state-tag">Uttar Pradesh • Home City</div>
-            <h3 class="city-name">Kanpur</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> 2 Hubs Open</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Swaroop Nagar, Kidwai Nagar, Civil Lines, Shyam Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Kanpur →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="varanasi">
-            <div class="city-state-tag">Uttar Pradesh • Heritage Hub</div>
-            <h3 class="city-name">Varanasi</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Demand Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Assi Ghat, Sigra, Lanka, Mahmoorganj, Bhelupur.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Varanasi →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="prayagraj">
-            <div class="city-state-tag">Uttar Pradesh • Metro Hub</div>
-            <h3 class="city-name">Prayagraj (Allahabad)</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Available Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Civil Lines, Katra, Georgetown, Ashok Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Prayagraj →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="agra">
-            <div class="city-state-tag">Uttar Pradesh • Tourism Capital</div>
-            <h3 class="city-name">Agra</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Footfall</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sanjay Place, Fatehabad Road, Kamla Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Agra →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="noida">
-            <div class="city-state-tag">Uttar Pradesh • NCR Hub</div>
-            <h3 class="city-name">Noida / Greater Noida</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Tech & Youth Hub</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 18, Sector 62, Sector 137, Pari Chowk.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Noida →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="ghaziabad">
-            <div class="city-state-tag">Uttar Pradesh • NCR Hub</div>
-            <h3 class="city-name">Ghaziabad</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Indirapuram, Raj Nagar Extension, Vaishali.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ghaziabad →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="gorakhpur">
-            <div class="city-state-tag">Uttar Pradesh • Regional Hub</div>
-            <h3 class="city-name">Gorakhpur</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Fast Growing</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Golghar, Medical College Road, Rapti Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gorakhpur →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="meerut">
-            <div class="city-state-tag">Uttar Pradesh • Highway Corridor</div>
-            <h3 class="city-name">Meerut</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Shastri Nagar, Abu Lane, Delhi Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Meerut →</a>
-          </div>
-
-          <div class="city-card" data-state="up" data-city="bareilly">
-            <div class="city-state-tag">Uttar Pradesh • Regional City</div>
-            <h3 class="city-name">Bareilly</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Opportunity</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Civil Lines, Rajendra Nagar, DD Puram.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Bareilly →</a>
-          </div>
-
-          <!-- DELHI NCR -->
-          <div class="city-card" data-state="ncr" data-city="delhi">
-            <div class="city-state-tag">Delhi NCR • National Capital</div>
-            <h3 class="city-name">New Delhi</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Margin Metro</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Connaught Place, South Ext, Dwarka, Rohini, Laxmi Nagar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Delhi →</a>
-          </div>
-
-          <div class="city-card" data-state="ncr" data-city="gurugram">
-            <div class="city-state-tag">Delhi NCR • Corporate Hub</div>
-            <h3 class="city-name">Gurugram (Gurgaon)</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Millennial Hub</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> DLF Cyber Hub, Sector 29, Golf Course Road, Sohna Rd.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gurugram →</a>
-          </div>
-
-          <div class="city-card" data-state="ncr" data-city="faridabad">
-            <div class="city-state-tag">Delhi NCR • Industrial Hub</div>
-            <h3 class="city-name">Faridabad</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 15 Market, NIT Faridabad, Mathura Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Faridabad →</a>
-          </div>
-
-          <!-- BIHAR & JHARKHAND -->
-          <div class="city-card" data-state="bihar" data-city="patna">
-            <div class="city-state-tag">Bihar • State Capital</div>
-            <h3 class="city-name">Patna</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High ROI Market</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Boring Road, Bailey Road, Kankarbagh, Fraser Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Patna →</a>
-          </div>
-
-          <div class="city-card" data-state="bihar" data-city="ranchi">
-            <div class="city-state-tag">Jharkhand • State Capital</div>
-            <h3 class="city-name">Ranchi</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Lalpur, Main Road, Harmu, Kanke Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ranchi →</a>
-          </div>
-
-          <div class="city-card" data-state="bihar" data-city="jamshedpur">
-            <div class="city-state-tag">Jharkhand • Steel City</div>
-            <h3 class="city-name">Jamshedpur</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Premium Catchment</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Bistupur, Sakchi, Kadma, Telco Colony.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Jamshedpur →</a>
-          </div>
-
-          <!-- MADHYA PRADESH & RAJASTHAN -->
-          <div class="city-card" data-state="mp" data-city="indore">
-            <div class="city-state-tag">Madhya Pradesh • Foodie Capital</div>
-            <h3 class="city-name">Indore</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Highest Street Food Hub</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Vijay Nagar, 56 Dukan, Bhawarkua, Sarafa Bazaar.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Indore →</a>
-          </div>
-
-          <div class="city-card" data-state="mp" data-city="bhopal">
-            <div class="city-state-tag">Madhya Pradesh • Lake City</div>
-            <h3 class="city-name">Bhopal</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> MP Nagar, Arera Colony, New Market.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Bhopal →</a>
-          </div>
-
-          <div class="city-card" data-state="mp" data-city="jaipur">
-            <div class="city-state-tag">Rajasthan • Pink City</div>
-            <h3 class="city-name">Jaipur</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Top Tourist Footfall</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Malviya Nagar, Vaishali Nagar, Raja Park, C-Scheme.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Jaipur →</a>
-          </div>
-
-          <div class="city-card" data-state="mp" data-city="gwalior">
-            <div class="city-state-tag">Madhya Pradesh • Heritage City</div>
-            <h3 class="city-name">Gwalior</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> Available Catchment</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> City Center, Lashkar, Morar, Phool Bagh.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gwalior →</a>
-          </div>
-
-          <!-- PUNJAB & HARYANA -->
-          <div class="city-card" data-state="north" data-city="chandigarh">
-            <div class="city-state-tag">Punjab / Haryana • City Beautiful</div>
-            <h3 class="city-name">Chandigarh / Mohali</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High AOV Territory</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 35, Sector 8, Phase 7 Mohali, Panchkula Sec 9.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Chandigarh →</a>
-          </div>
-
-          <div class="city-card" data-state="north" data-city="ludhiana">
-            <div class="city-state-tag">Punjab • Commercial Capital</div>
-            <h3 class="city-name">Ludhiana</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Purchasing Power</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sarabha Nagar Market, Model Town, Ferozepur Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ludhiana →</a>
-          </div>
-
-          <div class="city-card" data-state="north" data-city="amritsar">
-            <div class="city-state-tag">Punjab • Food & Heritage Hub</div>
-            <h3 class="city-name">Amritsar</h3>
-            <div class="city-status-pill"><span class="city-status-dot"></span> High Tourist Density</div>
-            <p class="city-key-locations"><strong>Prime Hubs:</strong> Lawrence Road, Ranjit Avenue, Mall Road.</p>
-            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Amritsar →</a>
-          </div>
-
-          <div class="empty-cities-state" id="empty-cities-state">
-            <p style="font-size: 1.2rem; font-weight: 800; color: #111; margin-bottom: 6px;">City Not Listed?</p>
-            <p style="font-size: 0.9rem; margin-bottom: 16px;">We are welcoming applications across all Tier 2 & Tier 3 cities in India.</p>
-            <a href="franchise.html#franchise-apply" class="btn btn-primary" style="font-weight: 800;">Apply for Your Custom City →</a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
   </main>
 
   <!-- FOOTER -->
@@ -1677,54 +1252,6 @@
         if (e.key === 'Escape') lightboxModal.classList.remove('active');
         if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
         if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
-      });
-
-      const searchBox = document.getElementById('city-search-box');
-      const tabBtns = document.querySelectorAll('.state-tab-btn');
-      const cityCards = document.querySelectorAll('.city-card');
-      const emptyState = document.getElementById('empty-cities-state');
-
-      let currentFilter = 'all';
-      let currentQuery = '';
-
-      function filterCities() {
-        let visibleCount = 0;
-
-        cityCards.forEach(card => {
-          const state = card.getAttribute('data-state');
-          const city = card.getAttribute('data-city') || '';
-          const cardText = card.textContent.toLowerCase();
-
-          const matchesTab = (currentFilter === 'all' || state === currentFilter);
-          const matchesQuery = (currentQuery === '' || cardText.includes(currentQuery));
-
-          if (matchesTab && matchesQuery) {
-            card.style.display = 'flex';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (emptyState) {
-          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-      }
-
-      // Tab filtering
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentFilter = btn.getAttribute('data-state');
-          filterCities();
-        });
-      });
-
-      // Search filtering
-      searchBox?.addEventListener('input', (e) => {
-        currentQuery = e.target.value.toLowerCase().trim();
-        filterCities();
       });
 
       // Mobile Menu Toggle
