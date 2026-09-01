@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Food & Ambience Gallery | Grillista - The Ultimate Food Chain</title>
-  <meta name="description" content="Explore the visual showcase of Grillista's handcrafted burgers, loaded pizzas, authentic desi street bites, thick shakes, and vibrant restaurant spaces.">
+  <title>Food & Store Gallery | Grillista - The Ultimate Food Chain</title>
+  <meta name="description" content="Explore the authentic visual gallery of Grillista's loaded cheese pizzas, steamed momos, mocktail coolers, creamy pastas, and vibrant store ambience.">
   
   <!-- Favicon & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,7 +64,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 36px 0 32px;
+      margin: 36px 0 28px;
     }
 
     .gallery-filter-btn {
@@ -96,9 +96,9 @@
     /* Modern Responsive Grid */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 26px;
+      max-width: 1240px;
       margin: 0 auto 60px;
       padding: 0 16px;
     }
@@ -106,10 +106,10 @@
     .gallery-item {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
       cursor: pointer;
       display: flex;
       flex-direction: column;
@@ -118,13 +118,13 @@
 
     .gallery-item:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
       border-color: #CBD5E1;
     }
 
     .gallery-img-wrap {
       width: 100%;
-      height: 240px;
+      height: 250px;
       overflow: hidden;
       position: relative;
       background: #111111;
@@ -145,8 +145,9 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(17, 24, 39, 0.85);
+      background: rgba(17, 24, 39, 0.88);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       color: #FFFFFF;
       font-size: 0.72rem;
       font-weight: 800;
@@ -154,27 +155,55 @@
       border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .gallery-zoom-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #FFFFFF;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.25s ease;
+    }
+
+    .gallery-item:hover .gallery-zoom-hint {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .gallery-info {
-      padding: 16px 18px;
+      padding: 18px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .gallery-item-title {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 900;
       font-style: italic;
       color: #111111;
       text-transform: uppercase;
-      margin: 0 0 4px;
+      margin: 0 0 6px;
+      letter-spacing: 0.3px;
     }
 
     .gallery-item-desc {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: #64748B;
       margin: 0;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* Fullscreen Image Lightbox Modal */
@@ -184,24 +213,28 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.92);
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       z-index: 99999;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px;
     }
 
     .lightbox-modal.active {
       display: flex;
+      animation: fadeIn 0.25s ease;
     }
 
     .lightbox-img {
       max-height: 88vh;
       max-width: 90vw;
       object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 14px 45px rgba(0,0,0,0.85);
+      border-radius: 12px;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .lightbox-close {
@@ -214,7 +247,7 @@
       background: transparent;
       border: none;
       line-height: 1;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, color 0.2s ease;
     }
 
     .lightbox-close:hover {
@@ -300,17 +333,17 @@
           FOOD & STORE <span class="highlight-red">GALLERY</span>
         </h1>
         <p class="gallery-subtext">
-          Explore our handcrafted burgers, loaded pizzas, desi bites, thick shakes, and vibrant restaurant spaces engineered for unforgettable dining experiences.
+          Explore our handcrafted cheese-pull pizzas, steamed momos, mocktail coolers, creamy pastas, and vibrant restaurant spaces.
         </p>
 
         <!-- Category Filters -->
         <div class="gallery-filters-wrap">
           <button class="gallery-filter-btn active" data-filter="all">All Photos</button>
-          <button class="gallery-filter-btn" data-filter="burgers">Burgers & Breads</button>
           <button class="gallery-filter-btn" data-filter="pizzas">Pizzas & Pastas</button>
-          <button class="gallery-filter-btn" data-filter="bites">Desi Bites & Chinese</button>
-          <button class="gallery-filter-btn" data-filter="beverages">Shakes & Coolers</button>
+          <button class="gallery-filter-btn" data-filter="bites">Momos & Desi Bites</button>
+          <button class="gallery-filter-btn" data-filter="beverages">Coolers & Shakes</button>
           <button class="gallery-filter-btn" data-filter="ambience">Restaurant Ambience</button>
+          <button class="gallery-filter-btn" data-filter="burgers">Burgers & Breads</button>
         </div>
       </div>
     </section>
@@ -319,23 +352,90 @@
     <section style="padding: 40px 0 70px; background: #F8F9FB;">
       <div class="gallery-grid" id="gallery-grid">
         
-        <!-- 1. Real Restaurant Ambience -->
-        <div class="gallery-item" data-category="ambience">
+        <!-- 1. Authentic Loaded Pizza Slice with Grillista Box -->
+        <div class="gallery-item" data-category="pizzas">
           <div class="gallery-img-wrap">
-            <img src="assets/hero-restaurant.jpg" alt="Grillista Restaurant Dining Lounge" loading="lazy">
-            <span class="gallery-badge">Ambience</span>
+            <img src="assets/gallery/grillista-cheese-burst-pizza.png" alt="Grillista Handcrafted Cheese Burst Pizza with Box" loading="lazy">
+            <span class="gallery-badge">Pizzas</span>
+            <div class="gallery-zoom-hint">🔍</div>
           </div>
           <div class="gallery-info">
-            <h3 class="gallery-item-title">Flagship Restaurant Interior</h3>
-            <p class="gallery-item-desc">Vibrant dining lounge with cozy booth seating and premium modern lighting.</p>
+            <h3 class="gallery-item-title">Handcrafted Cheese-Burst Pizza</h3>
+            <p class="gallery-item-desc">Freshly baked oven pizza with rich mozzarella pull, bell peppers, sweet corn, mushrooms, and olives.</p>
           </div>
         </div>
 
-        <!-- 2. Menu Slide: Burgers, Garlic Breads, Wraps -->
+        <!-- 2. Authentic Steamed Momos with Dip -->
+        <div class="gallery-item" data-category="bites">
+          <div class="gallery-img-wrap">
+            <img src="assets/gallery/grillista-steamed-momos.webp" alt="Grillista Handcrafted Steamed Momos with Fiery Dip" loading="lazy">
+            <span class="gallery-badge">Momos</span>
+            <div class="gallery-zoom-hint">🔍</div>
+          </div>
+          <div class="gallery-info">
+            <h3 class="gallery-item-title">Signature Steamed Momos</h3>
+            <p class="gallery-item-desc">Hot handcrafted juicy dumplings served with chef's signature fiery red chilli garlic chutney.</p>
+          </div>
+        </div>
+
+        <!-- 3. Authentic Blue Lagoon Mocktail -->
+        <div class="gallery-item" data-category="beverages">
+          <div class="gallery-img-wrap">
+            <img src="assets/gallery/grillista-blue-lagoon.jpg" alt="Grillista Blue Lagoon Mocktail Cooler" loading="lazy">
+            <span class="gallery-badge">Coolers</span>
+            <div class="gallery-zoom-hint">🔍</div>
+          </div>
+          <div class="gallery-info">
+            <h3 class="gallery-item-title">Blue Lagoon Mocktail Cooler</h3>
+            <p class="gallery-item-desc">Chilled citrus blue cooler with fresh mint, lime, and crushed ice for the ultimate refreshing sip.</p>
+          </div>
+        </div>
+
+        <!-- 4. Authentic Storefront Exterior Night View -->
+        <div class="gallery-item" data-category="ambience">
+          <div class="gallery-img-wrap">
+            <img src="assets/gallery/grillista-storefront-exterior.jpg" alt="Grillista Restaurant Storefront Illuminated at Night" loading="lazy">
+            <span class="gallery-badge">Storefront</span>
+            <div class="gallery-zoom-hint">🔍</div>
+          </div>
+          <div class="gallery-info">
+            <h3 class="gallery-item-title">Grillista Flagship Storefront</h3>
+            <p class="gallery-item-desc">Vibrant nighttime exterior with glowing signature LED branding and welcoming modern diner lounge.</p>
+          </div>
+        </div>
+
+        <!-- 5. Authentic Pasta in Bistro Lounge with Drinks -->
+        <div class="gallery-item" data-category="pizzas">
+          <div class="gallery-img-wrap">
+            <img src="assets/gallery/grillista-pasta-bistro.jpg" alt="Grillista Penne Pasta in Bistro Diner" loading="lazy">
+            <span class="gallery-badge">Pasta</span>
+            <div class="gallery-zoom-hint">🔍</div>
+          </div>
+          <div class="gallery-info">
+            <h3 class="gallery-item-title">Bistro Penne Pasta & Refreshers</h3>
+            <p class="gallery-item-desc">Rich seasoned penne pasta tossed with crisp vegetables, served with chilled beverages in our cafe lounge.</p>
+          </div>
+        </div>
+
+        <!-- 6. Real Restaurant Interior Ambience -->
+        <div class="gallery-item" data-category="ambience">
+          <div class="gallery-img-wrap">
+            <img src="assets/hero-restaurant.jpg" alt="Grillista Restaurant Dining Lounge Ambience" loading="lazy">
+            <span class="gallery-badge">Ambience</span>
+            <div class="gallery-zoom-hint">🔍</div>
+          </div>
+          <div class="gallery-info">
+            <h3 class="gallery-item-title">Bistro Dining Lounge</h3>
+            <p class="gallery-item-desc">Spacious, hygienic booth seating area tailored for family get-togethers, friends, and food lovers.</p>
+          </div>
+        </div>
+
+        <!-- 7. Menu Slide: Burgers, Garlic Breads & Wraps -->
         <div class="gallery-item" data-category="burgers">
           <div class="gallery-img-wrap">
             <img src="assets/menu-page-1.jpg" alt="Garlic Breads, Burger Bench, Wraps & Rolls" loading="lazy">
             <span class="gallery-badge">Burgers & Breads</span>
+            <div class="gallery-zoom-hint">🔍</div>
           </div>
           <div class="gallery-info">
             <h3 class="gallery-item-title">Garlic Breads & Burger Bench</h3>
@@ -343,23 +443,25 @@
           </div>
         </div>
 
-        <!-- 3. Menu Slide: Pizzas -->
+        <!-- 8. Menu Slide: Pizzas Showcase -->
         <div class="gallery-item" data-category="pizzas">
           <div class="gallery-img-wrap">
             <img src="assets/menu-page-2.jpg" alt="Classic and Premium Pizzas" loading="lazy">
             <span class="gallery-badge">Pizzas</span>
+            <div class="gallery-zoom-hint">🔍</div>
           </div>
           <div class="gallery-info">
             <h3 class="gallery-item-title">Classic & Premium Pizzas</h3>
-            <p class="gallery-item-desc">Farmhouse, Gardenia Fresh, Reshmi Paneer, and loaded Cheese Burst slices.</p>
+            <p class="gallery-item-desc">Farmhouse, Gardenia Fresh, Reshmi Paneer, and loaded Cheese Burst varieties.</p>
           </div>
         </div>
 
-        <!-- 4. Menu Slide: Sandwiches, Desi Bites & Chinese -->
+        <!-- 9. Menu Slide: Desi Bites, Fries & Chinese -->
         <div class="gallery-item" data-category="bites">
           <div class="gallery-img-wrap">
             <img src="assets/menu-page-3.jpg" alt="Sandwiches, Desi Bites, Fries, Chinese" loading="lazy">
             <span class="gallery-badge">Desi Bites</span>
+            <div class="gallery-zoom-hint">🔍</div>
           </div>
           <div class="gallery-info">
             <h3 class="gallery-item-title">Desi Bites & Chinese Specials</h3>
@@ -367,39 +469,16 @@
           </div>
         </div>
 
-        <!-- 5. Menu Slide: Noodles, Momos, Soups & Pasta -->
-        <div class="gallery-item" data-category="pizzas">
-          <div class="gallery-img-wrap">
-            <img src="assets/menu-page-4.jpg" alt="Noodles & Rice, Momos, Soups, Pastas" loading="lazy">
-            <span class="gallery-badge">Pastas & Noodles</span>
-          </div>
-          <div class="gallery-info">
-            <h3 class="gallery-item-title">Noodles, Momos & Italian Pasta</h3>
-            <p class="gallery-item-desc">Veg Fried Rice, Schezwani Noodles, Steamed Momos, and White Sauce Pasta.</p>
-          </div>
-        </div>
-
-        <!-- 6. Menu Slide: Shakes & Coolers -->
+        <!-- 10. Menu Slide: Thick Shakes & Beverages -->
         <div class="gallery-item" data-category="beverages">
           <div class="gallery-img-wrap">
             <img src="assets/menu-page-5.jpg" alt="Coolers, Mocktails, Maggi, Thick Shakes, Cold Coffee" loading="lazy">
             <span class="gallery-badge">Beverages</span>
+            <div class="gallery-zoom-hint">🔍</div>
           </div>
           <div class="gallery-info">
-            <h3 class="gallery-item-title">Thick Shakes & Coolers</h3>
+            <h3 class="gallery-item-title">Thick Shakes & Beverages</h3>
             <p class="gallery-item-desc">Virgin Mojito, Blue Lagoon, Chocolate Shake, Cold Coffee, and Masala Chai.</p>
-          </div>
-        </div>
-
-        <!-- 7. Showcase Pop -->
-        <div class="gallery-item" data-category="ambience">
-          <div class="gallery-img-wrap">
-            <img src="assets/menu-showcase-pop.jpg" alt="Grillista Signature Feast" loading="lazy">
-            <span class="gallery-badge">Signature Spread</span>
-          </div>
-          <div class="gallery-info">
-            <h3 class="gallery-item-title">The Ultimate Grillista Spread</h3>
-            <p class="gallery-item-desc">Complete multi-category culinary experience served fresh to order.</p>
           </div>
         </div>
 
