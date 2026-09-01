@@ -730,6 +730,142 @@ img {
 }
 
 /* ==========================================================================
+   FAQ EXACT ACCORDION SECTION (DISTINCT MODERN BLUE & SLATE PALETTE)
+   Avoids navbar green (#0F4C2A) and logo colors (#FFC72C, #D32323)
+   ========================================================================== */
+.faq-exact-section {
+  padding: 70px 0 80px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-color);
+}
+
+.faq-title-main {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.faq-title-accent {
+  color: #2563EB; /* Modern Cobalt Blue */
+}
+
+.faq-subheading-text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #1E293B;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+
+.faq-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-bar-item {
+  border-radius: 4px;
+  overflow: hidden;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.faq-bar-header {
+  width: 100%;
+  background: #E8EEF5; /* Crisp Light Ice Slate */
+  border: 1px solid #D8E2ED;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+  text-align: left;
+}
+
+.faq-bar-header:hover {
+  background: #DCE6F2;
+  border-color: #CBD9EB;
+}
+
+.faq-bar-item.active .faq-bar-header {
+  background: #D4E2F0;
+  border-color: #2563EB;
+}
+
+.faq-bar-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 900;
+  font-style: italic;
+  color: #2563EB; /* Modern Vibrant Sky-Cobalt Blue */
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.faq-bar-chevron {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #2563EB; /* Matching modern blue chevron */
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
+  display: inline-block;
+}
+
+.faq-bar-item.active .faq-bar-chevron {
+  transform: rotate(90deg);
+}
+
+.faq-bar-content {
+  display: none;
+  padding: 18px 20px 22px;
+  background: #F8FAFC;
+  border: 1px solid #D8E2ED;
+  border-top: none;
+}
+
+.faq-bar-item.active .faq-bar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-qa-card {
+  background: #FFFFFF;
+  padding: 16px 20px;
+  border-radius: 6px;
+  border-left: 4px solid #2563EB; /* Clean Blue Accent */
+  border-top: 1px solid #E2E8F0;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04);
+}
+
+.faq-qa-card h4 {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+
+.faq-qa-card p {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ==========================================================================
    COMPREHENSIVE ALL-DEVICE RESPONSIVE SYSTEM
    Mobile (320px - 576px), Phablets/Tablets (577px - 992px), Desktops (993px - 1440px+)
    ========================================================================== */
