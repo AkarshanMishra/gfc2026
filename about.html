@@ -88,129 +88,141 @@
       text-align: center;
     }
 
-    .team-section {
-      background: #F8F9FB;
-      border-top: 1px solid var(--border-color);
-      padding: 70px 20px 90px;
-    }
-
-    .directors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 30px;
-      max-width: 1080px;
-      margin: 36px auto 0;
-    }
-
-    .director-card {
+    /* Burger Singh Exact Slanted Team Ribbon Layout */
+    .bs-team-section {
       background: #FFFFFF;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 20px;
-      padding: 36px 32px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      padding: 50px 0 60px;
+    }
+
+    .bs-team-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .bs-team-row {
+      background: #D9D9D9;
+      width: 100%;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .bs-team-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      align-items: center;
+      min-height: 290px;
+      padding: 0 20px;
+      gap: 40px;
+    }
+
+    .bs-team-inner.reverse-row {
+      grid-template-columns: 1fr 290px;
+    }
+
+    .bs-team-photo-wrap {
+      width: 100%;
+      height: 290px;
       position: relative;
       overflow: hidden;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .director-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, #D32323, #FFC72C);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .director-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(211, 35, 35, 0.35);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
-    }
-
-    .director-card:hover::before {
-      opacity: 1;
-    }
-
-    .director-header {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 20px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid #F1F5F9;
-    }
-
-    .director-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
+      transform: skewX(-14deg);
       background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%);
-      color: #FFC72C;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 900;
-      flex-shrink: 0;
-      box-shadow: 0 4px 15px rgba(15, 76, 42, 0.25);
-      border: 2px solid #FFC72C;
     }
 
-    .director-tag {
-      display: inline-block;
-      font-size: 0.76rem;
-      font-weight: 900;
-      color: #D32323;
-      background: rgba(211, 35, 35, 0.08);
-      padding: 3px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      margin-bottom: 4px;
+    .bs-team-photo-avatar {
+      transform: skewX(14deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      padding: 16px;
     }
 
-    .director-name {
+    .bs-team-avatar-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #D32323;
+      border: 3px solid #FFC72C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .bs-team-avatar-name {
       font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-      font-size: 1.45rem;
+      font-size: 1.1rem;
       font-weight: 900;
       font-style: italic;
-      color: #0F172A;
-      margin: 0;
+      text-transform: uppercase;
+      color: #FFC72C;
+      letter-spacing: 0.5px;
+    }
+
+    .bs-team-avatar-role {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #E2E8F0;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .bs-team-content {
+      padding: 36px 10px;
+    }
+
+    .bs-team-name-title {
+      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+      font-size: clamp(1.45rem, 3.2vw, 2.2rem);
+      font-weight: 900;
+      font-style: italic;
+      color: #D32323;
       text-transform: uppercase;
       letter-spacing: -0.3px;
+      line-height: 1.15;
+      margin: 0 0 16px;
     }
 
-    .director-bio {
-      font-size: 0.94rem;
-      line-height: 1.75;
-      color: #475569;
-      margin-bottom: 20px;
-      flex: 1;
+    .bs-team-bio-text {
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: #2D3748;
+      margin: 0 0 12px;
     }
 
-    .director-pillars {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 16px;
-      border-top: 1px dashed #E2E8F0;
-    }
+    @media (max-width: 860px) {
+      .bs-team-inner,
+      .bs-team-inner.reverse-row {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+        gap: 20px;
+      }
+      
+      .bs-team-photo-wrap {
+        transform: none;
+        height: 200px;
+        border-radius: 12px;
+      }
+      
+      .bs-team-photo-avatar {
+        transform: none;
+      }
 
-    .director-pill {
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #0F4C2A;
-      background: rgba(15, 76, 42, 0.06);
-      padding: 4px 10px;
-      border-radius: 8px;
-      border: 1px solid rgba(15, 76, 42, 0.12);
+      .bs-team-inner.reverse-row .bs-team-photo-wrap {
+        order: -1;
+      }
     }
 
     @media (max-width: 768px) {
@@ -316,73 +328,70 @@
       </div>
     </section>
 
-    <!-- MEET OUR DIRECTORS & LEADERSHIP SECTION -->
-    <section class="team-section">
+    <!-- MEET OUR TEAM (EXACT BURGER SINGH SLANTED RIBBON DESIGN) -->
+    <section class="bs-team-section">
       <div class="container">
-        <div style="text-align: center; max-width: 860px; margin: 0 auto 30px;">
-          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(211, 35, 35, 0.08); color: #D32323; padding: 6px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; border: 1px solid rgba(211, 35, 35, 0.2); margin-bottom: 12px;">
-            <span>👑</span> EXECUTIVE LEADERSHIP
-          </div>
+        <div class="bs-team-header">
           <h2 class="about-main-title">
-            MEET OUR <span class="highlight-red">DIRECTORS</span>
+            MEET OUR <span class="highlight-red">TEAM</span>
           </h2>
-          <p style="color: #64748B; font-size: 1.02rem; margin-top: 8px;">
-            The visionary leadership driving Grillista's rapid expansion, unit-level profitability, and culinary excellence.
-          </p>
         </div>
+      </div>
 
-        <div class="directors-grid">
-          <!-- 1. Managing Director: Mr. Rajesh Upadhyaya -->
-          <div class="director-card">
-            <div class="director-header">
-              <div class="director-avatar">RU</div>
-              <div>
-                <span class="director-tag">FOUNDER & MANAGING DIRECTOR</span>
-                <h3 class="director-name">MR. RAJESH UPADHYAYA</h3>
-                <span style="font-size: 0.82rem; color: #64748B; font-weight: 700;">Visionary Founder, RK Group & Grillista</span>
-              </div>
-            </div>
-            <p class="director-bio">
-              Mr. Rajesh Upadhyaya is a dynamic entrepreneur and the visionary founder of RK Group. A distinguished graduate with a Bachelor's degree in Mechanical Engineering from Madhav Institute of Technology and Science College, Gwalior, Mr. Upadhyaya has always shown a deep commitment to innovation and excellence in every aspect of his professional journey.
-            </p>
-            <p class="director-bio" style="margin-top: -10px;">
-              With a sharp business mindset and an innate understanding of market dynamics, he has successfully steered RK Group from its inception to becoming a recognized leader in its field. His exceptional leadership skills, combined with a strong technical base, have been instrumental in developing cutting-edge solutions and driving sustainable growth within the company. Under his leadership, RK Group has consistently demonstrated an unwavering commitment to quality, customer satisfaction, and ethical business practices.
-            </p>
-            <div class="director-pillars">
-              <span class="director-pill">🎓 B.Tech Mechanical (MITS Gwalior)</span>
-              <span class="director-pill">🚀 Founder, RK Group</span>
-              <span class="director-pill">🎯 Innovation & Ethical Leadership</span>
+      <!-- ROW 1: MR. RAJESH UPADHYAYA (Photo Left, Text Right) -->
+      <div class="bs-team-row">
+        <div class="bs-team-inner">
+          <div class="bs-team-photo-wrap">
+            <div class="bs-team-photo-avatar">
+              <div class="bs-team-avatar-circle">RU</div>
+              <div class="bs-team-avatar-name">Rajesh Upadhyaya</div>
+              <div class="bs-team-avatar-role">Founder & MD</div>
             </div>
           </div>
+          <div class="bs-team-content">
+            <h3 class="bs-team-name-title">
+              RAJESH UPADHYAYA - FOUNDER & MANAGING DIRECTOR
+            </h3>
+            <p class="bs-team-bio-text">
+              Mr. Rajesh Upadhyaya, is a dynamic entrepreneur and the visionary founder of RK Group. A distinguished graduate with a Bachelor's degree in Mechanical Engineering from Madhav Institute of Technology and Science College, Gwalior, Mr. Upadhyaya has always shown a deep commitment to innovation and excellence in every aspect of his professional journey.
+            </p>
+            <p class="bs-team-bio-text">
+              With a sharp business mindset and an innate understanding of market dynamics, he has successfully steered RK Group from its inception to becoming a recognized leader in its field. His exceptional leadership skills, combined with a strong technical base, have been instrumental in developing cutting-edge solutions and driving sustainable growth within the company.
+            </p>
+            <p class="bs-team-bio-text">
+              Under his leadership, RK Group has consistently demonstrated an unwavering commitment to quality, customer satisfaction and ethical business practices. His dedication to the company's core values of integrity, innovation and excellence has enabled RK Group to build a reputation for reliability and trustworthiness in the industry.
+            </p>
+          </div>
+        </div>
+      </div>
 
-          <!-- 2. Director & Co-Founder: Mrs. Shiva Upadhyay -->
-          <div class="director-card">
-            <div class="director-header">
-              <div class="director-avatar">SU</div>
-              <div>
-                <span class="director-tag">CO-FOUNDER & DIRECTOR</span>
-                <h3 class="director-name">MRS. SHIVA UPADHYAY</h3>
-                <span style="font-size: 0.82rem; color: #64748B; font-weight: 700;">Co-Founder, RK Group & Grillista</span>
-              </div>
-            </div>
-            <p class="director-bio">
+      <!-- ROW 2: MRS. SHIVA UPADHYAY (Text Left, Photo Right) -->
+      <div class="bs-team-row">
+        <div class="bs-team-inner reverse-row">
+          <div class="bs-team-content">
+            <h3 class="bs-team-name-title">
+              SHIVA UPADHYAY - CO-FOUNDER & DIRECTOR
+            </h3>
+            <p class="bs-team-bio-text">
               Mrs. Shiva Upadhyay, Co-Founder of RK Group, brings expertise and a forward-thinking entrepreneurial mindset to the company. She holds a Master’s degree in Food Chemistry from the prestigious Kamalaraja Girls Post Graduate College, Gwalior, where she honed her analytical and scientific skills, further enhancing her ability to drive innovation in the industry.
             </p>
-            <p class="director-bio" style="margin-top: -10px;">
-              As a hardworking and passionate professional, she has played a key role in shaping the strategic direction and growth of RK Group. Her dynamic approach to business, coupled with a strong foundation in science, has allowed her to identify key opportunities and foster a culture of excellence within the organization. With a keen eye for detail and a deep commitment to quality, she ensures that RK Group maintains the highest standards across all operations, blending scientific knowledge with practical business acumen.
+            <p class="bs-team-bio-text">
+              As a hardworking and passionate professional, she has played a key role in shaping the strategic direction and growth of RK Group. Her dynamic approach to business, coupled with a strong foundation in science, has allowed her to identify key opportunities and foster a culture of excellence within the organization.
             </p>
-            <div class="director-pillars">
-              <span class="director-pill">🎓 M.Sc Food Chemistry (KR Girls PG College)</span>
-              <span class="director-pill">🔬 Culinary Science & SOPs</span>
-              <span class="director-pill">⭐ Quality Assurance & Innovation</span>
+            <p class="bs-team-bio-text">
+              With a keen eye for detail and a deep commitment to quality, she ensures that RK Group maintains the highest standards across all operations. Her entrepreneurial mindset and relentless drive continue to inspire the team, taking the company to new milestones of success.
+            </p>
+            <p class="bs-team-bio-text">
+              As a co-founder, her ability to blend scientific knowledge with practical business acumen has contributed immensely to the success of RK Group. Her dedication and passion for innovation are integral to the company's mission and vision, making her an invaluable leader in the organization's journey.
+            </p>
+          </div>
+          <div class="bs-team-photo-wrap">
+            <div class="bs-team-photo-avatar">
+              <div class="bs-team-avatar-circle" style="background: #0F4C2A; border-color: #FFC72C;">SU</div>
+              <div class="bs-team-avatar-name">Shiva Upadhyay</div>
+              <div class="bs-team-avatar-role">Co-Founder & Director</div>
             </div>
           </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px;">
-          <a href="franchise.html" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px; border-radius: 30px; font-weight: 900; box-shadow: 0 8px 25px rgba(211, 35, 35, 0.3);">
-            <span>💼 Partner With Our Directors & Team →</span>
-          </a>
         </div>
       </div>
     </section>
