@@ -22,22 +22,17 @@ class App {
   }
 
   init() {
-    const safeRun = (fn) => {
-      try { fn(); } catch (err) { console.warn('Module init warning:', err); }
-    };
-
-    safeRun(() => this.setupMobileMenu());
-    safeRun(() => this.setupUI());
-    safeRun(() => this.renderMenu());
-    safeRun(() => this.setupMenuFilters());
-    safeRun(() => this.setupFranchisePortal());
-    safeRun(() => this.setupStoreLocator());
-    safeRun(() => this.loadRealTimeReviews());
-    safeRun(() => this.setupReviewSubmission());
-    safeRun(() => this.setupLiveTicker());
-    safeRun(() => this.setupFaqAccordion());
-    safeRun(() => this.setupHomeFranchiseForm());
-    safeRun(() => this.setupQuickSidebar());
+    this.setupUI();
+    this.renderMenu();
+    this.setupMenuFilters();
+    this.setupFranchisePortal();
+    this.setupStoreLocator();
+    this.loadRealTimeReviews();
+    this.setupReviewSubmission();
+    this.setupMobileMenu();
+    this.setupLiveTicker();
+    this.setupFaqAccordion();
+    this.setupHomeFranchiseForm();
 
     console.log(`%c 🍔 ${CONFIG.BRAND.name} %c Desi Burgers, Global Swag - Ready!`, 'background: #0F4C2A; color: #fff; font-weight: bold; padding: 4px 8px; border-radius: 4px;', 'color: #FFA000;');
   }
@@ -579,56 +574,65 @@ class App {
   // MOBILE MENU & RESPONSIVENESS
   // -------------------------------------------------------------
   setupMobileMenu() {
-    window.closeMobileNav = function() {
-      const navMenu = document.querySelector('.bs-nav-cluster');
-      const navToggle = document.getElementById('mobile-nav-toggle');
-      const backdrop = document.querySelector('.mobile-nav-backdrop');
+    const navToggle = document.getElementById('mobile-nav-toggle');
+    const navMenu = document.querySelector('.bs-nav-cluster') || document.getElementById('primary-nav-menu');
+
+    // Create or find backdrop
+    let backdrop = document.querySelector('.mobile-nav-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'mobile-nav-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    const openMenu = () => {
+      navMenu?.classList.add('mobile-open');
+      navToggle?.classList.add('is-active');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
       navMenu?.classList.remove('mobile-open');
       navToggle?.classList.remove('is-active');
-      backdrop?.classList.remove('active');
+      backdrop.classList.remove('active');
       document.body.style.overflow = '';
     };
 
-    window.toggleMobileNav = function(e) {
+    window.openMobileNav = openMenu;
+    window.closeMobileNav = closeMenu;
+    window.toggleMobileNav = (e) => {
       if (e) {
         e.preventDefault();
         e.stopPropagation();
       }
-      const navMenu = document.querySelector('.bs-nav-cluster');
-      const navToggle = document.getElementById('mobile-nav-toggle');
-      let backdrop = document.querySelector('.mobile-nav-backdrop');
-
-      if (!backdrop) {
-        backdrop = document.createElement('div');
-        backdrop.className = 'mobile-nav-backdrop';
-        document.body.appendChild(backdrop);
-        backdrop.addEventListener('click', window.closeMobileNav);
+      if (navMenu?.classList.contains('mobile-open')) {
+        closeMenu();
+      } else {
+        openMenu();
       }
-
-      if (!navMenu) return;
-      const isOpen = navMenu.classList.toggle('mobile-open');
-      navToggle?.classList.toggle('is-active', isOpen);
-      backdrop.classList.toggle('active', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
-    // Auto-attach to toggle button
-    const navToggle = document.getElementById('mobile-nav-toggle');
-    if (navToggle) {
-      navToggle.onclick = window.toggleMobileNav;
-    }
+    navToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (navMenu?.classList.contains('mobile-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
 
-    // Auto-close on link click
-    document.querySelectorAll('.bs-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.closeMobileNav) window.closeMobileNav();
-      });
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close menu when clicking any nav link
+    navMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && window.closeMobileNav) {
-        window.closeMobileNav();
+      if (e.key === 'Escape' && navMenu?.classList.contains('mobile-open')) {
+        closeMenu();
       }
     });
   }
