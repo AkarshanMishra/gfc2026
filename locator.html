@@ -98,42 +98,45 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 28px;
-      max-width: 1060px;
+      max-width: 1080px;
       margin: 0 auto;
     }
 
     .outlet-card {
       background: #FFFFFF;
       border: 1px solid #E2E8F0;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     .outlet-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
       border-color: #CBD5E1;
     }
 
     .outlet-card-img-wrap {
       position: relative;
-      height: 230px;
+      height: 250px;
       overflow: hidden;
+      cursor: pointer;
+      background: #111111;
     }
 
     .outlet-card-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .outlet-card:hover .outlet-card-img {
-      transform: scale(1.06);
+      transform: scale(1.08);
     }
 
     .outlet-card-img-overlay {
@@ -141,30 +144,33 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 60%;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      height: 65%;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 18px 20px;
+      padding: 20px 22px;
+      pointer-events: none;
     }
 
     .outlet-img-title {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 900;
       font-style: italic;
       color: #FFFFFF;
       text-transform: uppercase;
       margin: 0;
       letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
 
     .outlet-img-sub {
-      font-size: 0.82rem;
-      color: #CBD5E1;
-      font-weight: 600;
-      margin-top: 2px;
+      font-size: 0.84rem;
+      color: #FFC72C;
+      font-weight: 700;
+      margin-top: 3px;
+      letter-spacing: 0.3px;
     }
 
     .outlet-live-badge {
@@ -175,7 +181,7 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       color: #FFFFFF;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.74rem;
       font-weight: 800;
@@ -184,7 +190,8 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 2;
     }
 
     .outlet-live-dot {
@@ -195,39 +202,101 @@
       box-shadow: 0 0 6px #22C55E;
     }
 
+    .outlet-photos-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 2;
+    }
+
+    .outlet-photos-badge:hover {
+      background: #D32323;
+      border-color: #D32323;
+      transform: scale(1.05);
+    }
+
     .outlet-body {
       padding: 22px 24px;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .outlet-meta-row {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      align-items: flex-start;
+      gap: 10px;
       font-size: 0.92rem;
-      color: #475569;
+      color: #334155;
+      line-height: 1.45;
     }
 
     .outlet-meta-row svg {
       flex-shrink: 0;
       color: #64748B;
+      margin-top: 2px;
     }
 
-    .outlet-actions {
+    .outlet-actions-wrap {
       display: flex;
+      flex-direction: column;
       gap: 10px;
       margin-top: auto;
       padding-top: 14px;
       border-top: 1px solid #F1F5F9;
     }
 
+    .outlet-btn-order {
+      width: 100%;
+      background: #D32323;
+      color: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(211, 35, 35, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .outlet-btn-order:hover {
+      background: #B91C1C;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(211, 35, 35, 0.35);
+    }
+
+    .outlet-sub-actions {
+      display: flex;
+      gap: 10px;
+    }
+
     .outlet-btn {
       flex: 1;
       text-align: center;
-      padding: 10px 14px;
+      padding: 9px 14px;
       border-radius: 10px;
       font-weight: 800;
       font-size: 0.84rem;
@@ -246,19 +315,80 @@
     }
 
     .outlet-btn-primary:hover {
-      background: #D32323;
+      background: #000000;
       transform: translateY(-1px);
     }
 
     .outlet-btn-secondary {
       background: #F8FAFC;
       color: #1E293B;
-      border: 1px solid #E2E8F0;
+      border: 1px solid #CBD5E1;
     }
 
     .outlet-btn-secondary:hover {
       background: #E2E8F0;
       color: #000000;
+    }
+
+    /* Fullscreen Outlet Photos Lightbox Modal */
+    .outlet-lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .outlet-lightbox-modal.active {
+      display: flex;
+    }
+
+    .outlet-lightbox-img {
+      max-height: 75vh;
+      max-width: 90vw;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 16px 50px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .outlet-lightbox-title {
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      font-style: italic;
+      margin-top: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .outlet-lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2.8rem;
+      color: #FFFFFF;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      line-height: 1;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .outlet-lightbox-close:hover {
+      transform: scale(1.15);
+      color: #FFC72C;
     }
 
     /* Available Franchise Cities Section */
@@ -562,96 +692,150 @@
       </div>
     </section>
 
-    <!-- SECTION 1: OUR ACTIVE COMPANY OUTLETS (CLEAN MODERN DESIGN) -->
+    <!-- SECTION 1: OUR ACTIVE COMPANY OUTLETS (PREMIUM INTERACTIVE SHOWCASE) -->
     <section class="outlets-section">
       <div class="container">
         
-        <div style="text-align: center; margin-bottom: 32px;">
+        <div style="text-align: center; margin-bottom: 36px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(211, 35, 35, 0.08); color: #D32323; padding: 6px 18px; border-radius: 30px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; border: 1px solid rgba(211, 35, 35, 0.2); margin-bottom: 12px;">
+            <span>📍</span> LIVE OPERATIONAL RESTAURANTS
+          </div>
           <h2 class="section-inner-heading">OUR RUNNING <span style="color: #D32323;">OUTLETS</span></h2>
-          <p class="section-inner-sub" style="margin: 0; font-size: 0.95rem; color: #64748B;">Visit our active company-owned restaurants in Kanpur</p>
+          <p class="section-inner-sub" style="margin: 0; font-size: 0.95rem; color: #64748B;">
+            Visit our active company-owned restaurants in Kanpur or order fresh hot food directly to your doorstep.
+          </p>
         </div>
 
         <div class="outlets-grid">
-          <!-- Outlet 1: Kakadeo -->
-          <div class="outlet-card">
-            <div class="outlet-card-img-wrap">
-              <img src="assets/hero-restaurant.jpg" alt="Grillista Kakadeo Restaurant" class="outlet-card-img">
+          <!-- Outlet 1: Kakadeo Flagship -->
+          <div class="outlet-card" data-outlet-name="Grillista - Kakadeo (Flagship)" data-photos='["assets/gallery/grillista-storefront-exterior.jpg", "assets/gallery/grillista-modern-cafe-seating.webp", "assets/gallery/grillista-interior-lounge.webp", "assets/hero-restaurant.jpg", "assets/gallery/grillista-cheese-burst-pizza.png", "assets/gallery/grillista-steamed-momos.webp"]'>
+            <div class="outlet-card-img-wrap" onclick="openOutletGallery(this.parentElement)">
+              <img src="assets/gallery/grillista-storefront-exterior.jpg" alt="Grillista Kakadeo Flagship Restaurant Storefront" class="outlet-card-img">
               <div class="outlet-live-badge">
                 <span class="outlet-live-dot"></span> OPEN NOW • 11 AM – 11:30 PM
               </div>
+              <button class="outlet-photos-badge" type="button" aria-label="View all photos of Kakadeo outlet">
+                <span>📸</span> View 6 Photos
+              </button>
               <div class="outlet-card-img-overlay">
                 <h3 class="outlet-img-title">KAKADEO, KANPUR</h3>
                 <span class="outlet-img-sub">Flagship Bistro & Dine-In Lounge</span>
               </div>
             </div>
             <div class="outlet-body">
+              <!-- Location Row -->
               <div class="outlet-meta-row">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>117/N/70, Kakadeo Main Market, Kanpur - 208025</span>
+                <span><strong>Location:</strong> 117/N/70, Kakadeo Main Market (Near Coaching Hub), Kanpur – 208025</span>
               </div>
 
+              <!-- Rating & Hours Row -->
               <div class="outlet-meta-row">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                <span><strong>+91 87671 21212</strong> • ⭐ 4.8 (5k+ reviews)</span>
+                <span><strong>Hours:</strong> 11:00 AM – 11:30 PM (7 Days Open) • ⭐ <strong>4.8</strong> (5,000+ Reviews)</span>
               </div>
 
-              <div class="outlet-actions">
-                <a href="https://maps.google.com/?q=Grillista+Kakadeo+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
-                  <span>📍 Get Directions ↗</span>
+              <!-- Action Buttons -->
+              <div class="outlet-actions-wrap">
+                <!-- 1. Primary Full-Width Order Food Button -->
+                <a href="https://wa.me/918767121212?text=Hello%20Grillista%20Kakadeo%2C%20I%20want%20to%20place%20a%20food%20order%20for%20delivery%20/%20takeaway." target="_blank" rel="noopener noreferrer" class="outlet-btn-order" title="Order Food Online">
+                  <span>🛵 ORDER FOOD ONLINE</span>
                 </a>
-                <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
-                  <span>📞 Call Store</span>
-                </a>
+
+                <!-- 2. Secondary Sub-Actions (Directions & Call) -->
+                <div class="outlet-sub-actions">
+                  <a href="https://maps.google.com/?q=Grillista+Kakadeo+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary" title="Get Directions on Google Maps">
+                    <span>📍 Directions ↗</span>
+                  </a>
+                  <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary" title="Call Kakadeo Store">
+                    <span>📞 Call Store</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Outlet 2: Barra -->
-          <div class="outlet-card">
-            <div class="outlet-card-img-wrap">
-              <img src="assets/hero-restaurant.jpg" alt="Grillista Barra Restaurant" class="outlet-card-img">
+          <!-- Outlet 2: Barra Expansion Hub -->
+          <div class="outlet-card" data-outlet-name="Grillista - Barra (Hub #2)" data-photos='["assets/gallery/grillista-modern-cafe-seating.webp", "assets/gallery/grillista-interior-lounge.webp", "assets/hero-restaurant.jpg", "assets/gallery/grillista-pasta-bistro.jpg", "assets/gallery/grillista-blue-lagoon.jpg"]'>
+            <div class="outlet-card-img-wrap" onclick="openOutletGallery(this.parentElement)">
+              <img src="assets/gallery/grillista-modern-cafe-seating.webp" alt="Grillista Barra Restaurant Modern Seating" class="outlet-card-img">
               <div class="outlet-live-badge">
                 <span class="outlet-live-dot"></span> OPEN NOW • 11 AM – 11:30 PM
               </div>
+              <button class="outlet-photos-badge" type="button" aria-label="View all photos of Barra outlet">
+                <span>📸</span> View 5 Photos
+              </button>
               <div class="outlet-card-img-overlay">
                 <h3 class="outlet-img-title">BARRA, KANPUR</h3>
                 <span class="outlet-img-sub">Express QSR & Delivery Hub</span>
               </div>
             </div>
             <div class="outlet-body">
+              <!-- Location Row -->
               <div class="outlet-meta-row">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                <span>Barra 2, Near CISF Camp Road, Kanpur - 208027</span>
+                <span><strong>Location:</strong> Barra 2, Near CISF Camp Road, South Kanpur – 208027</span>
               </div>
 
+              <!-- Rating & Hours Row -->
               <div class="outlet-meta-row">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                <span><strong>+91 87671 21212</strong> • ⭐ 4.8 (5k+ reviews)</span>
+                <span><strong>Hours:</strong> 11:00 AM – 11:30 PM (7 Days Open) • ⭐ <strong>4.8</strong> (5,000+ Reviews)</span>
               </div>
 
-              <div class="outlet-actions">
-                <a href="https://maps.google.com/?q=Grillista+Barra+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
-                  <span>📍 Get Directions ↗</span>
+              <!-- Action Buttons -->
+              <div class="outlet-actions-wrap">
+                <!-- 1. Primary Full-Width Order Food Button -->
+                <a href="https://wa.me/918767121212?text=Hello%20Grillista%20Barra%2C%20I%20want%20to%20place%20a%20food%20order%20for%20delivery%20/%20takeaway." target="_blank" rel="noopener noreferrer" class="outlet-btn-order" title="Order Food Online">
+                  <span>🛵 ORDER FOOD ONLINE</span>
                 </a>
-                <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
-                  <span>📞 Call Store</span>
-                </a>
+
+                <!-- 2. Secondary Sub-Actions (Directions & Call) -->
+                <div class="outlet-sub-actions">
+                  <a href="https://maps.google.com/?q=Grillista+Barra+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary" title="Get Directions on Google Maps">
+                    <span>📍 Directions ↗</span>
+                  </a>
+                  <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary" title="Call Barra Store">
+                    <span>📞 Call Store</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- FULLSCREEN OUTLET PHOTOS LIGHTBOX MODAL -->
+    <div class="outlet-lightbox-modal" id="outlet-photos-lightbox" role="dialog" aria-modal="true" aria-label="Outlet Photos Gallery">
+      <button class="outlet-lightbox-close" id="outlet-lightbox-close" aria-label="Close Gallery">&times;</button>
+      
+      <div style="position: relative; max-width: 90vw; text-align: center;">
+        <img src="" alt="Outlet View" class="outlet-lightbox-img" id="outlet-lightbox-current-img">
+        
+        <!-- Prev / Next Navigation Arrows -->
+        <button id="outlet-gallery-prev" aria-label="Previous Photo" style="position: absolute; left: -24px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #FFF; border: 1px solid rgba(255,255,255,0.3); width: 44px; height: 44px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease;">‹</button>
+        <button id="outlet-gallery-next" aria-label="Next Photo" style="position: absolute; right: -24px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #FFF; border: 1px solid rgba(255,255,255,0.3); width: 44px; height: 44px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease;">›</button>
+      </div>
+
+      <div class="outlet-lightbox-title" id="outlet-lightbox-title">Grillista Outlet Photos</div>
+      <div id="outlet-lightbox-counter" style="color: #94A3B8; font-size: 0.88rem; font-weight: 700; margin-top: 4px;">Photo 1 of 6</div>
+
+      <!-- Thumbnail Strip -->
+      <div id="outlet-thumbnails-strip" style="display: flex; gap: 8px; margin-top: 14px; overflow-x: auto; max-width: 90vw; padding: 4px;"></div>
+    </div>
 
     <!-- SECTION 2: CITIES AVAILABLE FOR FRANCHISE EXPANSION -->
     <section class="franchise-cities-section" id="franchise-cities">
@@ -1015,7 +1199,68 @@
       document.getElementById('floating-quick-sidebar')?.classList.toggle('collapsed');
     }
 
+    let currentOutletPhotos = [];
+    let currentPhotoIndex = 0;
+    let currentOutletTitle = '';
+
+    function openOutletGallery(cardElement) {
+      if (!cardElement) return;
+      try {
+        const photosJson = cardElement.getAttribute('data-photos');
+        currentOutletPhotos = JSON.parse(photosJson) || [];
+        currentOutletTitle = cardElement.getAttribute('data-outlet-name') || 'Grillista Outlet Photos';
+        currentPhotoIndex = 0;
+        showPhoto(0);
+        
+        const modal = document.getElementById('outlet-photos-lightbox');
+        modal?.classList.add('active');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function showPhoto(index) {
+      if (!currentOutletPhotos.length) return;
+      currentPhotoIndex = (index + currentOutletPhotos.length) % currentOutletPhotos.length;
+      
+      const currentImg = document.getElementById('outlet-lightbox-current-img');
+      const titleEl = document.getElementById('outlet-lightbox-title');
+      const counterEl = document.getElementById('outlet-lightbox-counter');
+      const stripEl = document.getElementById('outlet-thumbnails-strip');
+
+      if (currentImg) currentImg.src = currentOutletPhotos[currentPhotoIndex];
+      if (titleEl) titleEl.textContent = currentOutletTitle;
+      if (counterEl) counterEl.textContent = `Photo ${currentPhotoIndex + 1} of ${currentOutletPhotos.length}`;
+
+      if (stripEl) {
+        stripEl.innerHTML = currentOutletPhotos.map((src, i) => `
+          <img src="${src}" alt="Thumbnail ${i+1}" onclick="showPhoto(${i})" style="width: 54px; height: 54px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid ${i === currentPhotoIndex ? '#FFC72C' : 'rgba(255,255,255,0.2)'}; opacity: ${i === currentPhotoIndex ? 1 : 0.6}; transition: all 0.2s ease;">
+        `).join('');
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      // Lightbox Controls
+      const lightboxModal = document.getElementById('outlet-photos-lightbox');
+      const lightboxClose = document.getElementById('outlet-lightbox-close');
+      const prevBtn = document.getElementById('outlet-gallery-prev');
+      const nextBtn = document.getElementById('outlet-gallery-next');
+
+      lightboxClose?.addEventListener('click', () => lightboxModal?.classList.remove('active'));
+      prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(currentPhotoIndex - 1); });
+      nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); showPhoto(currentPhotoIndex + 1); });
+
+      lightboxModal?.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) lightboxModal.classList.remove('active');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightboxModal?.classList.contains('active')) return;
+        if (e.key === 'Escape') lightboxModal.classList.remove('active');
+        if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
+        if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
+      });
+
       const searchBox = document.getElementById('city-search-box');
       const tabBtns = document.querySelectorAll('.state-tab-btn');
       const cityCards = document.querySelectorAll('.city-card');
