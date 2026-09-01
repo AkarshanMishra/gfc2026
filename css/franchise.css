@@ -969,9 +969,77 @@
   margin: 0;
 }
 
+/* Responsive Media Queries for All Devices */
+@media (max-width: 992px) {
+  .franchise-models-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .roi-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 860px) {
   .consistency-bento-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .invest-tabs-nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .invest-tab-btn {
+    border-radius: 12px;
+    border-bottom: 2px solid #E2E8F0;
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .consistency-strip {
+    padding: 14px 16px;
+    gap: 14px;
+    border-radius: 12px;
+  }
+
+  .consistency-num {
+    width: 40px;
+    height: 40px;
+    font-size: 1.15rem;
+    border-radius: 10px;
+  }
+
+  .consistency-info h4 {
+    font-size: 0.98rem;
+  }
+
+  .consistency-info p {
+    font-size: 0.82rem;
+  }
+
+  .consistency-guarantee-card {
+    padding: 18px 20px;
+    border-radius: 12px;
+  }
+
+  .tab-title-main {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .consistency-strip {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .consistency-num {
+    width: 36px;
+    height: 36px;
+    font-size: 1.05rem;
   }
 }
 
