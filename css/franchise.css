@@ -855,117 +855,122 @@
 }
 
 /* ==========================================================================
-   7 PILLARS OF OPERATIONAL EXCELLENCE (REDESIGNED LUXURY CARDS)
+   7 PILLARS OF OPERATIONAL EXCELLENCE (BALANCED 2-COLUMN BENTO TIMELINE)
    ========================================================================== */
-.consistency-pillars-grid {
+.consistency-bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
 
-.pillar-card {
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 18px;
-  padding: 28px 24px;
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+.consistency-col {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-  overflow: hidden;
+  gap: 16px;
 }
 
-.pillar-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #D32323, #FFC72C);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.pillar-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(211, 35, 35, 0.35);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-}
-
-.pillar-card:hover::before {
-  opacity: 1;
-}
-
-.pillar-card-header {
+.consistency-strip {
+  background: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px 22px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+  gap: 18px;
+  align-items: flex-start;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
 }
 
-.pillar-badge-num {
+.consistency-strip:hover {
+  transform: translateY(-3px);
+  border-color: #D32323;
+  box-shadow: 0 10px 25px rgba(211, 35, 35, 0.08);
+}
+
+.consistency-num {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.78rem;
+  font-size: 1.35rem;
   font-weight: 900;
+  font-style: italic;
   color: #0F4C2A;
   background: rgba(15, 76, 42, 0.08);
-  padding: 4px 12px;
-  border-radius: 20px;
-  letter-spacing: 0.6px;
-  border: 1px solid rgba(15, 76, 42, 0.18);
-  text-transform: uppercase;
-}
-
-.pillar-icon-box {
+  border: 1.5px solid rgba(15, 76, 42, 0.2);
   width: 48px;
   height: 48px;
   border-radius: 14px;
-  background: #F8FAFC;
-  border: 1.5px solid #E2E8F0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.45rem;
+  flex-shrink: 0;
+  line-height: 1;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
-.pillar-card:hover .pillar-icon-box {
-  transform: scale(1.1) rotate(5deg);
-  background: #FEF2F2;
+.consistency-strip:hover .consistency-num {
+  background: #D32323;
+  color: #FFFFFF;
   border-color: #D32323;
 }
 
-.pillar-title {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: #0F172A;
-  margin: 0 0 6px;
-  letter-spacing: -0.2px;
-  line-height: 1.25;
-}
-
-.pillar-subtitle {
-  font-size: 0.85rem;
-  color: #D32323;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 12px;
-  letter-spacing: 0.2px;
-}
-
-.pillar-desc {
-  font-size: 0.9rem;
-  color: #64748B;
-  line-height: 1.65;
-  margin: 0;
+.consistency-info {
   flex: 1;
 }
 
-@media (max-width: 768px) {
-  .consistency-pillars-grid {
+.consistency-tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #D32323;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.consistency-info h4 {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0F172A;
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+
+.consistency-info p {
+  font-size: 0.86rem;
+  color: #64748B;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.consistency-guarantee-card {
+  background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%);
+  border-radius: 16px;
+  padding: 24px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(15, 76, 42, 0.2);
+  flex: 1;
+}
+
+.consistency-guarantee-card h4 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #FFC72C;
+  margin: 8px 0 6px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+}
+
+.consistency-guarantee-card p {
+  font-size: 0.88rem;
+  color: #E2E8F0;
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .consistency-bento-grid {
     grid-template-columns: 1fr;
   }
 }
