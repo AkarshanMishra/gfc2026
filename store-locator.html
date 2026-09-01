@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grillista Stores & Available Franchise Territories. Visit our operating company-owned outlets in Kakadeo and Barra, Kanpur or apply to launch Grillista in your city today.">
+  <meta name="theme-color" content="#0F4C2A">
+  <title>STORE LOCATOR & FRANCHISE CITIES | GRILLISTA - The Ultimate Food Chain</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/franchise.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .locator-page-header {
+      padding: 60px 20px 24px;
+      background: #FFFFFF;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .locator-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #F1F5F9;
+      color: #1E293B;
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 1px solid #CBD5E1;
+      margin-bottom: 14px;
+    }
+
+    .locator-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      color: #111111;
+      margin: 0;
+    }
+
+    .locator-main-title .highlight-red {
+      color: #D32323;
+    }
+
+    .locator-subtext {
+      font-size: 1.08rem;
+      color: #4A5568;
+      max-width: 780px;
+      margin: 14px auto 0;
+      line-height: 1.7;
+    }
+
+    /* Outlets Cards Grid */
+    .outlets-section {
+      padding: 50px 0 60px;
+      background: #F8F9FA;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-inner-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: #111111;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .section-inner-sub {
+      text-align: center;
+      color: #4A5568;
+      font-size: 0.98rem;
+      margin-bottom: 36px;
+    }
+
+    .outlets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .outlet-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .outlet-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+    }
+
+    .outlet-card-img-wrap {
+      position: relative;
+      height: 220px;
+      background: #111111;
+      overflow: hidden;
+    }
+
+    .outlet-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .outlet-card:hover .outlet-card-img {
+      transform: scale(1.05);
+    }
+
+    .outlet-live-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(17, 17, 17, 0.92);
+      backdrop-filter: blur(4px);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 199, 44, 0.5);
+    }
+
+    .outlet-live-dot {
+      width: 8px;
+      height: 8px;
+      background: #22C55E;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22C55E;
+    }
+
+    .outlet-body {
+      padding: 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .outlet-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+
+    .outlet-type-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #D32323;
+      background: #FEE2E2;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .outlet-info-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #2D3748;
+    }
+
+    .outlet-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .outlet-info-item .icon {
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .outlet-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 12px;
+    }
+
+    .outlet-btn {
+      flex: 1;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .outlet-btn-primary {
+      background: #D32323;
+      color: #FFFFFF;
+    }
+
+    .outlet-btn-primary:hover {
+      background: #B91C1C;
+    }
+
+    .outlet-btn-secondary {
+      background: #FFFFFF;
+      color: #111111;
+      border: 1.5px solid #CBD5E1;
+    }
+
+    .outlet-btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #111111;
+    }
+
+    /* Available Franchise Cities Section */
+    .franchise-cities-section {
+      padding: 60px 20px 80px;
+      background: #FFFFFF;
+    }
+
+    .city-search-filter-wrap {
+      max-width: 920px;
+      margin: 0 auto 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .city-search-bar {
+      display: flex;
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: 30px;
+      padding: 6px 10px 6px 20px;
+      align-items: center;
+      transition: border-color 0.2s ease;
+    }
+
+    .city-search-bar:focus-within {
+      border-color: #D32323;
+      background: #FFFFFF;
+    }
+
+    .city-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      color: #111111;
+    }
+
+    .state-tabs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .state-tab-btn {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #E2E8F0;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .state-tab-btn:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+
+    .state-tab-btn.active {
+      background: #D32323;
+      color: #FFFFFF;
+      border-color: #D32323;
+    }
+
+    .cities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .city-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .city-card:hover {
+      transform: translateY(-4px);
+      border-color: #D32323;
+      box-shadow: 0 10px 24px rgba(211, 35, 35, 0.08);
+    }
+
+    .city-state-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #64748B;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .city-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 900;
+      font-style: italic;
+      color: #111111;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .city-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ECFDF5;
+      color: #065F46;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+
+    .city-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    .city-key-locations {
+      font-size: 0.82rem;
+      color: #475569;
+      line-height: 1.45;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .city-key-locations strong {
+      color: #1E293B;
+    }
+
+    .city-apply-btn {
+      background: #111111;
+      color: #FFC72C;
+      text-align: center;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .city-apply-btn:hover {
+      background: #D32323;
+      color: #FFFFFF;
+    }
+
+    .empty-cities-state {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 40px 20px;
+      color: #64748B;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .locator-page-header {
+        padding: 40px 16px 20px;
+      }
+      .outlets-section {
+        padding: 36px 0 45px;
+      }
+      .outlets-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .outlet-card-img-wrap {
+        height: 190px;
+      }
+      .franchise-cities-section {
+        padding: 40px 16px 60px;
+      }
+      .state-tabs-list {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .state-tabs-list::-webkit-scrollbar {
+        display: none;
+      }
+      .state-tab-btn {
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cities-grid {
+        grid-template-columns: 1fr;
+      }
+      .outlet-actions {
+        flex-direction: column;
+      }
+      .outlet-btn {
+        width: 100%;
+        padding: 12px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GRILLISTA SIGNATURE NAVBAR -->
+  <header class="bs-header">
+    <div class="bs-navbar-container">
+      
+      <!-- Left: Customer Support Hotline Box -->
+      <a href="tel:+918767121212" class="bs-hotline-btn left-btn" title="Call Customer Support">
+        <div class="hotline-top">
+          <svg class="phone-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="#FFC72C">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          <span class="hotline-phone">+91 87671 21212</span>
+        </div>
+        <div class="hotline-label">FOR CUSTOMER SUPPORT</div>
+      </a>
+
+      <!-- Central Navigation Cluster -->
+      <nav class="bs-nav-cluster">
+        <div class="bs-nav-left-links">
+          <a href="index.html#home" class="bs-nav-link">HOME</a>
+          <a href="about.html" class="bs-nav-link">ABOUT US</a>
+          <a href="menu.html" class="bs-nav-link">MENU</a>
+        </div>
+
+        <!-- Center Circular Logo -->
+        <div class="bs-center-logo-box">
+          <a href="index.html#home" aria-label="Grillista Home" class="bs-logo-anchor">
+            <img src="assets/logo.png" alt="Grillista Logo" class="bs-exact-circular-logo">
+          </a>
+        </div>
+
+        <div class="bs-nav-right-links">
+          <a href="franchise.html" class="bs-nav-link">FRANCHISE</a>
+          <a href="join-us.html" class="bs-nav-link">JOIN US</a>
+          <a href="locator.html" class="bs-nav-link two-line-link active">
+            <span>STORE</span>
+            <span>LOCATOR</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Right: Franchise Enquiry Hotline Box -->
+      <a href="franchise.html#franchise-apply" class="bs-hotline-btn right-btn" title="Call Franchise Hotline">
+        <div class="hotline-top">
+          <svg class="phone-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="#FFC72C">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          <span class="hotline-phone">+91 90290 20888</span>
+        </div>
+        <div class="hotline-label">FOR FRANCHISE ENQUIRY ONLY</div>
+      </a>
+
+      <!-- Mobile Logo & Menu Toggle -->
+      <div class="mobile-header-bar">
+        <a href="index.html#home" class="mobile-logo-link" aria-label="Grillista Home">
+          <img src="assets/logo.png" alt="Grillista Logo" class="mobile-logo-img">
+        </a>
+        <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE TITLE HEADER -->
+    <section class="locator-page-header">
+      <div class="container">
+        <div class="locator-tag-pill">
+          <span>📍</span> OUTLETS & FRANCHISE EXPANSION NETWORK
+        </div>
+        <h1 class="locator-main-title">
+          STORE <span class="highlight-red">LOCATOR</span>
+        </h1>
+        <p class="locator-subtext">
+          Visit our active company-owned flagship restaurants in Kanpur or check city-wide territory availability for franchise expansion across India.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 1: OUR ACTIVE COMPANY OUTLETS -->
+    <section class="outlets-section">
+      <div class="container">
+        <h2 class="section-inner-heading">OUR RUNNING <span style="color: #D32323;">OUTLETS</span></h2>
+        <p class="section-inner-sub">Visit and experience our operational culinary standards in Kanpur, Uttar Pradesh.</p>
+
+        <div class="outlets-grid">
+          <!-- Outlet 1: Kakadeo -->
+          <div class="outlet-card">
+            <div class="outlet-card-img-wrap">
+              <img src="assets/hero-restaurant.jpg" alt="Grillista Kakadeo Outlet" class="outlet-card-img">
+              <div class="outlet-live-badge">
+                <span class="outlet-live-dot"></span> OPERATING SINCE 2021
+              </div>
+            </div>
+            <div class="outlet-body">
+              <h3 class="outlet-title">GRILLISTA KAKADEO (FLAGSHIP)</h3>
+              <span class="outlet-type-badge">🏢 Company Owned Bistro & Dine-In</span>
+
+              <ul class="outlet-info-list">
+                <li class="outlet-info-item">
+                  <span class="icon">📍</span>
+                  <span><strong>Address:</strong> 117/N/70, Kakadeo Main Market (Near Coaching Hub), Kanpur, UP - 208025</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">⏰</span>
+                  <span><strong>Timings:</strong> 11:00 AM – 11:30 PM (All 7 Days)</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">📞</span>
+                  <span><strong>Contact / Order:</strong> +91 87671 21212</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">⭐</span>
+                  <span><strong>Customer Rating:</strong> 4.8 / 5.0 (5,000+ Happy Foodies)</span>
+                </li>
+              </ul>
+
+              <div class="outlet-actions">
+                <a href="https://maps.google.com/?q=Kakadeo+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
+                  <span>🗺️ Google Maps</span>
+                </a>
+                <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
+                  <span>📞 Call Store</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outlet 2: Barra -->
+          <div class="outlet-card">
+            <div class="outlet-card-img-wrap">
+              <img src="assets/hero-restaurant.jpg" alt="Grillista Barra Outlet" class="outlet-card-img">
+              <div class="outlet-live-badge">
+                <span class="outlet-live-dot"></span> OPERATING SINCE 2024
+              </div>
+            </div>
+            <div class="outlet-body">
+              <h3 class="outlet-title">GRILLISTA BARRA (HUB #2)</h3>
+              <span class="outlet-type-badge">🚀 Company Owned Express & Delivery</span>
+
+              <ul class="outlet-info-list">
+                <li class="outlet-info-item">
+                  <span class="icon">📍</span>
+                  <span><strong>Address:</strong> Barra 2, Near CISF Camp Road, South Kanpur, UP - 208027</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">⏰</span>
+                  <span><strong>Timings:</strong> 11:00 AM – 11:30 PM (All 7 Days)</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">📞</span>
+                  <span><strong>Contact / Order:</strong> +91 87671 21212</span>
+                </li>
+                <li class="outlet-info-item">
+                  <span class="icon">⭐</span>
+                  <span><strong>Customer Rating:</strong> 4.8 / 5.0 (5,000+ Happy Foodies)</span>
+                </li>
+              </ul>
+
+              <div class="outlet-actions">
+                <a href="https://maps.google.com/?q=Barra+Kanpur" target="_blank" rel="noopener noreferrer" class="outlet-btn outlet-btn-primary">
+                  <span>🗺️ Google Maps</span>
+                </a>
+                <a href="tel:+918767121212" class="outlet-btn outlet-btn-secondary">
+                  <span>📞 Call Store</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CITIES AVAILABLE FOR FRANCHISE EXPANSION -->
+    <section class="franchise-cities-section" id="franchise-cities">
+      <div class="container">
+        <h2 class="section-inner-heading">AVAILABLE CITIES FOR <span style="color: #D32323;">FRANCHISE</span></h2>
+        <p class="section-inner-sub">Prime territories open for exclusive Express, Bistro, and Signature format allocation.</p>
+
+        <!-- Search & Filter Controls -->
+        <div class="city-search-filter-wrap">
+          <div class="city-search-bar">
+            <span style="font-size: 1.15rem; margin-right: 8px;">🔍</span>
+            <input type="text" id="city-search-box" class="city-search-input" placeholder="Search city (e.g. Lucknow, Varanasi, Noida, Patna, Indore)...">
+          </div>
+
+          <div class="state-tabs-list">
+            <button class="state-tab-btn active" data-state="all">All Regions</button>
+            <button class="state-tab-btn" data-state="up">Uttar Pradesh (Priority)</button>
+            <button class="state-tab-btn" data-state="ncr">Delhi NCR</button>
+            <button class="state-tab-btn" data-state="bihar">Bihar & Jharkhand</button>
+            <button class="state-tab-btn" data-state="mp">MP & Rajasthan</button>
+            <button class="state-tab-btn" data-state="north">Punjab & Haryana</button>
+          </div>
+        </div>
+
+        <!-- Cities Grid -->
+        <div class="cities-grid" id="cities-grid-container">
+          
+          <!-- UTTAR PRADESH -->
+          <div class="city-card" data-state="up" data-city="lucknow">
+            <div class="city-state-tag">Uttar Pradesh • Tier 1</div>
+            <h3 class="city-name">Lucknow</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> 3 Catchments Open</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Hazratganj, Gomti Nagar, Aliganj, Indira Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Lucknow →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="kanpur">
+            <div class="city-state-tag">Uttar Pradesh • Home City</div>
+            <h3 class="city-name">Kanpur</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> 2 Hubs Open</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Swaroop Nagar, Kidwai Nagar, Civil Lines, Shyam Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Kanpur →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="varanasi">
+            <div class="city-state-tag">Uttar Pradesh • Heritage Hub</div>
+            <h3 class="city-name">Varanasi</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Demand Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Assi Ghat, Sigra, Lanka, Mahmoorganj, Bhelupur.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Varanasi →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="prayagraj">
+            <div class="city-state-tag">Uttar Pradesh • Metro Hub</div>
+            <h3 class="city-name">Prayagraj (Allahabad)</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Available Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Civil Lines, Katra, Georgetown, Ashok Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Prayagraj →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="agra">
+            <div class="city-state-tag">Uttar Pradesh • Tourism Capital</div>
+            <h3 class="city-name">Agra</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Footfall</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sanjay Place, Fatehabad Road, Kamla Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Agra →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="noida">
+            <div class="city-state-tag">Uttar Pradesh • NCR Hub</div>
+            <h3 class="city-name">Noida / Greater Noida</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Tech & Youth Hub</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 18, Sector 62, Sector 137, Pari Chowk.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Noida →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="ghaziabad">
+            <div class="city-state-tag">Uttar Pradesh • NCR Hub</div>
+            <h3 class="city-name">Ghaziabad</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Indirapuram, Raj Nagar Extension, Vaishali.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ghaziabad →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="gorakhpur">
+            <div class="city-state-tag">Uttar Pradesh • Regional Hub</div>
+            <h3 class="city-name">Gorakhpur</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Fast Growing</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Golghar, Medical College Road, Rapti Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gorakhpur →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="meerut">
+            <div class="city-state-tag">Uttar Pradesh • Highway Corridor</div>
+            <h3 class="city-name">Meerut</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Shastri Nagar, Abu Lane, Delhi Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Meerut →</a>
+          </div>
+
+          <div class="city-card" data-state="up" data-city="bareilly">
+            <div class="city-state-tag">Uttar Pradesh • Regional City</div>
+            <h3 class="city-name">Bareilly</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Opportunity</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Civil Lines, Rajendra Nagar, DD Puram.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Bareilly →</a>
+          </div>
+
+          <!-- DELHI NCR -->
+          <div class="city-card" data-state="ncr" data-city="delhi">
+            <div class="city-state-tag">Delhi NCR • National Capital</div>
+            <h3 class="city-name">New Delhi</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Margin Metro</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Connaught Place, South Ext, Dwarka, Rohini, Laxmi Nagar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Delhi →</a>
+          </div>
+
+          <div class="city-card" data-state="ncr" data-city="gurugram">
+            <div class="city-state-tag">Delhi NCR • Corporate Hub</div>
+            <h3 class="city-name">Gurugram (Gurgaon)</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Millennial Hub</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> DLF Cyber Hub, Sector 29, Golf Course Road, Sohna Rd.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gurugram →</a>
+          </div>
+
+          <div class="city-card" data-state="ncr" data-city="faridabad">
+            <div class="city-state-tag">Delhi NCR • Industrial Hub</div>
+            <h3 class="city-name">Faridabad</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 15 Market, NIT Faridabad, Mathura Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Faridabad →</a>
+          </div>
+
+          <!-- BIHAR & JHARKHAND -->
+          <div class="city-card" data-state="bihar" data-city="patna">
+            <div class="city-state-tag">Bihar • State Capital</div>
+            <h3 class="city-name">Patna</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High ROI Market</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Boring Road, Bailey Road, Kankarbagh, Fraser Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Patna →</a>
+          </div>
+
+          <div class="city-card" data-state="bihar" data-city="ranchi">
+            <div class="city-state-tag">Jharkhand • State Capital</div>
+            <h3 class="city-name">Ranchi</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Lalpur, Main Road, Harmu, Kanke Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ranchi →</a>
+          </div>
+
+          <div class="city-card" data-state="bihar" data-city="jamshedpur">
+            <div class="city-state-tag">Jharkhand • Steel City</div>
+            <h3 class="city-name">Jamshedpur</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Premium Catchment</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Bistupur, Sakchi, Kadma, Telco Colony.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Jamshedpur →</a>
+          </div>
+
+          <!-- MADHYA PRADESH & RAJASTHAN -->
+          <div class="city-card" data-state="mp" data-city="indore">
+            <div class="city-state-tag">Madhya Pradesh • Foodie Capital</div>
+            <h3 class="city-name">Indore</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Highest Street Food Hub</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Vijay Nagar, 56 Dukan, Bhawarkua, Sarafa Bazaar.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Indore →</a>
+          </div>
+
+          <div class="city-card" data-state="mp" data-city="bhopal">
+            <div class="city-state-tag">Madhya Pradesh • Lake City</div>
+            <h3 class="city-name">Bhopal</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Open Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> MP Nagar, Arera Colony, New Market.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Bhopal →</a>
+          </div>
+
+          <div class="city-card" data-state="mp" data-city="jaipur">
+            <div class="city-state-tag">Rajasthan • Pink City</div>
+            <h3 class="city-name">Jaipur</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Top Tourist Footfall</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Malviya Nagar, Vaishali Nagar, Raja Park, C-Scheme.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Jaipur →</a>
+          </div>
+
+          <div class="city-card" data-state="mp" data-city="gwalior">
+            <div class="city-state-tag">Madhya Pradesh • Heritage City</div>
+            <h3 class="city-name">Gwalior</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> Available Catchment</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> City Center, Lashkar, Morar, Phool Bagh.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Gwalior →</a>
+          </div>
+
+          <!-- PUNJAB & HARYANA -->
+          <div class="city-card" data-state="north" data-city="chandigarh">
+            <div class="city-state-tag">Punjab / Haryana • City Beautiful</div>
+            <h3 class="city-name">Chandigarh / Mohali</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High AOV Territory</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sector 35, Sector 8, Phase 7 Mohali, Panchkula Sec 9.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Chandigarh →</a>
+          </div>
+
+          <div class="city-card" data-state="north" data-city="ludhiana">
+            <div class="city-state-tag">Punjab • Commercial Capital</div>
+            <h3 class="city-name">Ludhiana</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Purchasing Power</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Sarabha Nagar Market, Model Town, Ferozepur Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Ludhiana →</a>
+          </div>
+
+          <div class="city-card" data-state="north" data-city="amritsar">
+            <div class="city-state-tag">Punjab • Food & Heritage Hub</div>
+            <h3 class="city-name">Amritsar</h3>
+            <div class="city-status-pill"><span class="city-status-dot"></span> High Tourist Density</div>
+            <p class="city-key-locations"><strong>Prime Hubs:</strong> Lawrence Road, Ranjit Avenue, Mall Road.</p>
+            <a href="franchise.html#franchise-apply" class="city-apply-btn">Apply for Amritsar →</a>
+          </div>
+
+          <div class="empty-cities-state" id="empty-cities-state">
+            <p style="font-size: 1.2rem; font-weight: 800; color: #111; margin-bottom: 6px;">City Not Listed?</p>
+            <p style="font-size: 0.9rem; margin-bottom: 16px;">We are welcoming applications across all Tier 2 & Tier 3 cities in India.</p>
+            <a href="franchise.html#franchise-apply" class="btn btn-primary" style="font-weight: 800;">Apply for Your Custom City →</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bs-site-footer">
+    <div class="container">
+      <div class="bs-footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <img src="assets/logo.png" alt="Grillista Logo" style="height: 52px; width: auto; object-fit: contain;">
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 900; color: #FFF; line-height: 1.1;">GRILLISTA</h4>
+              <span style="font-size: 0.75rem; color: var(--bs-yellow); font-weight: 700;">THE ULTIMATE FOOD CHAIN</span>
+            </div>
+          </div>
+
+          <h4 class="footer-col-title" style="display: flex; align-items: center; gap: 8px; font-size: 1.1rem; font-weight: 900; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+            <span style="display: inline-block; width: 4px; height: 18px; background: #00E676; border-radius: 2px;"></span>
+            CORPORATE HQ
+          </h4>
+          <p style="color: #FFFFFF; font-size: 1rem; font-weight: 800; margin-bottom: 4px;">
+            RK Group of Industries
+          </p>
+          <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+            621/18, Block-W, Juhi Kala, VR Tower, Near Bharat Petroleum, Kanpur, UP – 208014
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            <a href="tel:+916386818682" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.05rem; font-weight: 900; color: #FFC72C;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#00E676">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+              </svg>
+              <span>+91 63868 18682</span>
+            </a>
+            <a href="mailto:grillistakanpur@gmail.com" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.92rem; font-weight: 700; color: #CBD5E1;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#F59E0B">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              <span>grillistakanpur@gmail.com</span>
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <a href="https://wa.me/916386818682" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #25D366;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #E1306C;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #1877F2;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #FF0000;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Useful Links:</h4>
+          <ul class="bs-footer-links">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="menu.html">Full Menu</a></li>
+            <li><a href="franchise.html">Franchise Models & ROI</a></li>
+            <li><a href="locator.html">Store Locator</a></li>
+            <li><a href="join-us.html">Join Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Helpline Contacts:</h4>
+          <ul class="bs-footer-links">
+            <li>📞 Customer Support: <strong>+91 87671 21212</strong></li>
+            <li>💼 Franchise Only: <strong>+91 90290 20888</strong></li>
+            <li>🏢 Real Estate / Leasing: <strong>+91 90290 20889</strong></li>
+            <li>📦 Bulk & Catering: <strong>+91 87671 21215</strong></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Follow Us On:</h4>
+          <div style="display: flex; gap: 12px; font-size: 1.5rem; margin-top: 8px;">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 0.8rem; color: var(--text-subtle);">
+            Made with ❤️ in India.
+          </p>
+        </div>
+      </div>
+
+      <div class="bs-footer-bottom">
+        <div>© 2026 Grillista Foods Private Limited. All rights reserved.</div>
+        <div>Proudly Made In India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING QUICK CONTACT SIDEBAR (MATCHING SCREENSHOT) -->
+  <aside class="floating-quick-sidebar" id="floating-quick-sidebar" aria-label="Quick Contact Sidebar">
+    <!-- 1. Collapse / Expand Arrow -->
+    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" type="button" onclick="toggleQuickSidebar()" aria-label="Toggle Quick Sidebar" title="Collapse / Expand">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <!-- 2. WhatsApp -->
+    <a href="https://wa.me/919029020888?text=Hi%20Grillista%20Team%2C%20I%20am%20interested%20in%20Franchise%20/%20Ordering" target="_blank" rel="noopener noreferrer" class="sidebar-action-item sidebar-whatsapp-btn" title="Chat on WhatsApp" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+
+    <!-- 3. Phone -->
+    <a href="tel:+918767121212" class="sidebar-action-item sidebar-phone-btn" title="Call Us" aria-label="Phone">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+      </svg>
+    </a>
+
+    <!-- 4. Email -->
+    <a href="mailto:franchise@grillista.in" class="sidebar-action-item sidebar-email-btn" title="Email Us" aria-label="Email">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+  </aside>
+
+  <script>
+    function toggleQuickSidebar() {
+      document.getElementById('floating-quick-sidebar')?.classList.toggle('collapsed');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchBox = document.getElementById('city-search-box');
+      const tabBtns = document.querySelectorAll('.state-tab-btn');
+      const cityCards = document.querySelectorAll('.city-card');
+      const emptyState = document.getElementById('empty-cities-state');
+
+      let currentFilter = 'all';
+      let currentQuery = '';
+
+      function filterCities() {
+        let visibleCount = 0;
+
+        cityCards.forEach(card => {
+          const state = card.getAttribute('data-state');
+          const city = card.getAttribute('data-city') || '';
+          const cardText = card.textContent.toLowerCase();
+
+          const matchesTab = (currentFilter === 'all' || state === currentFilter);
+          const matchesQuery = (currentQuery === '' || cardText.includes(currentQuery));
+
+          if (matchesTab && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      }
+
+      // Tab filtering
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentFilter = btn.getAttribute('data-state');
+          filterCities();
+        });
+      });
+
+      // Search filtering
+      searchBox?.addEventListener('input', (e) => {
+        currentQuery = e.target.value.toLowerCase().trim();
+        filterCities();
+      });
+
+      // Mobile Menu Toggle
+      document.getElementById('mobile-nav-toggle')?.addEventListener('click', () => {
+        document.querySelector('.bs-nav-cluster')?.classList.toggle('mobile-open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1105 @@
+/* ==========================================================================
+   GRILLISTA / BURGER SINGH THEME - Design System & Stylesheet
+   Exact Match to Burger Singh High-Energy Red/Yellow/Blue Fast-Food Franchise
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Burger Singh Signature Colors */
+  --bs-red: #D32323;              /* Brand Red Header */
+  --bs-dark-red: #A81B1B;
+  --bs-yellow: #FFC72C;           /* Mustard / Saffron Gold */
+  --bs-blue: #00A3E0;             /* Vibrant Sky Blue */
+  --bs-dark-blue: #0077A8;
+  --bs-black: #111111;
+  --bs-white: #FFFFFF;
+  --bs-table-bg: #E8F4F8;         /* Light cyan-blue food backdrop */
+
+  /* Clean Light Theme Surfaces */
+  --bg-main: #F8F9FB;             /* Crisp Light Canvas */
+  --bg-surface: #FFFFFF;          /* Pure White Cards */
+  --bg-surface-elevated: #F1F4F8; /* Soft Off-White / Hover */
+  --bg-input: #FFFFFF;
+
+  --text-main: #1A202C;           /* Deep Charcoal Body Text */
+  --text-muted: #64748B;          /* Readable Slate Muted */
+  --text-subtle: #94A3B8;
+  --border-color: #E2E8F0;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --max-width: 1320px;
+  --header-height: 84px;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Impact', 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+}
+
+/* Reset & Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography Utilities */
+.text-primary { color: var(--bs-red) !important; }
+.text-yellow { color: var(--bs-yellow) !important; }
+.text-blue { color: var(--bs-blue) !important; }
+.text-muted { color: var(--text-muted); }
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   BURGER SINGH BRAND HEADER (EXACT REPLICA)
+   ========================================================================== */
+/* ==========================================================================
+   GRILLISTA SIGNATURE FOREST GREEN & FLAME GOLD NAVBAR
+   ========================================================================== */
+.bs-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #0F4C2A;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(18, 90, 50, 0.92) 0%, rgba(10, 59, 32, 0.98) 100%),
+    url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.08' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: auto, 400px 90px;
+  border-bottom: none;
+  box-shadow: 0 4px 22px rgba(10, 59, 32, 0.35);
+}
+
+.bs-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 92px;
+  padding: 10px 30px;
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+}
+
+/* Rounded Hotline Pill Buttons (Left & Right) */
+.bs-hotline-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.bs-hotline-btn:hover {
+  background: rgba(255, 199, 44, 0.15);
+  border-color: #FFC72C;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+.hotline-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.phone-icon-svg {
+  flex-shrink: 0;
+}
+
+.hotline-phone {
+  color: #FFC72C;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+}
+
+.hotline-label {
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+/* Central Navigation Cluster */
+.bs-nav-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.bs-nav-left-links, .bs-nav-right-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.bs-nav-link {
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 0.96rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.bs-nav-link:hover, .bs-nav-link.active {
+  color: #FFC72C;
+}
+
+.two-line-link {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+.bs-center-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -10px 14px;
+  position: relative;
+  z-index: 10;
+}
+
+.bs-logo-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bs-logo-anchor:hover {
+  transform: scale(1.08) rotate(2deg);
+}
+
+.bs-exact-circular-logo {
+  height: 112px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+.mobile-header-bar {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 1.9rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ==========================================================================
+   BURGER SINGH / GRILLISTA HERO BANNER (EXPANDED HD AMBIENCE)
+   ========================================================================== */
+.bs-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 680px;
+  height: clamp(640px, 85vh, 800px);
+  background-color: #0A3B20;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.bs-hero-table-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+}
+
+/* Subtle HD Overlay to keep golden booth lighting and decor crystal clear */
+.bs-hero-table-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.28) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* HD Restaurant Banner Image */
+.bs-hero-banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  z-index: 1;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Overlay Elements on Hero */
+.bs-hero-overlay-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 80px 0 50px;
+  min-height: 600px;
+}
+
+/* Left CTA Badge: CLICK HERE FOR BULK ORDER */
+.bs-bulk-order-badge {
+  background: var(--bs-blue);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 163, 224, 0.55), inset 0 2px 0 rgba(255, 255, 255, 0.4);
+  transform: rotate(-3deg);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid #FFFFFF;
+  display: inline-block;
+}
+
+.bs-bulk-order-badge:hover {
+  transform: rotate(0deg) scale(1.06);
+  background: var(--bs-dark-blue);
+  box-shadow: 0 12px 30px rgba(0, 163, 224, 0.7);
+}
+
+/* Right Franchise Banner: BECOME A BURGER SINGH STORE OWNER */
+.bs-franchise-hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.bs-franchise-hero-cta:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.bs-pill-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 8px 20px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+}
+
+.bs-pill-become {
+  background: #D32323;
+  color: #FFFFFF;
+}
+
+.bs-pill-brand {
+  background: #00A3E0;
+  color: #FFFFFF;
+}
+
+.bs-pill-owner {
+  background: #FFC72C;
+  color: #111111;
+}
+
+.bs-pill-click {
+  background: #FFFFFF;
+  color: #D32323;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 8px 22px;
+  border-radius: var(--radius-full);
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border: 2px solid #D32323;
+}
+
+/* Quick Floating Cart Trigger (Sticky Bottom-Right) */
+.floating-cart-pill {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 999;
+  background: #D32323;
+  color: #FFFFFF;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 25px rgba(211, 35, 35, 0.5);
+  border: 2px solid var(--bs-yellow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.floating-cart-pill:hover {
+  background: #B70E0E;
+  transform: translateY(-2px);
+}
+
+.cart-count-badge {
+  background: var(--bs-yellow);
+  color: #111111;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Section Common Styling */
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--bs-red);
+  background: rgba(211, 35, 35, 0.08);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+  border: 1px solid rgba(211, 35, 35, 0.25);
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--bs-red);
+  color: #FFFFFF;
+  border: 1px solid #FF5252;
+  box-shadow: 0 4px 15px rgba(211, 35, 35, 0.25);
+}
+
+.btn-primary:hover {
+  background: #E52828;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(211, 35, 35, 0.4);
+}
+
+.btn-secondary {
+  background: var(--bs-yellow);
+  color: #111111;
+  font-weight: 800;
+}
+
+.btn-secondary:hover {
+  background: #FFD54F;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--bs-red);
+  border: 1.5px solid var(--bs-red);
+}
+
+.btn-outline-primary:hover {
+  background: rgba(211, 35, 35, 0.08);
+}
+
+.btn-outline-secondary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline-secondary:hover {
+  background: var(--bg-surface-elevated);
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 1.05rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   MODALS SYSTEM
+   ========================================================================== */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+.modal-wrapper.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+}
+
+.modal-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 2px solid var(--bs-red);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+  padding: 28px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.modal-header h3 { font-size: 1.35rem; font-weight: 800; color: var(--text-main); }
+.modal-close { background: transparent; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; }
+.modal-close:hover { color: var(--text-main); }
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  min-width: 280px;
+  max-width: 400px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.toast-success { border-left: 5px solid #4CAF50; }
+.toast-error { border-left: 5px solid var(--bs-red); }
+.toast-fire { border-left: 5px solid var(--bs-yellow); }
+.toast-close { background: transparent; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; margin-left: auto; }
+
+/* Reviews Section */
+.reviews-section {
+  padding: 80px 0;
+  background: #F1F4F9;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.review-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-header { display: flex; align-items: center; gap: 12px; }
+.review-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bs-red); }
+.review-name { font-size: 0.98rem; font-weight: 800; color: var(--text-main); }
+.review-city { font-size: 0.8rem; color: var(--text-muted); }
+.review-stars { font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+.verified-badge { font-size: 0.7rem; color: #2E7D32; background: rgba(46, 125, 50, 0.12); padding: 2px 8px; border-radius: var(--radius-full); }
+.review-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; font-style: italic; flex: 1; }
+.review-date { font-size: 0.75rem; color: var(--text-subtle); }
+
+/* Footer - Burger Singh Style */
+.bs-site-footer {
+  background: #08090B;
+  border-top: 4px solid var(--bs-red);
+  padding: 60px 0 30px;
+}
+
+.bs-footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--bs-yellow);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.bs-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.bs-footer-links a:hover {
+  color: var(--bs-yellow);
+}
+
+.bs-footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+/* ==========================================================================
+   COMPREHENSIVE ALL-DEVICE RESPONSIVE SYSTEM
+   Mobile (320px - 576px), Phablets/Tablets (577px - 992px), Desktops (993px - 1440px+)
+   ========================================================================== */
+
+/* Mobile Backdrop Overlay for Sliding Drawer */
+.mobile-nav-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-nav-backdrop.active {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fluid Typography Utilities */
+.h1-fluid {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.h2-fluid {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.h3-fluid {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+/* Responsive Table Wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #D32323 #F1F5F9;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #D32323;
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+/* About Section Responsive Grid */
+.about-grid-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Laptops & Medium Desktops (993px - 1280px) */
+@media (max-width: 1280px) {
+  .bs-navbar-container {
+    padding: 8px 16px;
+  }
+  .bs-nav-cluster {
+    gap: 16px;
+  }
+  .bs-nav-left-links, .bs-nav-right-links {
+    gap: 14px;
+  }
+  .bs-nav-link {
+    font-size: 0.86rem;
+    letter-spacing: 0.3px;
+  }
+  .bs-hotline-btn {
+    min-width: 145px;
+    padding: 5px 10px;
+  }
+  .hotline-phone {
+    font-size: 0.84rem;
+  }
+  .hotline-label {
+    font-size: 0.62rem;
+  }
+  .bs-exact-circular-logo {
+    height: 90px;
+  }
+}
+
+/* Tablets & Mobile Navigation Drawer (<= 992px) */
+@media (max-width: 992px) {
+  .bs-hotline-btn {
+    display: none;
+  }
+  .mobile-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .mobile-toggle:active {
+    transform: scale(0.94);
+  }
+  
+  /* Sliding Side Drawer for Mobile Navigation */
+  .bs-nav-cluster {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(340px, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    background: #0A3B20;
+    background-image: radial-gradient(circle at 50% 0%, rgba(18, 90, 50, 0.98) 0%, rgba(8, 44, 24, 1) 100%);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 70px 24px 30px;
+    gap: 0;
+    transform: translateX(105%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 999;
+  }
+
+  .bs-nav-cluster.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Close button inside mobile menu drawer */
+  .mobile-drawer-close-btn {
+    display: flex;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bs-nav-left-links, 
+  .bs-nav-right-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+  }
+
+  .bs-nav-link {
+    font-size: 1.05rem;
+    font-weight: 900;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bs-nav-link.two-line-link {
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.05rem;
+  }
+
+  .bs-center-logo-box {
+    display: none;
+  }
+
+  /* Mobile Hotlines in Drawer */
+  .mobile-drawer-hotlines {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-drawer-hotlines .bs-hotline-btn {
+    display: flex;
+    width: 100%;
+    min-width: unset;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Hero Section Responsiveness */
+  .bs-hero-section {
+    min-height: 520px;
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .bs-hero-overlay-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .bs-franchise-hero-cta {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  /* About 2-column Grid Responsiveness */
+  .about-section .container {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .about-section img {
+    height: 300px !important;
+  }
+
+  /* Footer Responsiveness (2 columns on tablet) */
+  .bs-footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+
+/* Phablets & Mobile Devices (<= 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Header adjustments */
+  .bs-navbar-container {
+    min-height: 72px;
+    padding: 8px 14px;
+  }
+
+  .mobile-logo-img {
+    height: 44px;
+  }
+
+  /* Hero adjustments */
+  .bs-hero-section {
+    min-height: 440px;
+    padding: 30px 0;
+  }
+
+  .bs-pill-tag {
+    font-size: clamp(1.2rem, 5.5vw, 1.65rem) !important;
+    padding: 8px 18px !important;
+  }
+
+  .bs-pill-click {
+    font-size: 0.88rem !important;
+    padding: 6px 14px !important;
+  }
+
+  /* About Section Metrics 2x2 Grid */
+  .about-section .about-metrics-wrap {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  .about-section .about-metric-card {
+    background: #F8FAFC;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+  }
+
+  /* FAQ adjustments */
+  .faq-bar-header {
+    padding: 12px 14px !important;
+  }
+
+  .faq-bar-title {
+    font-size: 0.92rem !important;
+  }
+
+  /* Footer Responsiveness (1 column on mobile) */
+  .bs-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  .bs-footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Floating Quick Sidebar */
+  .floating-quick-sidebar {
+    top: 65%;
+  }
+
+  .sidebar-toggle-btn,
+  .sidebar-action-item {
+    width: 42px;
+    height: 44px;
+  }
+}
+
+/* Small Smart Phones (<= 380px) */
+@media (max-width: 380px) {
+  .bs-pill-tag {
+    font-size: 1.1rem !important;
+    padding: 6px 12px !important;
+  }
+
+  .about-section .about-metrics-wrap {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sidebar-toggle-btn,
+  .sidebar-action-item {
+    width: 38px;
+    height: 40px;
+  }
+}
+
+

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grillista Official Menu Showcase - Explore our authentic desi fusion menu including Sandwiches, Grillista Desi Bites, Chinese Favourites, Loaded Fries, Momos, Pastas & Craft Beverages.">
+  <meta name="theme-color" content="#0F4C2A">
+  <title>OUR MENU | GRILLISTA - The Ultimate Food Chain</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/franchise.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    /* Cohesive Brand Typography Matching about.html & franchise.html */
+    .menu-main-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      color: #111111;
+      margin: 0;
+    }
+
+    .menu-main-title .highlight-red {
+      color: #D32323;
+    }
+
+    .section-headline-italic {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: #111111;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-headline-italic .highlight-red {
+      color: #D32323;
+    }
+
+    /* Interactive Menu Slider Showcase */
+    .menu-slider-wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .slider-stage {
+      background: #111111;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 580px;
+      border: 2px solid #FFC72C;
+    }
+
+    .menu-slide-item {
+      display: none;
+      width: 100%;
+      text-align: center;
+      animation: fadeInSlide 0.35s ease forwards;
+    }
+
+    .menu-slide-item.active {
+      display: block;
+    }
+
+    .menu-slide-img {
+      max-height: 560px;
+      max-width: 100%;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      cursor: zoom-in;
+      transition: transform 0.25s ease;
+    }
+
+    .menu-slide-img:hover {
+      transform: scale(1.02);
+    }
+
+    .slider-arrow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #111;
+      border: 2px solid #0F4C2A;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .slider-arrow-btn:hover {
+      background: #0F4C2A;
+      color: #FFF;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-arrow-btn.prev-btn {
+      left: -24px;
+    }
+
+    .slider-arrow-btn.next-btn {
+      right: -24px;
+    }
+
+    .slider-thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .thumb-btn {
+      border: 3px solid transparent;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #FFF;
+      padding: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .thumb-btn img {
+      width: 72px;
+      height: 96px;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .thumb-btn.active {
+      border-color: #0F4C2A;
+      box-shadow: 0 0 0 2px #FFC72C, 0 6px 16px rgba(15, 76, 42, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .slide-caption-bar {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #64748B;
+      font-weight: 700;
+    }
+
+    /* Fullscreen Image Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-img {
+      max-height: 90vh;
+      max-width: 90vw;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 2.5rem;
+      color: #FFF;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .slider-arrow-btn.prev-btn { left: 8px; }
+      .slider-arrow-btn.next-btn { right: 8px; }
+      .slider-stage { padding: 12px; min-height: 440px; }
+      .menu-slide-img { max-height: 420px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GRILLISTA SIGNATURE NAVBAR -->
+  <header class="bs-header">
+    <div class="bs-navbar-container">
+      
+      <!-- Left: Customer Support Hotline Box -->
+      <a href="tel:+918767121212" class="bs-hotline-btn left-btn" title="Call Customer Support">
+        <div class="hotline-top">
+          <svg class="phone-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="#FFC72C">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          <span class="hotline-phone">+91 87671 21212</span>
+        </div>
+        <div class="hotline-label">FOR CUSTOMER SUPPORT</div>
+      </a>
+
+      <!-- Central Navigation Cluster -->
+      <nav class="bs-nav-cluster">
+        <div class="bs-nav-left-links">
+          <a href="index.html#home" class="bs-nav-link">HOME</a>
+          <a href="about.html" class="bs-nav-link">ABOUT US</a>
+          <a href="menu.html" class="bs-nav-link active">MENU</a>
+        </div>
+
+        <!-- Center Circular Logo -->
+        <div class="bs-center-logo-box">
+          <a href="index.html#home" aria-label="Grillista Home" class="bs-logo-anchor">
+            <img src="assets/logo.png" alt="Grillista Logo" class="bs-exact-circular-logo">
+          </a>
+        </div>
+
+        <div class="bs-nav-right-links">
+          <a href="franchise.html" class="bs-nav-link">FRANCHISE</a>
+          <a href="join-us.html" class="bs-nav-link">JOIN US</a>
+          <a href="locator.html" class="bs-nav-link two-line-link">
+            <span>STORE</span>
+            <span>LOCATOR</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Right: Franchise Enquiry Hotline Box -->
+      <a href="franchise.html#franchise-apply" class="bs-hotline-btn right-btn" title="Call Franchise Hotline">
+        <div class="hotline-top">
+          <svg class="phone-icon-svg" viewBox="0 0 24 24" width="16" height="16" fill="#FFC72C">
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+          </svg>
+          <span class="hotline-phone">+91 90290 20888</span>
+        </div>
+        <div class="hotline-label">FOR FRANCHISE ENQUIRY ONLY</div>
+      </a>
+
+      <!-- Mobile Logo & Menu Toggle -->
+      <div class="mobile-header-bar">
+        <a href="index.html#home" class="mobile-logo-link" aria-label="Grillista Home">
+          <img src="assets/logo.png" alt="Grillista Logo" class="mobile-logo-img">
+        </a>
+        <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE TITLE HEADER (Matching about.html style) -->
+    <section style="padding: 50px 0 20px; background: #FFFFFF; border-bottom: 1px solid var(--border-color);">
+      <div class="container" style="text-align: center;">
+        <h1 class="menu-main-title">
+          OUR <span class="highlight-red">MENU</span>
+        </h1>
+        <p style="font-size: 1.08rem; color: #4A5568; max-width: 800px; margin: 14px auto 0; line-height: 1.7;">
+          Authentic desi fusion flavors, handcrafted burgers, premium grilled sandwiches, loaded fries, Chinese delights & Italian pastas.
+        </p>
+      </div>
+    </section>
+
+    <!-- PURE CONTINUOUS FLOATING FOOD ITEMS RIBBON -->
+    <section class="floating-food-ribbon-section">
+      <div class="floating-food-container">
+        <div class="floating-food-track">
+          <!-- Item 1: Burger -->
+          <div class="floating-food-item" title="Grillista Handcrafted Burgers">
+            <img src="assets/cutouts/burger_cutout.png" alt="Burger">
+            <span class="floating-food-label">Burgers</span>
+          </div>
+
+          <!-- Item 2: Pizza -->
+          <div class="floating-food-item" title="Farmhouse Pizza">
+            <img src="assets/cutouts/pizza_cutout.png" alt="Pizza">
+            <span class="floating-food-label">Pizzas</span>
+          </div>
+
+          <!-- Item 3: Garlic Bread -->
+          <div class="floating-food-item" title="Stuffed Garlic Bread">
+            <img src="assets/cutouts/garlicbread_cutout.png" alt="Garlic Bread">
+            <span class="floating-food-label">Garlic Bread</span>
+          </div>
+
+          <!-- Item 4: Fries -->
+          <div class="floating-food-item" title="Crispy Fries">
+            <img src="assets/cutouts/fries_cutout.png" alt="Fries">
+            <span class="floating-food-label">Fries</span>
+          </div>
+
+          <!-- Item 5: Mocktail -->
+          <div class="floating-food-item" title="Virgin Mojito">
+            <img src="assets/cutouts/mojito_cutout.png" alt="Mojito">
+            <span class="floating-food-label">Mocktails</span>
+          </div>
+
+          <!-- Item 6: Shake -->
+          <div class="floating-food-item" title="Thick Shakes">
+            <img src="assets/cutouts/shake_cutout.png" alt="Shake">
+            <span class="floating-food-label">Thick Shakes</span>
+          </div>
+
+          <!-- Item 7: Pasta -->
+          <div class="floating-food-item" title="Creamy Pasta">
+            <img src="assets/cutouts/pasta_cutout.png" alt="Pasta">
+            <span class="floating-food-label">Pastas</span>
+          </div>
+
+          <!-- Item 8: Momos -->
+          <div class="floating-food-item" title="Steamed Momos">
+            <img src="assets/cutouts/momos_cutout.png" alt="Momos">
+            <span class="floating-food-label">Momos</span>
+          </div>
+
+          <!-- Item 9: Pav Bhaji -->
+          <div class="floating-food-item" title="Pav Bhaji">
+            <img src="assets/cutouts/pavbhaji_cutout.png" alt="Pav Bhaji">
+            <span class="floating-food-label">Pav Bhaji</span>
+          </div>
+
+          <!-- Item 10: Chilli Paneer -->
+          <div class="floating-food-item" title="Chilli Paneer">
+            <img src="assets/cutouts/chillipaneer_cutout.png" alt="Chilli Paneer">
+            <span class="floating-food-label">Indo-Chinese</span>
+          </div>
+
+          <!-- DUPLICATE SET FOR CONTINUOUS SEAMLESS INFINITE LOOP -->
+          <div class="floating-food-item" title="Grillista Handcrafted Burgers">
+            <img src="assets/cutouts/burger_cutout.png" alt="Burger">
+            <span class="floating-food-label">Burgers</span>
+          </div>
+
+          <div class="floating-food-item" title="Farmhouse Pizza">
+            <img src="assets/cutouts/pizza_cutout.png" alt="Pizza">
+            <span class="floating-food-label">Pizzas</span>
+          </div>
+
+          <div class="floating-food-item" title="Stuffed Garlic Bread">
+            <img src="assets/cutouts/garlicbread_cutout.png" alt="Garlic Bread">
+            <span class="floating-food-label">Garlic Bread</span>
+          </div>
+
+          <div class="floating-food-item" title="Crispy Fries">
+            <img src="assets/cutouts/fries_cutout.png" alt="Fries">
+            <span class="floating-food-label">Fries</span>
+          </div>
+
+          <div class="floating-food-item" title="Virgin Mojito">
+            <img src="assets/cutouts/mojito_cutout.png" alt="Mojito">
+            <span class="floating-food-label">Mocktails</span>
+          </div>
+
+          <div class="floating-food-item" title="Thick Shakes">
+            <img src="assets/cutouts/shake_cutout.png" alt="Shake">
+            <span class="floating-food-label">Thick Shakes</span>
+          </div>
+
+          <div class="floating-food-item" title="Creamy Pasta">
+            <img src="assets/cutouts/pasta_cutout.png" alt="Pasta">
+            <span class="floating-food-label">Pastas</span>
+          </div>
+
+          <div class="floating-food-item" title="Steamed Momos">
+            <img src="assets/cutouts/momos_cutout.png" alt="Momos">
+            <span class="floating-food-label">Momos</span>
+          </div>
+
+          <div class="floating-food-item" title="Pav Bhaji">
+            <img src="assets/cutouts/pavbhaji_cutout.png" alt="Pav Bhaji">
+            <span class="floating-food-label">Pav Bhaji</span>
+          </div>
+
+          <div class="floating-food-item" title="Chilli Paneer">
+            <img src="assets/cutouts/chillipaneer_cutout.png" alt="Chilli Paneer">
+            <span class="floating-food-label">Indo-Chinese</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL MENU 3D COVERFLOW SHOWCASE (EXACT SCREENSHOT LAYOUT) -->
+    <section class="menu-showcase-stage-wrap" style="min-height: 650px;">
+      <!-- Top Center Made In India Badge Stamp -->
+      <div class="stage-badge-stamp">
+        <span>🇮🇳</span> PROUDLY MADE IN INDIA
+      </div>
+
+      <div class="coverflow-viewport">
+        <!-- Chevron Arrows (Exact Screenshot Style) -->
+        <button class="coverflow-nav-arrow arrow-prev" id="coverflow-prev" aria-label="Previous Menu Slide">‹</button>
+        <button class="coverflow-nav-arrow arrow-next" id="coverflow-next" aria-label="Next Menu Slide">›</button>
+
+        <!-- Coverflow Slide Track -->
+        <div class="coverflow-track" id="coverflow-track">
+          <!-- Slide 0: Garlic Breads, Burger Bench, Wraps & Rolls -->
+          <div class="coverflow-slide" data-slide="0">
+            <div class="slide-frame">
+              <img src="assets/menu-page-3.jpg" alt="Grillista In-Store Menu - Garlic Breads, Burger Bench, Wraps & Rolls, Veg Taco">
+            </div>
+          </div>
+
+          <!-- Slide 1: Classic & Premium Pizzas -->
+          <div class="coverflow-slide prev" data-slide="1">
+            <div class="slide-frame">
+              <img src="assets/menu-page-4.jpg" alt="Grillista In-Store Menu - Classic Pizzas, Premium Pizzas, Cheese Burst, Pizza Add-Ons">
+            </div>
+          </div>
+
+          <!-- Slide 2 (Active Center): Sandwiches, Desi Bites, Fries, Chinese -->
+          <div class="coverflow-slide active" data-slide="2">
+            <div class="slide-frame">
+              <img src="assets/menu-page-1.jpg" alt="Grillista In-Store Menu - Sandwiches, Grillista Desi Bites, Fries, Chinese Favourites">
+            </div>
+          </div>
+
+          <!-- Slide 3: Noodles & Rice, Momos, Soups, Pasta -->
+          <div class="coverflow-slide next" data-slide="3">
+            <div class="slide-frame">
+              <img src="assets/menu-page-2.jpg" alt="Grillista In-Store Menu - Noodles & Rice, Momos, Soups, Pasta & Noodles">
+            </div>
+          </div>
+
+          <!-- Slide 4: Beverages, Mocktails, Maggi, Thick Shakes, Tea & Coffee -->
+          <div class="coverflow-slide" data-slide="4">
+            <div class="slide-frame">
+              <img src="assets/menu-page-5.jpg" alt="Grillista In-Store Menu - Coolers, Mocktails, Maggi, Thick Shakes, Cold Coffee, Tea & Coffee">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Luxury Interactive Controller Dock -->
+      <div class="menu-dock-wrapper">
+        <div class="menu-controller-dock">
+          <div class="dock-controls-row">
+            <div class="coverflow-dots" id="coverflow-dots">
+              <button class="coverflow-dot" data-index="0" aria-label="Slide 1"></button>
+              <button class="coverflow-dot" data-index="1" aria-label="Slide 2"></button>
+              <button class="coverflow-dot active" data-index="2" aria-label="Slide 3"></button>
+              <button class="coverflow-dot" data-index="3" aria-label="Slide 4"></button>
+              <button class="coverflow-dot" data-index="4" aria-label="Slide 5"></button>
+            </div>
+          </div>
+
+          <div class="dock-caption-text" id="coverflow-caption">
+            <span>Sandwiches</span>
+            <span class="dock-bullet-dot">•</span>
+            <span>Grillista Desi Bites</span>
+            <span class="dock-bullet-dot">•</span>
+            <span>Fries</span>
+            <span class="dock-bullet-dot">•</span>
+            <span>Chinese Favourites</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING QUICK CONTACT SIDEBAR (MATCHING SCREENSHOT) -->
+  <aside class="floating-quick-sidebar" id="floating-quick-sidebar" aria-label="Quick Contact Sidebar">
+    <!-- 1. Collapse / Expand Arrow -->
+    <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" type="button" onclick="toggleQuickSidebar()" aria-label="Toggle Quick Sidebar" title="Collapse / Expand">
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <!-- 2. WhatsApp -->
+    <a href="https://wa.me/919029020888?text=Hi%20Grillista%20Team%2C%20I%20am%20interested%20in%20Franchise%20/%20Ordering" target="_blank" rel="noopener noreferrer" class="sidebar-action-item sidebar-whatsapp-btn" title="Chat on WhatsApp" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+
+    <!-- 3. Phone -->
+    <a href="tel:+918767121212" class="sidebar-action-item sidebar-phone-btn" title="Call Us" aria-label="Phone">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+      </svg>
+    </a>
+
+    <!-- 4. Email -->
+    <a href="mailto:franchise@grillista.in" class="sidebar-action-item sidebar-email-btn" title="Email Us" aria-label="Email">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="bs-site-footer">
+    <div class="container">
+      <div class="bs-footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <img src="assets/logo.png" alt="Grillista Logo" style="height: 52px; width: auto; object-fit: contain;">
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 900; color: #FFF; line-height: 1.1;">GRILLISTA</h4>
+              <span style="font-size: 0.75rem; color: var(--bs-yellow); font-weight: 700;">THE ULTIMATE FOOD CHAIN</span>
+            </div>
+          </div>
+
+          <h4 class="footer-col-title" style="display: flex; align-items: center; gap: 8px; font-size: 1.1rem; font-weight: 900; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+            <span style="display: inline-block; width: 4px; height: 18px; background: #00E676; border-radius: 2px;"></span>
+            CORPORATE HQ
+          </h4>
+          <p style="color: #FFFFFF; font-size: 1rem; font-weight: 800; margin-bottom: 4px;">
+            RK Group of Industries
+          </p>
+          <p style="color: #94A3B8; font-size: 0.88rem; line-height: 1.55; margin-bottom: 16px;">
+            621/18, Block-W, Juhi Kala, VR Tower, Near Bharat Petroleum, Kanpur, UP – 208014
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            <a href="tel:+916386818682" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.05rem; font-weight: 900; color: #FFC72C;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#00E676">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+              </svg>
+              <span>+91 63868 18682</span>
+            </a>
+            <a href="mailto:grillistakanpur@gmail.com" style="display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.92rem; font-weight: 700; color: #CBD5E1;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="#F59E0B">
+                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+              <span>grillistakanpur@gmail.com</span>
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <a href="https://wa.me/916386818682" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #25D366;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #E1306C;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #1877F2;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" style="width: 36px; height: 36px; border-radius: 50%; background: #1E293B; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #FF0000;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Useful Links:</h4>
+          <ul class="bs-footer-links">
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="menu.html">Full Menu</a></li>
+            <li><a href="franchise.html">Franchise Models & ROI</a></li>
+            <li><a href="locator.html">Store Locator</a></li>
+            <li><a href="join-us.html">Join Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Helpline Contacts:</h4>
+          <ul class="bs-footer-links">
+            <li>📞 Customer Support: <strong>+91 87671 21212</strong></li>
+            <li>💼 Franchise Only: <strong>+91 90290 20888</strong></li>
+            <li>🏢 Real Estate / Leasing: <strong>+91 90290 20889</strong></li>
+            <li>📦 Bulk & Catering: <strong>+91 87671 21215</strong></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Follow Us On:</h4>
+          <div style="display: flex; gap: 12px; font-size: 1.5rem; margin-top: 8px;">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </div>
+          <p style="margin-top: 14px; font-size: 0.8rem; color: var(--text-subtle);">
+            Made with ❤️ in India.
+          </p>
+        </div>
+      </div>
+
+      <div class="bs-footer-bottom">
+        <div>© 2026 Grillista Foods Private Limited. All rights reserved.</div>
+        <div>Proudly Made In India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script for Interactive Menu -->
+  <script type="module" src="js/app.js"></script>
+
+  <!-- Coverflow Carousel & Lightbox Engine -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = Array.from(document.querySelectorAll('.coverflow-slide'));
+      const dots = Array.from(document.querySelectorAll('.coverflow-dot'));
+      const prevBtn = document.getElementById('coverflow-prev');
+      const nextBtn = document.getElementById('coverflow-next');
+      const caption = document.getElementById('coverflow-caption');
+
+      const slideData = [
+        ["Garlic Breads", "Burger Bench", "Wraps & Rolls", "Veg Taco"],
+        ["Classic Pizzas", "Farmhouse Pizzas", "Cheese Burst", "Custom Toppings"],
+        ["Sandwiches", "Grillista Desi Bites", "Fries", "Chinese Favourites"],
+        ["Noodles & Rice", "Momos", "Soups", "Pasta & Noodles"],
+        ["Coolers & Mocktails", "Maggi", "Thick Shakes", "Cold Coffee", "Tea & Chai"]
+      ];
+
+      let currentIndex = 2; // Start on Slide 3 (Center Sandwiches/Desi Bites)
+
+      function updateCoverflow(index) {
+        const n = slides.length;
+        if (index < 0) index = n - 1;
+        if (index >= n) index = 0;
+        currentIndex = index;
+
+        const prevIndex = (currentIndex - 1 + n) % n;
+        const nextIndex = (currentIndex + 1) % n;
+
+        slides.forEach((slide, idx) => {
+          slide.className = 'coverflow-slide';
+          if (idx === currentIndex) {
+            slide.classList.add('active');
+          } else if (idx === prevIndex) {
+            slide.classList.add('prev');
+          } else if (idx === nextIndex) {
+            slide.classList.add('next');
+          }
+        });
+
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === currentIndex);
+        });
+
+        if (caption && slideData[currentIndex]) {
+          caption.innerHTML = slideData[currentIndex]
+            .map((item, i) => `<span>${item}</span>`)
+            .join('<span class="dock-bullet-dot">•</span>');
+        }
+      }
+
+      prevBtn?.addEventListener('click', () => updateCoverflow(currentIndex - 1));
+      nextBtn?.addEventListener('click', () => updateCoverflow(currentIndex + 1));
+
+      slides.forEach((slide, idx) => {
+        slide.addEventListener('click', (e) => {
+          if (!slide.classList.contains('active')) {
+            updateCoverflow(idx);
+          }
+        });
+      });
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => updateCoverflow(idx));
+      });
+
+      // Lightbox functionality for active image
+      const lightbox = document.getElementById('menu-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        img?.addEventListener('click', (e) => {
+          if (slide.classList.contains('active')) {
+            e.stopPropagation();
+            if (lightbox && lightboxImg) {
+              lightboxImg.src = img.src;
+              lightbox.classList.add('active');
+            }
+          }
+        });
+      });
+
+      lightboxClose?.addEventListener('click', () => lightbox?.classList.remove('active'));
+      lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+      });
+
+      // Keyboard arrow navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') updateCoverflow(currentIndex - 1);
+        if (e.key === 'ArrowRight') updateCoverflow(currentIndex + 1);
+        if (e.key === 'Escape') lightbox?.classList.remove('active');
+      });
+    });
+
+    function toggleQuickSidebar() {
+      document.getElementById('floating-quick-sidebar')?.classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>
