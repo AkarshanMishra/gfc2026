@@ -1,5 +1,5 @@
 # 🍔 GRILLISTA - Desi Burgers, Global Swag
-> A modern, secure, developer-friendly food franchise web platform built purely with **HTML5, CSS3, and Vanilla JavaScript (ES6 Modules)**, inspired by the bold energy and high-growth franchise model of **Burger Singh**.
+> A modern, secure, developer-friendly food franchise web platform built purely with **HTML5, CSS3, and Vanilla JavaScript (ES6 Modules)**, inspired by the bold energy and high-growth franchise model of **Grillista**.
 
 ---
 
@@ -12,7 +12,7 @@
 - **Sliding Cart Drawer & Dynamic Bill Engine**: Subtotal, automated 5% GST calculation, packaging fee, free delivery tier (> ₹399), and coupon discount engine (`GRILLISTA50`, `DESI20`, `FREESHIP`).
 - **Live Order Tracker Simulator**: 4-stage cooking and delivery progression with real-time status updates.
 
-### 2. 💼 High-Yield Franchise Opportunity Portal (Burger Singh Model)
+### 2. 💼 High-Yield Franchise Opportunity Portal (Grillista Model)
 - **Multi-Tier Formats**: Flagship Dine-In, Food Court Express, and Cloud Kitchen / Kiosk.
 - **Interactive ROI & Payback Calculator**:
   - Dynamically calculates **CapEx**, **Monthly Gross Revenue**, **Operational Expenses (COGS, Rent, Staff, Royalty)**, **EBITDA Net Profit**, **Annual ROI %**, and **Payback Timeline** in months.

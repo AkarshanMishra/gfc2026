@@ -1,10 +1,10 @@
 /* ==========================================================================
-   GRILLISTA / BURGER SINGH THEME - Design System & Stylesheet
-   Exact Match to Burger Singh High-Energy Red/Yellow/Blue Fast-Food Franchise
+   GRILLISTA / Grillista THEME - Design System & Stylesheet
+   Exact Match to Grillista High-Energy Red/Yellow/Blue Fast-Food Franchise
    ========================================================================== */
 
 :root {
-  /* Color Palette - Burger Singh Signature Colors */
+  /* Color Palette - Grillista Signature Colors */
   --bs-red: #D32323;              /* Brand Red Header */
   --bs-dark-red: #A81B1B;
   --bs-yellow: #FFC72C;           /* Mustard / Saffron Gold */
@@ -96,7 +96,7 @@ img {
 .hidden { display: none !important; }
 
 /* ==========================================================================
-   BURGER SINGH BRAND HEADER (EXACT REPLICA)
+   Grillista BRAND HEADER (EXACT REPLICA)
    ========================================================================== */
 /* ==========================================================================
    GRILLISTA SIGNATURE FOREST GREEN & FLAME GOLD NAVBAR
@@ -272,7 +272,7 @@ img {
 }
 
 /* ==========================================================================
-   BURGER SINGH / GRILLISTA HERO BANNER (EXPANDED HD AMBIENCE)
+   Grillista HERO BANNER (EXPANDED HD AMBIENCE)
    ========================================================================== */
 .bs-hero-section {
   position: relative;
@@ -359,7 +359,7 @@ img {
   box-shadow: 0 12px 30px rgba(0, 163, 224, 0.7);
 }
 
-/* Right Franchise Banner: BECOME A BURGER SINGH STORE OWNER */
+/* Right Franchise Banner: BECOME A Grillista STORE OWNER */
 .bs-franchise-hero-cta {
   display: flex;
   flex-direction: column;
