@@ -20,6 +20,10 @@
   <link rel="stylesheet" href="css/franchise.css">
   <link rel="stylesheet" href="css/animations.css">
 
+  <!-- Leaflet Live Interactive Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <style>
     .locator-page-header {
       padding: 60px 20px 24px;
@@ -611,28 +615,66 @@
       display: flex;
       background: #FFFFFF;
       border: 2px solid #E2E8F0;
-      border-radius: 16px;
-      padding: 8px 10px 8px 20px;
+      border-radius: 18px;
+      padding: 6px 8px 6px 18px;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       transition: all 0.25s ease;
     }
 
     .territory-input-bar:focus-within {
       border-color: #D32323;
-      box-shadow: 0 12px 30px rgba(211, 35, 35, 0.12);
+      box-shadow: 0 14px 36px rgba(211, 35, 35, 0.12);
     }
 
     .territory-input {
       flex: 1;
       border: none;
       background: transparent;
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1.02rem;
+      font-weight: 700;
       color: #0F172A;
       outline: none;
       font-family: inherit;
+    }
+
+    /* Live Interactive Map Styles */
+    .franchise-map-section-wrap {
+      margin-top: 24px;
+      position: relative;
+    }
+
+    .franchise-map-container {
+      height: 420px;
+      width: 100%;
+      border-radius: 20px;
+      border: 2px solid #E2E8F0;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .map-floating-legend {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .map-legend-chip {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #334155;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .territory-detect-btn {
@@ -1332,6 +1374,22 @@
             <span class="territory-pill" onclick="quickCheckTerritory('Chandigarh')">Chandigarh</span>
           </div>
 
+          <!-- Live Interactive Map Canvas -->
+          <div class="franchise-map-section-wrap">
+            <div id="franchise-map-canvas" class="franchise-map-container"></div>
+            
+            <div class="map-floating-legend">
+              <div class="map-legend-chip">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #D32323; box-shadow: 0 0 8px #D32323; display: inline-block;"></span>
+                <span>Active Operating Outlets (Kakadeo & Barra)</span>
+              </div>
+              <div class="map-legend-chip">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #F59E0B; box-shadow: 0 0 8px #F59E0B; display: inline-block;"></span>
+                <span>Exclusive Territories Open for Launch</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Dynamic Result Display Container -->
           <div id="territory-result-container">
             <!-- Injected by JavaScript on search -->
@@ -1885,10 +1943,144 @@
         });
     }
 
+    let franchiseLiveMap = null;
+    let mapMarkersLayer = null;
+    let searchMarker = null;
+
+    /* Initialize Live Interactive Leaflet Map */
+    function initLiveFranchiseMap() {
+      const mapContainer = document.getElementById('franchise-map-canvas');
+      if (!mapContainer || typeof L === 'undefined') return;
+
+      // Center around Uttar Pradesh / North-Central India
+      franchiseLiveMap = L.map('franchise-map-canvas', {
+        center: [26.8467, 80.9462],
+        zoom: 6,
+        scrollWheelZoom: false
+      });
+
+      // Ultra-clean high-resolution vector map tiles
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
+        maxZoom: 19
+      }).addTo(franchiseLiveMap);
+
+      mapMarkersLayer = L.layerGroup().addTo(franchiseLiveMap);
+
+      // Custom Red Pin (Active Flagships)
+      const redPinIcon = L.divIcon({
+        className: 'custom-map-pin',
+        html: `<div style="background: #D32323; width: 28px; height: 28px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 14px rgba(211,35,35,0.6); display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 14px;">📍</div>`,
+        iconSize: [28, 28],
+        iconAnchor: [14, 28]
+      });
+
+      // Custom Gold Pin (Untapped Exclusive Territories)
+      const goldPinIcon = L.divIcon({
+        className: 'custom-map-pin',
+        html: `<div style="background: #F59E0B; width: 26px; height: 26px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 14px rgba(245,158,11,0.6); display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 13px;">⭐</div>`,
+        iconSize: [26, 26],
+        iconAnchor: [13, 26]
+      });
+
+      // 1. Plot Active Outlets in Kanpur
+      const kakadeoMarker = L.marker([26.4746, 80.2982], { icon: redPinIcon }).addTo(mapMarkersLayer);
+      kakadeoMarker.bindPopup(`
+        <div style="font-family: inherit; padding: 4px;">
+          <strong style="color: #D32323; font-size: 0.92rem; display: block;">📍 GRILLISTA - KAKADEO</strong>
+          <span style="font-size: 0.78rem; color: #15803D; font-weight: 800;">🟢 ACTIVE FLAGSHIP BISTRO</span>
+          <p style="font-size: 0.78rem; color: #475569; margin: 4px 0 8px;">117/N/70, Kakadeo Main Market, Kanpur</p>
+          <button onclick="processTerritoryCity('Kanpur')" style="background: #D32323; color: #FFF; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">View Expansion Catchments</button>
+        </div>
+      `);
+
+      const barraMarker = L.marker([26.4358, 80.3015], { icon: redPinIcon }).addTo(mapMarkersLayer);
+      barraMarker.bindPopup(`
+        <div style="font-family: inherit; padding: 4px;">
+          <strong style="color: #D32323; font-size: 0.92rem; display: block;">📍 GRILLISTA - BARRA</strong>
+          <span style="font-size: 0.78rem; color: #15803D; font-weight: 800;">🟢 ACTIVE EXPRESS HUB</span>
+          <p style="font-size: 0.78rem; color: #475569; margin: 4px 0 8px;">Barra 2, CISF Camp Road, Kanpur</p>
+          <button onclick="processTerritoryCity('Kanpur')" style="background: #D32323; color: #FFF; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">View Expansion Catchments</button>
+        </div>
+      `);
+
+      // 2. Plot Major Expansion Territories across India
+      const targetCities = [
+        { name: "Lucknow", lat: 26.8467, lng: 80.9462 },
+        { name: "Varanasi", lat: 25.3176, lng: 82.9739 },
+        { name: "Prayagraj", lat: 25.4358, lng: 81.8463 },
+        { name: "Noida", lat: 28.5355, lng: 77.3910 },
+        { name: "Delhi", lat: 28.6139, lng: 77.2090 },
+        { name: "Patna", lat: 25.5941, lng: 85.1376 },
+        { name: "Indore", lat: 22.7196, lng: 75.8577 },
+        { name: "Jaipur", lat: 26.9124, lng: 75.7873 },
+        { name: "Chandigarh", lat: 30.7333, lng: 76.7794 },
+        { name: "Gorakhpur", lat: 26.7606, lng: 83.3732 },
+        { name: "Agra", lat: 27.1767, lng: 78.0081 },
+        { name: "Pune", lat: 18.5204, lng: 73.8567 },
+        { name: "Bengaluru", lat: 12.9716, lng: 77.5946 }
+      ];
+
+      targetCities.forEach(city => {
+        const marker = L.marker([city.lat, city.lng], { icon: goldPinIcon }).addTo(mapMarkersLayer);
+        marker.bindPopup(`
+          <div style="font-family: inherit; padding: 4px;">
+            <strong style="color: #B45309; font-size: 0.92rem; display: block;">⭐ ${city.name.toUpperCase()}</strong>
+            <span style="font-size: 0.78rem; color: #15803D; font-weight: 800;">100% UNTAPPED TERRITORY</span>
+            <p style="font-size: 0.78rem; color: #475569; margin: 4px 0 8px;">Exclusive Master Franchise Open</p>
+            <button onclick="processTerritoryCity('${city.name}')" style="background: #D32323; color: #FFF; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">Analyze ${city.name} ↗</button>
+          </div>
+        `);
+      });
+    }
+
+    /* Fly Map to Real Geocoded Coordinates */
+    function panMapToLocation(cityName) {
+      if (!franchiseLiveMap) return;
+
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(cityName + ', India')}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.length > 0) {
+            const lat = parseFloat(data[0].lat);
+            const lon = parseFloat(data[0].lon);
+
+            franchiseLiveMap.flyTo([lat, lon], 12, { duration: 1.5 });
+
+            if (searchMarker) {
+              franchiseLiveMap.removeLayer(searchMarker);
+            }
+
+            const searchIcon = L.divIcon({
+              className: 'custom-map-pin',
+              html: `<div style="background: #2563EB; width: 32px; height: 32px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 18px rgba(37,99,235,0.7); display: flex; align-items: center; justify-content: center; color: #FFF; font-size: 16px; animation: radarPulse 1.2s infinite ease-in-out;">🎯</div>`,
+              iconSize: [32, 32],
+              iconAnchor: [16, 32]
+            });
+
+            searchMarker = L.marker([lat, lon], { icon: searchIcon }).addTo(franchiseLiveMap);
+            searchMarker.bindPopup(`
+              <div style="font-family: inherit; padding: 4px;">
+                <strong style="color: #0F172A; font-size: 0.92rem; display: block;">🎯 ${cityName.toUpperCase()}</strong>
+                <span style="font-size: 0.76rem; color: #166534; font-weight: 800;">REAL-TIME GPS LOCATED</span>
+                <p style="font-size: 0.76rem; color: #64748B; margin: 4px 0 6px;">Lat: ${lat.toFixed(4)}, Lon: ${lon.toFixed(4)}</p>
+                <button onclick="openInPageGoogleForm()" style="background: #D32323; color: #FFF; border: none; padding: 4px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 800; cursor: pointer;">Fill Application ↗</button>
+              </div>
+            `).openPopup();
+          }
+        })
+        .catch(err => {
+          console.warn("Geocoding lookup:", err);
+        });
+    }
+
     function processTerritoryCity(cityName) {
       const normalized = cityName.toLowerCase().trim();
       const isKanpur = normalized.includes('kanpur') || normalized.includes('cawnpore') || normalized.includes('2080');
       
+      // Pan live map to geolocated city
+      panMapToLocation(cityName);
+
       // Radar scanning loading effect
       const resultContainer = document.getElementById('territory-result-container');
       if (resultContainer) {
@@ -1916,6 +2108,9 @@
         input.value = '';
         input.focus();
       }
+      if (franchiseLiveMap) {
+        franchiseLiveMap.flyTo([26.8467, 80.9462], 6, { duration: 1.2 });
+      }
       const section = document.getElementById('franchise-territory');
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1926,7 +2121,7 @@
           <div style="text-align: center; padding: 28px 20px; background: #FFFFFF; border-radius: 16px; border: 2px dashed #CBD5E1; margin-top: 20px;">
             <div style="font-size: 1.8rem; margin-bottom: 8px;">🗺️</div>
             <h4 style="font-size: 1.05rem; font-weight: 800; color: #0F172A; margin: 0 0 4px;">Enter a New City or Pincode</h4>
-            <p style="font-size: 0.85rem; color: #64748B; margin: 0;">Type your target location above or pick one of the trending catchments to analyze feasibility.</p>
+            <p style="font-size: 0.85rem; color: #64748B; margin: 0;">Type your target location above or pick one of the trending catchments to analyze feasibility on the live map.</p>
           </div>
         `;
       }
@@ -1975,7 +2170,6 @@
       if (!resultContainer) return;
 
       const formattedName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-      const directGoogleForm = `https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform`;
       const whatsappUrl = `https://wa.me/916386818682?text=Hello%20Grillista%20Franchise%20Team%2C%20I%20am%20interested%20in%20applying%20for%20a%20Franchise%20in%20${encodeURIComponent(formattedName)}.`;
 
       // Lookup known hub info if present
@@ -2139,15 +2333,20 @@
       // 1. Initialize Real-Time Autocomplete
       initTerritoryAutocomplete();
 
-      // 2. Initialize default territory display with Lucknow
+      // 2. Initialize Live Leaflet Franchise Map
+      setTimeout(() => {
+        initLiveFranchiseMap();
+      }, 200);
+
+      // 3. Initialize default territory display with Lucknow
       renderTerritoryResult('Lucknow', false);
 
-      // 3. Handle Enter key on search input
+      // 4. Handle Enter key on search input
       document.getElementById('territory-search-input')?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') checkFranchiseTerritory();
       });
 
-      // 4. In-Page Google Form Modal Close Handlers
+      // 5. In-Page Google Form Modal Close Handlers
       const gformModal = document.getElementById('gform-lightbox-modal');
       const gformClose = document.getElementById('gform-modal-close');
       gformClose?.addEventListener('click', () => gformModal?.classList.remove('active'));
@@ -2155,7 +2354,7 @@
         if (e.target === gformModal) gformModal.classList.remove('active');
       });
 
-      // 5. Lightbox Controls
+      // 6. Lightbox Controls
       const lightboxModal = document.getElementById('outlet-photos-lightbox');
       const lightboxClose = document.getElementById('outlet-lightbox-close');
       const prevBtn = document.getElementById('outlet-gallery-prev');
@@ -2169,7 +2368,7 @@
         if (e.target === lightboxModal) lightboxModal.classList.remove('active');
       });
 
-      // 6. Smart Food Order Modal Controls
+      // 7. Smart Food Order Modal Controls
       const foodModal = document.getElementById('smart-food-order-modal');
       const foodModalClose = document.getElementById('food-modal-close');
       foodModalClose?.addEventListener('click', () => foodModal?.classList.remove('active'));
@@ -2188,7 +2387,7 @@
         if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
       });
 
-      // 7. Mobile Menu Toggle
+      // 8. Mobile Menu Toggle
       document.getElementById('mobile-nav-toggle')?.addEventListener('click', () => {
         document.querySelector('.bs-nav-cluster')?.classList.toggle('mobile-open');
       });
