@@ -1443,7 +1443,7 @@
       }
     }
 
-    /* Smart Geo-Location Food Order Modal Logic */
+    /* Smart Geo-Location Food Order Modal Logic (100% Automatic Backend Detection) */
     function openFoodOrderModal(outletName) {
       selectedOutletForOrder = outletName || 'Kakadeo';
       const modal = document.getElementById('smart-food-order-modal');
@@ -1454,49 +1454,91 @@
         headerTitle.innerHTML = `<span>🛵</span> ORDER FOOD - GRILLISTA ${selectedOutletForOrder.toUpperCase()}`;
       }
 
+      // 1. Show Smooth Automated Loader (Zero Manual Prompts)
       if (body) {
         body.innerHTML = `
-          <div style="text-align: center; padding: 10px 0 16px;">
-            <div style="width: 56px; height: 56px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 14px;">
-              📍
+          <div style="text-align: center; padding: 28px 10px 32px;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: #EFF6FF; border: 3px solid #BFDBFE; border-top-color: #2563EB; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 16px; animation: spin 1s linear infinite;">
             </div>
-            <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0 0 6px;">Checking Delivery Availability...</h4>
-            <p style="font-size: 0.88rem; color: #64748B; margin: 0 0 20px; line-height: 1.5;">
-              Checking if food delivery is operational in your area:
+            <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin: 0 0 6px;">
+              Detecting Your Location...
+            </h4>
+            <p style="font-size: 0.88rem; color: #64748B; margin: 0; line-height: 1.5;">
+              Connecting to nearest Grillista cloud kitchen & delivery fleet.
             </p>
-
-            <div style="display: flex; flex-direction: column; gap: 10px; max-width: 380px; margin: 0 auto;">
-              <button type="button" onclick="renderKanpurDeliveryView()" style="background: #22C55E; color: #FFFFFF; border: none; padding: 13px 18px; border-radius: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);">
-                <span>🟢</span> I Am in Kanpur (Order Food)
-              </button>
-              <button type="button" onclick="renderOutsideKanpurView()" style="background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; padding: 12px 18px; border-radius: 12px; font-weight: 700; font-size: 0.86rem; cursor: pointer; transition: all 0.2s ease;">
-                <span>📍</span> I Am in Another City
-              </button>
-            </div>
           </div>
         `;
       }
 
       modal?.classList.add('active');
 
-      // Attempt automatic location check
+      let resolved = false;
+
+      function finishWithResult(isKanpur, cityName) {
+        if (resolved) return;
+        resolved = true;
+        if (isKanpur) {
+          renderKanpurDeliveryView();
+        } else {
+          renderOutsideKanpurView(cityName);
+        }
+      }
+
+      // Fast fallback timeout (max 2.8s)
+      const fallbackTimer = setTimeout(() => {
+        if (!resolved) {
+          // If browser took too long, run quick IP fallback
+          fetchIPLocation(finishWithResult);
+        }
+      }, 2500);
+
+      // 2. Automated Browser Geolocation Check
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (pos) => {
+            clearTimeout(fallbackTimer);
             const lat = pos.coords.latitude;
             const lng = pos.coords.longitude;
-            if (lat >= 26.0 && lat <= 26.8 && lng >= 80.0 && lng <= 80.7) {
-              renderKanpurDeliveryView();
-            } else {
-              renderOutsideKanpurView();
-            }
+            // Kanpur Bounding Box: Lat 26.0 to 26.8, Lng 80.0 to 80.7
+            const isKanpur = (lat >= 26.0 && lat <= 26.8 && lng >= 80.0 && lng <= 80.7);
+            finishWithResult(isKanpur, isKanpur ? 'Kanpur' : 'your city');
           },
           (err) => {
-            console.log('Location prompt dismissed or denied:', err.message);
+            clearTimeout(fallbackTimer);
+            // On permission error, fallback automatically to IP geolocation
+            fetchIPLocation(finishWithResult);
           },
-          { timeout: 4000 }
+          { timeout: 2200, enableHighAccuracy: false }
         );
+      } else {
+        clearTimeout(fallbackTimer);
+        fetchIPLocation(finishWithResult);
       }
+    }
+
+    // IP Geolocation Fallback
+    function fetchIPLocation(callback) {
+      fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+          const city = (data.city || '').toLowerCase();
+          const isKanpur = city.includes('kanpur') || city.includes('cawnpore');
+          callback(isKanpur, data.city || 'your area');
+        })
+        .catch(() => {
+          // Alternative IP lookup
+          fetch('https://ipwho.is/')
+            .then(r => r.json())
+            .then(data2 => {
+              const city2 = (data2.city || '').toLowerCase();
+              const isKanpur2 = city2.includes('kanpur') || city2.includes('cawnpore');
+              callback(isKanpur2, data2.city || 'your area');
+            })
+            .catch(() => {
+              // Default to outside Kanpur franchise offer
+              callback(false, 'your area');
+            });
+        });
     }
 
     function renderKanpurDeliveryView() {
@@ -1565,18 +1607,20 @@
       `;
     }
 
-    function renderOutsideKanpurView() {
+    function renderOutsideKanpurView(cityName) {
       const body = document.getElementById('food-modal-body-content');
       if (!body) return;
+
+      const locationLabel = cityName && cityName !== 'your area' && cityName !== 'your city' ? cityName : 'Your City';
 
       body.innerHTML = `
         <div style="text-align: center; padding: 6px 0;">
           <div style="width: 54px; height: 54px; border-radius: 50%; background: #FEF2F2; color: #DC2626; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 12px;">
-            ⚠️
+            📍
           </div>
 
           <h4 style="font-size: 1.2rem; font-weight: 800; color: #0F172A; margin: 0 0 6px;">
-            We Aren't In Your City Yet!
+            Grillista Is Not In ${locationLabel} Yet!
           </h4>
           <p style="font-size: 0.88rem; color: #64748B; line-height: 1.55; margin: 0 0 18px;">
             We currently operate our active dine-in bistros and food delivery exclusively across <strong>Kanpur, Uttar Pradesh</strong>.
@@ -1585,18 +1629,18 @@
           <!-- Franchise Opportunity Card Banner -->
           <div style="background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1.5px solid #FDE68A; border-radius: 16px; padding: 18px 20px; text-align: left; margin-bottom: 20px;">
             <div style="font-size: 0.74rem; font-weight: 900; color: #B45309; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
-              🚀 BRING GRILLISTA TO YOUR HOMETOWN
+              🚀 BRING GRILLISTA TO ${locationLabel.toUpperCase()}
             </div>
             <h5 style="font-size: 1.05rem; font-weight: 900; color: #78350F; margin: 0 0 6px;">
               Own a High-ROI Grillista Franchise
             </h5>
             <p style="font-size: 0.84rem; color: #92400E; margin: 0; line-height: 1.5;">
-              Be the first business partner to launch our high-margin vegetarian burger, pizza, shake & street bite franchise in your city!
+              Be the first business partner to launch our high-margin vegetarian burger, pizza, shake & street bite franchise in ${locationLabel}!
             </p>
           </div>
 
           <a href="franchise.html#franchise-apply" style="background: #D32323; color: #FFFFFF; text-decoration: none; padding: 13px 22px; border-radius: 12px; font-weight: 900; font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.4px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; box-shadow: 0 4px 14px rgba(211, 35, 35, 0.25);">
-            <span>🚀 APPLY TO OPEN OUTLET IN YOUR CITY ↗</span>
+            <span>🚀 APPLY TO OPEN OUTLET IN ${locationLabel.toUpperCase()} ↗</span>
           </a>
         </div>
       `;
