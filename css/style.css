@@ -684,49 +684,142 @@ img {
 .review-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; font-style: italic; flex: 1; }
 .review-date { font-size: 0.75rem; color: var(--text-subtle); }
 
-/* Footer - Burger Singh Style */
+/* ==========================================================================
+   ULTRA-PREMIUM FOOTER STYLES (NO CONTENT CHANGES)
+   ========================================================================== */
 .bs-site-footer {
-  background: #08090B;
-  border-top: 4px solid var(--bs-red);
-  padding: 60px 0 30px;
+  background: radial-gradient(circle at 50% 0%, #151C28 0%, #080A0E 70%, #040507 100%);
+  border-top: 3px solid #FFC72C;
+  position: relative;
+  padding: 70px 0 35px;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.bs-site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D32323 0%, #FFC72C 50%, #00E676 100%);
+  z-index: 2;
 }
 
 .bs-footer-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1.25fr 0.9fr;
-  gap: 36px;
-  max-width: 1180px;
-  margin: 0 auto 40px;
+  grid-template-columns: 1.28fr 1.28fr 0.9fr;
+  gap: 40px;
+  max-width: 1220px;
+  margin: 0 auto 45px;
+  position: relative;
+  z-index: 3;
 }
 
 .footer-col-title {
-  font-size: 1.1rem;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.15rem;
   font-weight: 900;
-  color: var(--bs-yellow);
-  margin-bottom: 18px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .bs-footer-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  gap: 12px;
+  padding: 0;
+  margin: 0;
 }
 
-.bs-footer-links a:hover {
-  color: var(--bs-yellow);
+.bs-footer-links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #94A3B8;
+  font-size: 0.93rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  position: relative;
+}
+
+.bs-footer-links li a:hover {
+  color: #FFC72C;
+  transform: translateX(6px);
 }
 
 .bs-footer-bottom {
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--text-subtle);
+  align-items: center;
+  font-size: 0.88rem;
+  color: #94A3B8;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.bs-footer-bottom div:last-child {
+  color: #FFC72C;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Glass Outlet Direction Cards inside Footer */
+.bs-site-footer div[style*="background: rgba(255, 255, 255, 0.05)"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 14px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+.bs-site-footer div[style*="background: rgba(255, 255, 255, 0.05)"]:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(255, 199, 44, 0.5) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Social Icon Luxury Glow in Footer */
+.bs-site-footer a[aria-label="WhatsApp"],
+.bs-site-footer a[aria-label="Instagram"],
+.bs-site-footer a[aria-label="Facebook"],
+.bs-site-footer a[aria-label="YouTube"] {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bs-site-footer a[aria-label="WhatsApp"]:hover {
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45) !important;
+}
+
+.bs-site-footer a[aria-label="Instagram"]:hover {
+  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 20px rgba(221, 42, 123, 0.45) !important;
+}
+
+.bs-site-footer a[aria-label="Facebook"]:hover {
+  background: #1877F2 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.45) !important;
+}
+
+.bs-site-footer a[aria-label="YouTube"]:hover {
+  background: #FF0000 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  box-shadow: 0 8px 20px rgba(255, 0, 0, 0.45) !important;
 }
 
 /* ==========================================================================
