@@ -367,31 +367,33 @@ img {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 5px;
+  gap: 6px;
   text-align: right;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55));
 }
 
 .bs-franchise-hero-cta:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-5px) scale(1.03);
 }
 
 .bs-pill-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: clamp(1.8rem, 3.8vw, 2.5rem);
   font-weight: 900;
   font-style: italic;
   text-transform: uppercase;
   line-height: 1;
-  padding: 8px 22px;
+  padding: 10px 24px;
   letter-spacing: -0.5px;
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease;
 }
 
 .bs-pill-become {
@@ -408,53 +410,25 @@ img {
 .bs-pill-owner {
   background: #FFC72C;
   color: #111111;
+  box-shadow: 0 8px 25px rgba(255, 199, 44, 0.45);
 }
 
-.bs-pill-click {
-  background: linear-gradient(135deg, #D32323 0%, #9B111E 100%);
-  color: #FFFFFF;
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  padding: 10px 26px;
-  border-radius: 30px;
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 24px rgba(211, 35, 35, 0.45);
-  border: 2px solid #FFC72C;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.bs-pill-owner .pill-arrow {
+  font-size: 1.6rem;
+  color: #D32323;
+  font-style: normal;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.bs-pill-click .btn-arrow {
-  font-size: 1.2rem;
-  transition: transform 0.2s ease;
-  color: #FFC72C;
-}
-
-.bs-franchise-hero-cta:hover .bs-pill-click {
-  background: linear-gradient(135deg, #FFC72C 0%, #FFA000 100%);
-  color: #111111;
-  border-color: #FFFFFF;
-  box-shadow: 0 10px 28px rgba(255, 199, 44, 0.55);
-  transform: scale(1.05);
-}
-
-.bs-franchise-hero-cta:hover .bs-pill-click .btn-arrow {
-  color: #111111;
-  transform: translateX(4px);
+.bs-franchise-hero-cta:hover .bs-pill-owner .pill-arrow {
+  transform: translate(4px, -4px);
 }
 
 @media (max-width: 768px) {
   .bs-pill-tag {
     font-size: 1.4rem;
-    padding: 6px 16px;
-  }
-  .bs-pill-click {
-    font-size: 0.92rem;
-    padding: 6px 18px;
+    padding: 8px 16px;
   }
 }
 
