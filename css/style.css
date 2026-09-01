@@ -360,140 +360,88 @@ img {
 }
 
 /* ==========================================================================
-   LUXURY HERO FRANCHISE GLASS BADGE (REPLACES OLD CLASHING PILL BLOCKS)
+   POLISHED STACKED PILL HERO FRANCHISE BANNER
+   Matching user screenshot with refined luxury brand colors
    ========================================================================== */
 .bs-franchise-hero-cta {
-  display: inline-block;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  text-align: right;
   cursor: pointer;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
 }
 
 .bs-franchise-hero-cta:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-4px) scale(1.03);
 }
 
-.hero-franchise-glass-badge {
-  background: rgba(10, 15, 25, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 2px solid #FFC72C;
-  border-radius: 20px;
-  padding: 24px 28px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 199, 44, 0.25);
-  max-width: 420px;
-  text-align: left;
-  position: relative;
-  overflow: hidden;
+.bs-pill-tag {
+  display: inline-block;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 8px 22px;
+  letter-spacing: -0.5px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
 }
 
-.hero-franchise-glass-badge::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #D32323, #FFC72C, #00E676);
+.bs-pill-become {
+  background: #D32323;
+  color: #FFFFFF;
 }
 
-.glass-badge-top {
+.bs-pill-brand {
+  background: #0F4C2A;
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 199, 44, 0.4);
+}
+
+.bs-pill-owner {
+  background: #FFC72C;
+  color: #111111;
+}
+
+.bs-pill-click {
+  background: #FFFFFF;
+  color: #D32323;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 900;
+  padding: 8px 24px;
+  border-radius: 30px;
+  margin-top: 6px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 199, 44, 0.15);
-  border: 1px solid rgba(255, 199, 44, 0.4);
-  color: #FFC72C;
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border: 2.5px solid #D32323;
+  transition: all 0.2s ease;
 }
 
-.pulse-dot {
-  width: 7px;
-  height: 7px;
-  background: #00E676;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #00E676;
-  display: inline-block;
-  animation: pulseDot 1.8s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
-}
-
-.glass-badge-title {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.65rem;
-  font-weight: 900;
-  font-style: italic;
+.bs-franchise-hero-cta:hover .bs-pill-click {
+  background: #D32323;
   color: #FFFFFF;
-  line-height: 1.15;
-  margin: 0 0 6px;
-  text-transform: uppercase;
-  letter-spacing: -0.2px;
-}
-
-.glass-badge-title .gold-text {
-  color: #FFC72C;
-  text-shadow: 0 2px 10px rgba(255, 199, 44, 0.4);
-}
-
-.glass-badge-subtext {
-  color: #CBD5E1;
-  font-size: 0.86rem;
-  font-weight: 600;
-  margin: 0 0 16px;
-  line-height: 1.4;
-}
-
-.glass-badge-btn {
-  background: linear-gradient(135deg, #D32323 0%, #B71C1C 100%);
-  color: #FFFFFF;
-  border: 1.5px solid #FF8A80;
-  padding: 10px 22px;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  font-weight: 900;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 6px 18px rgba(211, 35, 35, 0.45);
-  transition: all 0.22s ease;
-  letter-spacing: 0.4px;
-}
-
-.bs-franchise-hero-cta:hover .glass-badge-btn {
-  background: linear-gradient(135deg, #FFC72C 0%, #FFA000 100%);
-  color: #111111;
-  border-color: #FFF9C4;
-  box-shadow: 0 8px 24px rgba(255, 199, 44, 0.5);
-}
-
-.glass-badge-btn .btn-arrow {
-  font-size: 1.1rem;
-  transition: transform 0.2s ease;
-}
-
-.bs-franchise-hero-cta:hover .btn-arrow {
-  transform: translateX(4px);
+  border-color: #FFFFFF;
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-  .hero-franchise-glass-badge {
-    max-width: 100%;
-    padding: 18px 20px;
+  .bs-pill-tag {
+    font-size: 1.4rem;
+    padding: 6px 16px;
   }
-  
-  .glass-badge-title {
-    font-size: 1.35rem;
+  .bs-pill-click {
+    font-size: 0.92rem;
+    padding: 6px 18px;
   }
 }
 
