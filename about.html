@@ -123,60 +123,21 @@
 
     .bs-team-photo-wrap {
       width: 100%;
-      height: 290px;
+      height: 310px;
       position: relative;
       overflow: hidden;
       transform: skewX(-14deg);
-      background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #CBD5E1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .bs-team-photo-avatar {
-      transform: skewX(14deg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #FFFFFF;
-      padding: 16px;
-    }
-
-    .bs-team-avatar-circle {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: #D32323;
-      border: 3px solid #FFC72C;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #FFFFFF;
-      margin-bottom: 12px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    }
-
-    .bs-team-avatar-name {
-      font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-      font-size: 1.1rem;
-      font-weight: 900;
-      font-style: italic;
-      text-transform: uppercase;
-      color: #FFC72C;
-      letter-spacing: 0.5px;
-    }
-
-    .bs-team-avatar-role {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: #E2E8F0;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
+    .bs-team-photo {
+      width: 135%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transform: skewX(14deg) translateX(-12%);
+      display: block;
     }
 
     .bs-team-content {
@@ -212,12 +173,14 @@
       
       .bs-team-photo-wrap {
         transform: none;
-        height: 200px;
+        height: 280px;
         border-radius: 12px;
       }
       
-      .bs-team-photo-avatar {
+      .bs-team-photo {
         transform: none;
+        width: 100%;
+        object-position: center top;
       }
 
       .bs-team-inner.reverse-row .bs-team-photo-wrap {
@@ -342,11 +305,7 @@
       <div class="bs-team-row">
         <div class="bs-team-inner">
           <div class="bs-team-photo-wrap">
-            <div class="bs-team-photo-avatar">
-              <div class="bs-team-avatar-circle">RU</div>
-              <div class="bs-team-avatar-name">Rajesh Upadhyaya</div>
-              <div class="bs-team-avatar-role">Founder & MD</div>
-            </div>
+            <img src="assets/rajesh-upadhyay.jpg" alt="Mr. Rajesh Upadhyaya - Founder & Managing Director, RK Group & Grillista" class="bs-team-photo">
           </div>
           <div class="bs-team-content">
             <h3 class="bs-team-name-title">
@@ -386,11 +345,7 @@
             </p>
           </div>
           <div class="bs-team-photo-wrap">
-            <div class="bs-team-photo-avatar">
-              <div class="bs-team-avatar-circle" style="background: #0F4C2A; border-color: #FFC72C;">SU</div>
-              <div class="bs-team-avatar-name">Shiva Upadhyay</div>
-              <div class="bs-team-avatar-role">Co-Founder & Director</div>
-            </div>
+            <img src="assets/shiva-upadhyay.webp" alt="Mrs. Shiva Upadhyay - Co-Founder & Director, RK Group & Grillista" class="bs-team-photo" style="object-position: center 10%;">
           </div>
         </div>
       </div>
