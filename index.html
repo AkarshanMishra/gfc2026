@@ -111,8 +111,8 @@
           
           <div></div>
 
-          <!-- Right CTA: BECOME A STORE OWNER / SUBMIT FRANCHISE APPLICATION -->
-          <a href="#franchise-apply" class="bs-franchise-hero-cta" id="btn-hero-franchise-owner" style="text-decoration: none;">
+          <!-- Right CTA: BECOME A STORE OWNER / FRANCHISE PAGE -->
+          <a href="franchise.html" class="bs-franchise-hero-cta" id="btn-hero-franchise-owner" style="text-decoration: none;">
             <div class="bs-pill-tag bs-pill-become">BECOME A</div>
             <div class="bs-pill-tag bs-pill-brand">GRILLISTA</div>
             <div class="bs-pill-tag bs-pill-owner">
@@ -178,132 +178,6 @@
         <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid rgba(15, 76, 42, 0.2); box-shadow: var(--shadow-lg);">
           <img src="assets/hero-restaurant.jpg" alt="Grillista Real Restaurant Ambience" style="width: 100%; height: clamp(240px, 35vw, 400px); object-fit: cover;">
         </div>
-      </div>
-    </section>
-
-    <!-- DEDICATED FRANCHISE APPLICATION SECTION -->
-    <section class="franchise-application-section" id="franchise-apply">
-      <div class="container">
-        
-        <div class="franchise-app-header-box">
-          <div class="franchise-app-pill-badge">
-            <span>🚀</span> DIRECT EXPANSION PROGRAM 2026
-          </div>
-          <h2 class="franchise-app-title">
-            SUBMIT FRANCHISE <span class="highlight-red" style="color: #D32323;">APPLICATION</span>
-          </h2>
-          <p class="franchise-app-subtext">
-            Take the first step towards owning a high-ROI Grillista restaurant. Fill out your details below and our franchise development team will review your application and contact you within 24 hours.
-          </p>
-          <div class="franchise-trust-chips">
-            <span class="franchise-trust-chip">⚡ 24-Hour Callback Guaranteed</span>
-            <span class="franchise-trust-chip">💼 Complete Turnkey Setup Support</span>
-            <span class="franchise-trust-chip">📍 Location Feasibility Audits</span>
-          </div>
-        </div>
-
-        <div class="franchise-app-card">
-          <form id="home-franchise-form">
-            <div class="franchise-form-grid">
-              
-              <!-- Full Name -->
-              <div>
-                <label for="f-name" class="form-label-custom">Full Name <span class="req">*</span></label>
-                <input type="text" id="f-name" class="form-input-custom" placeholder="e.g. Rahul Sharma" required>
-              </div>
-
-              <!-- Phone / WhatsApp -->
-              <div>
-                <label for="f-phone" class="form-label-custom">Phone / WhatsApp Number <span class="req">*</span></label>
-                <input type="tel" id="f-phone" class="form-input-custom" placeholder="+91 98765 43210" pattern="[0-9+ -]{10,15}" required>
-              </div>
-
-              <!-- Email Address -->
-              <div>
-                <label for="f-email" class="form-label-custom">Email Address <span class="req">*</span></label>
-                <input type="email" id="f-email" class="form-input-custom" placeholder="rahul.sharma@example.com" required>
-              </div>
-
-              <!-- Target City & State -->
-              <div>
-                <label for="f-city" class="form-label-custom">Target City & State <span class="req">*</span></label>
-                <input type="text" id="f-city" class="form-input-custom" placeholder="e.g. Lucknow, UP or Noida, NCR" required>
-              </div>
-
-              <!-- Preferred Franchise Model -->
-              <div>
-                <label for="f-model" class="form-label-custom">Preferred Franchise Model <span class="req">*</span></label>
-                <select id="f-model" class="form-select-custom" required>
-                  <option value="" disabled selected>Select Model Format</option>
-                  <option value="express">Grillista Express (200 sq.ft | ₹10 - 12 Lakh)</option>
-                  <option value="bistro">Grillista Bistro (600 sq.ft | ₹16 - 18 Lakh)</option>
-                  <option value="signature">Grillista Signature (1000 sq.ft | ₹38 - 40 Lakh)</option>
-                </select>
-              </div>
-
-              <!-- Investment Budget -->
-              <div>
-                <label for="f-budget" class="form-label-custom">Available Investment Capital <span class="req">*</span></label>
-                <select id="f-budget" class="form-select-custom" required>
-                  <option value="" disabled selected>Select Budget Bracket</option>
-                  <option value="10-15L">₹10 Lakh - ₹15 Lakh</option>
-                  <option value="15-25L">₹15 Lakh - ₹25 Lakh</option>
-                  <option value="25-40L">₹25 Lakh - ₹40 Lakh</option>
-                  <option value="40L+">₹40 Lakh & Above</option>
-                </select>
-              </div>
-
-              <!-- Commercial Property Status -->
-              <div class="franchise-form-full">
-                <label for="f-property" class="form-label-custom">Commercial Property Status <span class="req">*</span></label>
-                <select id="f-property" class="form-select-custom" required>
-                  <option value="" disabled selected>Do you have a commercial location?</option>
-                  <option value="owned">Yes, I own a commercial property</option>
-                  <option value="rented_negotiation">Yes, I have identified/negotiating a rental space</option>
-                  <option value="assistance">No, I need Grillista team's help in location scouting</option>
-                </select>
-              </div>
-
-              <!-- Message / Experience -->
-              <div class="franchise-form-full">
-                <label for="f-message" class="form-label-custom">Prior Business Experience / Additional Notes (Optional)</label>
-                <textarea id="f-message" class="form-textarea-custom" rows="3" placeholder="Tell us about your background, preferred locality, or specific questions..."></textarea>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="franchise-form-full" style="margin-top: 10px;">
-                <button type="submit" class="btn-submit-franchise-app" id="btn-submit-franchise">
-                  <span>🚀 SUBMIT FRANCHISE APPLICATION</span>
-                </button>
-              </div>
-
-            </div>
-          </form>
-
-          <!-- Success Message Confirmation Box -->
-          <div class="franchise-form-success-box" id="franchise-success-message">
-            <div style="font-size: 2.5rem; margin-bottom: 8px;">🎉</div>
-            <h3 style="color: #166534; font-size: 1.4rem; font-weight: 900; margin-bottom: 6px;">Application Submitted Successfully!</h3>
-            <p style="color: #15803D; font-size: 0.95rem; line-height: 1.6; max-width: 600px; margin: 0 auto 16px;">
-              Thank you for applying to join the Grillista family. Our senior franchise development team has received your application and will call you on your WhatsApp number within 24 hours.
-            </p>
-            <a href="https://wa.me/919029020888?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20my%20Franchise%20Application%20on%20the%20website." target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #FFFFFF; font-weight: 800; padding: 10px 22px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);">
-              <span>💬 Direct WhatsApp Connect (+91 90290 20888)</span>
-            </a>
-          </div>
-
-          <!-- Direct Google Form Alternative Link -->
-          <div class="google-form-alt-banner">
-            <div>
-              <strong>Prefer Google Forms?</strong> You can also submit your details directly via our official Google Forms link.
-            </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" class="google-form-alt-link">
-              Open Google Form ↗
-            </a>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
