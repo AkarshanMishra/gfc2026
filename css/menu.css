@@ -373,14 +373,14 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow-sm);
 }
 
 .food-card:hover {
-  transform: translateY(-6px);
+  transform: none;
   border-color: rgba(211, 35, 35, 0.4);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 }
 
 .food-image-wrapper {
@@ -389,17 +389,20 @@
   height: 200px;
   overflow: hidden;
   background: #F1F4F8;
+  cursor: zoom-in;
 }
 
 .food-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: zoom-in;
 }
 
-.food-card:hover .food-img {
-  transform: scale(1.06);
+.food-card:hover .food-img,
+.food-image-wrapper:hover .food-img {
+  transform: scale(1.1);
 }
 
 .food-badges {
