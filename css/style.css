@@ -704,372 +704,356 @@ img, video, iframe {
 .review-date { font-size: 0.75rem; color: var(--text-subtle); }
 
 /* ==========================================================================
-   GRILLISTA SIGNATURE LUXURY MODERN FOOTER
+   EXACT FOOTER MATCHING USER SCREENSHOT
    ========================================================================== */
 .bs-site-footer {
-  background: radial-gradient(circle at 50% 0%, #0D351D 0%, #071D10 50%, #030D07 100%);
+  background-color: #0B1118 !important;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(15, 76, 42, 0.15) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.03' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3C/g%3E%3C/svg%3E") !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 55px 0 25px !important;
   position: relative;
-  padding: 60px 0 30px;
   overflow: hidden;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.footer-top-brand-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 36px;
+.footer-exact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-exact-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1.15fr 1.2fr;
+  gap: 36px;
+  align-items: flex-start;
   margin-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  gap: 30px;
-  flex-wrap: wrap;
 }
 
-.footer-brand-intro {
+/* Col 1 */
+.brand-header-flex {
   display: flex;
   align-items: center;
-  gap: 20px;
-  max-width: 680px;
+  gap: 14px;
+  margin-bottom: 16px;
 }
 
-.footer-logo-link {
+.footer-logo-wrapper {
+  position: relative;
+  width: 58px;
+  height: 58px;
   flex-shrink: 0;
-  display: block;
 }
 
-.footer-brand-logo {
-  width: 72px;
-  height: 72px;
+.footer-exact-logo {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: contain;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #FFFFFF;
+  border: 2px solid #FFC72C;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.footer-brand-heading {
+.online-indicator-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 13px;
+  height: 13px;
+  background: #22C55E;
+  border: 2.5px solid #0B1118;
+  border-radius: 50%;
+}
+
+.brand-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-exact-brand-name {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   font-weight: 900;
-  font-style: italic;
   color: #FFFFFF;
   letter-spacing: 0.5px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.footer-exact-subbrand {
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: #FFC72C;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+}
+
+.footer-exact-desc {
+  color: #94A3B8;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.footer-exact-desc strong {
+  color: #FFFFFF;
+}
+
+.footer-exact-pills {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-.footer-veg-badge {
-  background: #22C55E;
-  color: #052E16;
-  font-size: 0.72rem;
-  font-weight: 900;
-  font-style: normal;
-  padding: 3px 10px;
+.f-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
   border-radius: 20px;
-  letter-spacing: 0.6px;
-}
-
-.footer-brand-tagline {
-  color: #94A3B8;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin: 6px 0 0;
-}
-
-.footer-social-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.footer-connect-title {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  text-transform: uppercase;
-  color: #CBD5E1;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.3px;
 }
 
-.footer-social-icons {
-  display: flex;
-  gap: 10px;
+.f-pill-veg {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10B981;
 }
 
-.footer-social-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
+.f-pill-fofo {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #F59E0B;
+}
+
+/* Col Titles with Vertical Indicators */
+.footer-exact-col-title {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footer-social-icon.social-wa:hover { background: #25D366; border-color: #25D366; color: #FFFFFF; transform: translateY(-3px); }
-.footer-social-icon.social-ig:hover { background: #E1306C; border-color: #E1306C; color: #FFFFFF; transform: translateY(-3px); }
-.footer-social-icon.social-fb:hover { background: #1877F2; border-color: #1877F2; color: #FFFFFF; transform: translateY(-3px); }
-.footer-social-icon.social-yt:hover { background: #FF0000; border-color: #FF0000; color: #FFFFFF; transform: translateY(-3px); }
-
-/* Main Grid */
-.footer-main-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.95fr 1.35fr 1.15fr;
-  gap: 36px;
-  margin-bottom: 45px;
-}
-
-.footer-col-heading {
+  gap: 8px;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 900;
   color: #FFFFFF;
-  text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
   margin: 0 0 20px;
 }
 
-/* Contact Cards Stack */
-.footer-contact-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.col-title-bar {
+  width: 3.5px;
+  height: 18px;
+  border-radius: 2px;
+  display: inline-block;
 }
 
-.footer-contact-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 10px 14px;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
+.bar-orange { background: #F59E0B; }
+.bar-red { background: #DC2626; }
+.bar-green { background: #10B981; }
 
-.footer-contact-card:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
-  transform: translateX(4px);
-}
-
-.f-contact-icon {
-  font-size: 1.3rem;
-}
-
-.f-contact-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #94A3B8;
-  text-transform: uppercase;
-}
-
-.f-contact-val {
-  display: block;
-  font-size: 0.92rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-top: 1px;
-}
-
-/* Links List */
-.footer-links-list {
+/* Navigation List */
+.footer-exact-nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.footer-links-list li a {
+.footer-exact-nav-list li a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   color: #CBD5E1;
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.footer-links-list li a:hover {
-  color: #22C55E;
-  transform: translateX(5px);
+.footer-exact-nav-list li a:hover {
+  color: #FFC72C;
+  transform: translateX(4px);
 }
 
-/* Outlets Stack */
-.footer-outlets-stack {
+.arrow-sym {
+  color: #64748B;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.footer-exact-nav-list li a:hover .arrow-sym {
+  color: #FFC72C;
+}
+
+/* Franchise Plans */
+.footer-plans-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-bottom: 20px;
 }
 
-.footer-outlet-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-
-.f-outlet-header {
+.footer-plan-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.92rem;
-  color: #FFFFFF;
+  color: #CBD5E1;
 }
 
-.f-open-pill {
-  background: #22C55E;
-  color: #052E16;
-  font-size: 0.65rem;
-  font-weight: 900;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.f-outlet-address {
-  color: #94A3B8;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  margin: 4px 0 6px;
-}
-
-.f-directions-link {
-  color: #22C55E;
-  font-size: 0.82rem;
-  font-weight: 800;
-  text-decoration: none;
-  display: inline-flex;
+.plan-label {
+  display: flex;
   align-items: center;
-  gap: 4px;
-  transition: color 0.2s ease;
+  gap: 8px;
+  color: #E2E8F0;
+  font-weight: 600;
 }
 
-.f-directions-link:hover {
-  color: #86EFAC;
+.plan-price {
+  color: #FFC72C;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.2px;
 }
 
-/* Franchise Box in Footer */
-.footer-franchise-desc {
-  color: #94A3B8;
+.footer-exact-sim-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #151D28;
+  border: 1px solid #FFC72C;
+  color: #FFC72C;
+  padding: 10px 16px;
+  border-radius: 8px;
   font-size: 0.88rem;
-  line-height: 1.6;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.footer-exact-sim-btn:hover {
+  background: #1F2937;
+  border-color: #FFE082;
+  color: #FFE082;
+  transform: translateY(-2px);
+}
+
+/* Corporate HQ */
+.footer-hq-company {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.footer-hq-address {
+  color: #94A3B8;
+  font-size: 0.85rem;
+  line-height: 1.5;
   margin: 0 0 16px;
 }
 
-.footer-franchise-actions {
+.footer-hq-contacts {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 18px;
 }
 
-.footer-btn-primary {
-  background: #D32323;
-  color: #FFFFFF;
-  padding: 11px 16px;
-  border-radius: 10px;
-  font-weight: 900;
-  font-size: 0.88rem;
+.hq-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-decoration: none;
-  text-align: center;
-  box-shadow: 0 4px 14px rgba(211, 35, 35, 0.35);
+  font-size: 0.92rem;
+  transition: transform 0.2s ease;
+}
+
+.hq-contact-link.phone-link {
+  color: #FFC72C;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+.hq-contact-link.email-link {
+  color: #CBD5E1;
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+.hq-contact-link:hover {
+  transform: translateX(4px);
+}
+
+.footer-exact-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.exact-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #182230;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.footer-btn-primary:hover {
-  background: #B91C1C;
-  transform: translateY(-2px);
-}
+.exact-social-btn.wa:hover { background: #25D366; color: #FFF; border-color: #25D366; }
+.exact-social-btn.ig:hover { background: #E1306C; color: #FFF; border-color: #E1306C; }
+.exact-social-btn.fb:hover { background: #1877F2; color: #FFF; border-color: #1877F2; }
+.exact-social-btn.yt:hover { background: #FF0000; color: #FFF; border-color: #FF0000; }
 
-.footer-btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 800;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.footer-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: #FFFFFF;
-  transform: translateY(-2px);
-}
-
-/* Footer Bottom Bar */
-.footer-bottom-bar {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
+/* Bottom Bar */
+.footer-exact-bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  font-size: 0.86rem;
-  color: #94A3B8;
+  font-size: 0.84rem;
+  color: #64748B;
 }
 
-.footer-made-badge {
-  color: #FFFFFF;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-}
-
-/* Footer Responsiveness */
+/* Responsiveness */
 @media (max-width: 1024px) {
-  .footer-main-grid {
+  .footer-exact-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 32px;
   }
 }
 
 @media (max-width: 640px) {
   .bs-site-footer {
-    padding: 40px 0 24px;
+    padding: 40px 0 20px !important;
   }
 
-  .footer-top-brand-bar {
+  .footer-exact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .footer-exact-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-    padding-bottom: 24px;
-    margin-bottom: 28px;
-  }
-
-  .footer-brand-intro {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .footer-social-wrap {
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .footer-main-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    margin-bottom: 30px;
-  }
-
-  .footer-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    gap: 6px;
   }
 }
 
