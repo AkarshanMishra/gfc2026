@@ -116,7 +116,7 @@ img, video, iframe {
     url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.08' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: auto, 400px 90px;
-  border-bottom: 2px solid #FFC72C;
+  border-bottom: none;
   box-shadow: 0 4px 22px rgba(10, 59, 32, 0.35);
 }
 
@@ -149,8 +149,8 @@ img, video, iframe {
 }
 
 .bs-hotline-btn:hover {
-  background: rgba(255, 199, 44, 0.15);
-  border-color: #FFC72C;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #FFFFFF;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
@@ -1448,7 +1448,7 @@ img, video, iframe {
       url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.08' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E") !important;
     background-repeat: repeat !important;
     background-size: auto, 400px 90px !important;
-    border-bottom: 2px solid #FFC72C !important;
+    border-bottom: none !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
     position: sticky;
     top: 0;
@@ -1526,7 +1526,7 @@ img, video, iframe {
   }
 
   .mobile-toggle:active .bar {
-    background: #FFC72C !important;
+    background: #FFFFFF !important;
   }
 
   /* 2. Center: Circular Logo - Mathematically Exact Center */
@@ -1549,17 +1549,17 @@ img, video, iframe {
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)) !important;
   }
 
-  /* 3. Right: Franchise Hotline Box (Rounded Gold Border) */
+  /* 3. Right: Franchise Hotline Box (Clean White Outline) */
   .mobile-hotline-btn,
   .mobile-franchise-hotline {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    border: 2px solid #FFC72C !important;
-    border-radius: 12px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+    border-radius: 10px !important;
     padding: 4px 10px !important;
-    background: rgba(0, 0, 0, 0.25) !important;
+    background: rgba(0, 0, 0, 0.22) !important;
     text-decoration: none !important;
     text-align: center !important;
     line-height: 1.15 !important;
@@ -1573,7 +1573,8 @@ img, video, iframe {
   .mobile-hotline-btn:active,
   .mobile-franchise-hotline:hover,
   .mobile-franchise-hotline:active {
-    background: rgba(255, 199, 44, 0.2) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #FFFFFF !important;
     transform: scale(1.02) !important;
   }
 
@@ -1632,7 +1633,7 @@ img, video, iframe {
     background-image: 
       radial-gradient(circle at top right, rgba(15, 76, 42, 0.98) 0%, rgba(6, 32, 18, 1) 100%),
       url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.06' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.06'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.06'/%3E%3C/g%3E%3C/svg%3E") !important;
-    border-left: 2px solid rgba(255, 199, 44, 0.6) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
@@ -1640,7 +1641,7 @@ img, video, iframe {
     gap: 0 !important;
     transform: translateX(105%) !important;
     transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8), -2px 0 15px rgba(255, 199, 44, 0.15) !important;
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     z-index: 10002 !important;
@@ -1679,18 +1680,17 @@ img, video, iframe {
 
   .bs-nav-link::after {
     content: '→' !important;
-    color: #FFC72C !important;
+    color: #FFFFFF !important;
     font-size: 1.15rem !important;
     font-weight: 900 !important;
     transition: transform 0.2s ease !important;
   }
 
   .bs-nav-link:hover, .bs-nav-link.active {
-    background: linear-gradient(90deg, rgba(255, 199, 44, 0.22) 0%, rgba(15, 76, 42, 0.4) 100%) !important;
-    border-color: #FFC72C !important;
-    color: #FFC72C !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #FFFFFF !important;
     transform: translateX(4px) !important;
-    box-shadow: 0 4px 15px rgba(255, 199, 44, 0.2) !important;
   }
 
   .bs-nav-link:hover::after, .bs-nav-link.active::after {
@@ -1719,7 +1719,7 @@ img, video, iframe {
     width: 100% !important;
     min-width: unset !important;
     padding: 11px 16px !important;
-    border: 1.5px solid rgba(255, 199, 44, 0.4) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 12px !important;
     background: rgba(0, 0, 0, 0.35) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
@@ -1727,8 +1727,8 @@ img, video, iframe {
   }
 
   .mobile-drawer-hotlines .bs-hotline-btn:hover {
-    background: rgba(255, 199, 44, 0.18) !important;
-    border-color: #FFC72C !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #FFFFFF !important;
     transform: translateY(-2px) !important;
   }
 
