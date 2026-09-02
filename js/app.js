@@ -571,70 +571,10 @@ class App {
   }
 
   // -------------------------------------------------------------
-  // MOBILE MENU & RESPONSIVENESS
+  // MOBILE MENU & RESPONSIVENESS (Handled by mobile-nav.js)
   // -------------------------------------------------------------
   setupMobileMenu() {
-    const navToggle = document.getElementById('mobile-nav-toggle');
-    const navMenu = document.querySelector('.bs-nav-cluster') || document.getElementById('primary-nav-menu');
-
-    // Create or find backdrop
-    let backdrop = document.querySelector('.mobile-nav-backdrop');
-    if (!backdrop) {
-      backdrop = document.createElement('div');
-      backdrop.className = 'mobile-nav-backdrop';
-      document.body.appendChild(backdrop);
-    }
-
-    const openMenu = () => {
-      navMenu?.classList.add('mobile-open');
-      navToggle?.classList.add('is-active');
-      backdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeMenu = () => {
-      navMenu?.classList.remove('mobile-open');
-      navToggle?.classList.remove('is-active');
-      backdrop.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    window.openMobileNav = openMenu;
-    window.closeMobileNav = closeMenu;
-    window.toggleMobileNav = (e) => {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      if (navMenu?.classList.contains('mobile-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    };
-
-    navToggle?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (navMenu?.classList.contains('mobile-open')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    backdrop.addEventListener('click', closeMenu);
-
-    // Close menu when clicking any nav link
-    navMenu?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu?.classList.contains('mobile-open')) {
-        closeMenu();
-      }
-    });
+    // Mobile navigation is universally managed by js/mobile-nav.js
   }
 
   // -------------------------------------------------------------

@@ -1,6 +1,6 @@
 /**
- * GRILLISTA - Universal Modern Mobile Navigation Controller v2.0
- * Lightweight, zero-dependency, ultra-fast, modern glassmorphic experience
+ * GRILLISTA - Universal Modern Mobile Navigation Controller v3.0
+ * Pure zero-dependency, ultra-resilient, cross-device support
  */
 
 (function() {
