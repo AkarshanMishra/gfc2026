@@ -49,20 +49,21 @@
 }
 
 .floating-food-item img {
-  width: 160px;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  width: 140px;
+  height: 105px;
+  object-fit: contain;
+  border-radius: 0;
   border: none;
   background: transparent;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  box-shadow: none;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.16));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
   display: block;
 }
 
 .floating-food-item:hover img {
-  transform: translateY(-6px) scale(1.06);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+  transform: translateY(-8px) scale(1.12);
+  filter: drop-shadow(0 16px 24px rgba(211, 35, 35, 0.28));
 }
 
 .floating-food-label {
