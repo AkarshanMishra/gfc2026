@@ -254,11 +254,12 @@ img, video, iframe {
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
-.mobile-header-bar {
-  display: none;
-}
-
-.mobile-toggle {
+/* Mobile-specific elements hidden on desktop */
+.mobile-header-bar,
+.mobile-toggle,
+.mobile-drawer-header,
+.mobile-drawer-hotlines,
+.mobile-nav-backdrop {
   display: none;
 }
 
