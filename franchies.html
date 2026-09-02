@@ -225,106 +225,99 @@
           </div>
         </div>
 
-        <!-- Interactive ROI & P&L Calculator -->
-        <div class="roi-calculator-container" style="margin-top: 40px;">
-          <div class="roi-layout-grid">
-            <div class="roi-controls">
-              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 14px;">
-                <h3 style="font-size: 1.3rem; font-weight: 900; color: var(--text-main); margin: 0;">📊 Unit Economics & P&L Calculator</h3>
-                <span id="roi-selected-badge" style="background: rgba(15, 76, 42, 0.1); color: #0F4C2A; font-weight: 800; font-size: 0.82rem; padding: 4px 10px; border-radius: 20px;">
-                  Grillista Express Model
-                </span>
-              </div>
-              
-              <div class="form-group" style="margin-top: 14px;">
-                <div class="range-slider-wrap">
-                  <div class="range-slider-header">
-                    <span>Daily Customer Footfall</span>
-                    <strong id="roi-orders-val" style="color: #0F4C2A; font-size: 1.15rem;">50 Customers / Day</strong>
-                  </div>
-                  <input type="range" id="roi-orders-slider" class="range-input" min="30" max="250" step="5" value="50">
-                </div>
-              </div>
+        
+        <!-- Launch Profit Simulator Button (Matching User Screenshot) -->
+        <div style="text-align: center; margin: 36px 0 10px;">
+          <button type="button" class="launch-simulator-btn" onclick="openProfitSimulatorModal()">
+            <span style="font-size: 1.3rem;">🧮</span>
+            <span>Launch Profit Simulator</span>
+          </button>
+        </div>
 
-              <!-- P&L Cost Breakdown Table -->
-              <div style="background: #F8FAFC; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px;">
-                <div style="font-size: 0.88rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
-                  Monthly P&L Estimation (30-Day Cycle)
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 7px; font-size: 0.86rem;">
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Average Billing Size:</span> <strong style="color: var(--text-main);">₹170</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Average Daily Sale:</span> <strong style="color: var(--text-main);" id="roi-daily-sale">₹8,500</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Average Monthly Sale:</span> <strong style="color: #0F4C2A; font-weight: 800;" id="roi-monthly-sale">₹2,55,000</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Food Cost (30%):</span> <strong style="color: var(--text-main);" id="roi-food-cost">₹76,500</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Royalty (6 Months Free, then 5%):</span> <strong style="color: var(--text-main);" id="roi-royalty">₹12,750</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Store Rent:</span> <strong style="color: var(--text-main);">₹50,000</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Staff Wages:</span> <strong style="color: var(--text-main);">₹40,000</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Electricity & Utilities:</span> <strong style="color: var(--text-main);">₹10,000</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Marketing & Promo:</span> <strong style="color: var(--text-main);">₹10,000</strong>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; color: var(--text-muted);">
-                    <span>Miscellaneous Contingency:</span> <strong style="color: var(--text-main);">₹10,000</strong>
-                  </div>
-                </div>
+        <!-- 3-MODEL SIDE-BY-SIDE FINANCIAL ROI COMPARISON GRID -->
+        <div style="margin-top: 50px;">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <span style="font-size: 0.8rem; font-weight: 800; color: #D32323; background: #FEF2F2; padding: 4px 14px; border-radius: 20px; text-transform: uppercase; display: inline-block; margin-bottom: 8px;">
+              📈 FINANCIAL PROJECTIONS
+            </span>
+            <h3 class="section-headline-italic" style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin: 0 0 6px;">
+              COMPLETE <span class="highlight-red">P&L BREAKDOWN</span> & UNIT ECONOMICS
+            </h3>
+            <p style="color: #64748B; font-size: 0.95rem; margin: 0;">
+              Realistic financial modeling based on ₹170 average customer ticket size and 30% low food cost.
+            </p>
+          </div>
+
+          <div class="roi-models-comparison-grid">
+            <!-- 1. GRILLISTA EXPRESS -->
+            <div class="roi-model-card">
+              <div class="roi-model-card-header">
+                <span class="roi-pill">Express Model</span>
+                <h3>Grillista Express</h3>
+                <div class="roi-highlight-net">₹45,750 <span>/ mo net profit</span></div>
+                <div class="roi-royalty-free-tag">⭐ ₹58,500 / mo during first 6 mos (0% Royalty)</div>
+              </div>
+              <div class="roi-table-list">
+                <div class="roi-row"><span>No. of Customers:</span> <strong>50 / day</strong></div>
+                <div class="roi-row"><span>Average Billing Size:</span> <strong>₹170</strong></div>
+                <div class="roi-row"><span>Average Daily Sale:</span> <strong>₹8,500</strong></div>
+                <div class="roi-row highlight-row"><span>Average Monthly Sale:</span> <strong>₹2,55,000</strong></div>
+                <div class="roi-row"><span>Food Cost (30%):</span> <strong style="color: #DC2626;">- ₹76,500</strong></div>
+                <div class="roi-row"><span>Royalty (6 mos free, then 5%):</span> <strong style="color: #DC2626;">- ₹12,750</strong></div>
+                <div class="roi-row"><span>Store Rent:</span> <strong style="color: #DC2626;">- ₹50,000</strong></div>
+                <div class="roi-row"><span>Staff Salaries:</span> <strong style="color: #DC2626;">- ₹40,000</strong></div>
+                <div class="roi-row"><span>Electricity & Utilities:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Marketing & Promotion:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Miscellaneous Contingency:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row net-row"><span>Net Monthly Profit:</span> <strong>₹45,750</strong></div>
               </div>
             </div>
 
-            <!-- Projections Output Summary Panel -->
-            <div class="roi-projections-panel">
-              <div class="projections-header">
-                <h4 id="roi-model-title" style="color: #0F4C2A;">Grillista Express Model</h4>
-                <p>Required Space: <span id="roi-area-req" style="color: var(--bs-red); font-weight: 800;">200 sq.ft</span> | Bracket: <span id="roi-bracket-display" style="font-weight: 800;">10 - 12 Lakh</span></p>
+            <!-- 2. GRILLISTA BISTRO -->
+            <div class="roi-model-card popular">
+              <div class="roi-model-card-header">
+                <span class="roi-pill popular-pill">Most Popular (High ROI)</span>
+                <h3>Grillista Bistro</h3>
+                <div class="roi-highlight-net">₹1,45,200 <span>/ mo net profit</span></div>
+                <div class="roi-royalty-free-tag">⭐ ₹1,65,600 / mo during first 6 mos (0% Royalty)</div>
               </div>
-
-              <div class="projections-metrics-grid">
-                <div class="metric-card">
-                  <div class="metric-label">Total Setup Investment</div>
-                  <div class="metric-value" id="roi-total-capex">₹ 11,50,000</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-label">Monthly Gross Revenue</div>
-                  <div class="metric-value" id="roi-monthly-revenue" style="color: #0F4C2A;">₹ 2,55,000</div>
-                </div>
-                <div class="metric-card" style="background: rgba(46, 125, 50, 0.08); border-color: rgba(46, 125, 50, 0.3);">
-                  <div class="metric-label" style="color: #2E7D32; font-weight: 700;">Net Monthly Profit</div>
-                  <div class="metric-value highlight-green" id="roi-monthly-profit">₹ 45,750</div>
-                  <span style="font-size: 0.72rem; color: #2E7D32; font-weight: 700;">(₹58,500/mo in first 6 mos)</span>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-label">Annual Net Profit</div>
-                  <div class="metric-value highlight-green" id="roi-annual-profit">₹ 5,49,000</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-label">Payback Timeline</div>
-                  <div class="metric-value" id="roi-payback-months">~25.1 Mos</div>
-                </div>
-                <div class="metric-card">
-                  <div class="metric-label">Net Profit Margin</div>
-                  <div class="metric-value" id="roi-margin-percent">17.9%</div>
-                </div>
+              <div class="roi-table-list">
+                <div class="roi-row"><span>No. of Customers:</span> <strong>80 / day</strong></div>
+                <div class="roi-row"><span>Average Billing Size:</span> <strong>₹170</strong></div>
+                <div class="roi-row"><span>Average Daily Sale:</span> <strong>₹13,600</strong></div>
+                <div class="roi-row highlight-row"><span>Average Monthly Sale:</span> <strong>₹4,08,000</strong></div>
+                <div class="roi-row"><span>Food Cost (30%):</span> <strong style="color: #DC2626;">- ₹1,22,400</strong></div>
+                <div class="roi-row"><span>Royalty (6 mos free, then 5%):</span> <strong style="color: #DC2626;">- ₹20,400</strong></div>
+                <div class="roi-row"><span>Store Rent:</span> <strong style="color: #DC2626;">- ₹50,000</strong></div>
+                <div class="roi-row"><span>Staff Salaries:</span> <strong style="color: #DC2626;">- ₹40,000</strong></div>
+                <div class="roi-row"><span>Electricity & Utilities:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Marketing & Promotion:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Miscellaneous Contingency:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row net-row"><span>Net Monthly Profit:</span> <strong>₹1,45,200</strong></div>
               </div>
+            </div>
 
-              <div class="roi-actions">
-                <button class="btn btn-secondary btn-block" id="btn-download-deck" style="font-weight: 800; padding: 14px;">
-                  📄 Download Official Financial Prospectus (.txt)
-                </button>
+            <!-- 3. GRILLISTA SIGNATURE -->
+            <div class="roi-model-card">
+              <div class="roi-model-card-header">
+                <span class="roi-pill">Flagship Destination</span>
+                <h3>Grillista Signature</h3>
+                <div class="roi-highlight-net">₹2,77,800 <span>/ mo net profit</span></div>
+                <div class="roi-royalty-free-tag">⭐ ₹3,08,400 / mo during first 6 mos (0% Royalty)</div>
+              </div>
+              <div class="roi-table-list">
+                <div class="roi-row"><span>No. of Customers:</span> <strong>120 / day</strong></div>
+                <div class="roi-row"><span>Average Billing Size:</span> <strong>₹170</strong></div>
+                <div class="roi-row"><span>Average Daily Sale:</span> <strong>₹20,400</strong></div>
+                <div class="roi-row highlight-row"><span>Average Monthly Sale:</span> <strong>₹6,12,000</strong></div>
+                <div class="roi-row"><span>Food Cost (30%):</span> <strong style="color: #DC2626;">- ₹1,83,600</strong></div>
+                <div class="roi-row"><span>Royalty (6 mos free, then 5%):</span> <strong style="color: #DC2626;">- ₹30,600</strong></div>
+                <div class="roi-row"><span>Store Rent:</span> <strong style="color: #DC2626;">- ₹50,000</strong></div>
+                <div class="roi-row"><span>Staff Salaries:</span> <strong style="color: #DC2626;">- ₹40,000</strong></div>
+                <div class="roi-row"><span>Electricity & Utilities:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Marketing & Promotion:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row"><span>Miscellaneous Contingency:</span> <strong style="color: #DC2626;">- ₹10,000</strong></div>
+                <div class="roi-row net-row"><span>Net Monthly Profit:</span> <strong>₹2,77,800</strong></div>
               </div>
             </div>
           </div>
@@ -537,54 +530,88 @@
           <p style="color: var(--text-muted); font-size: 1rem; margin: 0;">Rigorous systems and operating protocols ensuring every burger tastes equally delicious everywhere.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 01</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">RECIPE STANDARDISATION</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Consistent taste & quality</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Standard recipe cards, proprietary spice packs, pre-portioned ingredients, and standardized preparation methods.</p>
+        <div class="consistency-bento-grid">
+          <!-- Left Column: Operations & Kitchen System -->
+          <div class="consistency-col">
+            <!-- 01 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">01</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Consistent Taste & Quality</span>
+                <h4>RECIPE STANDARISATION</h4>
+                <p>Standard recipe cards, proprietary spice packs, pre-portioned ingredients, and standardized preparation methods.</p>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">02</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Consistent Execution</span>
+                <h4>STANDARD OPERATING PROCEDURES</h4>
+                <p>Clearly defined step-by-step processes for food prep, counter service, hygiene sanitization, and daily opening/closing.</p>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">03</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Efficient Operations</span>
+                <h4>KITCHEN WORKFLOW</h4>
+                <p>Engineered kitchen layouts and assembly line workflows designed for smooth movement, zero wastage, and faster ticket times.</p>
+              </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">04</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Right People, Right Roles</span>
+                <h4>TEAM STRUCTURE & TRAINING</h4>
+                <p>Defined staffing requirements, shift responsibilities, role KPIs, and comprehensive onboarding modules for each outlet format.</p>
+              </div>
+            </div>
           </div>
 
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 02</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">STANDARD OPERATING PROCEDURES</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Consistent execution</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Clearly defined step-by-step processes for food prep, counter service, hygiene sanitization, and daily opening/closing.</p>
-          </div>
+          <!-- Right Column: Supply Chain, Audits & Growth -->
+          <div class="consistency-col">
+            <!-- 05 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">05</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Better Cost Control</span>
+                <h4>INVENTORY MANAGEMENT</h4>
+                <p>Standard inventory par levels, scheduled procurement cycles, and strict portion control to maintain low 30% food cost.</p>
+              </div>
+            </div>
 
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 03</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">KITCHEN WORKFLOW</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Efficient operations</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Engineered kitchen layouts and assembly line workflows designed for smooth movement, zero wastage, and faster ticket times.</p>
-          </div>
+            <!-- 06 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">06</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Consistency at Every Store</span>
+                <h4>QUALITY CONTROL & AUDITS</h4>
+                <p>Regular mystery audits, digital checklist audits, and strict food temperature logs to uphold the Grillista brand promise.</p>
+              </div>
+            </div>
 
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 04</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">TEAM STRUCTURE</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Right people, right roles</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Defined staffing requirements, shift responsibilities, role KPIs, and comprehensive onboarding modules for each outlet format.</p>
-          </div>
+            <!-- 07 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">07</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Consistent Brand Demand</span>
+                <h4>MARKETING SYSTEM</h4>
+                <p>Centralized high-impact creative campaigns, local store marketing toolkits, and synchronized brand communication across all cities.</p>
+              </div>
+            </div>
 
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 05</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">INVENTORY MANAGEMENT</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Better control</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Standard inventory par levels, scheduled procurement cycles, and strict portion control to maintain low 30% food cost.</p>
-          </div>
-
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 06</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">QUALITY CONTROL</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Consistency at every outlet</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Regular mystery audits, digital checklist audits, and strict food temperature logs to uphold the Grillista brand promise.</p>
-          </div>
-
-          <div style="background: #FFFFFF; border: 1px solid var(--border-color); padding: 24px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); grid-column: 1 / -1;">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #0F4C2A; margin-bottom: 4px;">PILLAR 07</div>
-            <h4 style="font-size: 1.08rem; font-weight: 900; color: var(--text-main); margin-bottom: 4px;">MARKETING SYSTEM</h4>
-            <span style="font-size: 0.82rem; color: var(--bs-red); font-weight: 700; display: block; margin-bottom: 8px;">Consistent brand presence</span>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">Centralized high-impact creative campaigns, local store marketing toolkits, and synchronized brand communication across all cities.</p>
+            <!-- 08: Quality Guarantee Pledge -->
+            <div class="consistency-guarantee-card">
+              <div style="font-size: 1.6rem; margin-bottom: 4px;">🛡️</div>
+              <h4 style="margin: 0 0 6px;">THE 100% TASTE & QUALITY PLEDGE</h4>
+              <p>Every burger served across our network delivers the identical crunch, flavor, and freshness tested across company flagship outlets.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -600,40 +627,71 @@
           <h4 style="font-size: 1.15rem; color: #0F4C2A; font-weight: 800;">A Food Experience Built Around What Customers Value</h4>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-          <div style="background: #F8FAFC; padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <strong style="color: #0F4C2A; font-size: 1rem; display: block; margin-bottom: 6px; font-weight: 800;">01 | TASTE THAT BRINGS THEM BACK</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
-              Consistent, flavourful food with signature desi fusion offerings that give customers a reason to return again and again.
-            </p>
+        <div class="consistency-bento-grid">
+          <!-- Left Column: Food, Value & Ambience -->
+          <div class="consistency-col">
+            <!-- 01 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">01</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">High Retention & Repeat Orders</span>
+                <h4>TASTE THAT BRINGS THEM BACK</h4>
+                <p>Consistent, deeply flavourful food with signature Indian fusion recipes that give customers a compelling reason to return weekly.</p>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">02</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Mass Affordability & High Volume</span>
+                <h4>VALUE THAT FEELS RIGHT</h4>
+                <p>Generous portions and premium dining at an honest ₹170 average ticket size that everyday students, families, and professionals can comfortably afford.</p>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">03</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Instagram-Worthy Aesthetic</span>
+                <h4>AN EXPERIENCE WORTH SHARING</h4>
+                <p>Thoughtfully engineered restaurant ambience, signature lighting, and vibrant packaging that drives organic social media buzz and word-of-mouth.</p>
+              </div>
+            </div>
           </div>
 
-          <div style="background: #F8FAFC; padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <strong style="color: #0F4C2A; font-size: 1rem; display: block; margin-bottom: 6px; font-weight: 800;">02 | VALUE THAT FEELS RIGHT</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
-              Quality food and an enjoyable dining experience at an average ticket of ₹170 that customers can comfortably choose frequently.
-            </p>
-          </div>
+          <!-- Right Column: Variety, Convenience & Social Proof -->
+          <div class="consistency-col">
+            <!-- 04 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">04</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Comprehensive Menu Appeal</span>
+                <h4>SOMETHING FOR EVERY CRAVING</h4>
+                <p>A diverse 40+ item menu spanning gourmet burgers, loaded fries, crispy sides, craft coolers, and thick shakes catering to all age groups.</p>
+              </div>
+            </div>
 
-          <div style="background: #F8FAFC; padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <strong style="color: #0F4C2A; font-size: 1rem; display: block; margin-bottom: 6px; font-weight: 800;">03 | AN EXPERIENCE WORTH SHARING</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
-              An inviting and thoughtfully designed environment that makes dining enjoyable and Instagram-worthy beyond the food itself.
-            </p>
-          </div>
+            <!-- 05 -->
+            <div class="consistency-strip">
+              <div class="consistency-num">05</div>
+              <div class="consistency-info">
+                <span class="consistency-tag">Omnichannel Reach</span>
+                <h4>CONVENIENCE ACROSS CHANNELS</h4>
+                <p>Seamless operations across Dine-in, rapid QSR Takeaway, and integration with Zomato, Swiggy, and our proprietary direct web platform.</p>
+              </div>
+            </div>
 
-          <div style="background: #F8FAFC; padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <strong style="color: #0F4C2A; font-size: 1rem; display: block; margin-bottom: 6px; font-weight: 800;">04 | SOMETHING FOR EVERY CRAVING</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
-              A diverse selection of craft burgers, loaded fries, and craft coolers that caters to different tastes, ages, and occasions.
-            </p>
-          </div>
-
-          <div style="background: #F8FAFC; padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-            <strong style="color: #0F4C2A; font-size: 1rem; display: block; margin-bottom: 6px; font-weight: 800;">05 | CONVENIENCE WHENEVER THEY WANT IT</strong>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0; line-height: 1.6;">
-              Flexible options across dine-in, takeaway, and rapid delivery, making Grillista accessible to customers in the way they prefer.
-            </p>
+            <!-- 06: Proven Track Record -->
+            <div class="consistency-guarantee-card" style="background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); border-color: rgba(255, 199, 44, 0.3);">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                <span style="font-size: 1.5rem;">⭐</span>
+                <span style="background: #FFC72C; color: #111; font-size: 0.72rem; font-weight: 900; padding: 2px 8px; border-radius: 12px;">4.8★ RATED</span>
+              </div>
+              <h4 style="color: #FFC72C; margin: 0 0 4px;">PROVEN CUSTOMER LOYALTY</h4>
+              <p style="font-size: 0.85rem; color: #CBD5E1;">Over 10,000+ happy customers served every month across company flagship outlets in Kakadeo and Barra, Kanpur.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -694,6 +752,13 @@
             </button>
 
             <div id="franchise-form-status"></div>
+
+            <div style="text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2E8F0;">
+              <span style="font-size: 0.86rem; color: #64748B; display: block; margin-bottom: 10px; font-weight: 700;">Prefer filling via Google Forms?</span>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-weight: 800; border-color: #D32323; color: #D32323; padding: 10px 22px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
+                <span>📝 Open Official Google Form ↗</span>
+              </a>
+            </div>
           </form>
         </div>
       </div>
@@ -941,7 +1006,7 @@
           <div style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
             1. Select Franchise Store Format:
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+          <div class="sim-format-grid">
             <button type="button" id="sim-tab-express" onclick="switchSimulatorModel('express')" style="padding: 12px 14px; border-radius: 12px; border: 2px solid #D32323; background: #D32323; color: #FFF; font-weight: 900; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; text-align: left;">
               <div>🚀 Express Model</div>
               <div style="font-size: 0.74rem; opacity: 0.85; font-weight: 600;">200 sq.ft • ₹10 - 12 Lakh</div>
@@ -958,10 +1023,10 @@
         </div>
 
         <!-- STEP 2: Scenario Presets Bar -->
-        <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="sim-scenario-bar" style="margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <span style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Scenario Preset:</span>
-            <div style="display: inline-flex; background: #F1F5F9; padding: 3px; border-radius: 10px; border: 1px solid #E2E8F0;">
+            <div style="display: inline-flex; background: #F1F5F9; padding: 3px; border-radius: 10px; border: 1px solid #E2E8F0; flex-wrap: wrap; gap: 4px;">
               <button type="button" id="sim-scen-conservative" onclick="setSimulatorScenario('conservative')" style="padding: 6px 14px; border-radius: 8px; border: 1px solid #FFC72C; background: #0F172A; color: #FFC72C; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
                 Conservative (Base)
               </button>
@@ -981,7 +1046,7 @@
         </div>
 
         <!-- STEP 3: Primary Revenue Sliders Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 18px 20px;">
+        <div class="sim-sliders-grid" style="margin-bottom: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 18px 20px;">
           <!-- Slider 1: Customers -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -1017,7 +1082,7 @@
             ⚙️ Fine-Tune Local Rent & Staff Costs ▼
           </button>
           <div id="sim-custom-opex-drawer" style="display: none; margin-top: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="sim-opex-grid">
               <div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 4px;">
                   <span>Monthly Store Rent:</span>
@@ -1037,7 +1102,7 @@
         </div>
 
         <!-- STEP 4: Live P&L Financial Statement Cards -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
+        <div class="sim-kpi-grid" style="margin-bottom: 20px;">
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px;">
             <div style="font-size: 0.74rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Average Daily Sale</div>
             <div id="sim-daily-sale" style="font-size: 1.25rem; font-weight: 900; color: #0F172A; margin-top: 4px;">₹ 8,500</div>
@@ -1060,7 +1125,7 @@
         <div style="background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%); border-radius: 18px; padding: 22px 26px; color: #FFFFFF; margin-bottom: 22px; box-shadow: 0 12px 35px rgba(15, 76, 42, 0.25);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 16px; margin-bottom: 16px;">
             <div>
-              <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <span style="font-size: 0.8rem; font-weight: 900; color: #86EFAC; text-transform: uppercase; letter-spacing: 0.6px;">
                   ESTIMATED NET MONTHLY PROFIT
                 </span>
@@ -1087,7 +1152,7 @@
           </div>
 
           <!-- Multi-Year Wealth Accumulation Row -->
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center;">
+          <div class="sim-wealth-grid" style="text-align: center;">
             <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px;">
               <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700; text-transform: uppercase;">Year 1 Net Cashflow</div>
               <div id="sim-year1-val" style="font-size: 1.15rem; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₹ 6,25,500</div>
@@ -1104,7 +1169,7 @@
         </div>
 
         <!-- STEP 6: Action CTAs -->
-        <div style="display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 12px;">
+        <div class="sim-actions-grid">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" style="background: #D32323; color: #FFF; padding: 12px 14px; border-radius: 12px; font-weight: 900; font-size: 0.88rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(211,35,35,0.25); text-align: center;">
             <span>📝 Apply On Google Form ↗</span>
           </a>

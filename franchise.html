@@ -1006,7 +1006,7 @@
           <div style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
             1. Select Franchise Store Format:
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+          <div class="sim-format-grid">
             <button type="button" id="sim-tab-express" onclick="switchSimulatorModel('express')" style="padding: 12px 14px; border-radius: 12px; border: 2px solid #D32323; background: #D32323; color: #FFF; font-weight: 900; font-size: 0.9rem; cursor: pointer; transition: all 0.2s ease; text-align: left;">
               <div>🚀 Express Model</div>
               <div style="font-size: 0.74rem; opacity: 0.85; font-weight: 600;">200 sq.ft • ₹10 - 12 Lakh</div>
@@ -1023,10 +1023,10 @@
         </div>
 
         <!-- STEP 2: Scenario Presets Bar -->
-        <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="sim-scenario-bar" style="margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
             <span style="font-size: 0.76rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Scenario Preset:</span>
-            <div style="display: inline-flex; background: #F1F5F9; padding: 3px; border-radius: 10px; border: 1px solid #E2E8F0;">
+            <div style="display: inline-flex; background: #F1F5F9; padding: 3px; border-radius: 10px; border: 1px solid #E2E8F0; flex-wrap: wrap; gap: 4px;">
               <button type="button" id="sim-scen-conservative" onclick="setSimulatorScenario('conservative')" style="padding: 6px 14px; border-radius: 8px; border: 1px solid #FFC72C; background: #0F172A; color: #FFC72C; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
                 Conservative (Base)
               </button>
@@ -1046,7 +1046,7 @@
         </div>
 
         <!-- STEP 3: Primary Revenue Sliders Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 18px 20px;">
+        <div class="sim-sliders-grid" style="margin-bottom: 20px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 18px 20px;">
           <!-- Slider 1: Customers -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -1082,7 +1082,7 @@
             ⚙️ Fine-Tune Local Rent & Staff Costs ▼
           </button>
           <div id="sim-custom-opex-drawer" style="display: none; margin-top: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="sim-opex-grid">
               <div>
                 <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 4px;">
                   <span>Monthly Store Rent:</span>
@@ -1102,7 +1102,7 @@
         </div>
 
         <!-- STEP 4: Live P&L Financial Statement Cards -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px;">
+        <div class="sim-kpi-grid" style="margin-bottom: 20px;">
           <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px;">
             <div style="font-size: 0.74rem; font-weight: 800; color: #64748B; text-transform: uppercase;">Average Daily Sale</div>
             <div id="sim-daily-sale" style="font-size: 1.25rem; font-weight: 900; color: #0F172A; margin-top: 4px;">₹ 8,500</div>
@@ -1125,7 +1125,7 @@
         <div style="background: linear-gradient(135deg, #0F4C2A 0%, #082917 100%); border-radius: 18px; padding: 22px 26px; color: #FFFFFF; margin-bottom: 22px; box-shadow: 0 12px 35px rgba(15, 76, 42, 0.25);">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 16px; margin-bottom: 16px;">
             <div>
-              <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <span style="font-size: 0.8rem; font-weight: 900; color: #86EFAC; text-transform: uppercase; letter-spacing: 0.6px;">
                   ESTIMATED NET MONTHLY PROFIT
                 </span>
@@ -1152,7 +1152,7 @@
           </div>
 
           <!-- Multi-Year Wealth Accumulation Row -->
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center;">
+          <div class="sim-wealth-grid" style="text-align: center;">
             <div style="background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px;">
               <div style="font-size: 0.72rem; color: #94A3B8; font-weight: 700; text-transform: uppercase;">Year 1 Net Cashflow</div>
               <div id="sim-year1-val" style="font-size: 1.15rem; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₹ 6,25,500</div>
@@ -1169,7 +1169,7 @@
         </div>
 
         <!-- STEP 6: Action CTAs -->
-        <div style="display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 12px;">
+        <div class="sim-actions-grid">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" style="background: #D32323; color: #FFF; padding: 12px 14px; border-radius: 12px; font-weight: 900; font-size: 0.88rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(211,35,35,0.25); text-align: center;">
             <span>📝 Apply On Google Form ↗</span>
           </a>

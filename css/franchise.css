@@ -969,77 +969,209 @@
   margin: 0;
 }
 
-/* Responsive Media Queries for All Devices */
+/* ==========================================================================
+   PROFIT SIMULATOR & FRANCHISE RESPONSIVE GRID UTILITIES
+   ========================================================================== */
+.sim-format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sim-scenario-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sim-sliders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.sim-opex-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.sim-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.sim-wealth-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.sim-actions-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES FOR ALL VIEWPORTS (DESKTOP UNCHANGED)
+   ========================================================================== */
 @media (max-width: 992px) {
   .franchise-models-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .roi-models-comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
   .roi-layout-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+  .form-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+  .invest-grid-3col {
+    grid-template-columns: 1fr !important;
+  }
+  .invest-grid-cell {
+    border-right: none !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    padding: 20px 16px !important;
+  }
+  .sim-format-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sim-kpi-grid {
+    grid-template-columns: 1fr 1fr !important;
   }
 }
 
 @media (max-width: 860px) {
   .consistency-bento-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
   
   .invest-tabs-nav {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
 
   .invest-tab-btn {
-    border-radius: 12px;
-    border-bottom: 2px solid #E2E8F0;
-    padding: 14px 18px;
+    border-radius: 12px !important;
+    border-bottom: 2px solid #E2E8F0 !important;
+    padding: 14px 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .profit-simulator-dialog {
+    max-height: 94vh !important;
+    border-radius: 16px !important;
+  }
+  .profit-simulator-topbar {
+    padding: 14px 16px !important;
+  }
+  .profit-simulator-body {
+    padding: 16px 14px 24px !important;
+  }
+  .sim-sliders-grid {
+    grid-template-columns: 1fr !important;
+    padding: 14px 16px !important;
+  }
+  .sim-opex-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .sim-wealth-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .sim-actions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .franchise-inquiry-box {
+    padding: 24px 18px !important;
+  }
+  .invest-card-footer {
+    font-size: 0.88rem !important;
+    padding: 14px 16px !important;
   }
 }
 
 @media (max-width: 640px) {
   .consistency-strip {
-    padding: 14px 16px;
-    gap: 14px;
-    border-radius: 12px;
+    padding: 14px 16px !important;
+    gap: 14px !important;
+    border-radius: 12px !important;
   }
 
   .consistency-num {
-    width: 40px;
-    height: 40px;
-    font-size: 1.15rem;
-    border-radius: 10px;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.15rem !important;
+    border-radius: 10px !important;
   }
 
   .consistency-info h4 {
-    font-size: 0.98rem;
+    font-size: 0.98rem !important;
   }
 
   .consistency-info p {
-    font-size: 0.82rem;
+    font-size: 0.82rem !important;
   }
 
   .consistency-guarantee-card {
-    padding: 18px 20px;
-    border-radius: 12px;
+    padding: 18px 20px !important;
+    border-radius: 12px !important;
   }
 
   .tab-title-main {
-    font-size: 1.1rem;
+    font-size: 1.1rem !important;
+  }
+
+  .roi-model-card-header {
+    padding: 18px 16px 14px !important;
+  }
+
+  .roi-table-list {
+    padding: 16px !important;
+  }
+
+  .roi-highlight-net {
+    font-size: 1.4rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .consistency-strip {
-    padding: 12px 14px;
-    gap: 12px;
+    padding: 12px 14px !important;
+    gap: 12px !important;
   }
 
   .consistency-num {
-    width: 36px;
-    height: 36px;
-    font-size: 1.05rem;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.05rem !important;
+  }
+
+  .sim-kpi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .sim-scenario-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .sim-scenario-bar > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 }
 
