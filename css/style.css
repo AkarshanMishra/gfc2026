@@ -1456,15 +1456,19 @@ img, video, iframe {
   }
 
   .bs-navbar-container {
-    min-height: 68px !important;
-    height: 68px !important;
-    padding: 0 18px !important;
+    min-height: 70px !important;
+    height: 70px !important;
+    padding: 0 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    position: relative !important;
   }
 
-  .bs-hotline-btn {
+  /* Strictly hide all desktop hotline buttons on mobile */
+  .bs-hotline-btn,
+  .bs-hotline-btn.left-btn,
+  .bs-hotline-btn.right-btn {
     display: none !important;
   }
 
@@ -1472,20 +1476,22 @@ img, video, iframe {
     display: none !important;
   }
 
+  /* 3-Column Mobile Header Grid: [Toggle] [Centered Logo] [Rounded Hotline Pill] */
   .mobile-header-bar {
-    display: flex !important;
+    display: grid !important;
+    grid-template-columns: 42px 1fr auto !important;
     align-items: center !important;
-    justify-content: space-between !important;
     width: 100% !important;
     height: 100% !important;
-    position: relative !important;
+    gap: 8px !important;
   }
 
+  /* 1. Left: 3-Bar Hamburger Toggle */
   .mobile-toggle {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     gap: 5px !important;
     width: 40px !important;
     height: 40px !important;
@@ -1493,13 +1499,12 @@ img, video, iframe {
     border: none !important;
     cursor: pointer !important;
     padding: 0 !important;
-    z-index: 2 !important;
     -webkit-tap-highlight-color: transparent !important;
   }
 
   .mobile-toggle .bar {
     display: block !important;
-    width: 26px !important;
+    width: 25px !important;
     height: 3.2px !important;
     background: #FFFFFF !important;
     border-radius: 2px !important;
@@ -1510,73 +1515,74 @@ img, video, iframe {
     background: #FFC72C !important;
   }
 
+  /* 2. Center: Circular Logo */
   .mobile-logo-link {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    position: static !important;
+    transform: none !important;
     height: 100% !important;
     text-decoration: none !important;
-    z-index: 1 !important;
   }
 
   .mobile-logo-img {
-    height: 54px !important;
-    max-height: 54px !important;
+    height: 52px !important;
+    max-height: 52px !important;
     width: auto !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)) !important;
   }
 
-  /* Right: Franchise Hotline Box (Matching Reference Screenshot) */
+  /* 3. Right: Franchise Hotline Box (Rounded Gold Border) */
   .mobile-hotline-btn,
   .mobile-franchise-hotline {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
-    border-radius: 8px !important;
-    padding: 4px 8px !important;
-    background: rgba(0, 0, 0, 0.22) !important;
+    border: 2px solid #FFC72C !important;
+    border-radius: 12px !important;
+    padding: 5px 10px !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     text-decoration: none !important;
     text-align: center !important;
     line-height: 1.15 !important;
-    z-index: 2 !important;
-    max-width: 140px !important;
+    white-space: nowrap !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+    transition: all 0.2s ease !important;
   }
 
   .mobile-hotline-btn:hover,
   .mobile-hotline-btn:active,
   .mobile-franchise-hotline:hover,
   .mobile-franchise-hotline:active {
-    background: rgba(255, 199, 44, 0.15) !important;
-    border-color: #FFC72C !important;
+    background: rgba(255, 199, 44, 0.2) !important;
+    transform: scale(1.02) !important;
   }
 
   .m-hotline-phone,
   .mobile-hotline-phone {
     color: #FFC72C !important;
-    font-size: 0.74rem !important;
+    font-size: 0.78rem !important;
     font-weight: 900 !important;
     letter-spacing: 0.2px !important;
     display: flex !important;
     align-items: center !important;
     gap: 3px !important;
+    line-height: 1.2 !important;
     white-space: nowrap !important;
   }
 
   .m-hotline-label,
   .mobile-hotline-label {
     color: #FFFFFF !important;
-    font-size: 0.52rem !important;
+    font-size: 0.54rem !important;
     font-weight: 900 !important;
     letter-spacing: 0.3px !important;
     text-transform: uppercase !important;
     margin-top: 1px !important;
+    line-height: 1.1 !important;
     white-space: nowrap !important;
   }
 
@@ -1730,13 +1736,25 @@ img, video, iframe {
 
   /* Header adjustments */
   .bs-navbar-container {
-    min-height: 60px !important;
-    height: 60px !important;
-    padding: 0 14px !important;
+    min-height: 66px !important;
+    height: 66px !important;
+    padding: 0 10px !important;
   }
 
   .mobile-logo-img {
-    height: 42px !important;
+    height: 48px !important;
+  }
+
+  .m-hotline-phone, .mobile-hotline-phone {
+    font-size: 0.74rem !important;
+  }
+
+  .m-hotline-label, .mobile-hotline-label {
+    font-size: 0.50rem !important;
+  }
+
+  .mobile-hotline-btn, .mobile-franchise-hotline {
+    padding: 4px 8px !important;
   }
 
   /* Hero adjustments */
