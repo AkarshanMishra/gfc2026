@@ -1593,28 +1593,6 @@
   </aside>
 
   <script>
-    
-    function toggleMobileNav() {
-      const navMenu = document.querySelector('.bs-nav-cluster');
-      const toggleBtn = document.getElementById('mobile-nav-toggle');
-      let backdrop = document.querySelector('.mobile-nav-backdrop');
-      if (!backdrop) {
-        backdrop = document.createElement('div');
-        backdrop.className = 'mobile-nav-backdrop';
-        document.body.appendChild(backdrop);
-        backdrop.onclick = function() {
-          navMenu?.classList.remove('mobile-open');
-          toggleBtn?.classList.remove('is-active');
-          backdrop.classList.remove('active');
-          document.body.style.overflow = '';
-        };
-      }
-      const isOpen = navMenu?.classList.toggle('mobile-open');
-      toggleBtn?.classList.toggle('is-active', isOpen);
-      backdrop?.classList.toggle('active', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    }
-
     function toggleQuickSidebar() {
       document.getElementById('floating-quick-sidebar')?.classList.toggle('collapsed');
     }
@@ -2515,12 +2493,6 @@
         }
         if (!lightboxModal?.classList.contains('active')) return;
         if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
-        if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
-      });
-
-      // 8. Mobile Menu Toggle
-      document.getElementById('mobile-nav-toggle')?.addEventListener('click', () => {
-        document.querySelector('.bs-nav-cluster')?.classList.toggle('mobile-open');
       });
     });
   </script>
