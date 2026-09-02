@@ -1478,46 +1478,106 @@ img, video, iframe {
     justify-content: space-between !important;
     width: 100% !important;
     height: 100% !important;
+    position: relative !important;
+  }
+
+  .mobile-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    z-index: 2 !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .mobile-toggle .bar {
+    display: block !important;
+    width: 26px !important;
+    height: 3.2px !important;
+    background: #FFFFFF !important;
+    border-radius: 2px !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .mobile-toggle:active .bar {
+    background: #FFC72C !important;
   }
 
   .mobile-logo-link {
     display: flex !important;
     align-items: center !important;
-    text-decoration: none !important;
+    justify-content: center !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     height: 100% !important;
+    text-decoration: none !important;
+    z-index: 1 !important;
   }
 
   .mobile-logo-img {
-    height: 52px !important;
-    max-height: 52px !important;
+    height: 54px !important;
+    max-height: 54px !important;
     width: auto !important;
     object-fit: contain !important;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4)) !important;
   }
 
-  .mobile-toggle {
+  /* Right: Franchise Hotline Box (Matching Reference Screenshot) */
+  .mobile-hotline-btn,
+  .mobile-franchise-hotline {
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 10px !important;
-    background: rgba(0, 0, 0, 0.25) !important;
-    border: 2px solid #FFC72C !important;
-    color: #FFC72C !important;
-    font-size: 1.6rem !important;
-    line-height: 1 !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35) !important;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    -webkit-tap-highlight-color: transparent !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+    border-radius: 8px !important;
+    padding: 4px 8px !important;
+    background: rgba(0, 0, 0, 0.22) !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    line-height: 1.15 !important;
+    z-index: 2 !important;
+    max-width: 140px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
   }
 
-  .mobile-toggle:active {
-    background: #FFC72C !important;
-    color: #0F4C2A !important;
-    transform: scale(0.92) !important;
+  .mobile-hotline-btn:hover,
+  .mobile-hotline-btn:active,
+  .mobile-franchise-hotline:hover,
+  .mobile-franchise-hotline:active {
+    background: rgba(255, 199, 44, 0.15) !important;
+    border-color: #FFC72C !important;
+  }
+
+  .m-hotline-phone,
+  .mobile-hotline-phone {
+    color: #FFC72C !important;
+    font-size: 0.74rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.2px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 3px !important;
+    white-space: nowrap !important;
+  }
+
+  .m-hotline-label,
+  .mobile-hotline-label {
+    color: #FFFFFF !important;
+    font-size: 0.52rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: uppercase !important;
+    margin-top: 1px !important;
+    white-space: nowrap !important;
   }
 
   /* Backdrop Overlay */
