@@ -1029,28 +1029,162 @@ img, video, iframe {
   color: #64748B;
 }
 
-/* Responsiveness */
+/* Responsiveness: Desktop view stays wide & luxurious, Mobile view is sleek & compact */
 @media (max-width: 1024px) {
   .footer-exact-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 28px;
   }
 }
 
 @media (max-width: 640px) {
   .bs-site-footer {
-    padding: 40px 0 20px !important;
+    padding: 28px 0 16px !important;
+  }
+
+  .footer-exact-container {
+    padding: 0 16px !important;
   }
 
   .footer-exact-grid {
     grid-template-columns: 1fr !important;
-    gap: 28px !important;
+    gap: 20px !important;
+    margin-bottom: 20px !important;
   }
 
+  /* Col 1 Brand Header */
+  .brand-header-flex {
+    gap: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-logo-wrapper {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .footer-exact-brand-name {
+    font-size: 1.25rem !important;
+  }
+
+  .footer-exact-subbrand {
+    font-size: 0.65rem !important;
+  }
+
+  .footer-exact-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.45 !important;
+    margin: 0 0 12px !important;
+  }
+
+  .footer-exact-pills {
+    gap: 6px !important;
+  }
+
+  .f-pill {
+    padding: 4px 10px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* Col Titles with Indicators */
+  .footer-exact-col-title {
+    font-size: 0.88rem !important;
+    margin: 0 0 10px !important;
+    gap: 6px !important;
+  }
+
+  .col-title-bar {
+    width: 3px !important;
+    height: 14px !important;
+  }
+
+  /* Col 2 Quick Navigation (2-column compact grid on mobile) */
+  .footer-exact-nav-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 12px !important;
+  }
+
+  .footer-exact-nav-list li a {
+    font-size: 0.8rem !important;
+    gap: 5px !important;
+  }
+
+  .arrow-sym {
+    font-size: 0.95rem !important;
+  }
+
+  /* Col 3 Franchise Plans */
+  .footer-plans-list {
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .footer-plan-item {
+    font-size: 0.8rem !important;
+  }
+
+  .plan-label {
+    gap: 6px !important;
+  }
+
+  .plan-price {
+    font-size: 0.88rem !important;
+  }
+
+  .footer-exact-sim-btn {
+    padding: 8px 12px !important;
+    font-size: 0.78rem !important;
+    border-radius: 6px !important;
+  }
+
+  /* Col 4 Corporate HQ */
+  .footer-hq-company {
+    font-size: 0.86rem !important;
+    margin-bottom: 3px !important;
+  }
+
+  .footer-hq-address {
+    font-size: 0.76rem !important;
+    line-height: 1.35 !important;
+    margin: 0 0 10px !important;
+  }
+
+  .footer-hq-contacts {
+    gap: 6px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hq-contact-link {
+    font-size: 0.8rem !important;
+    gap: 6px !important;
+  }
+
+  .hq-contact-link.email-link {
+    font-size: 0.76rem !important;
+  }
+
+  .footer-exact-socials {
+    gap: 8px !important;
+  }
+
+  .exact-social-btn {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .exact-social-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* Bottom Bar */
   .footer-exact-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    padding-top: 14px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    font-size: 0.74rem !important;
   }
 }
 
