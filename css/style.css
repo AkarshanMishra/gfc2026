@@ -1488,15 +1488,13 @@ img, video, iframe {
     display: none !important;
   }
 
-  /* 3-Column Mobile Header Grid: [Toggle] [Centered Logo] [Rounded Hotline Pill] */
+  /* 3-Column Mobile Header Grid: Exact Center Logo [1fr] [auto] [1fr] */
   .mobile-header-bar {
     display: grid !important;
-    grid-template-columns: 44px 1fr auto !important;
+    grid-template-columns: 1fr auto 1fr !important;
     align-items: center !important;
     width: 100% !important;
     height: 100% !important;
-    gap: 8px !important;
-    visibility: visible !important;
     position: relative !important;
     z-index: 10 !important;
   }
@@ -1531,7 +1529,7 @@ img, video, iframe {
     background: #FFC72C !important;
   }
 
-  /* 2. Center: Circular Logo */
+  /* 2. Center: Circular Logo - Mathematically Exact Center */
   .mobile-logo-link {
     display: flex !important;
     align-items: center !important;
@@ -1608,13 +1606,13 @@ img, video, iframe {
   .mobile-nav-backdrop {
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(0, 0, 0, 0.75) !important;
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
+    background: rgba(0, 0, 0, 0.78) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
     z-index: 9995 !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+    transition: opacity 0.35s ease, visibility 0.35s ease !important;
   }
 
   .mobile-nav-backdrop.active {
@@ -1622,27 +1620,27 @@ img, video, iframe {
     visibility: visible !important;
   }
 
-  /* Sliding Side Drawer for Mobile Navigation */
+  /* Ultra-Premium Sliding Drawer for Mobile Navigation */
   .bs-nav-cluster {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
-    width: min(320px, 86vw) !important;
+    width: min(340px, 86vw) !important;
     height: 100vh !important;
     height: 100dvh !important;
-    background-color: #0F4C2A !important;
+    background-color: #082917 !important;
     background-image: 
-      radial-gradient(circle at 50% 50%, rgba(18, 90, 50, 0.95) 0%, rgba(10, 59, 32, 0.98) 100%),
-      url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.08' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.08'/%3E%3C/g%3E%3C/svg%3E") !important;
-    border-left: 2px solid #FFC72C !important;
+      radial-gradient(circle at top right, rgba(15, 76, 42, 0.98) 0%, rgba(6, 32, 18, 1) 100%),
+      url("data:image/svg+xml,%3Csvg width='400' height='90' viewBox='0 0 400 90' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.06' font-family='Arial Black, sans-serif' font-weight='900'%3E%3Ctext x='15' y='45' font-size='38' letter-spacing='-1'%3ETOMATO%3C/text%3E%3Ctext x='240' y='45' font-size='36' letter-spacing='-1'%3ERED ONIONS%3C/text%3E%3Ccircle cx='180' cy='40' r='18' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.06'/%3E%3Cpath d='M170 40 Q180 30 190 40' stroke='%23FFF' stroke-width='2' fill='none' stroke-opacity='0.06'/%3E%3C/g%3E%3C/svg%3E") !important;
+    border-left: 2px solid rgba(255, 199, 44, 0.6) !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
-    padding: 30px 20px 40px !important;
+    padding: 26px 20px 36px !important;
     gap: 0 !important;
     transform: translateX(105%) !important;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.7) !important;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.8), -2px 0 15px rgba(255, 199, 44, 0.15) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     z-index: 10002 !important;
@@ -1660,51 +1658,78 @@ img, video, iframe {
     width: 100% !important;
   }
 
+  /* Luxury Glassmorphic Nav Links */
   .bs-nav-link {
-    font-size: 1.05rem !important;
+    font-size: 1rem !important;
     font-weight: 900 !important;
     color: #FFFFFF !important;
-    padding: 14px 16px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
-    margin-bottom: 4px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 13px 18px !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    transition: all 0.2s ease !important;
-    letter-spacing: 0.5px !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    letter-spacing: 0.6px !important;
     text-transform: uppercase !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .bs-nav-link::after {
+    content: '→' !important;
+    color: #FFC72C !important;
+    font-size: 1.15rem !important;
+    font-weight: 900 !important;
+    transition: transform 0.2s ease !important;
   }
 
   .bs-nav-link:hover, .bs-nav-link.active {
-    background: rgba(255, 199, 44, 0.15) !important;
+    background: linear-gradient(90deg, rgba(255, 199, 44, 0.22) 0%, rgba(15, 76, 42, 0.4) 100%) !important;
+    border-color: #FFC72C !important;
     color: #FFC72C !important;
-    padding-left: 22px !important;
+    transform: translateX(4px) !important;
+    box-shadow: 0 4px 15px rgba(255, 199, 44, 0.2) !important;
+  }
+
+  .bs-nav-link:hover::after, .bs-nav-link.active::after {
+    transform: translateX(4px) !important;
   }
 
   .bs-nav-link.two-line-link {
     flex-direction: row !important;
     justify-content: space-between !important;
-    font-size: 1.05rem !important;
+    font-size: 1rem !important;
     text-align: left !important;
   }
 
   /* Mobile Hotlines in Drawer */
   .mobile-drawer-hotlines {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
   }
 
   .mobile-drawer-hotlines .bs-hotline-btn {
     display: flex !important;
-    width: 100%;
-    min-width: unset;
-    padding: 10px 14px;
-    background: rgba(0, 0, 0, 0.3);
+    width: 100% !important;
+    min-width: unset !important;
+    padding: 11px 16px !important;
+    border: 1.5px solid rgba(255, 199, 44, 0.4) !important;
+    border-radius: 12px !important;
+    background: rgba(0, 0, 0, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .mobile-drawer-hotlines .bs-hotline-btn:hover {
+    background: rgba(255, 199, 44, 0.18) !important;
+    border-color: #FFC72C !important;
+    transform: translateY(-2px) !important;
   }
 
   /* Hero Section Responsiveness */
