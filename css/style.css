@@ -2521,38 +2521,11 @@ img, video, iframe {
   position: relative;
   overflow: hidden;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.65);
-  padding: 0 18px 0 0;
+  padding: 0 20px 0 24px;
   gap: 16px;
 }
 
-/* 1. Yellow Dotted Notch on Left (Enlarged) */
-.grill-nav-yellow-notch {
-  width: 64px;
-  height: 84px;
-  background: #FFC72C;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  align-items: center;
-  justify-items: center;
-  padding: 18px 12px;
-  margin-right: 8px;
-  flex-shrink: 0;
-}
-
-.grill-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #000000;
-  opacity: 0.9;
-}
-
-/* 2. Circular Emblem Logo (BIG & Prominent) */
+/* 1. Circular Emblem Logo (BIG & Prominent on Left) */
 .grill-nav-logo-box {
   display: flex;
   align-items: center;
