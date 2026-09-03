@@ -1657,7 +1657,7 @@ img, video, iframe {
 }
 
 .faq-bar-item.active .faq-bar-chevron {
-  transform: rotate(90deg);
+  transform: rotate(90deg) !important;
 }
 
 .faq-bar-content {
@@ -1669,9 +1669,9 @@ img, video, iframe {
 }
 
 .faq-bar-item.active .faq-bar-content {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
 }
 
 .faq-qa-card {

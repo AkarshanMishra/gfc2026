@@ -544,24 +544,47 @@
   <script type="module" src="js/app.js"></script>
 
   <script>
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-bar-item');
-      if (!item) return;
-      const isAlreadyActive = item.classList.contains('active');
+    (function() {
+      window.toggleFaq = function(btn) {
+        if (!btn) return;
+        const item = btn.closest('.faq-bar-item');
+        if (!item) return;
+        const isCurrentlyActive = item.classList.contains('active');
 
-      // Close all accordion items
-      document.querySelectorAll('.faq-bar-item').forEach(other => {
-        other.classList.remove('active');
-        const b = other.querySelector('.faq-bar-header');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
+        // Close all accordion items
+        const allItems = document.querySelectorAll('.faq-bar-item');
+        allItems.forEach(function(el) {
+          el.classList.remove('active');
+          const headerBtn = el.querySelector('.faq-bar-header');
+          if (headerBtn) headerBtn.setAttribute('aria-expanded', 'false');
+        });
 
-      // If it wasn't active, open it
-      if (!isAlreadyActive) {
-        item.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
+        // If it was closed, open it
+        if (!isCurrentlyActive) {
+          item.classList.add('active');
+          const currentBtn = item.querySelector('.faq-bar-header');
+          if (currentBtn) currentBtn.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      function initFaqClicks() {
+        document.querySelectorAll('.faq-bar-header').forEach(function(header) {
+          header.onclick = function(e) {
+            if (e) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+            window.toggleFaq(this);
+          };
+        });
       }
-    }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFaqClicks);
+      } else {
+        initFaqClicks();
+      }
+    })();
   </script>
 
   <!-- ADVANCED GRILLISTA PROFIT SIMULATOR & P&L ENGINE v2.0 -->
