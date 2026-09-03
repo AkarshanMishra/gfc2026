@@ -346,7 +346,6 @@ window.downloadSimulatorProspectus = function() {
   URL.revokeObjectURL(url);
 };
 
-// Bind Model Cards on franchise.html to also launch the simulator with that model!
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('profit-simulator-modal');
   modal?.addEventListener('click', (e) => {
@@ -357,13 +356,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal?.classList.contains('active')) {
       window.closeProfitSimulatorModal();
     }
-  });
-
-  // Attach click to franchise model cards
-  document.querySelectorAll('.franchise-model-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const model = card.getAttribute('data-model') || 'express';
-      window.openProfitSimulatorModal(model);
-    });
   });
 });
