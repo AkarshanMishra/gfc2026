@@ -2498,38 +2498,47 @@ img, video, iframe {
    HOMEPAGE EXACT REDESIGN (MATCHING USER REFERENCE MOCKUP)
    ========================================================================== */
 
-/* 1. Modern Dark Header Bar */
+/* 1. Modern Dark Header Bar with Golden Capsule Frame */
 .gh-header {
   position: sticky;
   top: 0;
   z-index: 10000;
-  background-color: #0B0F19;
-  border-bottom: 1px solid rgba(255, 199, 44, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background-color: #000000;
+  border-bottom: 1px solid rgba(255, 199, 44, 0.2);
+  padding: 8px 0;
 }
 
 .gh-navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 78px;
-  padding: 8px 24px;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1540px;
   margin: 0 auto;
+  padding: 0 20px;
+  gap: 20px;
 }
 
+/* Left Brand Logo */
 .gh-logo-group {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+.gh-logo-flame-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gh-logo-flame {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 199, 44, 0.6));
 }
 
 .gh-logo-text-wrap {
@@ -2539,114 +2548,179 @@ img, video, iframe {
 
 .gh-logo-main {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.55rem;
-  font-weight: 900;
+  font-size: 1.65rem;
+  font-weight: 950;
   color: #FFFFFF;
-  letter-spacing: 1px;
-  line-height: 1;
+  letter-spacing: 1.2px;
+  line-height: 0.95;
 }
 
 .gh-logo-sub {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  color: #FFC72C;
-  letter-spacing: 2px;
+  color: #FFFFFF;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
+  opacity: 0.9;
 }
 
+/* Gold Bordered Capsule Frame */
+.gh-nav-capsule-frame {
+  display: flex;
+  align-items: center;
+  background: #000000;
+  border: 1.8px solid #FFC72C;
+  border-radius: 40px;
+  padding: 4px 6px 4px 0;
+  gap: 18px;
+  box-shadow: 0 0 22px rgba(255, 199, 44, 0.18), inset 0 0 15px rgba(255, 199, 44, 0.06);
+  position: relative;
+}
+
+/* Active Home Tab (Notched Trapezoid with Glow) */
+.gh-home-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 199, 44, 0.28) 0%, rgba(5, 7, 12, 0.98) 75%);
+  border: 1.8px solid #FFC72C;
+  border-radius: 26px 8px 8px 26px;
+  padding: 6px 22px;
+  margin: -6px 0 -6px -2px;
+  text-decoration: none;
+  position: relative;
+  box-shadow: inset 0 2px 12px rgba(255, 199, 44, 0.35), 0 0 16px rgba(255, 199, 44, 0.25);
+  transition: all 0.25s ease;
+}
+
+.gh-home-icon {
+  margin-bottom: 2px;
+}
+
+.gh-home-text {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #FFC72C;
+  letter-spacing: 0.8px;
+  line-height: 1;
+}
+
+.gh-home-underline {
+  width: 22px;
+  height: 2.5px;
+  background: #FFC72C;
+  border-radius: 2px;
+  margin-top: 4px;
+  box-shadow: 0 0 8px #FFC72C;
+}
+
+/* Navigation Links */
 .gh-nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
 }
 
 .gh-nav-link {
-  color: #CBD5E1;
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .gh-nav-link:hover {
   color: #FFC72C;
+  text-shadow: 0 0 10px rgba(255, 199, 44, 0.5);
 }
 
-.gh-nav-link.active-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 199, 44, 0.12);
-  border: 1.5px solid rgba(255, 199, 44, 0.6);
-  color: #FFC72C;
-  padding: 6px 14px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(255, 199, 44, 0.2);
-}
-
-.gh-nav-cta-group {
+/* Right Actions */
+.gh-nav-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  margin-left: 6px;
 }
 
-.gh-phone-pill {
+/* Phone Capsule */
+.gh-phone-capsule {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.2px solid rgba(255, 199, 44, 0.7);
   border-radius: 30px;
-  padding: 8px 16px;
-  font-size: 0.88rem;
-  font-weight: 800;
+  padding: 6px 14px;
   text-decoration: none;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.gh-phone-pill:hover {
-  background: rgba(255, 255, 255, 0.15);
+.gh-phone-capsule:hover {
+  background: rgba(255, 199, 44, 0.15);
   border-color: #FFC72C;
-  color: #FFC72C;
+  box-shadow: 0 0 12px rgba(255, 199, 44, 0.3);
 }
 
-.gh-cta-pill {
+.gh-phone-icon-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 199, 44, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gh-phone-number {
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+/* Yellow Apply Capsule Button */
+.gh-apply-capsule-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   background: #FFC72C;
-  color: #090D16;
-  font-size: 0.88rem;
+  color: #000000;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.84rem;
   font-weight: 900;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  padding: 10px 20px;
+  padding: 9px 18px;
   border-radius: 30px;
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(255, 199, 44, 0.35);
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.gh-cta-pill:hover {
+.gh-apply-capsule-btn:hover {
   background: #FFD54F;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 199, 44, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 199, 44, 0.5);
 }
 
-.gh-arrow-badge {
-  width: 22px;
-  height: 22px;
-  background: #090D16;
-  color: #FFC72C;
+.gh-btn-arrow-circle {
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  background: #000000;
+  color: #FFC72C;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 900;
 }
 
