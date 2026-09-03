@@ -70,63 +70,103 @@
 
   <!-- GRILLISTA SIGNATURE NAVBAR -->
     <!-- EXACT GRILLISTA SIGNATURE DARK & GOLD NAVBAR -->
-  <header class="gh-header">
-    <div class="gh-navbar-container">
+    <!-- EXACT GRILLISTA SIGNATURE DOTTED-ACCENT BLACK & GOLD NAVBAR -->
+  <header class="grill-navbar-wrapper">
+    <div class="grill-navbar-bar">
       
-      <!-- Left: Flame Logo + Text -->
-      <a href="index.html#home" class="gh-logo-group" aria-label="Grillista Home">
-        <div class="gh-logo-flame-wrap">
-          <svg class="gh-logo-flame" viewBox="0 0 24 24" fill="#FFC72C">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5 0-1.07.49-2.03 1.25-2.67.29-.25.72-.05.74.34.09 1.45 1.28 2.58 2.76 2.58.53 0 1.02-.15 1.44-.41.34-.21.78.01.78.41 0 1.8-1.45 3.25-3.47 3.25z"/>
-          </svg>
-        </div>
-        <div class="gh-logo-text-wrap">
-          <span class="gh-logo-main">GRILLISTA</span>
-          <span class="gh-logo-sub">FOOD FRANCHISE</span>
-        </div>
+      <!-- 1. Left Yellow Dotted Notch Accent -->
+      <div class="grill-nav-yellow-notch">
+        <span class="grill-dot"></span><span class="grill-dot"></span><span class="grill-dot"></span>
+        <span class="grill-dot"></span><span class="grill-dot"></span><span class="grill-dot"></span>
+        <span class="grill-dot"></span><span class="grill-dot"></span><span class="grill-dot"></span>
+      </div>
+
+      <!-- 2. Circular Emblem Logo -->
+      <a href="index.html#home" class="grill-nav-logo-box" aria-label="Grillista Home">
+        <img src="assets/logo.png" alt="Grillista Logo" class="grill-nav-logo-img">
       </a>
 
-      <!-- Golden Frame Capsule Enclosing Navigation & Right Actions -->
-      <div class="gh-nav-capsule-frame desktop-only">
-        
-        <!-- Active Home Tab with Notch, House Icon & Glowing Underline -->
-        <a href="index.html#home" class="gh-home-tab" title="Grillista Home">
-          <svg class="gh-home-icon" viewBox="0 0 24 24" width="14" height="14" fill="#FFC72C">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-          </svg>
-          <span class="gh-home-text">HOME</span>
-          <span class="gh-home-underline"></span>
+      <!-- Vertical Logo Divider -->
+      <div class="grill-logo-divider"></div>
+
+      <!-- 3. Navigation Links with Vertical Dividers -->
+      <nav class="grill-nav-menu desktop-only">
+        <!-- HOME -->
+        <a href="index.html#home" class="grill-nav-item">
+          <span class="grill-item-text">HOME</span>
+          
         </a>
 
-        <!-- Navigation Links -->
-        <nav class="gh-nav-links">
-          <a href="about.html" class="gh-nav-link">ABOUT US</a>
-          <a href="menu.html" class="gh-nav-link">MENU</a>
-          <a href="index.html#why-choose-grillista" class="gh-nav-link">WHY GRILLISTA</a>
-          <a href="franchise.html" class="gh-nav-link" style="color: #FFC72C; font-weight: 900;">FRANCHISE</a>
-          <a href="gallery.html" class="gh-nav-link">GALLERY</a>
-          <a href="locator.html" class="gh-nav-link">CONTACT US</a>
-        </nav>
+        <span class="grill-link-divider"></span>
+        <a href="about.html" class="grill-nav-item">
+          <span class="grill-item-text">ABOUT US</span>
+          
+        </a>
 
-        <!-- Right Action Group -->
-        <div class="gh-nav-actions">
-          <!-- Phone Capsule -->
-          <a href="tel:+919029020888" class="gh-phone-capsule" title="Call Hotline">
-            <div class="gh-phone-icon-circle">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFC72C">
-                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
-              </svg>
-            </div>
-            <span class="gh-phone-number">+91 90290 20888</span>
+        <span class="grill-link-divider"></span>
+        <a href="menu.html" class="grill-nav-item">
+          <span class="grill-item-text">MENU</span>
+          
+        </a>
+
+        <span class="grill-link-divider"></span>
+        <a href="index.html#why-choose-grillista" class="grill-nav-item">
+          <span class="grill-item-text">WHY GRILLISTA</span>
+          
+        </a>
+
+        <span class="grill-link-divider"></span>
+        <a href="franchise.html" class="grill-nav-item active">
+          <span class="grill-item-text">FRANCHISE</span>
+          <span class="grill-item-underline"></span>
+        </a>
+
+        <span class="grill-link-divider"></span>
+        <a href="gallery.html" class="grill-nav-item">
+          <span class="grill-item-text">GALLERY</span>
+          
+        </a>
+
+        <span class="grill-link-divider"></span>
+        <a href="locator.html" class="grill-nav-item">
+          <span class="grill-item-text">CONTACT US</span>
+          
+        </a>
+      </nav>
+
+      <!-- 4. Right Social Badges & Gold Outline CTA -->
+      <div class="grill-nav-right-group desktop-only">
+        <!-- Social Icon Circles -->
+        <div class="grill-social-dock">
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="grill-social-circle" title="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFC72C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
           </a>
 
-          <!-- Yellow Apply Capsule Button -->
-          <a href="franchise.html" class="gh-apply-capsule-btn">
-            <span>APPLY FOR FRANCHISE</span>
-            <span class="gh-btn-arrow-circle">➔</span>
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="grill-social-circle" title="Facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFC72C">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+
+          <!-- Location Pin -->
+          <a href="locator.html" class="grill-social-circle" title="Store Locator" aria-label="Store Locator">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFC72C">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
           </a>
         </div>
 
+        <!-- Gold Outlined Pill CTA -->
+        <a href="franchise.html" class="grill-cta-outline-btn">
+          <span>APPLY FOR FRANCHISE</span>
+          <span class="grill-cta-arrow">➔</span>
+        </a>
       </div>
 
       <!-- Mobile Header Bar: 3-column layout -->

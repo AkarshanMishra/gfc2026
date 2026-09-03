@@ -2498,230 +2498,216 @@ img, video, iframe {
    HOMEPAGE EXACT REDESIGN (MATCHING USER REFERENCE MOCKUP)
    ========================================================================== */
 
-/* 1. Modern Dark Header Bar with Golden Capsule Frame */
-.gh-header {
+/* ==========================================================================
+   GRILLISTA SIGNATURE DOTTED-ACCENT BLACK & GOLD NAVBAR (EXACT SCREENSHOT)
+   ========================================================================== */
+.grill-navbar-wrapper {
   position: sticky;
   top: 0;
   z-index: 10000;
-  background-color: #000000;
-  border-bottom: 1px solid rgba(255, 199, 44, 0.2);
-  padding: 8px 0;
+  background: #000000;
+  padding: 10px 20px;
+  width: 100%;
 }
 
-.gh-navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+.grill-navbar-bar {
   max-width: 1540px;
   margin: 0 auto;
-  padding: 0 20px;
-  gap: 20px;
-}
-
-/* Left Brand Logo */
-.gh-logo-group {
+  background: #000000;
+  border-radius: 20px;
+  min-height: 72px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+  padding: 0 16px 0 0;
+  gap: 14px;
+}
+
+/* 1. Yellow Dotted Notch on Left */
+.grill-nav-yellow-notch {
+  width: 48px;
+  height: 72px;
+  background: #FFC72C;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  padding: 16px 10px;
+  margin-right: 6px;
   flex-shrink: 0;
 }
 
-.gh-logo-flame-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.gh-logo-flame {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(255, 199, 44, 0.6));
-}
-
-.gh-logo-text-wrap {
-  display: flex;
-  flex-direction: column;
-}
-
-.gh-logo-main {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.65rem;
-  font-weight: 950;
-  color: #FFFFFF;
-  letter-spacing: 1.2px;
-  line-height: 0.95;
-}
-
-.gh-logo-sub {
-  font-size: 0.62rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: 2.2px;
-  text-transform: uppercase;
-  margin-top: 3px;
-  opacity: 0.9;
-}
-
-/* Gold Bordered Capsule Frame */
-.gh-nav-capsule-frame {
-  display: flex;
-  align-items: center;
+.grill-dot {
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
   background: #000000;
-  border: 1.8px solid #FFC72C;
-  border-radius: 40px;
-  padding: 4px 6px 4px 0;
-  gap: 18px;
-  box-shadow: 0 0 22px rgba(255, 199, 44, 0.18), inset 0 0 15px rgba(255, 199, 44, 0.06);
-  position: relative;
+  opacity: 0.85;
 }
 
-/* Active Home Tab (Notched Trapezoid with Glow) */
-.gh-home-tab {
+/* 2. Circular Emblem Logo */
+.grill-nav-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.grill-nav-logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Vertical Separator after Logo */
+.grill-logo-divider {
+  width: 1px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 10px 0 6px;
+  flex-shrink: 0;
+}
+
+/* 3. Navigation Links */
+.grill-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
+
+.grill-nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 199, 44, 0.28) 0%, rgba(5, 7, 12, 0.98) 75%);
-  border: 1.8px solid #FFC72C;
-  border-radius: 26px 8px 8px 26px;
-  padding: 6px 22px;
-  margin: -6px 0 -6px -2px;
   text-decoration: none;
+  padding: 6px 4px;
+  transition: all 0.2s ease;
   position: relative;
-  box-shadow: inset 0 2px 12px rgba(255, 199, 44, 0.35), 0 0 16px rgba(255, 199, 44, 0.25);
-  transition: all 0.25s ease;
 }
 
-.gh-home-icon {
-  margin-bottom: 2px;
-}
-
-.gh-home-text {
+.grill-item-text {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.82rem;
-  font-weight: 900;
-  color: #FFC72C;
-  letter-spacing: 0.8px;
-  line-height: 1;
-}
-
-.gh-home-underline {
-  width: 22px;
-  height: 2.5px;
-  background: #FFC72C;
-  border-radius: 2px;
-  margin-top: 4px;
-  box-shadow: 0 0 8px #FFC72C;
-}
-
-/* Navigation Links */
-.gh-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.gh-nav-link {
-  color: #FFFFFF;
+  font-size: 0.88rem;
   font-weight: 800;
-  font-size: 0.85rem;
+  color: #FFFFFF;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.2s ease;
   white-space: nowrap;
+  transition: color 0.2s ease;
 }
 
-.gh-nav-link:hover {
+.grill-nav-item:hover .grill-item-text {
   color: #FFC72C;
-  text-shadow: 0 0 10px rgba(255, 199, 44, 0.5);
 }
 
-/* Right Actions */
-.gh-nav-actions {
+.grill-nav-item.active .grill-item-text {
+  color: #FFC72C;
+  font-weight: 900;
+}
+
+/* Solid Yellow Underline for Active Item */
+.grill-item-underline {
+  width: 32px;
+  height: 3.5px;
+  background: #FFC72C;
+  border-radius: 2px;
+  margin-top: 5px;
+  box-shadow: 0 0 6px rgba(255, 199, 44, 0.6);
+}
+
+/* Vertical Divider between links */
+.grill-link-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* 4. Right Group (Social Dock & CTA) */
+.grill-nav-right-group {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-left: 6px;
+  gap: 18px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
-/* Phone Capsule */
-.gh-phone-capsule {
-  display: inline-flex;
+.grill-social-dock {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1.2px solid rgba(255, 199, 44, 0.7);
-  border-radius: 30px;
-  padding: 6px 14px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  gap: 10px;
 }
 
-.gh-phone-capsule:hover {
-  background: rgba(255, 199, 44, 0.15);
-  border-color: #FFC72C;
-  box-shadow: 0 0 12px rgba(255, 199, 44, 0.3);
-}
-
-.gh-phone-icon-circle {
-  width: 20px;
-  height: 20px;
+.grill-social-circle {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(255, 199, 44, 0.2);
+  border: 1.5px solid #FFC72C;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-.gh-phone-number {
-  color: #FFFFFF;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.3px;
+.grill-social-circle:hover {
+  background: rgba(255, 199, 44, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(255, 199, 44, 0.4);
 }
 
-/* Yellow Apply Capsule Button */
-.gh-apply-capsule-btn {
+/* Gold Outlined CTA Button */
+.grill-cta-outline-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #FFC72C;
-  color: #000000;
+  background: #000000;
+  border: 2px solid #FFC72C;
+  color: #FFC72C;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.84rem;
   font-weight: 900;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding: 9px 18px;
-  border-radius: 30px;
+  padding: 10px 20px;
+  border-radius: 35px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(255, 199, 44, 0.35);
+  box-shadow: 0 0 14px rgba(255, 199, 44, 0.25);
   transition: all 0.25s ease;
   white-space: nowrap;
 }
 
-.gh-apply-capsule-btn:hover {
-  background: #FFD54F;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 199, 44, 0.5);
+.grill-cta-outline-btn:hover {
+  background: #FFC72C;
+  color: #000000;
+  box-shadow: 0 0 22px rgba(255, 199, 44, 0.5);
+  transform: translateY(-2px);
 }
 
-.gh-btn-arrow-circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #000000;
-  color: #FFC72C;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.72rem;
+.grill-cta-outline-btn:hover .grill-cta-arrow {
+  color: #000000;
+}
+
+.grill-cta-arrow {
+  font-size: 0.95rem;
   font-weight: 900;
+  color: #FFC72C;
+  transition: color 0.2s ease;
 }
 
 /* 2. Hero Section */
