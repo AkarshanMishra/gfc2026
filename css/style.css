@@ -2514,24 +2514,24 @@ img, video, iframe {
   max-width: 1540px;
   margin: 0 auto;
   background: #000000;
-  border-radius: 20px;
-  min-height: 72px;
+  border-radius: 24px;
+  min-height: 84px;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
-  padding: 0 16px 0 0;
-  gap: 14px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.65);
+  padding: 0 18px 0 0;
+  gap: 16px;
 }
 
-/* 1. Yellow Dotted Notch on Left */
+/* 1. Yellow Dotted Notch on Left (Enlarged) */
 .grill-nav-yellow-notch {
-  width: 48px;
-  height: 72px;
+  width: 64px;
+  height: 84px;
   background: #FFC72C;
-  border-top-left-radius: 18px;
-  border-bottom-left-radius: 18px;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
   display: grid;
@@ -2539,43 +2539,48 @@ img, video, iframe {
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   justify-items: center;
-  padding: 16px 10px;
-  margin-right: 6px;
+  padding: 18px 12px;
+  margin-right: 8px;
   flex-shrink: 0;
 }
 
 .grill-dot {
-  width: 4.5px;
-  height: 4.5px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #000000;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* 2. Circular Emblem Logo */
+/* 2. Circular Emblem Logo (BIG & Prominent) */
 .grill-nav-logo-box {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   text-decoration: none;
-  padding: 4px 0;
+  padding: 2px 0;
 }
 
 .grill-nav-logo-img {
-  width: 58px;
-  height: 58px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
   border-radius: 50%;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  transition: transform 0.25s ease;
+}
+
+.grill-nav-logo-box:hover .grill-nav-logo-img {
+  transform: scale(1.06);
 }
 
 /* Vertical Separator after Logo */
 .grill-logo-divider {
   width: 1px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 0 10px 0 6px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.18);
+  margin: 0 12px 0 8px;
   flex-shrink: 0;
 }
 
