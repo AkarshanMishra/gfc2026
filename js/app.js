@@ -581,32 +581,39 @@ class App {
   // FAQ ACCORDION HANDLER
   // -------------------------------------------------------------
   setupFaqAccordion() {
+    window.toggleFaqCard = function(element) {
+      if (!element) return;
+      const isAlreadyActive = element.classList.contains('active');
+      
+      document.querySelectorAll('.faq-exact-card').forEach(card => {
+        card.classList.remove('active');
+        const icon = card.querySelector('.faq-toggle-icon');
+        if (icon) icon.textContent = '+';
+      });
+      
+      if (!isAlreadyActive) {
+        element.classList.add('active');
+        const icon = element.querySelector('.faq-toggle-icon');
+        if (icon) icon.textContent = '−';
+      }
+    };
+
     window.toggleFaq = function(btn) {
       const item = btn?.closest('.faq-bar-item');
       if (!item) return;
       const isAlreadyActive = item.classList.contains('active');
 
-      // Close all other accordion items
       document.querySelectorAll('.faq-bar-item').forEach(other => {
         other.classList.remove('active');
         const b = other.querySelector('.faq-bar-header');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
 
-      // Toggle current
       if (!isAlreadyActive) {
         item.classList.add('active');
         btn.setAttribute('aria-expanded', 'true');
       }
     };
-
-    // Bind onclick directly to avoid duplicate event listeners
-    document.querySelectorAll('.faq-bar-header').forEach(header => {
-      header.onclick = function(e) {
-        if (e) e.preventDefault();
-        window.toggleFaq(this);
-      };
-    });
   }
 
   setupQuickSidebar() {

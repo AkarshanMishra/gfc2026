@@ -354,150 +354,141 @@
       </div>
     </div>
 
-    <!-- FREQUENTLY ASKED QUESTIONS SECTION (EXACT SCREENSHOT LAYOUT) -->
+    <!-- EXACT MOCKUP FAQ SECTION -->
     <section class="faq-exact-section" id="faq">
-      <div class="container" style="max-width: 1040px;">
-        <div style="text-align: center; margin-bottom: 32px;">
+      <div class="faq-exact-container">
+        
+        <!-- Header / Title Area -->
+        <div class="faq-exact-header">
+          <div class="faq-spark-badge">― FAQ ―</div>
           <h2 class="faq-title-main">
-            FREQUENTLY ASKED <span class="faq-title-accent">QUESTIONS</span>
+            <span class="faq-title-black">FREQUENTLY</span><br>
+            <span class="faq-title-gold">ASKED QUESTIONS</span>
           </h2>
+          <div class="faq-star-divider">
+            <span class="faq-line"></span>
+            <span class="faq-star">★</span>
+            <span class="faq-line"></span>
+          </div>
+          <p class="faq-subtitle">
+            Find answers to the most common questions about Grillista Food Franchise.
+          </p>
         </div>
 
-        <h3 class="faq-subheading-text">
-          QUESTIONS YOU MIGHT ASK
-        </h3>
+        <!-- 2-Column Content Grid -->
+        <div class="faq-exact-grid">
+          
+          <!-- Left Column: Accordion Questions -->
+          <div class="faq-accordion-col" id="faq-accordion-group">
+            
+            <!-- Question 1 (Active by default) -->
+            <div class="faq-exact-card active" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">What is Grillista Food Franchise?</h3>
+                <div class="faq-toggle-icon">−</div>
+              </div>
+              <div class="faq-card-body">
+                <p>Grillista is a fast-growing food brand known for its delicious food, great ambience, and excellent customer service. We offer a profitable franchise opportunity with complete end-to-end support.</p>
+              </div>
+            </div>
 
-        <div class="faq-bar-list">
-          <!-- 1. GENERAL -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">GENERAL</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>What is Grillista?</h4>
-                <p>Grillista is a high-growth, 100% vegetarian Indian fast-casual QSR brand offering handcrafted burgers, loaded pizzas, garlic breads, desi street bites, pastas, coolers, and thick shakes engineered for Indian tastebuds.</p>
+            <!-- Question 2 -->
+            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">What are the requirements to become a franchisee?</h3>
+                <div class="faq-toggle-icon">+</div>
               </div>
-              <div class="faq-qa-card">
-                <h4>Is Grillista 100% Vegetarian?</h4>
-                <p>Yes, Grillista is 100% pure vegetarian with dedicated kitchen protocols, premium paneer, farm-fresh vegetables, and high-protein alternatives.</p>
+              <div class="faq-card-body">
+                <p>You need a commercial space of 150 to 500+ sq.ft. (depending on the model: Kiosk, Cafe, or Dine-In), adequate investment capability, and passion for the food & hospitality industry. No prior restaurant experience is mandatory as our team provides complete training.</p>
               </div>
-              <div class="faq-qa-card">
-                <h4>Where was Grillista founded?</h4>
-                <p>Grillista was founded in 2021 in Kakadeo, Kanpur, and expanded with company-owned outlets in Barra, Kanpur, serving over 10,000+ satisfied customers before launching its nationwide franchise program.</p>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">How much investment is required?</h3>
+                <div class="faq-toggle-icon">+</div>
               </div>
+              <div class="faq-card-body">
+                <p>Investment packages start from ₹3.5 Lakhs for Kiosk models, ₹5.5 Lakhs for Cafe & Takeaway, and ₹8.5 Lakhs+ for full Dine-In models. This covers equipment, signage, initial setup, staff training, and raw material support.</p>
+              </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">What support will I get after taking the franchise?</h3>
+                <div class="faq-toggle-icon">+</div>
+              </div>
+              <div class="faq-card-body">
+                <p>Grillista provides comprehensive 360° support: location selection, kitchen design, chef and staff recruitment & training, centralized recipe ingredients, Zomato/Swiggy onboarding, and digital marketing campaigns.</p>
+              </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">How long does it take to set up an outlet?</h3>
+                <div class="faq-toggle-icon">+</div>
+              </div>
+              <div class="faq-card-body">
+                <p>From agreement signing and site finalization to grand opening, the entire setup typically takes just 15 to 30 days.</p>
+              </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
+              <div class="faq-card-head">
+                <div class="faq-q-badge">Q</div>
+                <h3 class="faq-card-question">What is the expected ROI?</h3>
+                <div class="faq-toggle-icon">+</div>
+              </div>
+              <div class="faq-card-body">
+                <p>With healthy operating profit margins of 35% to 45% and strong customer retention, most Grillista partners achieve full capital payback within 6 to 12 months.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Visual Composition -->
+          <div class="faq-visual-col">
+            <img 
+              src="assets/faq_food_composition.jpg" 
+              alt="Grillista Gourmet Burger, Noodles, Fries and Club Sandwiches" 
+              class="faq-food-banner-img"
+            >
+          </div>
+
+        </div>
+
+        <!-- Bottom Contact Card ("STILL HAVE QUESTIONS?") -->
+        <div class="faq-bottom-dock">
+          <div class="faq-bottom-left">
+            <div class="faq-headset-circle">🎧</div>
+            <div>
+              <div class="faq-bottom-heading">STILL HAVE QUESTIONS?</div>
+              <div class="faq-bottom-sub">We're here to help you!</div>
             </div>
           </div>
 
-          <!-- 2. PROJECT -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">PROJECT</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>How long does it take to set up a Grillista outlet?</h4>
-                <p>From site sign-off and agreement execution to grand opening, it takes approximately 30 to 45 days for Express/Bistro models and 45 to 60 days for Signature flagship restaurants.</p>
-              </div>
-              <div class="faq-qa-card">
-                <h4>Does Grillista provide turnkey store design and kitchen setup?</h4>
-                <p>Yes, our central projects team delivers full 3D architectural CAD layout, MEP design, certified kitchen equipment procurement, cloud POS integration, and outdoor 3D brand signage fabrication.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. LOCATION -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">LOCATION</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>What are the carpet area requirements for different models?</h4>
-                <p><strong>Express Model:</strong> 100 – 250 sq.ft (Kiosk / Food Court / Takeaway)<br>
-                <strong>Bistro Model:</strong> 250 – 500 sq.ft (High Street / Quick Dine-In)<br>
-                <strong>Signature Model:</strong> 500 – 1,200 sq.ft (Flagship High-Street / Full Dine-In Lounge)</p>
-              </div>
-              <div class="faq-qa-card">
-                <h4>Does Grillista help in location scouting and feasibility audits?</h4>
-                <p>Yes, our dedicated real estate team conducts on-ground footfall audits, vehicular density analysis, competitor benchmarking, and rental viability studies before greenlighting any location.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. HR, TRAINING & STAFFING -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">HR, TRAINING & STAFFING</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>Does Grillista help in hiring and kitchen staff training?</h4>
-                <p>Yes, Grillista provides complete chef and staff recruitment support, followed by a mandatory 14-day training certification covering kitchen SOPs, speed-of-service, food hygiene, inventory management, and POS billing.</p>
-              </div>
-              <div class="faq-qa-card">
-                <h4>Do I need prior restaurant experience to run a franchise?</h4>
-                <p>No prior restaurant experience is required! Our simplified kitchen automation, standardized central sauces and seasonings, and foolproof operating SOPs make running an outlet hassle-free.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. MARKETING -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">MARKETING</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>What marketing support does Grillista provide?</h4>
-                <p>We execute multi-channel marketing: hyper-local Meta/Instagram ad campaigns, Zomato & Swiggy algorithm optimization, influencer tasting sessions, PR media releases, launch discount collateral, and seasonal festive menu promotions.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 6. FINANCIALS & EARNING POTENTIAL -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">FINANCIALS & EARNING POTENTIAL</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>What is the expected Net Profit across different formats?</h4>
-                <p><strong>Express Model:</strong> Net Profit ~₹45,750 / month (~18% Net Margin)<br>
-                <strong>Bistro Model:</strong> Net Profit ~₹1,45,200 / month (~35% Net Margin)<br>
-                <strong>Signature Model:</strong> Net Profit ~₹2,20,000 / month (~36% Net Margin)</p>
-              </div>
-              <div class="faq-qa-card">
-                <h4>What is the food cost and royalty structure?</h4>
-                <p>Standardized food cost is kept low at ~30% via centralized bulk supply. Royalty is <strong>0% (Free for first 6 months)</strong> and 5% monthly gross sales thereafter.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 7. AGREEMENT TERMS & RENEWAL -->
-          <div class="faq-bar-item">
-            <button class="faq-bar-header" type="button" onclick="toggleFaq(this)" aria-expanded="false">
-              <span class="faq-bar-title">AGREEMENT TERMS & RENEWAL</span>
-              <span class="faq-bar-chevron">›</span>
-            </button>
-            <div class="faq-bar-content">
-              <div class="faq-qa-card">
-                <h4>What is the franchise agreement tenure?</h4>
-                <p>The standard franchise agreement is signed for a 5-year term and is renewable at <strong>zero renewal fee</strong> subject to compliant brand operations.</p>
-              </div>
-              <div class="faq-qa-card">
-                <h4>Is the franchise location protected with territory exclusivity?</h4>
-                <p>Yes, each franchise outlet is granted an exclusive catchment radius to ensure maximum customer concentration without internal cannibalization.</p>
-              </div>
-            </div>
+          <div class="faq-bottom-right">
+            <a href="tel:+919029020888" class="faq-bottom-phone-pill">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFC72C"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/></svg>
+              <span>+91 90290 20888</span>
+            </a>
+            
+            <a href="https://wa.me/919029020888?text=Hello%20Grillista,%20I%20have%20questions%20regarding%20the%20franchise%20opportunity" target="_blank" rel="noopener noreferrer" class="faq-bottom-talk-btn">
+              <span>TALK TO OUR EXPERT</span>
+              <span>💬</span>
+            </a>
           </div>
         </div>
+
       </div>
     </section>
   </main>
