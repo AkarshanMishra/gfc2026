@@ -909,125 +909,113 @@ img, video, iframe {
 
 
 /* ==========================================================================
-   FLOATING DOCKED QUICK SIDEBAR (ULTRA-RESPONSIVE ACROSS ALL DEVICES)
+   FLOATING DOCKED QUICK ACTIONS (APPLY NOW, WHATSAPP, CALL)
    ========================================================================== */
-.floating-quick-sidebar {
-  display: none !important;
+.floating-quick-actions {
+  position: fixed;
+  right: 18px;
+  bottom: 28px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  pointer-events: auto;
 }
 
-.floating-quick-sidebar.collapsed .sidebar-action-item {
-  display: none !important;
+.quick-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.floating-quick-sidebar.collapsed .sidebar-toggle-btn {
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
+.quick-action-item:hover {
+  transform: translateY(-3px) scale(1.06);
 }
 
-.floating-quick-sidebar.collapsed .sidebar-toggle-btn svg {
-  transform: rotate(180deg);
+.quick-action-item:active {
+  transform: scale(0.95);
 }
 
-.sidebar-toggle-btn,
-.sidebar-action-item {
-  width: 44px;
-  height: 46px;
+.quick-action-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
   position: relative;
-  box-sizing: border-box;
 }
 
-.sidebar-toggle-btn {
-  background: #000000;
-  color: #FFFFFF;
+/* 1. Apply Now (Red) */
+.apply-circle {
+  background: #D32F2F;
 }
 
-.sidebar-toggle-btn:hover {
-  background: #1A1A1A;
+.quick-action-item:hover .apply-circle {
+  background: #C62828;
+  box-shadow: 0 8px 22px rgba(211, 47, 47, 0.45);
 }
 
-.sidebar-toggle-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke: #FFFFFF;
-  transition: transform 0.3s ease;
-  display: block;
+.apply-label {
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #D32F2F;
+  margin-top: 4px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-.sidebar-whatsapp-btn {
-  background: #000000;
-  color: #25D366;
+/* 2. WhatsApp (Green) */
+.whatsapp-circle {
+  background: #25D366;
 }
 
-.sidebar-whatsapp-btn:hover {
-  background: #1A1A1A;
-  transform: scale(1.08);
+.quick-action-item:hover .whatsapp-circle {
+  background: #20BA5A;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
 }
 
-.sidebar-phone-btn {
-  background: #FFD000;
-  color: #000000;
+/* 3. Call (Blue) */
+.phone-circle {
+  background: #38A1F3;
 }
 
-.sidebar-phone-btn:hover {
-  background: #F5B81C;
-  transform: scale(1.08);
+.quick-action-item:hover .phone-circle {
+  background: #238CD8;
+  box-shadow: 0 8px 22px rgba(56, 161, 243, 0.45);
 }
 
-.sidebar-email-btn {
-  background: #182232;
-  color: #FFFFFF;
-}
-
-.sidebar-email-btn:hover {
-  background: #233147;
-  transform: scale(1.08);
-}
-
-/* Mobile & Tablet Responsiveness for Floating Quick Sidebar */
-@media (max-width: 768px) {
-  .floating-quick-sidebar {
-    top: 55%;
-    box-shadow: -2px 4px 14px rgba(0, 0, 0, 0.3);
-  }
-
-  .sidebar-toggle-btn,
-  .sidebar-action-item {
-    width: 38px;
-    height: 40px;
-  }
-
-  .sidebar-toggle-btn svg,
-  .sidebar-action-item svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
+/* Responsiveness on smaller mobile devices */
 @media (max-width: 480px) {
-  .floating-quick-sidebar {
-    top: 58%;
+  .floating-quick-actions {
+    right: 12px;
+    bottom: 20px;
+    gap: 10px;
   }
-
-  .sidebar-toggle-btn,
-  .sidebar-action-item {
-    width: 36px;
-    height: 38px;
+  .quick-action-circle {
+    width: 46px;
+    height: 46px;
   }
-
-  .sidebar-toggle-btn svg,
-  .sidebar-action-item svg {
-    width: 16px;
-    height: 16px;
+  .quick-action-circle svg {
+    width: 22px;
+    height: 22px;
+  }
+  .apply-label {
+    font-size: 0.72rem;
   }
 }
+
 
 /* ==========================================================================
    HOMEPAGE DEDICATED FRANCHISE APPLICATION SECTION & FORM
