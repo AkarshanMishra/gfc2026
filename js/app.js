@@ -579,58 +579,10 @@ class App {
   }
 
   // -------------------------------------------------------------
-  // FAQ ACCORDION HANDLER (MATCHING MOCKUP)
+  // FAQ ACCORDION HANDLER (Managed by dedicated js/faq.js)
   // -------------------------------------------------------------
   setupFaqAccordion() {
-    window.toggleMockupFaq = function(button) {
-      const card = button?.closest('.faq-item-card');
-      if (!card) return;
-      const isAlreadyActive = card.classList.contains('active');
-
-      document.querySelectorAll('.faq-item-card').forEach(other => {
-        other.classList.remove('active');
-        const btn = other.querySelector('.faq-item-head');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-        const icon = other.querySelector('.faq-plus-icon');
-        if (icon) icon.textContent = '+';
-      });
-
-      if (!isAlreadyActive) {
-        card.classList.add('active');
-        button.setAttribute('aria-expanded', 'true');
-        const icon = card.querySelector('.faq-plus-icon');
-        if (icon) icon.textContent = '−';
-      }
-    };
-
-    // Category Pill Filter
-    const pillButtons = document.querySelectorAll('.faq-pill-btn');
-    const faqCards = document.querySelectorAll('.faq-item-card');
-
-    pillButtons.forEach(pill => {
-      pill.addEventListener('click', () => {
-        pillButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        });
-        pill.classList.add('active');
-        pill.setAttribute('aria-selected', 'true');
-
-        const selectedCat = pill.getAttribute('data-faq-cat') || 'all';
-
-        faqCards.forEach(card => {
-          const cardCategories = card.getAttribute('data-category') || '';
-          if (selectedCat === 'all' || cardCategories.includes(selectedCat)) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Backwards compatibility fallback
-    window.toggleFaqCard = window.toggleMockupFaq;
+    // Universally managed by js/faq.js for zero latency and fail-proof execution
   }
 
   setupQuickSidebar() {
