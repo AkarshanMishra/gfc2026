@@ -728,9 +728,9 @@ img, video, iframe {
 
 .clean-footer-logo-wrap {
   position: relative;
-  width: 96px;
-  height: 96px;
-  min-width: 96px;
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
