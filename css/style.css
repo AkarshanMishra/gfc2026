@@ -7,7 +7,7 @@
   /* Color Palette - Grillista Signature Colors */
   --bs-red: #D32323;              /* Brand Red Header */
   --bs-dark-red: #A81B1B;
-  --bs-yellow: #FFC72C;           /* Mustard / Saffron Gold */
+  --bs-yellow: #FFD000;           /* Mustard / Saffron Gold */
   --bs-blue: #00A3E0;             /* Vibrant Sky Blue */
   --bs-dark-blue: #0077A8;
   --bs-black: #111111;
@@ -166,7 +166,7 @@ img, video, iframe {
 }
 
 .hotline-phone {
-  color: #FFC72C;
+  color: #FFD000;
   font-size: 0.95rem;
   font-weight: 900;
   letter-spacing: 0.3px;
@@ -209,7 +209,7 @@ img, video, iframe {
 }
 
 .bs-nav-link:hover, .bs-nav-link.active {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .two-line-link {
@@ -400,7 +400,7 @@ img, video, iframe {
 }
 
 .bs-pill-owner {
-  background: #FFC72C;
+  background: #FFD000;
   color: #111111;
   box-shadow: 0 8px 25px rgba(255, 199, 44, 0.45);
 }
@@ -526,7 +526,7 @@ img, video, iframe {
 }
 
 .btn-secondary:hover {
-  background: #FFD54F;
+  background: #FFE169;
   transform: translateY(-2px);
 }
 
@@ -736,7 +736,7 @@ img, video, iframe {
   border-radius: 50%;
   object-fit: contain;
   background: #FFFFFF;
-  border: 2px solid #FFC72C;
+  border: 2px solid #FFD000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
@@ -769,7 +769,7 @@ img, video, iframe {
 .footer-exact-subbrand {
   font-size: 0.72rem;
   font-weight: 900;
-  color: #FFC72C;
+  color: #FFD000;
   letter-spacing: 0.6px;
   line-height: 1.2;
 }
@@ -861,7 +861,7 @@ img, video, iframe {
 }
 
 .footer-exact-nav-list li a:hover {
-  color: #FFC72C;
+  color: #FFD000;
   transform: translateX(4px);
 }
 
@@ -873,7 +873,7 @@ img, video, iframe {
 }
 
 .footer-exact-nav-list li a:hover .arrow-sym {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 /* Franchise Plans */
@@ -901,7 +901,7 @@ img, video, iframe {
 }
 
 .plan-price {
-  color: #FFC72C;
+  color: #FFD000;
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.2px;
@@ -914,8 +914,8 @@ img, video, iframe {
   justify-content: center;
   gap: 8px;
   background: #151D28;
-  border: 1px solid #FFC72C;
-  color: #FFC72C;
+  border: 1px solid #FFD000;
+  color: #FFD000;
   padding: 10px 16px;
   border-radius: 8px;
   font-size: 0.88rem;
@@ -964,7 +964,7 @@ img, video, iframe {
 }
 
 .hq-contact-link.phone-link {
-  color: #FFC72C;
+  color: #FFD000;
   font-weight: 900;
   letter-spacing: 0.3px;
 }
@@ -1294,7 +1294,7 @@ img, video, iframe {
 }
 
 .sidebar-phone-btn {
-  background: #FFC72C;
+  background: #FFD000;
   color: #000000;
 }
 
@@ -1527,7 +1527,7 @@ img, video, iframe {
 
 .google-form-alt-link {
   color: #111111;
-  background: #FFC72C;
+  background: #FFD000;
   font-weight: 800;
   padding: 6px 14px;
   border-radius: 20px;
@@ -1565,7 +1565,7 @@ img, video, iframe {
 
 /* ==========================================================================
    FAQ EXACT ACCORDION SECTION (DISTINCT MODERN BLUE & SLATE PALETTE)
-   Avoids navbar green (#0F4C2A) and logo colors (#FFC72C, #D32323)
+   Avoids navbar green (#0F4C2A) and logo colors (#FFD000, #D32323)
    ========================================================================== */
 .faq-exact-section {
   padding: 70px 0 80px;
@@ -1951,7 +1951,7 @@ img, video, iframe {
 
   .m-hotline-phone,
   .mobile-hotline-phone {
-    color: #FFC72C !important;
+    color: #FFD000 !important;
     font-size: 0.78rem !important;
     font-weight: 900 !important;
     letter-spacing: 0.2px !important;
@@ -2045,7 +2045,7 @@ img, video, iframe {
     border-radius: 50% !important;
     object-fit: contain !important;
     background: #FFFFFF !important;
-    border: 1.5px solid #FFC72C !important;
+    border: 1.5px solid #FFD000 !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
   }
 
@@ -2129,7 +2129,7 @@ img, video, iframe {
   }
 
   .bs-nav-link.active::after, .bs-nav-link:hover::after {
-    color: #FFC72C !important;
+    color: #FFD000 !important;
     transform: translateX(3px) !important;
   }
 
@@ -2164,7 +2164,7 @@ img, video, iframe {
 
   .mobile-drawer-hotlines .bs-hotline-btn:hover {
     background: rgba(255, 255, 255, 0.1) !important;
-    border-color: #FFC72C !important;
+    border-color: #FFD000 !important;
     transform: translateY(-2px) !important;
   }
 
@@ -2352,8 +2352,8 @@ img, video, iframe {
   justify-content: center;
   gap: 10px;
   background: #090D16;
-  color: #FFC72C !important;
-  border: 2px solid #FFC72C;
+  color: #FFD000 !important;
+  border: 2px solid #FFD000;
   padding: 12px 28px;
   border-radius: 30px;
   font-size: 1.05rem;
@@ -2367,7 +2367,7 @@ img, video, iframe {
 
 .launch-simulator-btn:hover {
   background: #131B2E;
-  border-color: #FFD54F;
+  border-color: #FFE169;
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 28px rgba(255, 199, 44, 0.35);
   color: #FFE082 !important;
@@ -2411,7 +2411,7 @@ img, video, iframe {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #FFC72C;
+  border-bottom: 2px solid #FFD000;
 }
 
 .profit-simulator-body {
@@ -2547,7 +2547,7 @@ img, video, iframe {
 }
 
 .top-announcement-link:hover {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 @media (max-width: 768px) {
@@ -2641,11 +2641,11 @@ img, video, iframe {
 }
 
 .g-nav-link:hover {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .g-nav-link.active {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .g-nav-underline {
@@ -2654,13 +2654,13 @@ img, video, iframe {
   left: 0;
   width: 100%;
   height: 2.5px;
-  background-color: #FFC72C;
+  background-color: #FFD000;
   border-radius: 2px;
 }
 
 /* Enquire Now CTA Button Right */
 .g-enquire-btn {
-  background-color: #FFC72C;
+  background-color: #FFD000;
   color: #000000;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.85rem;
@@ -2676,7 +2676,7 @@ img, video, iframe {
 }
 
 .g-enquire-btn:hover {
-  background-color: #FFD54F;
+  background-color: #FFE169;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 199, 44, 0.4);
 }
@@ -2687,7 +2687,7 @@ img, video, iframe {
   background-color: #090D16;
   overflow: hidden;
   min-height: 520px;
-  border-bottom: 3px solid #FFC72C;
+  border-bottom: 3px solid #FFD000;
 }
 
 .banner-hero-wrapper {
@@ -2697,12 +2697,12 @@ img, video, iframe {
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
-  background: #FFC72C;
+  background: #FFD000;
 }
 
 /* Left Yellow Side */
 .banner-hero-left {
-  background: #FFC72C;
+  background: #FFD000;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2777,7 +2777,7 @@ img, video, iframe {
 .banner-btn-black:hover {
   background-color: #1E293B;
   transform: translateY(-2px);
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .banner-btn-outline {
@@ -2841,7 +2841,7 @@ img, video, iframe {
 
 .hero-arrow-btn:hover {
   background: #000000;
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .hero-arrow-btn.left-arrow {
@@ -2894,7 +2894,7 @@ img, video, iframe {
 .badge-line2 {
   font-size: 0.76rem;
   font-weight: 950;
-  color: #FFC72C;
+  color: #FFD000;
   letter-spacing: 0.5px;
   margin: 2px 0;
 }
@@ -2902,7 +2902,7 @@ img, video, iframe {
 .badge-line3 {
   font-size: 0.68rem;
   font-weight: 900;
-  color: #FFC72C;
+  color: #FFD000;
   letter-spacing: 0.5px;
 }
 
@@ -3066,7 +3066,7 @@ img, video, iframe {
 
 .story-btn-black:hover {
   background-color: #1E293B;
-  color: #FFC72C;
+  color: #FFD000;
   transform: translateY(-2px);
 }
 
@@ -3203,7 +3203,7 @@ img, video, iframe {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.95rem;
   font-weight: 900;
-  color: #FFC72C;
+  color: #FFD000;
   letter-spacing: 3px;
   margin-bottom: 8px;
 }
@@ -3222,7 +3222,7 @@ img, video, iframe {
 }
 
 .faq-title-gold {
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .faq-star-divider {
@@ -3293,7 +3293,7 @@ img, video, iframe {
 
 .faq-exact-card.active {
   background: #FFFFFF;
-  border: 2px solid #FFC72C;
+  border: 2px solid #FFD000;
   border-radius: 22px;
   padding: 20px 24px;
   box-shadow: 0 10px 30px rgba(255, 199, 44, 0.18);
@@ -3324,7 +3324,7 @@ img, video, iframe {
 
 .faq-exact-card.active .faq-q-badge {
   background: #000000;
-  color: #FFC72C;
+  color: #FFD000;
 }
 
 .faq-card-question {
@@ -3354,7 +3354,7 @@ img, video, iframe {
 }
 
 .faq-exact-card.active .faq-toggle-icon {
-  background: #FFC72C;
+  background: #FFD000;
   color: #000000;
 }
 
@@ -3484,7 +3484,7 @@ img, video, iframe {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #FFC72C;
+  background: #FFD000;
   color: #000000;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-size: 0.88rem;
@@ -3497,7 +3497,7 @@ img, video, iframe {
 }
 
 .faq-bottom-talk-btn:hover {
-  background: #FFD54F;
+  background: #FFE169;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(255, 199, 44, 0.45);
 }
