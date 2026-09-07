@@ -33,6 +33,7 @@ class App {
     this.setupLiveTicker();
     this.setupFaqAccordion();
     this.setupHomeFranchiseForm();
+    this.setupImageLightbox();
 
     console.log(`%c 🍔 ${CONFIG.BRAND.name} %c Desi Burgers, Global Swag - Ready!`, 'background: #0F4C2A; color: #fff; font-weight: bold; padding: 4px 8px; border-radius: 4px;', 'color: #FFA000;');
   }
@@ -673,6 +674,111 @@ class App {
       form.style.display = 'none';
       if (successBox) {
         successBox.classList.add('active');
+      }
+    });
+  }
+
+  // -------------------------------------------------------------
+  // UNIVERSAL RESPONSIVE IMAGE VIEWER / LIGHTBOX MODAL
+  // -------------------------------------------------------------
+  setupImageLightbox() {
+    let lightbox = document.getElementById('global-image-lightbox');
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.className = 'image-lightbox-modal';
+      lightbox.id = 'global-image-lightbox';
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.innerHTML = `
+        <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close Image Viewer">&times;</button>
+        <div class="lightbox-content-wrap">
+          <img src="" alt="" class="lightbox-main-img" id="lightbox-main-img">
+          <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const modalImg = lightbox.querySelector('#lightbox-main-img');
+    const modalCaption = lightbox.querySelector('#lightbox-caption');
+    const closeBtn = lightbox.querySelector('#lightbox-close-btn');
+
+    const openLightbox = (src, alt) => {
+      if (!src) return;
+      modalImg.src = src;
+      modalImg.alt = alt || 'Grillista View';
+      modalCaption.textContent = alt || 'Grillista - Desi Burgers, Global Swag';
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!lightbox.classList.contains('active')) {
+          modalImg.src = '';
+        }
+      }, 300);
+    };
+
+    closeBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-content-wrap')) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    // Delegate click for all content images across the site
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+
+      // Exclude logos, brand marks, and decorative icons
+      if (
+        img.classList.contains('g-logo-emblem-img') ||
+        img.classList.contains('mobile-logo-img') ||
+        img.classList.contains('footer-logo-img') ||
+        img.classList.contains('navbar-logo-img') ||
+        img.closest('.nav-brand') ||
+        img.closest('.footer-brand') ||
+        img.classList.contains('badge-icon')
+      ) {
+        return;
+      }
+
+      // Check if it is a content or hero or food or outlet image
+      const isTargetImage =
+        img.classList.contains('banner-hero-img') ||
+        img.classList.contains('about-outlet-img') ||
+        img.classList.contains('our-story-burger-img') ||
+        img.classList.contains('mv-vision-img') ||
+        img.classList.contains('faq-food-banner-img') ||
+        img.classList.contains('food-img') ||
+        img.classList.contains('clickable-image') ||
+        img.closest('.hero-img-col') ||
+        img.closest('.about-col-img') ||
+        img.closest('.our-story-image-card') ||
+        img.closest('.mv-card-image-wrap') ||
+        img.closest('.faq-banner-box') ||
+        img.closest('.gallery-tile') ||
+        img.closest('.food-image-wrapper') ||
+        img.closest('.store-card');
+
+      if (isTargetImage) {
+        e.preventDefault();
+        openLightbox(img.currentSrc || img.src, img.alt);
       }
     });
   }

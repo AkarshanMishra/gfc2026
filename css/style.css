@@ -4081,16 +4081,124 @@ img, video, iframe {
   }
 }
 
-@media (max-width: 640px) {
-  .mv-ribbon-grid {
-    grid-template-columns: 1fr;
-  }
-  .mv-ribbon-col {
-    border-right: none;
-    border-bottom: 1px solid #E5E7EB;
-    padding-bottom: 12px;
-  }
+/* ==========================================================================
+   UNIVERSAL RESPONSIVE IMAGE VIEWER & LIGHTBOX MODAL
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
 }
+
+.banner-hero-img,
+.about-outlet-img,
+.our-story-burger-img,
+.mv-vision-img,
+.faq-food-banner-img,
+.gallery-tile img,
+.gallery-grid-img,
+.menu-card-img,
+.clickable-image {
+  cursor: zoom-in;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.banner-hero-img:hover,
+.about-outlet-img:hover,
+.our-story-burger-img:hover,
+.mv-vision-img:hover {
+  filter: brightness(1.03);
+}
+
+/* Lightbox Modal Overlay */
+.image-lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(9, 13, 22, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+}
+
+.image-lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.lightbox-close-btn:hover {
+  background: #FFD000;
+  color: #000000;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.lightbox-content-wrap {
+  max-width: 92vw;
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lightbox-main-img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image-lightbox-modal.active .lightbox-main-img {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  margin-top: 14px;
+  color: #F3F4F6;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 700px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 208, 0, 0.3);
+}
+
 
 
 
