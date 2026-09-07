@@ -1925,14 +1925,20 @@ img, video, iframe {
    HOMEPAGE EXACT REDESIGN (FLAGSHIP NEW MOCKUP MATCH)
    ========================================================================== */
 
+/* ==========================================================================
+   GRILLISTA TOP ANNOUNCEMENT BAR & NAVBAR (RESPONSIVE FOR ALL SCREENS)
+   ========================================================================== */
+
 /* 1. Top Green Announcement Bar */
 .top-announcement-bar {
   background-color: #0F4C2A;
   color: #FFFFFF;
-  font-size: 0.82rem;
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.78rem;
   font-weight: 700;
-  padding: 8px 20px;
+  padding: 7px 20px;
   letter-spacing: 0.4px;
+  width: 100%;
 }
 
 .top-announcement-container {
@@ -1941,7 +1947,6 @@ img, video, iframe {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -1959,7 +1964,7 @@ img, video, iframe {
 .top-announcement-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .top-announcement-link {
@@ -1968,12 +1973,14 @@ img, video, iframe {
   gap: 6px;
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  transition: color 0.2s ease;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .top-announcement-link:hover {
+  opacity: 1;
   color: #FFD000;
 }
 
@@ -1981,6 +1988,13 @@ img, video, iframe {
   .top-announcement-container {
     justify-content: center;
     text-align: center;
+    padding: 0 10px;
+  }
+  .top-announcement-left {
+    font-size: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
   }
   .top-announcement-right {
     display: none;
@@ -1994,7 +2008,8 @@ img, video, iframe {
   z-index: 10000;
   background-color: #000000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 0;
+  padding: 8px 0;
+  width: 100%;
 }
 
 .g-navbar-container {
@@ -2006,9 +2021,10 @@ img, video, iframe {
   margin: 0 auto;
   padding: 0 24px;
   gap: 20px;
+  box-sizing: border-box;
 }
 
-/* Logo Left */
+/* Desktop Logo Left */
 .g-logo-wrap {
   display: flex;
   align-items: center;
@@ -2017,7 +2033,7 @@ img, video, iframe {
 }
 
 .g-logo-emblem-img {
-  height: 64px;
+  height: 56px;
   width: auto;
   object-fit: contain;
   transition: transform 0.25s ease;
@@ -2025,52 +2041,22 @@ img, video, iframe {
 }
 
 .g-logo-wrap:hover .g-logo-emblem-img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
-.g-logo-title-row {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-}
-
-.g-logo-text {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.65rem;
-  font-weight: 950;
-  color: #FFFFFF;
-  letter-spacing: 1.2px;
-}
-
-.g-logo-flame-icon {
-  width: 20px;
-  height: 24px;
-  margin: 0 1px;
-}
-
-.g-logo-tagline {
-  font-size: 0.58rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: 2.2px;
-  text-transform: uppercase;
-  margin-top: 3px;
-  opacity: 0.9;
-}
-
-/* Nav Links Center */
+/* Desktop Nav Links Center */
 .g-nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: clamp(10px, 1.6vw, 22px);
 }
 
 .g-nav-link {
   color: #FFFFFF;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.82rem;
+  font-size: clamp(0.74rem, 0.95vw, 0.82rem);
   font-weight: 800;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -2079,10 +2065,7 @@ img, video, iframe {
   white-space: nowrap;
 }
 
-.g-nav-link:hover {
-  color: #FFD000;
-}
-
+.g-nav-link:hover,
 .g-nav-link.active {
   color: #FFD000;
 }
@@ -2097,16 +2080,22 @@ img, video, iframe {
   border-radius: 2px;
 }
 
-/* Enquire Now CTA Button Right */
+/* Desktop Enquire Now CTA Button Right */
+.g-nav-cta-wrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .g-enquire-btn {
   background-color: #FFD000;
   color: #000000;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding: 11px 24px;
+  padding: 9px 20px;
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -2117,7 +2106,292 @@ img, video, iframe {
 .g-enquire-btn:hover {
   background-color: #FFE169;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 199, 44, 0.4);
+  box-shadow: 0 4px 14px rgba(255, 208, 0, 0.4);
+}
+
+/* Mobile Header Bar (Hidden by default on desktop) */
+.mobile-header-bar {
+  display: none;
+  width: 100%;
+}
+
+/* Tablet & Mobile Responsiveness (<= 1024px) */
+@media (max-width: 1024px) {
+  .desktop-only,
+  .g-navbar-container > .g-logo-wrap,
+  .g-navbar-container > .g-nav-links,
+  .g-navbar-container > .g-nav-cta-wrap {
+    display: none !important;
+  }
+
+  .g-header {
+    padding: 8px 0;
+  }
+
+  .g-navbar-container {
+    padding: 0 16px;
+  }
+
+  .mobile-header-bar {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Hamburger Toggle */
+  .mobile-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background: #FFD000;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+  }
+
+  /* Center Logo */
+  .mobile-logo-link {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .mobile-logo-img {
+    height: 48px;
+    max-height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Right Enquire Button */
+  .mobile-hotline-btn {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #FFD000;
+    color: #000000;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.15;
+    white-space: nowrap;
+    font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+    transition: all 0.2s ease;
+  }
+
+  .m-hotline-phone {
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+  }
+
+  .m-hotline-label {
+    font-size: 0.56rem;
+    font-weight: 800;
+    opacity: 0.85;
+    letter-spacing: 0.4px;
+  }
+}
+
+/* Mobile Slide-In Navigation Drawer */
+.mobile-nav-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 99998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-backdrop.active {
+  display: block;
+  opacity: 1;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 290px;
+  max-width: 85vw;
+  height: 100vh;
+  background: #0B0F19;
+  border-right: 1px solid rgba(255, 208, 0, 0.2);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 20px 28px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 10px 0 35px rgba(0, 0, 0, 0.6);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-drawer.open {
+  transform: translateX(320px);
+}
+
+/* Drawer Header */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 16px;
+}
+
+.drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawer-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.drawer-brand-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+}
+
+.drawer-veg-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #22C55E;
+}
+
+.drawer-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  background: #FFD000;
+  color: #000000;
+}
+
+/* Drawer Nav Menu Links */
+.drawer-nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-nav-menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #E2E8F0;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.drawer-nav-menu li a:hover,
+.drawer-nav-menu li a.active {
+  background: rgba(255, 208, 0, 0.12);
+  border-color: rgba(255, 208, 0, 0.35);
+  color: #FFD000;
+  transform: translateX(4px);
+}
+
+.drawer-nav-menu li a span.chevron {
+  font-size: 1.1rem;
+  color: #94A3B8;
+}
+
+/* Drawer Bottom Actions */
+.drawer-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-apply-btn {
+  background: #D32323;
+  color: #FFFFFF;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  display: block;
+  box-shadow: 0 4px 14px rgba(211, 35, 35, 0.35);
+}
+
+.drawer-call-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 /* 3. Flagship Hero Banner (Split Diagonal Layout with Yellow Strips) */
