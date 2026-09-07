@@ -2917,6 +2917,67 @@ img, video, iframe {
   .banner-hero-right {
     min-height: 320px;
   }
+/* ==========================================================================
+   THE GRILLISTA STORY (EDITORIAL 2-COLUMN SECTION MATCHING USER MOCKUP)
+   ========================================================================== */
+.grillista-story-editorial {
+  background-color: #FFFFFF;
+  padding: clamp(60px, 8vw, 95px) 24px clamp(40px, 6vw, 70px);
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.story-editorial-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.story-editorial-main-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 800;
+  color: #111827;
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin: 0 0 clamp(40px, 6vw, 64px);
+}
+
+.story-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 72px);
+}
+
+.story-editorial-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-editorial-col-heading {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.3px;
+  margin: 0 0 20px;
+}
+
+.story-editorial-p {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.8;
+  color: #4B5563;
+  font-weight: 400;
+  margin: 0 0 24px;
+}
+
+.story-editorial-p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 868px) {
+  .story-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 /* 4. 5-Pillar Features Bar (Charcoal / Black with Green Icons) */
