@@ -691,145 +691,220 @@ img, video, iframe {
 .review-date { font-size: 0.75rem; color: var(--text-subtle); }
 
 /* ==========================================================================
-   GRILLISTA CORPORATE CLEAN FOOTER (EXACT MOCKUP MATCH)
+   GRILLISTA CLEAN MINIMAL WHITE FOOTER (EXACT MOCKUP MATCH)
    ========================================================================== */
-.grillista-corp-footer {
-  background-color: #F6F7F9;
-  border-top: 1px solid #E2E8F0;
-  color: #2D3748;
+.grillista-clean-footer {
+  background-color: #FFFFFF;
+  border-top: 1px solid #EBEBEB;
+  color: #333333;
   font-family: var(--font-body, 'Plus Jakarta Sans', Arial, sans-serif);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  padding: 38px 0 24px;
+  padding: 42px 0 26px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.corp-footer-container {
-  max-width: 1240px;
+.clean-footer-container {
+  max-width: 1260px;
   margin: 0 auto;
   padding: 0 24px;
   box-sizing: border-box;
 }
 
-.corp-footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 36px;
+.clean-footer-main-flex {
+  display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  gap: 36px;
+  padding-bottom: 32px;
 }
 
-.corp-footer-title {
+/* Col 1: Logo + Corporate Information */
+.clean-footer-brand-corp {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1.4;
+}
+
+.clean-footer-logo-wrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clean-footer-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.clean-footer-corp-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.clean-footer-title {
   font-size: 0.98rem;
   font-weight: 800;
-  color: #111827;
+  color: #111111;
   margin: 0 0 10px 0;
   letter-spacing: -0.2px;
 }
 
-.corp-info-col p {
-  margin: 0 0 6px 0;
-  color: #374151;
+.clean-corp-company {
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 5px 0;
   font-size: 0.86rem;
 }
 
-.corp-company-name {
-  font-weight: 700;
-  color: #111827 !important;
+.clean-corp-text {
+  font-size: 0.84rem;
+  color: #444444;
+  margin: 0 0 4px 0;
+  line-height: 1.45;
 }
 
-.corp-email-link {
-  color: #0066CC;
+.clean-corp-email {
+  color: #E5A100;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
-.corp-email-link:hover {
-  color: #004499;
+.clean-corp-email:hover {
   text-decoration: underline;
 }
 
-.corp-links-list {
+/* Vertical Dividers */
+.clean-footer-v-divider {
+  width: 1px;
+  background-color: #EBEBEB;
+  align-self: stretch;
+  min-height: 120px;
+}
+
+/* Col 2: Useful Links */
+.clean-footer-links-col {
+  flex: 0.7;
+  padding-left: 10px;
+}
+
+.clean-footer-links-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
-.corp-links-list li a {
-  color: #374151;
+.clean-footer-links-list li a {
+  color: #4A4A4A;
   text-decoration: none;
   font-size: 0.86rem;
-  font-weight: 600;
+  font-weight: 500;
   transition: color 0.2s ease;
 }
 
-.corp-links-list li a:hover {
+.clean-footer-links-list li a:hover {
   color: #D32323;
   text-decoration: underline;
 }
 
-.corp-social-icons {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 4px;
+/* Col 3: Follow Us On */
+.clean-footer-social-col {
+  flex: 0.9;
+  padding-left: 10px;
 }
 
-.corp-social-tile {
-  width: 34px;
-  height: 34px;
-  border-radius: 6px;
+.clean-social-circle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.clean-social-circle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  color: #FFFFFF;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.corp-social-tile:hover {
+.clean-social-circle-btn:hover {
   transform: translateY(-2px);
-  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.corp-social-tile.fb {
-  background-color: #4A6EA9;
+.clean-social-circle-btn.ig {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-.corp-social-tile.x {
-  background-color: #000000;
+.clean-social-circle-btn.fb {
+  background-color: #1877F2;
 }
 
-.corp-social-tile.ig {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+.clean-social-circle-btn.pinterest {
+  background-color: #BD081C;
 }
 
-.corp-footer-divider {
+.clean-social-circle-btn.yt {
+  background-color: #FF0000;
+}
+
+/* Bottom Horizontal Divider */
+.clean-footer-h-divider {
   border: 0;
-  border-top: 1px solid #E2E8F0;
-  margin: 28px 0 20px;
+  border-top: 1px solid #EBEBEB;
+  margin: 0 0 22px 0;
 }
 
-.corp-footer-bottom {
+.clean-footer-bottom {
   text-align: center;
 }
 
-.corp-copyright-text {
+.clean-footer-copyright {
   margin: 0;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #1F2937;
+  font-size: 0.85rem;
+  color: #666666;
+  font-weight: 500;
 }
 
-@media (max-width: 820px) {
-  .corp-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+/* Responsive */
+@media (max-width: 920px) {
+  .clean-footer-main-flex {
+    flex-direction: column;
+    gap: 28px;
+  }
+  .clean-footer-v-divider {
+    display: none;
+  }
+  .clean-footer-brand-corp {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .clean-footer-links-col,
+  .clean-footer-social-col {
+    padding-left: 0;
   }
 }
+
+@media (max-width: 540px) {
+  .clean-footer-brand-corp {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 
 
 
