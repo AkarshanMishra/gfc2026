@@ -1550,141 +1550,7 @@ img, video, iframe {
   }
 }
 
-/* ==========================================================================
-   FAQ EXACT ACCORDION SECTION (DISTINCT MODERN BLUE & SLATE PALETTE)
-   Avoids navbar green (#0F4C2A) and logo colors (#FFD000, #D32323)
-   ========================================================================== */
-.faq-exact-section {
-  padding: 70px 0 80px;
-  background: #FFFFFF;
-  border-top: 1px solid var(--border-color);
-}
 
-.faq-title-main {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 900;
-  font-style: italic;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #111827;
-  margin-bottom: 8px;
-}
-
-.faq-title-accent {
-  color: #2563EB; /* Modern Cobalt Blue */
-}
-
-.faq-subheading-text {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 900;
-  font-style: italic;
-  text-transform: uppercase;
-  color: #1E293B;
-  margin-bottom: 22px;
-  letter-spacing: 0.5px;
-}
-
-.faq-bar-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faq-bar-item {
-  border-radius: 4px;
-  overflow: hidden;
-  background: #FFFFFF;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-}
-
-.faq-bar-header {
-  width: 100%;
-  background: #E8EEF5; /* Crisp Light Ice Slate */
-  border: 1px solid #D8E2ED;
-  padding: 14px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  user-select: none;
-  text-align: left;
-}
-
-.faq-bar-header:hover {
-  background: #DCE6F2;
-  border-color: #CBD9EB;
-}
-
-.faq-bar-item.active .faq-bar-header {
-  background: #D4E2F0;
-  border-color: #2563EB;
-}
-
-.faq-bar-title {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 900;
-  font-style: italic;
-  color: #2563EB; /* Modern Vibrant Sky-Cobalt Blue */
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-}
-
-.faq-bar-chevron {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #2563EB; /* Matching modern blue chevron */
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  line-height: 1;
-  display: inline-block;
-}
-
-.faq-bar-item.active .faq-bar-chevron {
-  transform: rotate(90deg) !important;
-}
-
-.faq-bar-content {
-  display: none;
-  padding: 18px 20px 22px;
-  background: #F8FAFC;
-  border: 1px solid #D8E2ED;
-  border-top: none;
-}
-
-.faq-bar-item.active .faq-bar-content {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 14px !important;
-}
-
-.faq-qa-card {
-  background: #FFFFFF;
-  padding: 16px 20px;
-  border-radius: 6px;
-  border-left: 4px solid #2563EB; /* Clean Blue Accent */
-  border-top: 1px solid #E2E8F0;
-  border-right: 1px solid #E2E8F0;
-  border-bottom: 1px solid #E2E8F0;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.04);
-}
-
-.faq-qa-card h4 {
-  font-size: 0.98rem;
-  font-weight: 800;
-  color: #0F172A;
-  margin-bottom: 6px;
-}
-
-.faq-qa-card p {
-  font-size: 0.9rem;
-  color: #475569;
-  line-height: 1.65;
-  margin: 0;
-}
 
 /* ==========================================================================
    COMPREHENSIVE ALL-DEVICE RESPONSIVE SYSTEM
@@ -3174,45 +3040,51 @@ img, video, iframe {
 }
 
 /* ==========================================================================
-   EXACT MOCKUP FAQ SECTION
+   EXACT MOCKUP FAQ SECTION - FULLY RESPONSIVE ACROSS ALL DEVICES
    ========================================================================== */
 .faq-exact-section {
-  padding: clamp(60px, 8vw, 100px) 20px;
+  padding: clamp(40px, 6vw, 90px) 16px;
   background: #FFFFFF;
   position: relative;
   overflow: hidden;
   border-top: 1px solid #F1F5F9;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .faq-exact-container {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* Header */
 .faq-exact-header {
   text-align: center;
-  margin-bottom: clamp(28px, 4vw, 42px);
+  margin-bottom: clamp(24px, 3.5vw, 36px);
+  padding: 0 8px;
 }
 
 .faq-accent-eyebrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 10px;
 }
 
 .faq-eyebrow-line {
-  width: 44px;
+  width: clamp(28px, 5vw, 44px);
   height: 2.5px;
   background: #FFD000;
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .faq-eyebrow-text {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.92rem;
+  font-size: clamp(0.78rem, 2vw, 0.92rem);
   font-weight: 900;
   color: #D97706;
   letter-spacing: 2px;
@@ -3221,13 +3093,14 @@ img, video, iframe {
 
 .faq-title-main {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(1.85rem, 5.5vw, 4rem);
   font-weight: 950;
-  line-height: 1.05;
-  margin: 0 0 16px 0;
+  line-height: 1.08;
+  margin: 0 0 12px 0;
   letter-spacing: -0.5px;
   text-transform: uppercase;
   text-align: center;
+  word-break: break-word;
 }
 
 .faq-title-black {
@@ -3239,12 +3112,14 @@ img, video, iframe {
 }
 
 .faq-subtitle {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.92rem, 2vw, 1.15rem);
   color: #4B5563;
   font-weight: 600;
   text-align: center;
   margin: 0 auto;
   max-width: 650px;
+  line-height: 1.5;
+  padding: 0 10px;
 }
 
 /* Category Filter Pills */
@@ -3252,16 +3127,18 @@ img, video, iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: clamp(32px, 4vw, 48px);
+  margin: 0 auto clamp(24px, 3.5vw, 40px);
+  max-width: 100%;
+  padding: 0 4px;
 }
 
 .faq-pill-btn {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
   font-weight: 800;
-  padding: 10px 24px;
+  padding: 8px 18px;
   border-radius: 40px;
   background: #FFFFFF;
   color: #111827;
@@ -3270,6 +3147,7 @@ img, video, iframe {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .faq-pill-btn:hover {
@@ -3285,19 +3163,15 @@ img, video, iframe {
   box-shadow: 0 4px 14px rgba(255, 208, 0, 0.35);
 }
 
-/* Grid Layout */
+/* 2-Column Grid */
 .faq-grid-mockup {
   display: grid;
   grid-template-columns: 1.45fr 1fr;
-  gap: clamp(24px, 3.5vw, 36px);
+  gap: clamp(20px, 3vw, 36px);
   align-items: start;
-  margin-bottom: 40px;
-}
-
-@media (max-width: 992px) {
-  .faq-grid-mockup {
-    grid-template-columns: 1fr;
-  }
+  margin-bottom: 36px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Left Accordion Column */
@@ -3305,6 +3179,8 @@ img, video, iframe {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  min-width: 0;
 }
 
 .faq-item-card {
@@ -3314,6 +3190,8 @@ img, video, iframe {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .faq-item-card:hover {
@@ -3330,23 +3208,25 @@ img, video, iframe {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 14px 20px;
+  padding: clamp(10px, 2vw, 14px) clamp(12px, 2.5vw, 20px);
   background: transparent;
   border: none;
   cursor: pointer;
   text-align: left;
+  gap: clamp(8px, 1.5vw, 14px);
+  box-sizing: border-box;
 }
 
 .faq-num-pill {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
+  width: clamp(34px, 4vw, 42px);
+  height: clamp(34px, 4vw, 42px);
+  min-width: clamp(34px, 4vw, 42px);
   border-radius: 50%;
   background: #FFD000;
   color: #000000;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
   font-weight: 900;
-  font-size: 0.95rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3355,36 +3235,37 @@ img, video, iframe {
 
 .faq-vertical-divider {
   width: 2px;
-  height: 24px;
+  height: clamp(18px, 3vw, 24px);
   background: #FFD000;
-  margin: 0 16px 0 14px;
   opacity: 0.9;
   flex-shrink: 0;
 }
 
 .faq-item-question {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
   font-weight: 800;
   color: #111827;
   margin: 0;
   flex: 1;
   line-height: 1.35;
+  word-break: break-word;
 }
 
 .faq-plus-icon {
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
   font-weight: 400;
   color: #111827;
   line-height: 1;
-  padding-left: 12px;
+  padding-left: 6px;
   flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
 .faq-item-body {
   display: none;
-  padding: 0 20px 18px 74px;
+  padding: 0 clamp(14px, 2.5vw, 20px) 16px clamp(14px, 2.5vw, 20px);
+  box-sizing: border-box;
 }
 
 .faq-item-card.active .faq-item-body {
@@ -3393,46 +3274,31 @@ img, video, iframe {
 
 .faq-item-body p {
   color: #4B5563;
-  font-size: 0.94rem;
+  font-size: clamp(0.86rem, 1.8vw, 0.94rem);
   line-height: 1.6;
   margin: 0;
-}
-
-@media (max-width: 640px) {
-  .faq-item-head {
-    padding: 10px 14px;
-  }
-  .faq-num-pill {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    font-size: 0.85rem;
-  }
-  .faq-vertical-divider {
-    margin: 0 10px 0 8px;
-  }
-  .faq-item-body {
-    padding: 0 14px 16px 56px;
-  }
+  word-break: break-word;
 }
 
 /* Right Help Card Column */
 .faq-help-card-col {
-  position: sticky;
-  top: 100px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .faq-help-card {
   background: #FFF9E6;
   border: 1.5px solid rgba(255, 208, 0, 0.45);
-  border-radius: 24px;
-  padding: clamp(28px, 4vw, 36px) clamp(22px, 3.5vw, 32px);
+  border-radius: clamp(16px, 3vw, 24px);
+  padding: clamp(22px, 3.5vw, 36px) clamp(16px, 3vw, 32px);
   box-shadow: 0 8px 24px rgba(255, 208, 0, 0.08);
+  box-sizing: border-box;
 }
 
 .faq-help-eyebrow {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.82rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.82rem);
   font-weight: 900;
   letter-spacing: 2px;
   color: #1F2937;
@@ -3441,29 +3307,29 @@ img, video, iframe {
 
 .faq-help-title {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(2.1rem, 3.5vw, 2.7rem);
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
   font-weight: 950;
   color: #000000;
   letter-spacing: -0.5px;
   line-height: 1.05;
-  margin: 2px 0 12px 0;
+  margin: 2px 0 10px 0;
   text-transform: uppercase;
 }
 
 .faq-help-yellow-bar {
-  width: 50px;
-  height: 4.5px;
+  width: 46px;
+  height: 4px;
   background: #FFD000;
   border-radius: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .faq-help-hero-banner {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   font-weight: 950;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: -0.5px;
 }
@@ -3477,30 +3343,31 @@ img, video, iframe {
 }
 
 .faq-help-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.95rem);
   color: #4B5563;
   font-weight: 600;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   line-height: 1.45;
 }
 
 .faq-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-bottom: 28px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .faq-contact-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  min-width: 0;
 }
 
 .faq-contact-icon-circle {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
+  width: clamp(36px, 4vw, 44px);
+  height: clamp(36px, 4vw, 44px);
+  min-width: clamp(36px, 4vw, 44px);
   border-radius: 50%;
   background: #FFD000;
   display: flex;
@@ -3513,11 +3380,13 @@ img, video, iframe {
 .faq-contact-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .faq-contact-label {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.76rem;
+  font-size: clamp(0.7rem, 1.5vw, 0.76rem);
   font-weight: 900;
   color: #111827;
   letter-spacing: 0.5px;
@@ -3526,16 +3395,17 @@ img, video, iframe {
 }
 
 .faq-contact-val {
-  font-size: 0.92rem;
+  font-size: clamp(0.82rem, 1.8vw, 0.92rem);
   font-weight: 700;
   color: #1F2937;
   text-decoration: none;
   transition: color 0.2s ease;
+  word-break: break-word;
 }
 
 .faq-contact-val.bold {
   font-weight: 900;
-  font-size: 1.02rem;
+  font-size: clamp(0.9rem, 2vw, 1.02rem);
   color: #000000;
 }
 
@@ -3544,7 +3414,7 @@ img, video, iframe {
 }
 
 .faq-contact-sub {
-  font-size: 0.78rem;
+  font-size: clamp(0.72rem, 1.5vw, 0.78rem);
   color: #6B7280;
   font-weight: 600;
 }
@@ -3558,15 +3428,16 @@ img, video, iframe {
   background: #000000;
   color: #FFFFFF;
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.92rem;
+  font-size: clamp(0.82rem, 1.8vw, 0.92rem);
   font-weight: 900;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 24px;
+  padding: 12px 20px;
   border-radius: 40px;
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
 }
 
 .faq-help-cta-btn:hover {
@@ -3590,25 +3461,60 @@ img, video, iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-top: 36px;
+  gap: clamp(8px, 2vw, 16px);
+  margin-top: clamp(24px, 4vw, 36px);
   text-align: center;
+  padding: 0 10px;
 }
 
 .faq-tagline-accent-line {
-  width: 50px;
-  height: 2.5px;
+  width: clamp(24px, 6vw, 50px);
+  height: 2px;
   background: #FFD000;
   border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .faq-tagline-brand-text {
   font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.85rem;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
   font-weight: 900;
   color: #4B5563;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
+  word-break: break-word;
+}
+
+/* Responsive Media Queries */
+@media (min-width: 993px) {
+  .faq-help-card-col {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .faq-grid-mockup {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .faq-exact-section {
+    padding: 36px 12px;
+  }
+  .faq-pill-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .faq-pill-btn {
+    padding: 6px 14px;
+    font-size: 0.72rem;
+  }
 }
 
 /* ==========================================================================
