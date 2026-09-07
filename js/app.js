@@ -579,42 +579,58 @@ class App {
   }
 
   // -------------------------------------------------------------
-  // FAQ ACCORDION HANDLER
+  // FAQ ACCORDION HANDLER (MATCHING MOCKUP)
   // -------------------------------------------------------------
   setupFaqAccordion() {
-    window.toggleFaqCard = function(element) {
-      if (!element) return;
-      const isAlreadyActive = element.classList.contains('active');
-      
-      document.querySelectorAll('.faq-exact-card').forEach(card => {
-        card.classList.remove('active');
-        const icon = card.querySelector('.faq-toggle-icon');
+    window.toggleMockupFaq = function(button) {
+      const card = button?.closest('.faq-item-card');
+      if (!card) return;
+      const isAlreadyActive = card.classList.contains('active');
+
+      document.querySelectorAll('.faq-item-card').forEach(other => {
+        other.classList.remove('active');
+        const btn = other.querySelector('.faq-item-head');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        const icon = other.querySelector('.faq-plus-icon');
         if (icon) icon.textContent = '+';
       });
-      
+
       if (!isAlreadyActive) {
-        element.classList.add('active');
-        const icon = element.querySelector('.faq-toggle-icon');
+        card.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+        const icon = card.querySelector('.faq-plus-icon');
         if (icon) icon.textContent = '−';
       }
     };
 
-    window.toggleFaq = function(btn) {
-      const item = btn?.closest('.faq-bar-item');
-      if (!item) return;
-      const isAlreadyActive = item.classList.contains('active');
+    // Category Pill Filter
+    const pillButtons = document.querySelectorAll('.faq-pill-btn');
+    const faqCards = document.querySelectorAll('.faq-item-card');
 
-      document.querySelectorAll('.faq-bar-item').forEach(other => {
-        other.classList.remove('active');
-        const b = other.querySelector('.faq-bar-header');
-        if (b) b.setAttribute('aria-expanded', 'false');
+    pillButtons.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pillButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        pill.classList.add('active');
+        pill.setAttribute('aria-selected', 'true');
+
+        const selectedCat = pill.getAttribute('data-faq-cat') || 'all';
+
+        faqCards.forEach(card => {
+          const cardCategories = card.getAttribute('data-category') || '';
+          if (selectedCat === 'all' || cardCategories.includes(selectedCat)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
+    });
 
-      if (!isAlreadyActive) {
-        item.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    };
+    // Backwards compatibility fallback
+    window.toggleFaqCard = window.toggleMockupFaq;
   }
 
   setupQuickSidebar() {

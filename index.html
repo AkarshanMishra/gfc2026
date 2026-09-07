@@ -582,145 +582,244 @@
       </div>
     </section>
 
-    <!-- EXACT MOCKUP FAQ SECTION -->
+    <!-- ==========================================================================
+         EXACT FAQ SECTION (MATCHING MOCKUP)
+         ========================================================================== -->
     <section class="faq-exact-section" id="faq">
       <div class="faq-exact-container">
         
-        <!-- Header / Title Area with Doodles -->
-        <div class="faq-exact-header" style="position: relative;">
-          <!-- Left Chef Hat Doodle -->
-          <img src="assets/faq_doodle_chef.png" alt="" class="faq-doodle-left desktop-only" style="position: absolute; left: 15px; top: -10px; width: 115px; opacity: 0.75; pointer-events: none;">
-          
-          <!-- Right Fork & Spoon Doodle -->
-          <img src="assets/faq_doodle_fork.png" alt="" class="faq-doodle-right desktop-only" style="position: absolute; right: 15px; top: -10px; width: 90px; opacity: 0.75; pointer-events: none;">
-
-          <div class="faq-spark-badge">― FAQ ―</div>
-          <h2 class="faq-title-main">
-            <span class="faq-title-black">FREQUENTLY</span><br>
-            <span class="faq-title-gold">ASKED QUESTIONS</span>
-          </h2>
-          <div class="faq-star-divider">
-            <span class="faq-line"></span>
-            <span class="faq-star">★</span>
-            <span class="faq-line"></span>
+        <!-- Header / Title Area -->
+        <div class="faq-exact-header">
+          <div class="faq-accent-eyebrow">
+            <span class="faq-eyebrow-line"></span>
+            <span class="faq-eyebrow-text">GOT QUESTIONS?</span>
+            <span class="faq-eyebrow-line"></span>
           </div>
+          
+          <h2 class="faq-title-main">
+            <span class="faq-title-black">FREQUENTLY ASKED</span><br>
+            <span class="faq-title-gold">QUESTIONS</span>
+          </h2>
+          
           <p class="faq-subtitle">
-            Find answers to the most common questions about Grillista Food Franchise.
+            Everything you need to know about Grillista.
           </p>
         </div>
 
+        <!-- Category Filter Pills -->
+        <div class="faq-pill-nav" role="tablist">
+          <button class="faq-pill-btn active" data-faq-cat="all" role="tab" aria-selected="true">ALL</button>
+          <button class="faq-pill-btn" data-faq-cat="about" role="tab" aria-selected="false">ABOUT US</button>
+          <button class="faq-pill-btn" data-faq-cat="menu" role="tab" aria-selected="false">MENU &amp; FOOD</button>
+          <button class="faq-pill-btn" data-faq-cat="franchise" role="tab" aria-selected="false">FRANCHISE</button>
+          <button class="faq-pill-btn" data-faq-cat="orders" role="tab" aria-selected="false">ORDERS</button>
+          <button class="faq-pill-btn" data-faq-cat="other" role="tab" aria-selected="false">OTHER</button>
+        </div>
+
         <!-- 2-Column Content Grid -->
-        <div class="faq-exact-grid">
+        <div class="faq-grid-mockup">
           
-          <!-- Left Column: Accordion Questions -->
-          <div class="faq-accordion-col" id="faq-accordion-group">
+          <!-- Left Column: Accordion Questions (01 to 08) -->
+          <div class="faq-accordion-column" id="faq-accordion-list">
             
-            <!-- Question 1 (Active by default) -->
-            <div class="faq-exact-card active" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">What is Grillista Food Franchise?</h3>
-                <div class="faq-toggle-icon">−</div>
-              </div>
-              <div class="faq-card-body">
-                <p>Grillista is a fast-growing food brand known for its delicious food, great ambience, and excellent customer service. We offer a profitable franchise opportunity with complete end-to-end support.</p>
-              </div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">What are the requirements to become a franchisee?</h3>
-                <div class="faq-toggle-icon">+</div>
-              </div>
-              <div class="faq-card-body">
-                <p>You need a commercial space of 150 to 500+ sq.ft. (depending on the model: Kiosk, Cafe, or Dine-In), adequate investment capability, and passion for the food & hospitality industry. No prior restaurant experience is mandatory as our team provides complete training.</p>
+            <!-- 01 -->
+            <div class="faq-item-card active" data-category="about all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="true">
+                <div class="faq-num-pill">01</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">What is Grillista?</h3>
+                <div class="faq-plus-icon">−</div>
+              </button>
+              <div class="faq-item-body">
+                <p>Grillista is a premier, fast-growing fusion food and burger brand blending authentic Indian desi spices with modern international cuisine. We deliver elevated, fresh-crafted meals and unforgettable dining experiences across India.</p>
               </div>
             </div>
 
-            <!-- Question 3 -->
-            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">How much investment is required?</h3>
-                <div class="faq-toggle-icon">+</div>
-              </div>
-              <div class="faq-card-body">
-                <p>Investment packages start from ₹3.5 Lakhs for Kiosk models, ₹5.5 Lakhs for Cafe & Takeaway, and ₹8.5 Lakhs+ for full Dine-In models. This covers equipment, signage, initial setup, staff training, and raw material support.</p>
-              </div>
-            </div>
-
-            <!-- Question 4 -->
-            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">What support will I get after taking the franchise?</h3>
-                <div class="faq-toggle-icon">+</div>
-              </div>
-              <div class="faq-card-body">
-                <p>Grillista provides comprehensive 360° support: location selection, kitchen design, chef and staff recruitment & training, centralized recipe ingredients, Zomato/Swiggy onboarding, and digital marketing campaigns.</p>
+            <!-- 02 -->
+            <div class="faq-item-card" data-category="menu all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">02</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">What type of food does Grillista serve?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>We serve gourmet craft burgers (Desi Fusion &amp; International styles), loaded spiced fries, crispy wraps, sizzling platters, pizzas, artisanal shakes, and refreshing beverages tailored for every craving.</p>
               </div>
             </div>
 
-            <!-- Question 5 -->
-            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">How long does it take to set up an outlet?</h3>
-                <div class="faq-toggle-icon">+</div>
-              </div>
-              <div class="faq-card-body">
-                <p>From agreement signing and site finalization to grand opening, the entire setup typically takes just 15 to 30 days.</p>
+            <!-- 03 -->
+            <div class="faq-item-card" data-category="about all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">03</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">Where are Grillista outlets located?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>Grillista outlets are situated in prime high-street commercial hubs, malls, and bustling food courts across 28+ cities in India, with rapid expansion ongoing nationwide.</p>
               </div>
             </div>
 
-            <!-- Question 6 -->
-            <div class="faq-exact-card" onclick="toggleFaqCard(this)">
-              <div class="faq-card-head">
-                <div class="faq-q-badge">Q</div>
-                <h3 class="faq-card-question">What is the expected ROI?</h3>
-                <div class="faq-toggle-icon">+</div>
+            <!-- 04 -->
+            <div class="faq-item-card" data-category="orders all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">04</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">Do you offer home delivery?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>Yes, you can order directly through our website or via our official delivery partners Swiggy and Zomato for prompt, hot, and hygienic doorstep delivery.</p>
               </div>
-              <div class="faq-card-body">
-                <p>With healthy operating profit margins of 35% to 45% and strong customer retention, most Grillista partners achieve full capital payback within 6 to 12 months.</p>
+            </div>
+
+            <!-- 05 -->
+            <div class="faq-item-card" data-category="franchise all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">05</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">How can I become a Grillista franchise partner?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>You can apply directly through our online Franchise Application form on this website or email partner@grillista.in. We offer lucrative models: Kiosk, Cafe &amp; Takeaway, and Full Dine-In Lounge.</p>
+              </div>
+            </div>
+
+            <!-- 06 -->
+            <div class="faq-item-card" data-category="franchise all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">06</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">What support do you provide to franchise partners?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>We provide end-to-end 360° assistance: prime location selection, architectural interior layout, complete kitchen equipment setup, staff recruitment &amp; chef training, centralized supply chain, POS integration, and high-impact digital marketing.</p>
+              </div>
+            </div>
+
+            <!-- 07 -->
+            <div class="faq-item-card" data-category="menu all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">07</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">Are Grillista outlets vegetarian-friendly?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>Yes, absolutely! We maintain 100% strict segregation in food preparation and offer an extensive range of mouthwatering vegetarian burgers, paneer delights, loaded fries, and appetizers.</p>
+              </div>
+            </div>
+
+            <!-- 08 -->
+            <div class="faq-item-card" data-category="other all">
+              <button class="faq-item-head" onclick="toggleMockupFaq(this)" aria-expanded="false">
+                <div class="faq-num-pill">08</div>
+                <div class="faq-vertical-divider"></div>
+                <h3 class="faq-item-question">How can I share feedback or suggestions?</h3>
+                <div class="faq-plus-icon">+</div>
+              </button>
+              <div class="faq-item-body">
+                <p>We welcome your insights! Please write to us at support@grillista.in, use the review submission form on our site, or reach out directly to our customer support desk.</p>
               </div>
             </div>
 
           </div>
 
-          <!-- Right Column: Visual Composition -->
-          <div class="faq-visual-col">
-            <img 
-              src="assets/faq_food_composition.jpg" 
-              alt="Grillista Gourmet Burger, Noodles, Fries and Club Sandwiches" 
-              class="faq-food-banner-img"
-            >
+          <!-- Right Column: "STILL HAVE A QUESTION?" Help Card -->
+          <div class="faq-help-card-col">
+            <div class="faq-help-card">
+              
+              <div class="faq-help-eyebrow">STILL HAVE A</div>
+              <h3 class="faq-help-title">QUESTION?</h3>
+              <div class="faq-help-yellow-bar"></div>
+
+              <div class="faq-help-hero-banner">
+                <span class="faq-help-black">WE'RE HERE</span><br>
+                <span class="faq-help-gold">TO HELP.</span>
+              </div>
+
+              <p class="faq-help-desc">
+                Our team is always happy to assist you.
+              </p>
+
+              <!-- Contact Methods List -->
+              <div class="faq-contact-list">
+                
+                <!-- Email -->
+                <div class="faq-contact-row">
+                  <div class="faq-contact-icon-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="faq-contact-info">
+                    <div class="faq-contact-label">EMAIL US</div>
+                    <a href="mailto:support@grillista.in" class="faq-contact-val">support@grillista.in</a>
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="faq-contact-row">
+                  <div class="faq-contact-icon-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#000000">
+                      <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/>
+                    </svg>
+                  </div>
+                  <div class="faq-contact-info">
+                    <div class="faq-contact-label">CALL US</div>
+                    <a href="tel:+919876543210" class="faq-contact-val bold">+91 98765 43210</a>
+                    <div class="faq-contact-sub">(10 AM – 7 PM)</div>
+                  </div>
+                </div>
+
+                <!-- Chat -->
+                <div class="faq-contact-row">
+                  <div class="faq-contact-icon-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  </div>
+                  <div class="faq-contact-info">
+                    <div class="faq-contact-label">CHAT WITH US</div>
+                    <span class="faq-contact-val">On our website</span>
+                  </div>
+                </div>
+
+                <!-- Visit -->
+                <div class="faq-contact-row">
+                  <div class="faq-contact-icon-circle">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="#000000">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                  </div>
+                  <div class="faq-contact-info">
+                    <div class="faq-contact-label">VISIT US</div>
+                    <a href="#locations" class="faq-contact-val">Find our outlets</a>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Contact Us Pill Button -->
+              <a href="#franchise-apply" class="faq-help-cta-btn">
+                <span>CONTACT US</span>
+                <span class="faq-btn-arrow">→</span>
+              </a>
+
+            </div>
           </div>
 
         </div>
 
-        <!-- Bottom Contact Card ("STILL HAVE QUESTIONS?") -->
-        <div class="faq-bottom-dock">
-          <div class="faq-bottom-left">
-            <div class="faq-headset-circle">🎧</div>
-            <div>
-              <div class="faq-bottom-heading">STILL HAVE QUESTIONS?</div>
-              <div class="faq-bottom-sub">We're here to help you!</div>
-            </div>
-          </div>
-
-          <div class="faq-bottom-right">
-            <a href="tel:+919029020888" class="faq-bottom-phone-pill">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="#FFD000"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.21 2.2z"/></svg>
-              <span>+91 90290 20888</span>
-            </a>
-            
-            <a href="https://wa.me/919029020888?text=Hello%20Grillista,%20I%20have%20questions%20regarding%20the%20franchise%20opportunity" target="_blank" rel="noopener noreferrer" class="faq-bottom-talk-btn">
-              <span>TALK TO OUR EXPERT</span>
-              <span>💬</span>
-            </a>
-          </div>
+        <!-- Bottom Tagline Bar: GOOD FOOD BRIGHTER TOMORROW -->
+        <div class="faq-bottom-brand-tagline">
+          <span class="faq-tagline-accent-line"></span>
+          <span class="faq-tagline-brand-text">GOOD FOOD BRIGHTER TOMORROW</span>
+          <span class="faq-tagline-accent-line"></span>
         </div>
 
       </div>
