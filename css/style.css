@@ -909,225 +909,215 @@ img, video, iframe {
 
 
 /* ==========================================================================
-   3D LUXURY ANIMATED FLOATING SIDEBAR (EXACT MOCKUP MATCH)
+   GRILLISTA LUXURY FLOATING SIDEBAR RAIL (EXACT MOCKUP MATCH)
    ========================================================================== */
-.luxury-sidebar-dock {
+.grillista-side-rail-widget {
   position: fixed;
-  right: 18px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 99999;
   display: flex;
   align-items: center;
   pointer-events: none;
-  font-family: var(--font-body, 'Plus Jakarta Sans', Arial, sans-serif);
 }
 
-/* Vertical Track / Spine Behind */
-.luxury-sidebar-spine {
+/* Background White Spine with Bottom Vertical Text */
+.side-rail-spine {
   position: absolute;
-  right: 18px;
+  right: 6px;
   top: -24px;
-  bottom: -44px;
-  width: 52px;
+  bottom: -40px;
+  width: 58px;
   background: #FFFFFF;
   border-radius: 36px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  z-index: 1;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
   padding-bottom: 24px;
-  pointer-events: none;
+  z-index: 1;
+  pointer-events: auto;
 }
 
-.spine-vertical-text {
+.side-rail-help-text {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  font-family: var(--font-body, 'Plus Jakarta Sans', Arial, sans-serif);
   font-size: 0.65rem;
   font-weight: 800;
+  color: #718096;
   letter-spacing: 2.2px;
-  color: #64748B;
   text-transform: uppercase;
-  white-space: nowrap;
   user-select: none;
-  opacity: 0.85;
+  white-space: nowrap;
 }
 
-/* Items Stack */
-.luxury-sidebar-items {
+/* Cards Wrapper */
+.side-rail-cards-wrap {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: relative;
-  z-index: 2;
   pointer-events: auto;
-  animation: luxuryFloatPulse 4.5s ease-in-out infinite;
 }
 
-/* Action Card (Pill Container) */
-.luxury-action-card {
+/* Individual Action Card (Pill + 3D Circle) */
+.side-rail-card {
   display: flex;
   align-items: center;
   text-decoration: none;
   position: relative;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  outline: none;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.luxury-action-card:hover {
-  transform: translateX(-10px);
+.side-rail-card:hover {
+  transform: translateX(-8px) scale(1.02);
 }
 
-/* Left Content Pill */
-.luxury-card-content {
+.side-rail-card:active {
+  transform: scale(0.97);
+}
+
+/* Left White Pill Card */
+.side-card-pill {
   background: #FFFFFF;
-  padding: 12px 26px 12px 20px;
-  border-radius: 30px 0 0 30px;
-  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.08), -2px 2px 8px rgba(0, 0, 0, 0.04);
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 12px 28px 12px 18px;
+  margin-right: -24px;
+  box-shadow: -4px 8px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-right: none;
-  margin-right: -24px;
-  min-width: 160px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
+  min-width: 142px;
   z-index: 1;
+  position: relative;
 }
 
-.luxury-action-card:hover .luxury-card-content {
-  box-shadow: -15px 15px 38px rgba(0, 0, 0, 0.13);
-}
-
-/* Accent Mini-Pill */
-.card-accent-pill {
-  width: 24px;
-  height: 4.5px;
-  border-radius: 4px;
+.side-card-accent-bar {
+  width: 22px;
+  height: 4px;
+  border-radius: 2px;
   margin-bottom: 6px;
-  display: inline-block;
 }
 
-.pill-red {
-  background: #EF4444;
+.side-card-accent-bar.bar-red {
+  background: #E53935;
 }
 
-.pill-green {
-  background: #10B981;
+.side-card-accent-bar.bar-green {
+  background: #25D366;
 }
 
-.pill-blue {
-  background: #3B82F6;
+.side-card-accent-bar.bar-blue {
+  background: #1E88E5;
 }
 
-/* Title & Subtitle */
-.card-title {
-  margin: 0;
-  font-size: 0.96rem;
+.side-card-title {
+  font-family: var(--font-body, 'Plus Jakarta Sans', Arial, sans-serif);
+  font-size: 0.92rem;
   font-weight: 800;
-  color: #111827;
-  line-height: 1.25;
+  color: #1A202C;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
   letter-spacing: -0.2px;
 }
 
-.card-subtitle {
-  margin: 4px 0 0 0;
-  font-size: 0.76rem;
-  color: #6B7280;
+.side-card-sub {
+  font-family: var(--font-body, 'Plus Jakarta Sans', Arial, sans-serif);
+  font-size: 0.74rem;
   font-weight: 600;
-  line-height: 1.2;
+  color: #718096;
+  white-space: nowrap;
 }
 
-/* Right 3D Circular Button Disc */
-.luxury-btn-disc {
+/* Right 3D Circle Button */
+.side-circle-btn {
   width: 68px;
   height: 68px;
-  min-width: 68px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 3;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.35);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 3.5px solid #FFFFFF;
-  box-sizing: border-box;
-}
-
-.luxury-action-card:hover .luxury-btn-disc {
-  transform: scale(1.08) rotate(3deg);
-}
-
-.disc-icon {
-  position: relative;
   z-index: 2;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
-  transition: transform 0.3s ease;
+  border: 3.5px solid #FFFFFF;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
 }
 
-.luxury-action-card:hover .disc-icon {
-  transform: scale(1.1);
+/* Red 3D Button */
+.side-circle-btn.circle-red {
+  background: radial-gradient(circle at 35% 30%, #FF5252 0%, #D32F2F 60%, #B71C1C 100%);
+  box-shadow: 0 10px 24px rgba(211, 47, 47, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-/* 3D Radial Sphere Colors */
-.disc-red {
-  background: radial-gradient(circle at 35% 30%, #FF5A5A 0%, #E52E2E 50%, #B91C1C 100%);
-  box-shadow: 0 10px 25px rgba(229, 46, 46, 0.42), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+.side-rail-card:hover .side-circle-btn.circle-red {
+  box-shadow: 0 14px 30px rgba(211, 47, 47, 0.55), inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
-.disc-green {
-  background: radial-gradient(circle at 35% 30%, #34D399 0%, #10B981 50%, #059669 100%);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.42), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+/* Green 3D Button */
+.side-circle-btn.circle-green {
+  background: radial-gradient(circle at 35% 30%, #2FE677 0%, #25D366 60%, #128C7E 100%);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-.disc-blue {
-  background: radial-gradient(circle at 35% 30%, #60A5FA 0%, #2563EB 50%, #1D4ED8 100%);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.42), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+.side-rail-card:hover .side-circle-btn.circle-green {
+  box-shadow: 0 14px 30px rgba(37, 211, 102, 0.55), inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
-/* Floating Breathing Subtle Animation */
-@keyframes luxuryFloatPulse {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+/* Blue 3D Button */
+.side-circle-btn.circle-blue {
+  background: radial-gradient(circle at 35% 30%, #42A5F5 0%, #1E88E5 60%, #0D47A1 100%);
+  box-shadow: 0 10px 24px rgba(30, 136, 229, 0.38), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.side-rail-card:hover .side-circle-btn.circle-blue {
+  box-shadow: 0 14px 30px rgba(30, 136, 229, 0.55), inset 0 2px 4px rgba(255, 255, 255, 0.6);
 }
 
 /* Mobile & Tablet Responsiveness */
 @media (max-width: 768px) {
-  .luxury-sidebar-dock {
-    right: 12px;
+  .grillista-side-rail-widget {
+    right: 8px;
     top: auto;
-    bottom: 24px;
+    bottom: 20px;
     transform: none;
   }
-  .luxury-sidebar-spine {
+  
+  .side-rail-spine {
     display: none;
   }
-  .luxury-sidebar-items {
-    gap: 12px;
-    animation: none;
-  }
-  .luxury-card-content {
+  
+  .side-card-pill {
     display: none;
   }
-  .luxury-btn-disc {
+  
+  .side-circle-btn {
     width: 52px;
     height: 52px;
-    min-width: 52px;
     border-width: 2.5px;
   }
-  .disc-icon {
+  
+  .side-circle-btn svg {
     width: 22px;
     height: 22px;
+  }
+  
+  .side-rail-cards-wrap {
+    gap: 12px;
   }
 }
 
