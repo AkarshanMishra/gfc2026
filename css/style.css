@@ -2571,9 +2571,21 @@ img, video, iframe {
 /* Logo Left */
 .g-logo-wrap {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+}
+
+.g-logo-emblem-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.g-logo-wrap:hover .g-logo-emblem-img {
+  transform: scale(1.06);
 }
 
 .g-logo-title-row {
