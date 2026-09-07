@@ -2681,21 +2681,23 @@ img, video, iframe {
   box-shadow: 0 6px 20px rgba(255, 199, 44, 0.4);
 }
 
-/* 3. Flagship Hero Banner (Split Diagonal Layout) */
+/* 3. Flagship Hero Banner (Split Diagonal Layout with Yellow Strips) */
 .banner-hero-section {
   position: relative;
   background-color: #090D16;
   overflow: hidden;
   min-height: 520px;
+  border-bottom: 3px solid #FFC72C;
 }
 
 .banner-hero-wrapper {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1.1fr 0.95fr;
   min-height: 520px;
   position: relative;
   max-width: 1920px;
   margin: 0 auto;
+  background: #FFC72C;
 }
 
 /* Left Yellow Side */
@@ -2709,23 +2711,24 @@ img, video, iframe {
   z-index: 2;
 }
 
-/* Right-pointing diagonal brush edge on the yellow left panel */
-.banner-hero-left::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -60px;
-  bottom: 0;
-  width: 120px;
-  background: #FFC72C;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  z-index: 2;
-  pointer-events: none;
+/* Right Food Image Side with Dynamic Angle */
+.banner-hero-right {
+  position: relative;
+  background: #090D16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 @media (max-width: 992px) {
-  .banner-hero-left::after {
-    display: none;
+  .banner-hero-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .banner-hero-right {
+    clip-path: none;
+    min-height: 320px;
   }
 }
 
