@@ -4611,11 +4611,17 @@ img {
   font-family: var(--font-body, var(--font-sans), sans-serif);
   font-size: 0.9rem;
   color: #111827;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
 .inq-input:focus,
 .inq-select:focus,
 .inq-textarea:focus {
-  border-color: #0F4C2A;
-  box-shadow: 0 0 0 3px rgba(15, 76, 42, 0.12);
+  border-color: #FFC72C;
+  box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.18);
 }
 
 .inq-input.is-invalid,
@@ -4649,13 +4655,6 @@ img {
 
 .inq-error-msg.visible {
   display: block;
-}
-
-.inq-input:focus,
-.inq-select:focus,
-.inq-textarea:focus {
-  border-color: #FFC72C;
-  box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.18);
 }
 
 .inq-input::placeholder,

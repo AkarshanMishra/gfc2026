@@ -728,58 +728,123 @@
             <p style="color: var(--text-muted); font-size: 0.95rem;">Fill in your details to receive our confidential expansion memorandum and speak with our franchise expansion head.</p>
           </div>
 
-          <form id="franchise-inquiry-form" novalidate>
-            <div class="form-grid-2col">
-              <div class="form-group">
-                <label for="f-name">Full Name *</label>
-                <input type="text" id="f-name" name="name" class="form-control" placeholder="e.g. Rahul Verma" required>
+          <!-- Form Card -->
+          <div id="franchise-form-container">
+            <form id="franchise-inquiry-form" novalidate>
+              <div class="form-grid-2col">
+                <div class="form-group">
+                  <label for="f-name">Full Name *</label>
+                  <input type="text" id="f-name" name="name" class="form-control" placeholder="e.g. Rahul Verma" required>
+                  <span class="inq-error-msg" id="err-f-name">Please enter your full name (minimum 2 characters).</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-email">Business Email *</label>
+                  <input type="email" id="f-email" name="email" class="form-control" placeholder="rahul@business.com" required>
+                  <span class="inq-error-msg" id="err-f-email">Please enter a valid email address (e.g. name@example.com).</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-phone">Mobile Number (WhatsApp) *</label>
+                  <input type="tel" id="f-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+                  <span class="inq-error-msg" id="err-f-phone">Please enter a valid 10-digit mobile number.</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-city">Preferred City / Location *</label>
+                  <input type="text" id="f-city" name="preferredCity" class="form-control" placeholder="e.g. Kanpur, Lucknow, Noida" required>
+                  <span class="inq-error-msg" id="err-f-city">Please specify your target city or location.</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-budget">Model &amp; Investment Tier</label>
+                  <select id="f-budget" name="investmentBudget" class="form-control">
+                    <option value="express">Grillista Express (₹10 - 12 Lakh | 200 sq.ft)</option>
+                    <option value="bistro">Grillista Bistro (₹16 - 18 Lakh | 600 sq.ft)</option>
+                    <option value="signature">Grillista Signature (₹38 - 40 Lakh | 1000 sq.ft)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="justify-content: center;">
+                  <label class="checkbox-label" style="margin-top: 24px;">
+                    <input type="checkbox" name="hasCommercialSpace" id="f-commercial" value="yes">
+                    <span>I already own or have shortlisted a commercial space</span>
+                  </label>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="f-email">Business Email *</label>
-                <input type="email" id="f-email" name="email" class="form-control" placeholder="rahul@business.com" required>
+
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label for="f-notes">Previous Business / Food Experience</label>
+                <textarea id="f-notes" name="notes" class="form-control" rows="3" placeholder="Tell us about your background or target market location in your city..."></textarea>
               </div>
-              <div class="form-group">
-                <label for="f-phone">Mobile Number (WhatsApp) *</label>
-                <input type="tel" id="f-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+
+              <button type="submit" id="franchise-submit-btn" class="btn btn-lg btn-primary btn-block">
+                <span>🚀 Submit Confidential Franchise Inquiry</span>
+              </button>
+
+              <div style="text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2E8F0;">
+                <span style="font-size: 0.86rem; color: #64748B; display: block; margin-bottom: 10px; font-weight: 700;">Prefer filling via Google Forms?</span>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-weight: 800; border-color: #D32323; color: #D32323; padding: 10px 22px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
+                  <span>📝 Open Official Google Form ↗</span>
+                </a>
               </div>
-              <div class="form-group">
-                <label for="f-city">Preferred City / Location *</label>
-                <input type="text" id="f-city" name="preferredCity" class="form-control" placeholder="e.g. Kanpur, Lucknow, Noida" required>
+            </form>
+          </div>
+
+          <!-- Confirmation Success Screen -->
+          <div id="franchise-page-success" class="inquiry-success-view" style="display: none;">
+            <div class="inquiry-success-screen-card" style="box-shadow: none; padding: 10px 0;">
+              <div class="success-checkmark-burst-wrap">
+                <svg class="success-burst-svg" width="130" height="130" viewBox="0 0 130 130" fill="none">
+                  <circle cx="65" cy="10" r="3.5" fill="#22C55E"/>
+                  <circle cx="105" cy="22" r="2.5" fill="#FFC72C"/>
+                  <circle cx="122" cy="55" r="3" fill="#22C55E"/>
+                  <circle cx="118" cy="95" r="3.5" fill="#FFC72C"/>
+                  <circle cx="85" cy="122" r="2.5" fill="#22C55E"/>
+                  <circle cx="45" cy="124" r="3.5" fill="#FFC72C"/>
+                  <circle cx="12" cy="95" r="2.5" fill="#22C55E"/>
+                  <circle cx="8" cy="48" r="3.5" fill="#FFC72C"/>
+                  <circle cx="32" cy="18" r="3" fill="#22C55E"/>
+                </svg>
+                <div class="success-checkmark-circle">
+                  <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="f-budget">Model & Investment Tier</label>
-                <select id="f-budget" name="investmentBudget" class="form-control">
-                  <option value="express">Grillista Express (₹10 - 12 Lakh | 200 sq.ft)</option>
-                  <option value="bistro">Grillista Bistro (₹16 - 18 Lakh | 600 sq.ft)</option>
-                  <option value="signature">Grillista Signature (₹38 - 40 Lakh | 1000 sq.ft)</option>
-                </select>
+
+              <h3 class="success-screen-title">
+                Application Submitted!
+                <span class="success-screen-green">Confirmation Dispatched</span>
+              </h3>
+
+              <div class="success-yellow-brush"></div>
+
+              <p class="success-screen-desc">
+                Thank you for your franchise application! Your submission has been securely recorded. Our franchise team will review your location details and contact you.
+              </p>
+
+              <div class="success-email-pill">
+                <span style="font-size: 1.1rem;">✉️</span>
+                <strong id="franchise-success-user-email">user@example.com</strong>
               </div>
-              <div class="form-group" style="justify-content: center;">
-                <label class="checkbox-label" style="margin-top: 24px;">
-                  <input type="checkbox" name="hasCommercialSpace" value="yes">
-                  <span>I already own or have shortlisted a commercial space</span>
-                </label>
+
+              <div class="success-timeline-note">
+                <span>🕒</span>
+                <span>Our franchise expansion head will connect within 24 business hours.</span>
               </div>
+
+              <div class="success-screen-actions">
+                <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Franchise%20Application%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="success-btn-whatsapp">
+                  <span>💬 Chat on WhatsApp</span>
+                  <span>→</span>
+                </a>
+                <button type="button" id="franchise-reset-form-btn" class="success-btn-reset">
+                  <span>Submit Another Application</span>
+                  <span>→</span>
+                </button>
+              </div>
+
+              <div class="success-card-bottom-divider"><span>❤️</span></div>
+              <div class="success-card-tagline">GOOD FOOD BRIGHTER TOMORROW</div>
             </div>
+          </div>
 
-            <div class="form-group" style="margin-bottom: 24px;">
-              <label for="f-notes">Previous Business / Food Experience</label>
-              <textarea id="f-notes" name="notes" class="form-control" rows="3" placeholder="Tell us about your background or target market location in your city..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-lg btn-primary btn-block">
-              <span>🚀 Submit Confidential Franchise Inquiry</span>
-            </button>
-
-            <div id="franchise-form-status"></div>
-
-            <div style="text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2E8F0;">
-              <span style="font-size: 0.86rem; color: #64748B; display: block; margin-bottom: 10px; font-weight: 700;">Prefer filling via Google Forms?</span>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-weight: 800; border-color: #D32323; color: #D32323; padding: 10px 22px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
-                <span>📝 Open Official Google Form ↗</span>
-              </a>
-            </div>
-          </form>
         </div>
       </div>
     </section>
@@ -1132,6 +1197,253 @@
   <script src="js/profit-simulator.js"></script>
 
   <script src="js/mobile-nav.js"></script>
+
+  <!-- FRANCHISE FORM CONTROLLER -->
+  <script>
+    (function() {
+      function isValidEmail(val) {
+        var str = String(val || '').trim();
+        var re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return re.test(str);
+      }
+
+      function isValidPhone(val) {
+        var cleaned = String(val || '').replace(/[\s\-+()]/g, '');
+        var indRe = /^(?:(?:\+|0{0,2})91)?[6-9]\d{9}$/;
+        var stdRe = /^[0-9]{10}$/;
+        return indRe.test(cleaned) || stdRe.test(cleaned);
+      }
+
+      function setFieldState(elem, errId, isValid, msg) {
+        if (!elem) return;
+        var errSpan = document.getElementById(errId);
+        if (isValid) {
+          elem.classList.remove('is-invalid');
+          elem.classList.add('is-valid');
+          if (errSpan) errSpan.classList.remove('visible');
+        } else {
+          elem.classList.add('is-invalid');
+          elem.classList.remove('is-valid');
+          if (errSpan) {
+            if (msg) errSpan.textContent = msg;
+            errSpan.classList.add('visible');
+          }
+        }
+      }
+
+      window.resetFranchiseForm = function(e) {
+        if (e) {
+          if (e.preventDefault) e.preventDefault();
+          if (e.stopPropagation) e.stopPropagation();
+        }
+        var form = document.getElementById('franchise-inquiry-form');
+        var container = document.getElementById('franchise-form-container');
+        var successCard = document.getElementById('franchise-page-success');
+        var submitBtn = document.getElementById('franchise-submit-btn');
+
+        if (form) form.reset();
+        ['f-name', 'f-email', 'f-phone', 'f-city'].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.classList.remove('is-invalid', 'is-valid');
+          }
+          var err = document.getElementById('err-' + id);
+          if (err) err.classList.remove('visible');
+        });
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>🚀 Submit Confidential Franchise Inquiry</span>';
+        }
+
+        if (successCard) successCard.style.display = 'none';
+        if (container) container.style.display = 'block';
+
+        var section = document.getElementById('franchise-apply');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      function initFranchiseForm() {
+        var form = document.getElementById('franchise-inquiry-form');
+        var container = document.getElementById('franchise-form-container');
+        var successCard = document.getElementById('franchise-page-success');
+        var resetBtn = document.getElementById('franchise-reset-form-btn');
+        if (!form) return;
+
+        var nameInput = document.getElementById('f-name');
+        var emailInput = document.getElementById('f-email');
+        var phoneInput = document.getElementById('f-phone');
+        var cityInput = document.getElementById('f-city');
+        var budgetInput = document.getElementById('f-budget');
+        var commInput = document.getElementById('f-commercial');
+        var notesInput = document.getElementById('f-notes');
+        var submitBtn = document.getElementById('franchise-submit-btn');
+
+        if (nameInput) {
+          nameInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-name', this.value.trim().length >= 2, 'Please enter your full name (minimum 2 characters).');
+            }
+          });
+          nameInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid') && this.value.trim().length >= 2) {
+              setFieldState(this, 'err-f-name', true);
+            }
+          });
+        }
+
+        if (emailInput) {
+          emailInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-email', isValidEmail(this.value), 'Please enter a valid email address (e.g. name@example.com).');
+            }
+          });
+          emailInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid') && isValidEmail(this.value)) {
+              setFieldState(this, 'err-f-email', true);
+            }
+          });
+        }
+
+        if (phoneInput) {
+          phoneInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-phone', isValidPhone(this.value), 'Please enter a valid 10-digit mobile number.');
+            }
+          });
+          phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^\d+\s-]/g, '');
+            if (this.classList.contains('is-invalid') && isValidPhone(this.value)) {
+              setFieldState(this, 'err-f-phone', true);
+            }
+          });
+        }
+
+        if (cityInput) {
+          cityInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-city', this.value.trim().length >= 2, 'Please specify your target city or location.');
+            }
+          });
+          cityInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid') && this.value.trim().length >= 2) {
+              setFieldState(this, 'err-f-city', true);
+            }
+          });
+        }
+
+        form.onsubmit = function(e) {
+          e.preventDefault();
+          var name = (nameInput || {}).value || '';
+          var email = (emailInput || {}).value || '';
+          var phone = (phoneInput || {}).value || '';
+          var city = (cityInput || {}).value || '';
+          var budget = (budgetInput || {}).value || 'express';
+          var hasComm = (commInput && commInput.checked) ? 'Yes' : 'No';
+          var notes = (notesInput || {}).value || '';
+
+          var hasError = false;
+          var firstInvalid = null;
+
+          if (!name.trim() || name.trim().length < 2) {
+            setFieldState(nameInput, 'err-f-name', false, 'Please enter your full name (minimum 2 characters).');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = nameInput;
+          } else {
+            setFieldState(nameInput, 'err-f-name', true);
+          }
+
+          if (!email.trim() || !isValidEmail(email)) {
+            setFieldState(emailInput, 'err-f-email', false, 'Please enter a valid email address (e.g. name@example.com).');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = emailInput;
+          } else {
+            setFieldState(emailInput, 'err-f-email', true);
+          }
+
+          if (!phone.trim() || !isValidPhone(phone)) {
+            setFieldState(phoneInput, 'err-f-phone', false, 'Please enter a valid 10-digit mobile number.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = phoneInput;
+          } else {
+            setFieldState(phoneInput, 'err-f-phone', true);
+          }
+
+          if (!city.trim() || city.trim().length < 2) {
+            setFieldState(cityInput, 'err-f-city', false, 'Please specify your target city or location.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = cityInput;
+          } else {
+            setFieldState(cityInput, 'err-f-city', true);
+          }
+
+          if (hasError) {
+            if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
+            return false;
+          }
+
+          var origBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>🚀 Submit Confidential Franchise Inquiry</span>';
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Verifying &amp; Submitting...</span>';
+          }
+
+          var payload = {
+            name: name.trim(),
+            email: email.trim(),
+            phone: phone.trim().replace(/[\s\-+()]/g, ''),
+            preferredCity: city.trim(),
+            investmentBudget: budget,
+            hasCommercialSpace: hasComm,
+            notes: notes.trim(),
+            inquiryType: 'Franchise Application',
+            date: new Date().toISOString()
+          };
+
+          try {
+            var existing = JSON.parse(localStorage.getItem('grillista_franchise_inquiries') || '[]');
+            existing.unshift(payload);
+            localStorage.setItem('grillista_franchise_inquiries', JSON.stringify(existing));
+          } catch(err) {}
+
+          var googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwQj2j281vcGloPzH9vrFHSGWXnau2YgWuljq-tvpgypwdFldWNJPVl52JtTsm5mA08/exec';
+
+          fetch(googleScriptUrl, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            mode: 'no-cors'
+          }).catch(function(err) {
+            console.info('Franchise transmission logged:', err);
+          }).finally(function() {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = origBtnHtml;
+            }
+            if (container) container.style.display = 'none';
+            if (successCard) {
+              var emailSpan = document.getElementById('franchise-success-user-email');
+              if (emailSpan) emailSpan.textContent = payload.email;
+              successCard.style.display = 'block';
+              successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+
+          return false;
+        };
+
+        if (resetBtn) {
+          resetBtn.onclick = window.resetFranchiseForm;
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFranchiseForm);
+      } else {
+        initFranchiseForm();
+      }
+    })();
+  </script>
 
     <!-- Actions Stack -->
     <div class="luxury-sidebar-items">
