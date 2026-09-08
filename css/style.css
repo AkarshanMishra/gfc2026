@@ -4639,6 +4639,11 @@ img {
   transform: translateY(-2px);
 }
 
+.success-btn-reset *,
+.success-btn-whatsapp * {
+  pointer-events: none;
+}
+
 /* Card Bottom Divider */
 .success-card-bottom-divider {
   display: flex;

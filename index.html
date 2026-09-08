@@ -1334,31 +1334,72 @@
 
     // Bulletproof Homepage Inquiry Form Handler & Global Reset
     window.resetHomeInquiryForm = function(e) {
-      if (e && e.preventDefault) e.preventDefault();
+      if (e) {
+        if (e.preventDefault) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+      }
+
       var form = document.getElementById('home-franchise-form');
       var successCard = document.getElementById('franchise-success-message');
       var inquiryWrap = document.querySelector('.inquiry-body-wrap');
       var charCounter = document.getElementById('inq-char-counter');
       var submitBtn = document.getElementById('home-inquiry-submit-btn');
 
+      // 1. Reset all form input values
       if (form) {
         form.reset();
-        form.style.display = 'block';
+        form.style.setProperty('display', 'block', 'important');
+        form.style.setProperty('visibility', 'visible', 'important');
+        form.style.setProperty('opacity', '1', 'important');
       }
+
+      var fName = document.getElementById('f-name');
+      if (fName) fName.value = '';
+      var fEmail = document.getElementById('f-email');
+      if (fEmail) fEmail.value = '';
+      var fPhone = document.getElementById('f-phone');
+      if (fPhone) fPhone.value = '';
+      var fType = document.getElementById('f-type');
+      if (fType) fType.selectedIndex = 0;
+      var fSubject = document.getElementById('f-subject');
+      if (fSubject) fSubject.value = '';
+      var fMessage = document.getElementById('f-message');
+      if (fMessage) fMessage.value = '';
+      var fTerms = document.getElementById('f-terms');
+      if (fTerms) fTerms.checked = true;
+
+      // 2. Reset character counter and submit button
       if (charCounter) charCounter.textContent = '0/500';
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<span>Submit Inquiry</span> <span class="btn-arrow">→</span>';
       }
+
+      // 3. Hide confirmation success screen
       if (successCard) {
         successCard.classList.remove('active');
-        successCard.style.display = 'none';
+        successCard.style.setProperty('display', 'none', 'important');
       }
+
+      // 4. Show inquiry form section & smoothly scroll
       if (inquiryWrap) {
-        inquiryWrap.style.display = 'block';
-        inquiryWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        inquiryWrap.style.setProperty('display', 'block', 'important');
+        inquiryWrap.style.setProperty('visibility', 'visible', 'important');
+        inquiryWrap.style.setProperty('opacity', '1', 'important');
+      }
+
+      var section = document.getElementById('franchise-apply') || inquiryWrap;
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
+
+    // Global Capture-Phase Click Listener for Guaranteed Trigger
+    document.addEventListener('click', function(e) {
+      if (e.target && (e.target.id === 'inquiry-reset-form-btn' || (e.target.closest && e.target.closest('#inquiry-reset-form-btn')) || (e.target.closest && e.target.closest('.success-btn-reset')))) {
+        window.resetHomeInquiryForm(e);
+      }
+    }, true);
 
     (function() {
       function initHomeInquiry() {
@@ -1447,12 +1488,12 @@
               submitBtn.innerHTML = origBtnHtml;
             }
             var inquiryWrap = document.querySelector('.inquiry-body-wrap');
-            if (inquiryWrap) inquiryWrap.style.display = 'none';
+            if (inquiryWrap) inquiryWrap.style.setProperty('display', 'none', 'important');
             if (successCard) {
               var userEmailSpan = document.getElementById('inq-success-user-email');
               if (userEmailSpan) userEmailSpan.textContent = inquiryData.email;
               successCard.classList.add('active');
-              successCard.style.display = 'block';
+              successCard.style.setProperty('display', 'block', 'important');
               successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           });
