@@ -396,31 +396,31 @@ function sendCustomerEmail(
                     <div style="font-size: 14px; font-weight: 800; color: #0F172A; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Team Grillista</div>
                     <div style="font-size: 11.5px; color: #64748B; font-weight: 600; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">The Ultimate Food Chain</div>
 
-                    <!-- Social Icons Row -->
+                    <!-- Social Icons Row (Instagram, Facebook, Pinterest, YouTube) -->
                     <div style="margin-top: 12px;">
                       <table border="0" cellspacing="0" cellpadding="0">
                         <tr>
-                          <td style="padding-right: 6px;" valign="middle">
+                          <td style="padding-right: 8px;" valign="middle">
                             <a href="https://www.instagram.com/grillista1" target="_blank" style="text-decoration: none; display: inline-block;">
-                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="22" height="22" alt="Instagram" style="display: block; border-radius: 50%; border: none;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="24" height="24" alt="Instagram" style="display: block; border-radius: 50%; border: none;">
                             </a>
                           </td>
-                          <td style="padding-right: 6px;" valign="middle">
+                          <td style="padding-right: 8px;" valign="middle">
                             <a href="https://www.facebook.com/share/1EGML5sM3N/" target="_blank" style="text-decoration: none; display: inline-block;">
-                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="22" height="22" alt="Facebook" style="display: block; border-radius: 50%; border: none;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="24" height="24" alt="Facebook" style="display: block; border-radius: 50%; border: none;">
                             </a>
                           </td>
-                          <td style="padding-right: 6px;" valign="middle">
-                            <a href="https://linkedin.com" target="_blank" style="text-decoration: none; display: inline-block;">
-                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/linkedin.png" width="22" height="22" alt="LinkedIn" style="display: block; border-radius: 50%; border: none;">
+                          <td style="padding-right: 8px;" valign="middle">
+                            <a href="https://pin.it/1bi0APK1A" target="_blank" style="text-decoration: none; display: inline-block;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/pinterest.png" width="24" height="24" alt="Pinterest" style="display: block; border-radius: 50%; border: none;">
                             </a>
                           </td>
-                          <td style="padding-right: 10px;" valign="middle">
+                          <td style="padding-right: 12px;" valign="middle">
                             <a href="https://youtube.com" target="_blank" style="text-decoration: none; display: inline-block;">
-                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/youtube.png" width="22" height="22" alt="YouTube" style="display: block; border-radius: 50%; border: none;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/youtube.png" width="24" height="24" alt="YouTube" style="display: block; border-radius: 50%; border: none;">
                             </a>
                           </td>
-                          <td style="border-left: 1.5px solid #CBD5E1; padding-left: 8px; font-size: 10.5px; font-weight: 800; color: #64748B; font-family: 'Segoe UI', Roboto, Arial, sans-serif; white-space: nowrap;" valign="middle">
+                          <td style="border-left: 1.5px solid #CBD5E1; padding-left: 10px; font-size: 11px; font-weight: 800; color: #64748B; font-family: 'Segoe UI', Roboto, Arial, sans-serif; white-space: nowrap;" valign="middle">
                             Follow Our Journey
                           </td>
                         </tr>
@@ -919,22 +919,30 @@ function sendAdminEmail(
                     </div>
                   </td>
 
-                  <!-- Follow Us -->
-                  <td class="footer-grid-col" valign="top" style="width: 24%;">
-                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 6px;">Follow Us</div>
+                  <!-- Follow Us (Instagram, Facebook, Pinterest, YouTube) -->
+                  <td class="footer-grid-col" valign="top" style="width: 26%;">
+                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 6px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Follow Us</div>
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td style="padding-right: 5px;">
-                          <a href="https://www.instagram.com/grillista1" target="_blank"><img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="20" height="20" alt="Instagram"></a>
+                        <td style="padding-right: 6px;">
+                          <a href="https://www.instagram.com/grillista1" target="_blank" style="text-decoration: none; display: inline-block;">
+                            <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="22" height="22" alt="Instagram" style="display: block; border-radius: 50%; border: none;">
+                          </a>
                         </td>
-                        <td style="padding-right: 5px;">
-                          <a href="https://www.facebook.com/share/1EGML5sM3N/" target="_blank"><img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="20" height="20" alt="Facebook"></a>
+                        <td style="padding-right: 6px;">
+                          <a href="https://www.facebook.com/share/1EGML5sM3N/" target="_blank" style="text-decoration: none; display: inline-block;">
+                            <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="22" height="22" alt="Facebook" style="display: block; border-radius: 50%; border: none;">
+                          </a>
                         </td>
-                        <td style="padding-right: 5px;">
-                          <a href="https://linkedin.com" target="_blank"><img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/linkedin.png" width="20" height="20" alt="LinkedIn"></a>
+                        <td style="padding-right: 6px;">
+                          <a href="https://pin.it/1bi0APK1A" target="_blank" style="text-decoration: none; display: inline-block;">
+                            <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/pinterest.png" width="22" height="22" alt="Pinterest" style="display: block; border-radius: 50%; border: none;">
+                          </a>
                         </td>
                         <td>
-                          <a href="https://youtube.com" target="_blank"><img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/youtube.png" width="20" height="20" alt="YouTube"></a>
+                          <a href="https://youtube.com" target="_blank" style="text-decoration: none; display: inline-block;">
+                            <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/youtube.png" width="22" height="22" alt="YouTube" style="display: block; border-radius: 50%; border: none;">
+                          </a>
                         </td>
                       </tr>
                     </table>
