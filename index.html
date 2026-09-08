@@ -1343,17 +1343,12 @@
             }
           } catch(e) {}
 
-          var formPayload = new FormData();
-          formPayload.append('name', inquiryData.name);
-          formPayload.append('email', inquiryData.email);
-          formPayload.append('phone', inquiryData.phone);
-          formPayload.append('inquiryType', inquiryData.inquiryType);
-          formPayload.append('subject', inquiryData.subject);
-          formPayload.append('message', inquiryData.message);
-
           fetch(googleScriptUrl, {
             method: 'POST',
-            body: formPayload,
+            body: JSON.stringify(inquiryData),
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8'
+            },
             mode: 'no-cors'
           }).catch(function(err) {
             console.info('Google Sheets transmission sent:', err);

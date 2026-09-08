@@ -139,17 +139,21 @@ export const ApiService = {
     const webhookUrl = CONFIG.APIS.GOOGLE_SHEETS_INQUIRY_WEBAPP;
     if (webhookUrl && !webhookUrl.includes('GRILLISTA_INQUIRY_WEBAPP_ID')) {
       try {
-        const payload = new FormData();
-        payload.append('name', formData.name || '');
-        payload.append('email', formData.email || '');
-        payload.append('phone', formData.phone || '');
-        payload.append('inquiryType', 'Franchise - ' + (formData.model || 'Express'));
-        payload.append('subject', 'Franchise Application for ' + (formData.preferredCity || 'India'));
-        payload.append('message', `City: ${formData.preferredCity || 'N/A'} | Budget: ${formData.investmentBudget || 'N/A'} | Space Shortlisted: ${formData.hasCommercialSpace ? 'Yes' : 'No'} | Notes: ${formData.notes || 'None'}`);
+        const payloadData = {
+          name: formData.name || '',
+          email: formData.email || '',
+          phone: formData.phone || '',
+          inquiryType: 'Franchise - ' + (formData.model || 'Express'),
+          subject: 'Franchise Application for ' + (formData.preferredCity || 'India'),
+          message: `City: ${formData.preferredCity || 'N/A'} | Budget: ${formData.investmentBudget || 'N/A'} | Space Shortlisted: ${formData.hasCommercialSpace ? 'Yes' : 'No'} | Notes: ${formData.notes || 'None'}`
+        };
 
         fetch(webhookUrl, {
           method: 'POST',
-          body: payload,
+          body: JSON.stringify(payloadData),
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
           mode: 'no-cors'
         }).catch(e => console.info('Franchise Sheet sync dispatched:', e));
       } catch (err) {
