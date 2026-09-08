@@ -26,7 +26,7 @@ export const CONFIG = {
     REVIEWS: 'https://randomuser.me/api/?results=4&nat=in,us,gb',
     GEO_IP: 'https://ipapi.co/json/',
     // Google Sheets & Auto-Email Webhook URL (Deploy via Google Apps Script)
-    GOOGLE_SHEETS_INQUIRY_WEBAPP: 'https://script.google.com/macros/s/AKfycbz_GRILLISTA_INQUIRY_WEBAPP_ID/exec',
+    GOOGLE_SHEETS_INQUIRY_WEBAPP: 'https://script.google.com/macros/s/AKfycbwQj2j281vcGloPzH9vrFHSGWXnau2YgWuljq-tvpgypwdFldWNJPVl52JtTsm5mA08/exec',
   },
 
   // Franchise Models & Accurate ROI Breakdown
