@@ -125,64 +125,11 @@ export const Security = {
   },
 
   /**
-   * Comprehensive Client-Side Code & Content Protection Suite
+   * Client-Side Content Protection & Privacy Guard
+   * Protects site assets and prevents unauthorized content copying while allowing normal frontend inspection
    */
   initProtection() {
-    // 1. Disable Right-Click Context Menu
-    document.addEventListener('contextmenu', function(e) {
-      // Allow right-click on input and textarea so users can paste/correct text
-      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
-        return true;
-      }
-      e.preventDefault();
-      return false;
-    }, { capture: true });
-
-    // 2. Disable DevTools, Inspect Element & View Source Keyboard Shortcuts
-    document.addEventListener('keydown', function(e) {
-      const key = e.key || '';
-      const keyCode = e.keyCode || e.which;
-      const isCtrlOrMeta = e.ctrlKey || e.metaKey;
-
-      // F12 key
-      if (keyCode === 123 || key === 'F12') {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+Shift+I / Cmd+Opt+I (Developer Tools)
-      // Ctrl+Shift+J / Cmd+Opt+J (Console)
-      // Ctrl+Shift+C / Cmd+Opt+C (Inspect Element)
-      if (isCtrlOrMeta && e.shiftKey && (key === 'I' || key === 'i' || key === 'J' || key === 'j' || key === 'C' || key === 'c' || keyCode === 73 || keyCode === 74 || keyCode === 67)) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+U / Cmd+U (View Page Source)
-      if (isCtrlOrMeta && (key === 'U' || key === 'u' || keyCode === 85)) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+S / Cmd+S (Save Page HTML)
-      if (isCtrlOrMeta && (key === 'S' || key === 's' || keyCode === 83)) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+P / Cmd+P (Print Page)
-      if (isCtrlOrMeta && (key === 'P' || key === 'p' || keyCode === 80)) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    }, { capture: true });
-
-    // 3. Disable Content Copy & Cut outside interactive inputs
+    // 1. Disable Content Copy & Cut outside interactive form inputs
     document.addEventListener('copy', function(e) {
       if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
         return true;
@@ -199,18 +146,20 @@ export const Security = {
       return false;
     });
 
-    // 4. Disable Image & Element Dragging
+    // 2. Prevent Unauthorized Asset & Image Dragging
     document.addEventListener('dragstart', function(e) {
-      e.preventDefault();
-      return false;
+      if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO')) {
+        e.preventDefault();
+        return false;
+      }
     });
 
-    // 5. Protected Console Watermark
+    // 3. Clean Brand Signature in Console
     try {
       console.log(
-        '%c🔒 GRILLISTA SECURE PORTAL\n%cAll rights reserved. Code, assets, and intellectual property are protected under copyright law.',
-        'color: #FFD000; font-family: sans-serif; font-size: 18px; font-weight: 900; background: #0F4C2A; padding: 6px 12px; border-radius: 6px;',
-        'color: #64748B; font-size: 12px;'
+        '%c🌿 GRILLISTA - 100% Pure Veg | The Ultimate Food Chain\n%cOfficial Website & Franchise Portal',
+        'color: #FFD000; font-family: sans-serif; font-size: 16px; font-weight: 800; background: #0F4C2A; padding: 6px 12px; border-radius: 6px;',
+        'color: #64748B; font-size: 12px; margin-top: 4px;'
       );
     } catch (e) {}
   }
