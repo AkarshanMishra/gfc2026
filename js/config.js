@@ -25,6 +25,8 @@ export const CONFIG = {
     GEOCODING_REVERSE: 'https://nominatim.openstreetmap.org/reverse',
     REVIEWS: 'https://randomuser.me/api/?results=4&nat=in,us,gb',
     GEO_IP: 'https://ipapi.co/json/',
+    // Google Sheets & Auto-Email Webhook URL (Deploy via Google Apps Script)
+    GOOGLE_SHEETS_INQUIRY_WEBAPP: 'https://script.google.com/macros/s/AKfycbz_GRILLISTA_INQUIRY_WEBAPP_ID/exec',
   },
 
   // Franchise Models & Accurate ROI Breakdown

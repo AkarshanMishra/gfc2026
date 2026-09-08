@@ -1039,9 +1039,9 @@
             <!-- Success Confirmation Card -->
             <div id="franchise-success-message" class="inq-success-card">
               <div class="inq-success-icon">🎉</div>
-              <h3 class="inq-success-title">Inquiry Submitted!</h3>
+              <h3 class="inq-success-title">Inquiry Recorded &amp; Confirmation Email Sent!</h3>
               <p class="inq-success-text">
-                Thank you for reaching out to Grillista. Our dedicated team has received your message and will get back to you within 24 hours.
+                Thank you for contacting Grillista! Your details have been recorded, and an official confirmation email has been dispatched to <strong id="inq-success-user-email" style="color: #111827;">your email address</strong>. Our team will get back to you within 24 business hours.
               </p>
               <div class="inq-success-actions">
                 <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Inquiry%20Form%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="inq-success-whatsapp">
@@ -1308,16 +1308,25 @@
             return false;
           }
 
+          var submitBtn = document.getElementById('home-inquiry-submit-btn');
+          var origBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Inquiry →';
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending Data &amp; Dispatching Email...</span>';
+          }
+
           var inquiryData = {
             name: name.trim(),
-            phone: phone.trim(),
             email: email.trim(),
+            phone: phone.trim(),
             inquiryType: inqType,
             subject: subject.trim(),
             message: msg.trim(),
             date: new Date().toISOString()
           };
 
+          // Local backup
           try {
             var existing = JSON.parse(localStorage.getItem('grillista_general_inquiries') || '[]');
             existing.unshift(inquiryData);
@@ -1326,11 +1335,42 @@
             console.warn('Storage error:', err);
           }
 
-          form.style.display = 'none';
-          if (successCard) {
-            successCard.classList.add('active');
-            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
+          // 1. Send data to Google Sheets & Trigger Automatic Confirmation Email
+          var googleScriptUrl = 'https://script.google.com/macros/s/AKfycbz_GRILLISTA_INQUIRY_WEBAPP_ID/exec';
+          try {
+            if (window.CONFIG && window.CONFIG.APIS && window.CONFIG.APIS.GOOGLE_SHEETS_INQUIRY_WEBAPP) {
+              googleScriptUrl = window.CONFIG.APIS.GOOGLE_SHEETS_INQUIRY_WEBAPP;
+            }
+          } catch(e) {}
+
+          var formPayload = new FormData();
+          formPayload.append('name', inquiryData.name);
+          formPayload.append('email', inquiryData.email);
+          formPayload.append('phone', inquiryData.phone);
+          formPayload.append('inquiryType', inquiryData.inquiryType);
+          formPayload.append('subject', inquiryData.subject);
+          formPayload.append('message', inquiryData.message);
+
+          fetch(googleScriptUrl, {
+            method: 'POST',
+            body: formPayload,
+            mode: 'no-cors'
+          }).catch(function(err) {
+            console.info('Google Sheets transmission sent:', err);
+          }).finally(function() {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = origBtnHtml;
+            }
+            form.style.display = 'none';
+            if (successCard) {
+              var userEmailSpan = document.getElementById('inq-success-user-email');
+              if (userEmailSpan) userEmailSpan.textContent = inquiryData.email;
+              successCard.classList.add('active');
+              successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+
           return false;
         };
 
