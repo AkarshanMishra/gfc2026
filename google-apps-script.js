@@ -1,20 +1,14 @@
 /**
  * ==============================================================================
- * GRILLISTA - OFFICIAL GOOGLE APPS SCRIPT WEBHOOK FOR SHEETS & AUTO EMAIL DISPATCH
+ * GRILLISTA - OFFICIAL GOOGLE APPS SCRIPT WEBHOOK & AUTOMATED EMAIL CONTROLLER
  * ==============================================================================
- * 
- * HOW TO DEPLOY IN GOOGLE APPS SCRIPT:
- * 1. Open Google Sheets (https://sheets.new) and name the tab "Inquiries"
- * 2. In Row 1 of "Inquiries" sheet, set columns:
- *    A: Timestamp | B: Full Name | C: Email Address | D: Phone Number |
- *    E: Inquiry Type | F: Subject | G: Message | H: Reference ID
- * 3. In the top menu, click: Extensions > Apps Script
- * 4. Paste ALL the code from this file into Code.gs
- * 5. Click "Deploy" > "New deployment" > Select type: "Web app"
- *    - Description: "Grillista Webhook API"
- *    - Execute as: "Me"
- *    - Who has access: "Anyone"
- * 6. Click "Deploy" and authorize permissions.
+ *
+ * SPREADSHEET TAB NAME: "Inquiries" (or default Active Sheet)
+ * ADMIN RECIPIENT EMAIL: "support@grillista.in"
+ *
+ * COLUMNS POPULATED AUTOMATICALLY:
+ * A: Timestamp | B: Full Name | C: Email Address | D: Phone Number |
+ * E: Inquiry Type | F: Subject | G: Message | H: Reference ID
  * ==============================================================================
  */
 
@@ -28,29 +22,61 @@ function doPost(e) {
 
   try {
     var rawData = {};
-    if (e.postData && e.postData.contents) {
+    if (e && e.postData && e.postData.contents) {
       try {
         rawData = JSON.parse(e.postData.contents);
       } catch (err) {
         rawData = e.parameter || {};
       }
-    } else {
-      rawData = e.parameter || {};
+    } else if (e && e.parameter) {
+      rawData = e.parameter;
     }
 
-    const name = rawData.name || "Valued Guest";
-    const email = rawData.email || "";
-    const phone = rawData.phone || "";
-    const inquiryType = rawData.inquiryType || rawData.model || "Franchise Inquiry";
-    const subject = rawData.subject || "Website Inquiry";
-    const message = rawData.message || rawData.notes || "N/A";
+    const name = (rawData.name || "Valued Guest").trim();
+    const email = (rawData.email || "").trim();
+    const phone = (rawData.phone || "").trim();
+    const inquiryType = (rawData.inquiryType || rawData.model || "Franchise Inquiry").trim();
+    
+    // Format Subject & Message for both General Inquiries & Franchise Applications
+    var subject = (rawData.subject || "").trim();
+    if (!subject && rawData.preferredCity) {
+      subject = "Franchise Application (" + rawData.preferredCity + (rawData.investmentBudget ? " - " + rawData.investmentBudget.toUpperCase() : "") + ")";
+    } else if (!subject) {
+      subject = "Website Lead";
+    }
 
+    var message = (rawData.message || rawData.notes || "N/A").trim();
+    if (rawData.hasCommercialSpace && rawData.hasCommercialSpace !== "N/A") {
+      message += " [Commercial Space: " + rawData.hasCommercialSpace + "]";
+    }
+
+    // Generate unique reference ID
     const referenceId =
       "GRL" + Utilities.getUuid().replace(/-/g, "").substring(0, 7).toUpperCase();
 
+    // Access or create sheet safely
     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.getActiveSheet();
+    var sheet = spreadsheet.getSheetByName(SHEET_NAME);
+    if (!sheet) {
+      sheet = spreadsheet.getActiveSheet();
+    }
 
+    // Auto-create header row if sheet is empty
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Timestamp",
+        "Full Name",
+        "Email Address",
+        "Phone Number",
+        "Inquiry Type",
+        "Subject",
+        "Message",
+        "Reference ID"
+      ]);
+      sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#0F4C2A").setFontColor("#FFFFFF");
+    }
+
+    // Append submission row
     sheet.appendRow([
       new Date(),
       name,
@@ -62,9 +88,26 @@ function doPost(e) {
       referenceId
     ]);
 
-    // 1. Send Exact Branded Confirmation Email to Customer
+    // 1. Send Exact Luxury Branded Confirmation Email to Customer
     if (email && email.indexOf("@") > -1) {
-      sendCustomerEmail(
+      try {
+        sendCustomerEmail(
+          name,
+          email,
+          phone,
+          inquiryType,
+          subject,
+          message,
+          referenceId
+        );
+      } catch (mailErr) {
+        Logger.log("Customer email error: " + mailErr.toString());
+      }
+    }
+
+    // 2. Notification Email to Grillista Admin Team
+    try {
+      sendAdminEmail(
         name,
         email,
         phone,
@@ -73,24 +116,15 @@ function doPost(e) {
         message,
         referenceId
       );
+    } catch (adminErr) {
+      Logger.log("Admin email error: " + adminErr.toString());
     }
-
-    // 2. Notification Email to Grillista Admin Team
-    sendAdminEmail(
-      name,
-      email,
-      phone,
-      inquiryType,
-      subject,
-      message,
-      referenceId
-    );
 
     return ContentService
       .createTextOutput(JSON.stringify({
         success: true,
         referenceId: referenceId,
-        message: "Inquiry successfully recorded and confirmation dispatched."
+        message: "Inquiry successfully recorded in current sheet and confirmation email dispatched."
       }))
       .setMimeType(ContentService.MimeType.JSON);
 
@@ -109,6 +143,7 @@ function doPost(e) {
 function doGet(e) {
   return ContentService.createTextOutput(JSON.stringify({
     status: 'online',
+    sheet: SHEET_NAME,
     message: 'Grillista Google Sheets & Email Webhook Service is active.'
   })).setMimeType(ContentService.MimeType.JSON);
 }
