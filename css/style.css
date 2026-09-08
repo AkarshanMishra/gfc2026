@@ -4465,28 +4465,28 @@ img {
 
 /* More Than Food Script */
 .inquiry-script-logo-wrap {
-  margin-top: 6px;
-  display: inline-block;
+  margin-top: 18px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .inquiry-more-than-food-text {
-  font-family: 'Caveat', cursive;
+  font-family: 'Caveat', cursive, var(--font-serif);
   font-size: 2.35rem;
   font-weight: 700;
   color: #111827;
-  line-height: 0.88;
+  line-height: 1.15;
   display: block;
-  transform: rotate(-9deg);
 }
 
 .inquiry-more-than-food-line {
   display: block;
-  width: 90px;
+  width: 80px;
   height: 3.5px;
   background: #FFC72C;
   border-radius: 2px;
-  margin-top: 4px;
-  transform: rotate(-4deg);
+  margin-top: 6px;
 }
 
 /* Right Column: Floating Form Card */
