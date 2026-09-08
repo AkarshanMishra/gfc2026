@@ -159,17 +159,27 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <!-- Left Brand Logo & Tagline -->
-                        <td valign="top" style="width: 50%;">
-                          <div style="color: #FFFFFF; font-size: 26px; font-weight: 900; letter-spacing: 0.5px; line-height: 1.1;">
-                            <span style="color: #FFC72C;">🔥</span> GRILLISTA
-                          </div>
-                          <div style="font-size: 9px; font-weight: 800; color: #E2E8F0; letter-spacing: 1.5px; margin-top: 2px;">THE ULTIMATE FOOD CHAIN</div>
-                          <div style="margin-top: 14px; font-size: 10px; font-weight: 800; color: #94A3B8; letter-spacing: 2px; line-height: 1.5;">
-                            GOOD FOOD<br>BRIGHTER<br>TOMORROW
+                        <td valign="middle" style="width: 55%;">
+                          <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td valign="middle" style="padding-right: 14px;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/email-logo.png" alt="Grillista Logo" width="70" height="70" style="width: 70px; height: 70px; border-radius: 50%; object-fit: contain; display: block; border: 2px solid #FFC72C; background-color: #000000;" />
+                              </td>
+                              <td valign="middle">
+                                <div style="color: #FFFFFF; font-size: 22px; font-weight: 900; letter-spacing: 0.5px; line-height: 1.1;">
+                                  GRILLISTA
+                                </div>
+                                <div style="font-size: 9px; font-weight: 800; color: #FFC72C; letter-spacing: 1.2px; margin-top: 2px;">THE ULTIMATE FOOD CHAIN</div>
+                                <div style="font-size: 8.5px; font-weight: 700; color: #E2E8F0; letter-spacing: 0.8px; margin-top: 2px;">Veg Vibes, Positive Energy</div>
+                              </td>
+                            </tr>
+                          </table>
+                          <div style="margin-top: 10px; font-size: 9.5px; font-weight: 800; color: #94A3B8; letter-spacing: 2px; line-height: 1.4;">
+                            GOOD FOOD &bull; BRIGHTER TOMORROW
                           </div>
                         </td>
                         <!-- Right "More Than Food" Script -->
-                        <td valign="top" align="right" style="width: 50%;">
+                        <td valign="middle" align="right" style="width: 45%;">
                           <div style="font-family: 'Caveat', cursive, serif; font-size: 24px; font-weight: 700; color: #FFFFFF; line-height: 1; text-align: right;">
                             More<br>Than Food
                           </div>
