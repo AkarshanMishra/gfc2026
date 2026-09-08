@@ -563,10 +563,15 @@ function sendAdminEmail(
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <!-- Left Intro Headline -->
-                  <td valign="top" style="width: 62%; padding-right: 14px;">
-                    <div style="display: inline-block; background-color: #DC2626; color: #FFFFFF; font-size: 10.5px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 12px;">
-                      🔔 NEW INQUIRY ALERT
-                    </div>
+                  <td valign="top" style="width: 60%; padding-right: 14px;">
+                    <table border="0" cellspacing="0" cellpadding="0" style="background-color: #DC2626; border-radius: 20px; margin-bottom: 12px;">
+                      <tr>
+                        <td style="padding: 5px 12px; font-size: 10.5px; font-weight: 900; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif; letter-spacing: 0.5px; text-transform: uppercase;">
+                          <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_bell_white.png" width="12" height="12" alt="" style="display: inline-block; vertical-align: middle; margin-right: 4px; margin-top: -2px;">
+                          NEW INQUIRY ALERT
+                        </td>
+                      </tr>
+                    </table>
                     <div style="font-size: 28px; font-weight: 900; color: #0F172A; line-height: 1.15; letter-spacing: -0.5px;">
                       You’ve Got a<br><span style="color: #DC2626;">New Inquiry!</span>
                     </div>
@@ -576,23 +581,60 @@ function sendAdminEmail(
                   </td>
 
                   <!-- Right Side Mini Highlight Card -->
-                  <td class="stats-col" valign="top" style="width: 38%;">
+                  <td class="stats-col" valign="top" style="width: 40%;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F0FDF4; border: 1.5px solid #DCFCE7; border-radius: 14px; padding: 14px;">
                       <tr>
                         <td>
-                          <div style="font-size: 13px; font-weight: 800; color: #065F46; line-height: 1.2;">
-                            📊 Let’s Create<br>a Healthier Tomorrow
-                          </div>
-                          <div style="width: 40px; height: 3px; background-color: #FFC72C; border-radius: 2px; margin-top: 4px; margin-bottom: 10px;"></div>
-                          <div style="font-size: 11px; color: #047857; font-weight: 700; margin-bottom: 5px;">
-                            <span style="color: #16A34A; font-weight: 900;">✔</span> More People
-                          </div>
-                          <div style="font-size: 11px; color: #047857; font-weight: 700; margin-bottom: 5px;">
-                            <span style="color: #16A34A; font-weight: 900;">✔</span> More Flavours
-                          </div>
-                          <div style="font-size: 11px; color: #047857; font-weight: 700;">
-                            <span style="color: #16A34A; font-weight: 900;">✔</span> A Brighter Tomorrow
-                          </div>
+                          <table border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 4px;">
+                            <tr>
+                              <td width="22" valign="middle">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_chart_bars.png" width="18" height="18" alt="" style="display: block;">
+                              </td>
+                              <td valign="middle" style="padding-left: 6px;">
+                                <div style="font-size: 13px; font-weight: 900; color: #065F46; line-height: 1.2; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                                  Let’s Create<br>a Healthier Tomorrow
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                          <div style="width: 38px; height: 3px; background-color: #FFC72C; border-radius: 2px; margin-top: 4px; margin-bottom: 10px;"></div>
+                          
+                          <!-- Checklist item 1 -->
+                          <table border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 6px;">
+                            <tr>
+                              <td width="18" valign="middle">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/check_circle_green.png" width="14" height="14" alt="" style="display: block;">
+                              </td>
+                              <td valign="middle" style="padding-left: 6px; font-size: 11.5px; color: #065F46; font-weight: 700; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                                More People
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Checklist item 2 -->
+                          <table border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 6px;">
+                            <tr>
+                              <td width="18" valign="middle">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/check_circle_green.png" width="14" height="14" alt="" style="display: block;">
+                              </td>
+                              <td valign="middle" style="padding-left: 6px; font-size: 11.5px; color: #065F46; font-weight: 700; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                                More Flavours
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Checklist item 3 -->
+                          <table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td width="18" valign="middle">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/check_circle_green.png" width="14" height="14" alt="" style="display: block;">
+                              </td>
+                              <td valign="middle" style="padding-left: 6px; font-size: 11.5px; color: #065F46; font-weight: 700; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                                A Brighter Tomorrow
+                              </td>
+                            </tr>
+                          </table>
+
                         </td>
                       </tr>
                     </table>
@@ -787,24 +829,33 @@ function sendAdminEmail(
                   <!-- Button 1: Reply to User -->
                   <td class="action-col" valign="top" style="width: 32%; padding-right: 6px;">
                     <a href="mailto:${safeEmail}?subject=Re:%20Grillista%20Inquiry%20%23${referenceId}" style="display: block; background-color: #064E3B; color: #FFFFFF; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF;">↩ Reply to User</div>
-                      <div style="font-size: 9.5px; color: #A7F3D0; margin-top: 2px;">Send a response via email</div>
+                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_reply_white.png" width="13" height="13" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px;">
+                        Reply to User
+                      </div>
+                      <div style="font-size: 9.5px; color: #A7F3D0; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Send a response via email</div>
                     </a>
                   </td>
 
                   <!-- Button 2: Chat on WhatsApp -->
                   <td class="action-col" valign="top" style="width: 34%; padding: 0 3px;">
                     <a href="https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(name)},%20this%20is%20Grillista%20team%20regarding%20your%20inquiry%20%23${referenceId}." target="_blank" style="display: block; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF;">💬 Chat on WhatsApp</div>
-                      <div style="font-size: 9.5px; color: #ECFDF5; margin-top: 2px;">Open in WhatsApp</div>
+                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/whatsapp.png" width="14" height="14" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px; border-radius: 50%;">
+                        Chat on WhatsApp
+                      </div>
+                      <div style="font-size: 9.5px; color: #ECFDF5; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Open in WhatsApp</div>
                     </a>
                   </td>
 
                   <!-- Button 3: Assign to Team -->
                   <td class="action-col" valign="top" style="width: 34%; padding-left: 6px;">
                     <a href="mailto:${ADMIN_EMAIL}?subject=Fwd:%20Lead%20Assignment%20%23${referenceId}&body=Please%20assign%20this%20lead%20to%20team." style="display: block; background-color: #F1F5F9; border: 1px solid #CBD5E1; color: #1E293B; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #1E293B;">👥 Assign to Team</div>
-                      <div style="font-size: 9.5px; color: #64748B; margin-top: 2px;">Forward to team member</div>
+                      <div style="font-size: 12px; font-weight: 900; color: #1E293B; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_team_dark.png" width="14" height="14" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px;">
+                        Assign to Team
+                      </div>
+                      <div style="font-size: 9.5px; color: #64748B; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Forward to team member</div>
                     </a>
                   </td>
                 </tr>
@@ -817,20 +868,20 @@ function sendAdminEmail(
             <td style="background-color: #052E16; padding: 14px 20px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF;">
-                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 2px;">🍂</span>
+                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 3px;">✦</span>
                     Great Taste<br><span style="color: #94A3B8; font-weight: 600;">Always</span>
                   </td>
-                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF;">
-                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 2px;">👥</span>
+                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 3px;">✦</span>
                     Stronger<br><span style="color: #94A3B8; font-weight: 600;">Communities</span>
                   </td>
-                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF;">
-                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 2px;">💛</span>
+                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 3px;">✦</span>
                     Positive<br><span style="color: #94A3B8; font-weight: 600;">Energy</span>
                   </td>
-                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF;">
-                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 2px;">🌿</span>
+                  <td align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 3px;">✦</span>
                     A Healthier<br><span style="color: #94A3B8; font-weight: 600;">Tomorrow</span>
                   </td>
                 </tr>
