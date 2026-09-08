@@ -69,6 +69,10 @@ body {
   width: 100%;
   position: relative;
   -webkit-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 a {
@@ -85,10 +89,19 @@ button, input, select, textarea {
   outline: none;
 }
 
+input, textarea, select {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
 img, video, iframe {
   max-width: 100%;
   height: auto;
   display: block;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 .container {
