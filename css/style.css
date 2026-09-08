@@ -2587,41 +2587,51 @@ img, video, iframe {
 }
 
 .banner-badge-circle {
-  width: 140px;
-  height: 140px;
+  width: 146px;
+  height: 146px;
   border-radius: 50%;
   background: #090D16;
-  border: 3px dashed rgba(255, 199, 44, 0.6);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  border: 2.5px solid #FFC72C;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), inset 0 0 0 3px rgba(255, 199, 44, 0.18);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 12px;
+  padding: 14px;
   color: #FFFFFF;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
 }
 
 .badge-line1 {
-  font-size: 0.72rem;
-  font-weight: 900;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 800;
   color: #FFFFFF;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .badge-line2 {
-  font-size: 0.76rem;
-  font-weight: 950;
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  font-size: 0.86rem;
+  font-weight: 800;
   color: #FFD000;
-  letter-spacing: 0.5px;
-  margin: 2px 0;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin: 4px 0;
+  line-height: 1.15;
 }
 
 .badge-line3 {
+  font-family: var(--font-sans, 'Manrope', sans-serif);
   font-size: 0.68rem;
-  font-weight: 900;
-  color: #FFD000;
-  letter-spacing: 0.5px;
+  font-weight: 800;
+  color: #F3F4F6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 /* Right Food Image Side */
