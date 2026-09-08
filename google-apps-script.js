@@ -1,34 +1,33 @@
 /**
  * ==============================================================================
- * GRILLISTA - GOOGLE APPS SCRIPT WEBHOOK FOR GOOGLE SHEETS & AUTO EMAIL DISPATCH
+ * GRILLISTA - OFFICIAL GOOGLE APPS SCRIPT WEBHOOK FOR SHEETS & AUTO EMAIL DISPATCH
  * ==============================================================================
- *
- * HOW TO SETUP (Takes 2 minutes):
- * ------------------------------------------------------------------------------
- * 1. Open Google Sheets (https://sheets.new) and name it "Grillista Inquiries"
- * 2. In Row 1, name the column headers:
+ * 
+ * HOW TO DEPLOY IN GOOGLE APPS SCRIPT:
+ * 1. Open Google Sheets (https://sheets.new) and name the tab "Inquiries"
+ * 2. In Row 1 of "Inquiries" sheet, set columns:
  *    A: Timestamp | B: Full Name | C: Email Address | D: Phone Number |
- *    E: Inquiry Type | F: Subject | G: Message | H: Status
+ *    E: Inquiry Type | F: Subject | G: Message | H: Reference ID
  * 3. In the top menu, click: Extensions > Apps Script
- * 4. Delete any code inside Code.gs and PASTE ALL CODE FROM THIS FILE.
- * 5. Click "Deploy" (top-right blue button) > "New deployment"
- * 6. Select type: "Web app"
- *    - Description: "Grillista Inquiry API"
- *    - Execute as: "Me (your email)"
- *    - Who has access: "Anyone" (IMPORTANT: select "Anyone")
- * 7. Click "Deploy" and Authorize permissions.
- * 8. Copy the "Web app URL" and paste it into `js/config.js` and `index.html`!
+ * 4. Paste ALL the code from this file into Code.gs
+ * 5. Click "Deploy" > "New deployment" > Select type: "Web app"
+ *    - Description: "Grillista Webhook API"
+ *    - Execute as: "Me"
+ *    - Who has access: "Anyone"
+ * 6. Click "Deploy" and authorize permissions.
  * ==============================================================================
  */
+
+const SHEET_NAME = "Inquiries";
+const ADMIN_EMAIL = "support@grillista.in";
+const WHATSAPP_NUMBER = "916386818682"; // Grillista Official WhatsApp
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.tryLock(10000);
 
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var rawData = {};
-
     if (e.postData && e.postData.contents) {
       try {
         rawData = JSON.parse(e.postData.contents);
@@ -39,45 +38,69 @@ function doPost(e) {
       rawData = e.parameter || {};
     }
 
-    var timestamp = new Date();
-    var name = rawData.name || 'Anonymous User';
-    var email = rawData.email || '';
-    var phone = rawData.phone || '';
-    var inquiryType = rawData.inquiryType || rawData.model || 'General Inquiry';
-    var subject = rawData.subject || 'Website Inquiry';
-    var message = rawData.message || rawData.notes || 'N/A';
-    var status = 'New Lead';
+    const name = rawData.name || "Valued Guest";
+    const email = rawData.email || "";
+    const phone = rawData.phone || "";
+    const inquiryType = rawData.inquiryType || rawData.model || "Franchise Inquiry";
+    const subject = rawData.subject || "Website Inquiry";
+    const message = rawData.message || rawData.notes || "N/A";
 
-    // 1. Append record to Google Sheet
+    const referenceId =
+      "GRL" + Utilities.getUuid().replace(/-/g, "").substring(0, 7).toUpperCase();
+
+    var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.getActiveSheet();
+
     sheet.appendRow([
-      timestamp,
+      new Date(),
       name,
       email,
       phone,
       inquiryType,
       subject,
       message,
-      status
+      referenceId
     ]);
 
-    // 2. Automatically Send Confirmation Email to the User
-    if (email && email.indexOf('@') > -1) {
-      sendUserConfirmationEmail(name, email, phone, inquiryType, subject, message);
+    // 1. Send Exact Branded Confirmation Email to Customer
+    if (email && email.indexOf("@") > -1) {
+      sendCustomerEmail(
+        name,
+        email,
+        phone,
+        inquiryType,
+        subject,
+        message,
+        referenceId
+      );
     }
 
-    // 3. Send Notification Email to Grillista Admin / Franchise Team
-    sendAdminNotificationEmail(name, email, phone, inquiryType, subject, message, timestamp);
+    // 2. Notification Email to Grillista Admin Team
+    sendAdminEmail(
+      name,
+      email,
+      phone,
+      inquiryType,
+      subject,
+      message,
+      referenceId
+    );
 
-    return ContentService.createTextOutput(JSON.stringify({
-      status: 'success',
-      message: 'Inquiry successfully saved to Google Sheets and confirmation email dispatched.'
-    })).setMimeType(ContentService.MimeType.JSON);
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: true,
+        referenceId: referenceId,
+        message: "Inquiry successfully recorded and confirmation dispatched."
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
 
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      status: 'error',
-      message: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        success: false,
+        error: error.toString()
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
   } finally {
     lock.releaseLock();
   }
@@ -86,40 +109,37 @@ function doPost(e) {
 function doGet(e) {
   return ContentService.createTextOutput(JSON.stringify({
     status: 'online',
-    message: 'Grillista Google Sheet & Email Webhook Service is active.'
+    message: 'Grillista Google Sheets & Email Webhook Service is active.'
   })).setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
- * Sends a flagship luxury branded HTML confirmation email matching the exact Grillista reference mockup
+ * Sends the flagship luxury branded HTML confirmation email matching the exact reference mockup
  */
-function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, message) {
-  var emailSubject = "Inquiry Received! Thank You from Grillista — The Ultimate Food Chain";
-  var firstName = (name || 'Valued Guest').trim().split(' ')[0];
-  
-  // Format Reference ID and Timestamp
-  var now = new Date();
-  var refId = "GRL" + Math.floor(100000 + Math.random() * 900000);
-  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var day = ('0' + now.getDate()).slice(-2);
-  var month = months[now.getMonth()];
-  var year = now.getFullYear();
-  var hours = now.getHours();
-  var minutes = ('0' + now.getMinutes()).slice(-2);
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  var formattedTime = ('0' + hours).slice(-2) + ':' + minutes + ' ' + ampm;
-  var formattedDate = day + ' ' + month + ' ' + year + ' | ' + formattedTime;
+function sendCustomerEmail(
+  name,
+  email,
+  phone,
+  inquiryType,
+  subject,
+  message,
+  referenceId
+) {
+  const firstName = escapeHtml((name || 'Valued Guest').trim().split(' ')[0]);
+  const formattedDate = Utilities.formatDate(
+    new Date(),
+    Session.getScriptTimeZone() || "GMT+5:30",
+    "dd MMM yyyy | hh:mm a"
+  );
 
-  var safeName = name || 'Valued Guest';
-  var safePhone = phone || '+91 90290 20888';
-  var safeEmail = email || 'guest@example.com';
-  var safeType = inquiryType || 'Franchise Inquiry';
-  var safeSubject = subject || 'Franchise Opportunity';
-  var safeMessage = message || 'I would like to know more about the franchise opportunity.';
+  const safeName = escapeHtml(name || 'Valued Guest');
+  const safePhone = escapeHtml(phone || '+91 90290 20888');
+  const safeEmail = escapeHtml(email || 'guest@example.com');
+  const safeType = escapeHtml(inquiryType || 'Franchise Inquiry');
+  const safeSubject = escapeHtml(subject || 'Franchise Opportunity');
+  const safeMessage = escapeHtml(message || 'I would like to know more about the franchise opportunity in my city.');
 
-  var htmlBody = `
+  const htmlBody = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -134,7 +154,7 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
     @media only screen and (max-width: 620px) {
       .email-container { width: 100% !important; }
       .grid-col { display: block !important; width: 100% !important; box-sizing: border-box !important; }
-      .grid-col-right { padding-top: 14px !important; }
+      .grid-col-right { padding-top: 14px !important; border-left: none !important; border-top: 1px solid #F1F5F9 !important; }
       .footer-col { display: inline-block !important; width: 48% !important; margin-bottom: 12px !important; }
       .whatsapp-btn-cell { display: block !important; width: 100% !important; text-align: left !important; margin-top: 10px !important; }
     }
@@ -151,15 +171,14 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
           
           <!-- 1. HERO BANNER WITH BURGER & BRANDING -->
           <tr>
-            <td style="background-color: #0B0E14; padding: 0; position: relative;">
-              <!-- Visual Hero Banner Table -->
+            <td style="background-color: #0B0E14; padding: 0;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: linear-gradient(135deg, #090C12 0%, #161C28 100%);">
                 <tr>
-                  <td style="padding: 24px 28px 20px 28px;">
+                  <td style="padding: 24px 28px 18px 28px;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <!-- Left Brand Logo & Tagline -->
-                        <td valign="middle" style="width: 55%;">
+                        <!-- Left Brand Logo Emblem & Tagline -->
+                        <td valign="middle" style="width: 58%;">
                           <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                               <td valign="middle" style="padding-right: 14px;">
@@ -179,7 +198,7 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
                           </div>
                         </td>
                         <!-- Right "More Than Food" Script -->
-                        <td valign="middle" align="right" style="width: 45%;">
+                        <td valign="middle" align="right" style="width: 42%;">
                           <div style="font-family: 'Caveat', cursive, serif; font-size: 24px; font-weight: 700; color: #FFFFFF; line-height: 1; text-align: right;">
                             More<br>Than Food
                           </div>
@@ -202,7 +221,7 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
           <!-- 2. STATUS BADGE & HEADLINE -->
           <tr>
             <td align="center" style="padding: 28px 30px 10px 30px;">
-              <!-- Green Checkmark Circle with Burst -->
+              <!-- Green Checkmark Circle -->
               <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td align="center">
@@ -241,7 +260,7 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
                           Your Inquiry Details
                         </td>
                         <td valign="middle" align="right" style="font-size: 11px; color: #78350F; line-height: 1.35;">
-                          <strong style="color: #1E293B;">Reference ID: #${refId}</strong><br>
+                          <strong style="color: #1E293B;">Reference ID: #${referenceId}</strong><br>
                           <span style="color: #92400E;">${formattedDate}</span>
                         </td>
                       </tr>
@@ -351,7 +370,7 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
                     <div style="font-size: 12px; color: #047857; margin-top: 2px;">Chat with us on WhatsApp for a faster response.</div>
                   </td>
                   <td class="whatsapp-btn-cell" valign="middle" align="right">
-                    <a href="https://wa.me/916386818682?text=Hello%20Grillista,%20I%20have%20an%20inquiry%20reference%20%23${refId}" target="_blank" style="background-color: #10B981; color: #FFFFFF; text-decoration: none; padding: 10px 18px; border-radius: 20px; font-size: 12px; font-weight: 900; display: inline-block; white-space: nowrap; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                    <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Grillista,%20I%20have%20an%20inquiry%20reference%20%23${referenceId}" target="_blank" style="background-color: #10B981; color: #FFFFFF; text-decoration: none; padding: 10px 18px; border-radius: 20px; font-size: 12px; font-weight: 900; display: inline-block; white-space: nowrap; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
                       Chat on WhatsApp →
                     </a>
                   </td>
@@ -448,37 +467,54 @@ function sendUserConfirmationEmail(name, email, phone, inquiryType, subject, mes
 
   MailApp.sendEmail({
     to: email,
-    subject: emailSubject,
-    htmlBody: htmlBody
+    subject: "Inquiry Received — Grillista | #" + referenceId,
+    htmlBody: htmlBody,
+    name: "Grillista"
   });
 }
 
-/**
- * Sends real-time lead notification to Grillista Team
- */
-function sendAdminNotificationEmail(name, email, phone, inquiryType, subject, message, timestamp) {
-  var adminEmail = Session.getActiveUser().getEmail();
-  if (!adminEmail) return;
+function sendAdminEmail(
+  name,
+  email,
+  phone,
+  inquiryType,
+  subject,
+  message,
+  referenceId
+) {
+  const body = `
+New Grillista Inquiry
 
-  var adminSubject = "🔥 [NEW LEAD] " + inquiryType + " - " + name + " (" + phone + ")";
-  var adminHtml = `
-    <h2>New Website Inquiry Received</h2>
-    <p><strong>Time:</strong> ${timestamp}</p>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-    <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a> | <a href="https://wa.me/${phone.replace(/\\D/g, '')}">Chat on WhatsApp</a></p>
-    <p><strong>Type:</strong> ${inquiryType}</p>
-    <p><strong>Subject:</strong> ${subject}</p>
-    <p><strong>Message:</strong><br>${message}</p>
-  `;
+Reference ID: #${referenceId}
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+
+Inquiry Type: ${inquiryType}
+Subject: ${subject}
+
+Message:
+${message}
+`;
 
   try {
     MailApp.sendEmail({
-      to: adminEmail,
-      subject: adminSubject,
-      htmlBody: adminHtml
+      to: ADMIN_EMAIL,
+      subject: "New Inquiry — " + inquiryType + " | #" + referenceId,
+      body: body,
+      name: "Grillista Website"
     });
-  } catch(e) {
-    // Ignore admin email errors if quota reached
+  } catch (e) {
+    // Admin notification fallback
   }
+}
+
+function escapeHtml(text) {
+  return String(text || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
