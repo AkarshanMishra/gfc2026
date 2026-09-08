@@ -4,7 +4,7 @@
 
 /* Heading Typography Styles (Matching Screenshot) */
 .section-headline-italic {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-display, var(--font-sans), sans-serif);
   font-size: clamp(2.1rem, 4.8vw, 3.2rem);
   font-weight: 900;
   font-style: italic;
@@ -888,7 +888,7 @@
 }
 
 .consistency-num {
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-display, var(--font-sans), sans-serif);
   font-size: 1.35rem;
   font-weight: 900;
   font-style: italic;
@@ -959,7 +959,7 @@
   font-weight: 900;
   color: #FFC72C;
   margin: 8px 0 6px;
-  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-family: var(--font-display, var(--font-sans), sans-serif);
 }
 
 .consistency-guarantee-card p {
