@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Inquiry Docket — Grillista Food Private Limited</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <!-- html2canvas for instant 1-click JPG export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --primary: #062814;
+      --primary-emerald: #0F4C2A;
+      --accent-gold: #D97706;
+      --accent-red: #DC2626;
+      --bg-slate: #0B1320;
+      --card-bg: #FFFFFF;
+      --text-dark: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background-color: #F1F5F9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-dark);
+      padding: 30px 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Floating Action Bar */
+    .action-bar {
+      width: 100%;
+      max-width: 720px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .action-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+    }
+
+    .action-brand-text h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .action-brand-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-pdf {
+      background: linear-gradient(135deg, #065F46 0%, #047857 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(6, 95, 70, 0.25);
+    }
+
+    .btn-pdf:hover {
+      background: #064E3B;
+      transform: translateY(-1px);
+    }
+
+    .btn-jpg {
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1.5px solid var(--border-color);
+    }
+
+    .btn-jpg:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+
+    /* Main Certificate / Receipt Card */
+    .receipt-card {
+      width: 100%;
+      max-width: 720px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    /* Decorative Top Gold Edge */
+    .receipt-gold-edge {
+      height: 6px;
+      background: linear-gradient(90deg, #D97706, #FBBF24, #10B981, #065F46);
+    }
+
+    /* Receipt Header */
+    .receipt-header {
+      background: #062814;
+      padding: 24px 30px;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo-wrap img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      padding: 2px;
+    }
+
+    .header-brand-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .header-brand-sub {
+      font-size: 0.78rem;
+      color: #A7F3D0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .header-badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 8px 14px;
+      text-align: right;
+    }
+
+    .header-badge-pill .ref-label {
+      font-size: 0.7rem;
+      color: #94A3B8;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .header-badge-pill .ref-val {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #FFC72C;
+    }
+
+    /* Receipt Status Bar */
+    .status-strip {
+      background: #ECFDF5;
+      border-bottom: 1px solid #A7F3D0;
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: #065F46;
+      font-weight: 700;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Receipt Body Content */
+    .receipt-body {
+      padding: 28px 30px;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #E2E8F0;
+    }
+
+    /* 2-Column Data Grid */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 580px) {
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .data-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px 16px;
+    }
+
+    .data-box-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .data-box-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #0F172A;
+      word-break: break-all;
+    }
+
+    .data-box-val.badge-green {
+      color: #047857;
+      display: inline-block;
+      background: #ECFDF5;
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid #A7F3D0;
+    }
+
+    /* Message Callout */
+    .message-callout {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid #0F4C2A;
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+    }
+
+    .message-callout p {
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* Next Steps / Terms */
+    .terms-box {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+    }
+
+    .terms-box h5 {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #B45309;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .terms-box p {
+      font-size: 0.78rem;
+      color: #78350F;
+      line-height: 1.45;
+    }
+
+    /* Verification Stamp & Signatures */
+    .receipt-signature-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid #E2E8F0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .stamp-seal {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stamp-circle {
+      width: 44px;
+      height: 44px;
+      border: 2px dashed #065F46;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #065F46;
+    }
+
+    .stamp-text {
+      font-size: 0.75rem;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    .receipt-footer-brand {
+      text-align: right;
+    }
+
+    .receipt-footer-brand h6 {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: #062814;
+    }
+
+    .receipt-footer-brand p {
+      font-size: 0.72rem;
+      color: #94A3B8;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .receipt-card {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Download / Print Control Bar -->
+  <div class="action-bar">
+    <div class="action-brand">
+      <img src="assets/logo.png" alt="Grillista Logo">
+      <div class="action-brand-text">
+        <h4>Grillista Inquiry Docket</h4>
+        <p>Official Expansion &amp; Franchise Record</p>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button onclick="downloadAsPDF()" class="btn btn-pdf">
+        <span>📥 Download as PDF</span>
+      </button>
+      <button onclick="downloadAsJPG()" class="btn btn-jpg">
+        <span>🖼️ Download as Image (JPG)</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Official Receipt / Certificate Card Container -->
+  <div class="receipt-card" id="printable-docket">
+    <div class="receipt-gold-edge"></div>
+
+    <!-- Header -->
+    <div class="receipt-header">
+      <div class="header-logo-wrap">
+        <img src="assets/logo.png" alt="Grillista">
+        <div>
+          <div class="header-brand-title">GRILLISTA</div>
+          <div class="header-brand-sub">The Ultimate Food Chain • Franchise Division</div>
+        </div>
+      </div>
+      <div class="header-badge-pill">
+        <div class="ref-label">Reference Token</div>
+        <div class="ref-val" id="doc-ref">#GRL984210</div>
+      </div>
+    </div>
+
+    <!-- Status Strip -->
+    <div class="status-strip">
+      <div class="status-tag">
+        <span>🟢</span>
+        <span>Application Status: <strong>Registered &amp; Verified</strong></span>
+      </div>
+      <div>
+        <span style="color: #64748B;">Date:</span> <strong id="doc-date">09 Sep 2026</strong>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="receipt-body">
+      
+      <!-- 1. Applicant & Territory Profile -->
+      <div class="section-title">1. Applicant &amp; Location Profile</div>
+      <div class="data-grid">
+        <div class="data-box">
+          <div class="data-box-label">Full Name</div>
+          <div class="data-box-val" id="doc-name">Akash Mishra</div>
+        </div>
+        <div class="data-box">
+          <div class="data-box-label">Email Address</div>
+          <div class="data-box-val" id="doc-email">akash@example.com</div>
+        </div>
+        <div class="data-box">
+          <div class="data-box-label">Phone / WhatsApp Number</div>
+          <div class="data-box-val" id="doc-phone">+91 98765 43210</div>
+        </div>
+        <div class="data-box">
+          <div class="data-box-label">Target Territory / Location</div>
+          <div class="data-box-val" id="doc-location">Kanpur, Uttar Pradesh</div>
+        </div>
+      </div>
+
+      <!-- 2. Franchise Business Preferences -->
+      <div class="section-title">2. Franchise Preferences &amp; Background</div>
+      <div class="data-grid">
+        <div class="data-box">
+          <div class="data-box-label">Investment Budget</div>
+          <div class="data-box-val badge-green" id="doc-budget">₹10 - 15 Lakhs</div>
+        </div>
+        <div class="data-box">
+          <div class="data-box-label">Franchise Model</div>
+          <div class="data-box-val" id="doc-model">Grillista Express (Kiosk / Takeaway)</div>
+        </div>
+        <div class="data-box" style="grid-column: 1 / -1;">
+          <div class="data-box-label">Previous Business / Industry Experience</div>
+          <div class="data-box-val" id="doc-experience">First-time Entrepreneur / No Prior Experience</div>
+        </div>
+      </div>
+
+      <!-- 3. Message / Notes -->
+      <div class="section-title">3. Applicant Query / Notes</div>
+      <div class="message-callout">
+        <p id="doc-message">“I would like to explore the franchise expansion opportunities with Grillista in my city.”</p>
+      </div>
+
+      <!-- 4. Next Steps & Legal Disclosure -->
+      <div class="terms-box">
+        <h5>⚡ Expansion Protocol &amp; Next Steps</h5>
+        <p>This document confirms the official receipt of your franchise application. Our franchise discovery team will contact you within 24 business hours to share the Confidential Information Memorandum (CIM) and discuss territory feasibility.</p>
+      </div>
+
+      <!-- 5. Verification Seal & Signature -->
+      <div class="receipt-signature-row">
+        <div class="stamp-seal">
+          <div class="stamp-circle">✓</div>
+          <div class="stamp-text">
+            <strong>Digitally Authenticated</strong><br>
+            Grillista Central Franchise Desk
+          </div>
+        </div>
+        <div class="receipt-footer-brand">
+          <h6>GRILLISTA FOOD PRIVATE LIMITED</h6>
+          <p>support@grillista.in | +91 9711900055 | grillista.in</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Extract query parameters
+    function getQueryParam(param) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    window.addEventListener('DOMContentLoaded', function() {
+      var name = getQueryParam('name') || getQueryParam('fullName') || 'Valued Partner';
+      var email = getQueryParam('email') || 'N/A';
+      var phone = getQueryParam('phone') || 'N/A';
+      var budget = getQueryParam('budget') || '₹10 - 15 Lakhs';
+      var model = getQueryParam('model') || 'Grillista Express (Kiosk / Takeaway)';
+      var experience = getQueryParam('experience') || getQueryParam('previousExperience') || 'First-time Entrepreneur';
+      var city = getQueryParam('city') || 'Kanpur';
+      var state = getQueryParam('state') || 'Uttar Pradesh';
+      var message = getQueryParam('message') || getQueryParam('notes') || 'Franchise inquiry submitted via website.';
+      var ref = getQueryParam('ref') || getQueryParam('referenceId') || ('GRL' + Math.random().toString(36).substring(2, 8).toUpperCase());
+      var date = getQueryParam('date') || new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+      document.getElementById('doc-name').textContent = name;
+      document.getElementById('doc-email').textContent = email;
+      document.getElementById('doc-phone').textContent = phone;
+      document.getElementById('doc-location').textContent = city + (state ? ', ' + state : '');
+      document.getElementById('doc-budget').textContent = budget;
+      document.getElementById('doc-model').textContent = model;
+      document.getElementById('doc-experience').textContent = experience;
+      document.getElementById('doc-message').textContent = '“' + message + '”';
+      document.getElementById('doc-ref').textContent = '#' + ref;
+      document.getElementById('doc-date').textContent = date;
+      document.title = 'Grillista Inquiry Docket — #' + ref;
+
+      // Auto trigger if requested
+      if (getQueryParam('auto') === 'pdf' || getQueryParam('download') === '1') {
+        setTimeout(downloadAsPDF, 600);
+      }
+    });
+
+    // 1. Download as PDF (Print dialog with PDF export)
+    function downloadAsPDF() {
+      window.print();
+    }
+
+    // 2. Download as Image (JPG/PNG) via html2canvas
+    function downloadAsJPG() {
+      var card = document.getElementById('printable-docket');
+      if (!card) return;
+
+      var btn = document.querySelector('.btn-jpg');
+      var origText = btn ? btn.innerHTML : '';
+      if (btn) btn.innerHTML = '⏳ Generating Image...';
+
+      html2canvas(card, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#FFFFFF'
+      }).then(function(canvas) {
+        var link = document.createElement('a');
+        var ref = document.getElementById('doc-ref').textContent.replace('#', '') || 'GRL';
+        link.download = 'Grillista_Inquiry_Docket_' + ref + '.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+        if (btn) btn.innerHTML = origText;
+      }).catch(function(err) {
+        alert('Could not export image directly. Please use "Download as PDF" option.');
+        if (btn) btn.innerHTML = origText;
+      });
+    }
+  </script>
+</body>
+</html>

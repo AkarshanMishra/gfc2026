@@ -16,6 +16,7 @@
 const SHEET_NAME = "Inquiries";
 const ADMIN_EMAIL = "grillista8@gmail.com";
 const WHATSAPP_NUMBER = "916386818682"; // Grillista Official WhatsApp
+const BASE_WEBSITE_URL = "https://akarshanmishra.github.io/gfc2026"; // Or https://grillista.in
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -154,6 +155,24 @@ function doGet(e) {
 }
 
 /**
+ * Helper to build the 1-click printable receipt URL
+ */
+function buildReceiptUrl(name, email, phone, budget, model, experience, city, state, message, ref) {
+  return BASE_WEBSITE_URL + "/receipt.html?" +
+    "ref=" + encodeURIComponent(ref) +
+    "&name=" + encodeURIComponent(name) +
+    "&email=" + encodeURIComponent(email) +
+    "&phone=" + encodeURIComponent(phone) +
+    "&budget=" + encodeURIComponent(budget) +
+    "&model=" + encodeURIComponent(model) +
+    "&experience=" + encodeURIComponent(experience) +
+    "&city=" + encodeURIComponent(city) +
+    "&state=" + encodeURIComponent(state) +
+    "&message=" + encodeURIComponent(message) +
+    "&auto=pdf";
+}
+
+/**
  * ==============================================================================
  * 1. FLAGSHIP ULTRA-PREMIUM CUSTOMER CONFIRMATION EMAIL
  * ==============================================================================
@@ -187,6 +206,8 @@ function sendCustomerEmail(
   const safeState = escapeHtml(state || 'Uttar Pradesh');
   const safeMessage = escapeHtml(message || 'I would like to know more about opening a Grillista franchise outlet in my city.');
 
+  const receiptUrl = buildReceiptUrl(safeName, safeEmail, safePhone, safeBudget, safeModel, safeExperience, safeCity, safeState, safeMessage, referenceId);
+
   const htmlBody = `
 <!DOCTYPE html>
 <html lang="en">
@@ -206,6 +227,7 @@ function sendCustomerEmail(
       .step-col { display: block !important; width: 100% !important; margin-bottom: 12px !important; }
       .sig-col { display: block !important; width: 100% !important; text-align: center !important; margin-bottom: 14px !important; }
       .whatsapp-btn-cell { display: block !important; width: 100% !important; text-align: left !important; margin-top: 12px !important; }
+      .download-btn-cell { display: block !important; width: 100% !important; text-align: left !important; margin-top: 10px !important; }
       .footer-grid-col { display: block !important; width: 100% !important; margin-bottom: 16px !important; }
     }
   </style>
@@ -265,7 +287,7 @@ function sendCustomerEmail(
 
           <!-- 4. YOUR INQUIRY DETAILS CARD (MASTER 9-FIELD DISPLAY) -->
           <tr>
-            <td style="padding: 4px 30px 20px 30px;">
+            <td style="padding: 4px 30px 16px 30px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1.5px solid #E2E8F0; border-radius: 18px; overflow: hidden; background-color: #FFFFFF; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
                 
                 <!-- Card Header -->
@@ -449,7 +471,30 @@ function sendCustomerEmail(
             </td>
           </tr>
 
-          <!-- 5. THREE-STEP NEXT STEPS ROADMAP -->
+          <!-- 5. DOWNLOAD APPLICATION DOCKET IN PDF / JPG BANNER -->
+          <tr>
+            <td style="padding: 0 30px 18px 30px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F0FDF4; border: 1.5px dashed #86EFAC; border-radius: 14px; padding: 12px 16px;">
+                <tr>
+                  <td valign="middle" style="padding-right: 10px;">
+                    <div style="font-size: 12.5px; font-weight: 800; color: #065F46;">
+                      📄 Need an Official Copy of Your Application?
+                    </div>
+                    <div style="font-size: 11px; color: #047857; margin-top: 2px;">
+                      Download or print your authenticated application docket in PDF / JPG.
+                    </div>
+                  </td>
+                  <td class="download-btn-cell" valign="middle" align="right" style="white-space: nowrap;">
+                    <a href="${receiptUrl}" target="_blank" style="background-color: #065F46; color: #FFFFFF; text-decoration: none; padding: 9px 16px; border-radius: 10px; font-size: 11.5px; font-weight: 800; display: inline-block; box-shadow: 0 3px 8px rgba(6,95,70,0.25);">
+                      📥 Download PDF / JPG →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 6. THREE-STEP NEXT STEPS ROADMAP -->
           <tr>
             <td style="padding: 0 30px 20px 30px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 16px; padding: 16px 18px;">
@@ -484,7 +529,7 @@ function sendCustomerEmail(
             </td>
           </tr>
 
-          <!-- 6. WHATSAPP VIP PRIORITY CONCIERGE BANNER -->
+          <!-- 7. WHATSAPP VIP PRIORITY CONCIERGE BANNER -->
           <tr>
             <td style="padding: 0 30px 22px 30px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background: linear-gradient(135deg, #064E3B 0%, #065F46 100%); background-color: #064E3B; border-radius: 16px; padding: 14px 18px; box-shadow: 0 8px 24px rgba(6, 78, 59, 0.2);">
@@ -510,14 +555,14 @@ function sendCustomerEmail(
             </td>
           </tr>
 
-          <!-- 7. THREE-COLUMN LUXURY SIGNATURE (MATCHING REFERENCE MOCKUP) -->
+          <!-- 8. THREE-COLUMN LUXURY SIGNATURE (MATCHING REFERENCE MOCKUP) -->
           <tr>
             <td style="padding: 0 30px 24px 30px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <!-- Left Script Graphic -->
                   <td class="sig-col" valign="middle" style="width: 26%; text-align: left;">
-                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/email_sig_greener.png" alt="Together for a Greener & Healthier Tomorrow" width="118" style="display: block; max-width: 118px; height: auto;">
+                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/email_sig_greener.png" alt="Together for a Greener & Healthier Tomorrow" width="118" style="display: block; max-width: 118px; height: auto; border: none;">
                   </td>
 
                   <!-- Center Text -->
@@ -533,14 +578,14 @@ function sendCustomerEmail(
 
                   <!-- Right Script Graphic -->
                   <td class="sig-col" valign="middle" style="width: 26%; text-align: right;">
-                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/email_sig_happy_people.png" alt="Good Food Happy People" width="108" style="display: block; max-width: 108px; height: auto; margin-left: auto;">
+                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/email_sig_happy_people.png" alt="Good Food Happy People" width="108" style="display: block; max-width: 108px; height: auto; margin-left: auto; border: none;">
                   </td>
                 </tr>
               </table>
             </td>
           </tr>
 
-          <!-- 8. DARK FOREST GREEN PILLARS BANNER -->
+          <!-- 9. DARK FOREST GREEN PILLARS BANNER -->
           <tr>
             <td style="background-color: #052410; padding: 14px 20px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -566,7 +611,7 @@ function sendCustomerEmail(
             </td>
           </tr>
 
-          <!-- 9. CORPORATE FOOTER WITH SOCIALS & QUICK LINKS -->
+          <!-- 10. CORPORATE FOOTER WITH SOCIALS & QUICK LINKS -->
           <tr>
             <td style="background-color: #FFFFFF; padding: 24px 30px 18px 30px; border-top: 1px solid #F1F5F9;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -696,6 +741,7 @@ function sendAdminEmail(
   
   // Clean phone for whatsapp
   const cleanPhone = safePhone.replace(/[^0-9]/g, "");
+  const receiptUrl = buildReceiptUrl(safeName, safeEmail, safePhone, safeBudget, safeModel, safeExperience, safeCity, safeState, safeMessage, referenceId);
 
   const htmlBody = `
 <!DOCTYPE html>
@@ -1021,9 +1067,9 @@ function sendAdminEmail(
             </td>
           </tr>
 
-          <!-- 4. QUICK ACTION BUTTONS (REPLY & WHATSAPP) -->
+          <!-- 4. QUICK ACTION BUTTONS (REPLY, WHATSAPP & DOWNLOAD) -->
           <tr>
-            <td style="padding: 0 30px 22px 30px;">
+            <td style="padding: 0 30px 14px 30px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td class="action-col" style="width: 48%; padding-right: 6px;">
@@ -1040,6 +1086,15 @@ function sendAdminEmail(
                   </td>
                 </tr>
               </table>
+            </td>
+          </tr>
+
+          <!-- DOWNLOAD OFFICIAL DOSSIER BUTTON -->
+          <tr>
+            <td style="padding: 0 30px 20px 30px;" align="center">
+              <a href="${receiptUrl}" target="_blank" style="background-color: #F8FAFC; border: 1.5px solid #CBD5E1; color: #0F172A; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-size: 11.5px; font-weight: 800; display: inline-block;">
+                📥 Open &amp; Download Printable Application Dossier (PDF / JPG) →
+              </a>
             </td>
           </tr>
 
