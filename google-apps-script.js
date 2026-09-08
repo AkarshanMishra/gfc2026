@@ -395,17 +395,17 @@ function sendCustomerEmail(
           <!-- 5. WHATSAPP NEED IMMEDIATE ASSISTANCE BANNER -->
           <tr>
             <td style="padding: 0 34px 22px 34px;">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #EAF8EE; border: 1.5px solid #C4ECD2; border-radius: 14px; padding: 14px 18px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 14px 18px;">
                 <tr>
-                  <td width="42" valign="middle" style="font-size: 24px;">
-                    🟢
+                  <td width="38" valign="middle">
+                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/whatsapp.png" width="34" height="34" alt="WhatsApp" style="display: block; border-radius: 50%; border: none;">
                   </td>
-                  <td valign="middle" style="padding-left: 6px;">
-                    <div style="font-size: 14px; font-weight: 900; color: #065F46;">Need Immediate Assistance?</div>
-                    <div style="font-size: 12px; color: #047857; margin-top: 2px;">Chat with us on WhatsApp for a faster response.</div>
+                  <td valign="middle" style="padding-left: 10px;">
+                    <div style="font-size: 13px; font-weight: 800; color: #065F46; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Need Immediate Assistance?</div>
+                    <div style="font-size: 12px; color: #047857; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Chat with us on WhatsApp for a faster response.</div>
                   </td>
                   <td class="whatsapp-btn-cell" valign="middle" align="right">
-                    <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Grillista,%20I%20have%20an%20inquiry%20reference%20%23${referenceId}" target="_blank" style="background-color: #10B981; color: #FFFFFF; text-decoration: none; padding: 10px 18px; border-radius: 20px; font-size: 12px; font-weight: 900; display: inline-block; white-space: nowrap; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                    <a href="https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Grillista,%20I%20have%20an%20inquiry%20reference%20%23${referenceId}" target="_blank" style="background-color: #10B981; color: #FFFFFF; text-decoration: none; padding: 9px 18px; border-radius: 20px; font-size: 12px; font-weight: 800; display: inline-block; white-space: nowrap; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
                       Chat on WhatsApp →
                     </a>
                   </td>
@@ -416,38 +416,53 @@ function sendCustomerEmail(
 
           <!-- 6. SIGN-OFF, SCRIPT TAGLINE & SOCIALS -->
           <tr>
-            <td style="padding: 0 34px 24px 34px;">
-              <p style="margin: 0 0 14px 0; color: #334155; font-size: 13px; line-height: 1.5;">
+            <td style="padding: 0 34px 26px 34px;">
+              <p style="margin: 0 0 16px 0; color: #475569; font-size: 13px; line-height: 1.6; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
                 Thank you for choosing Grillista.<br>
                 We look forward to being a part of your journey.
               </p>
 
-              <!-- Two-Column Signoff & Watermark -->
+              <!-- Signature Block -->
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td valign="bottom" style="width: 60%;">
-                    <!-- Cursive Script Signature -->
-                    <div style="font-family: 'Caveat', cursive, serif; font-size: 26px; font-weight: 700; color: #0F172A; line-height: 1.1;">
-                      Good Food<br>Brighter Tomorrow
+                  <td valign="top">
+                    <div style="font-family: 'Georgia', 'Times New Roman', serif; font-size: 23px; font-weight: 700; font-style: italic; color: #0F4C2A; line-height: 1.2; letter-spacing: -0.2px;">
+                      Good Food, Brighter Tomorrow
                     </div>
-                    <div style="width: 80px; height: 3.5px; background-color: #FFC72C; border-radius: 2px; margin-top: 4px; margin-bottom: 12px;"></div>
+                    <div style="width: 44px; height: 3px; background-color: #FFC72C; border-radius: 2px; margin-top: 6px; margin-bottom: 12px;"></div>
                     
-                    <div style="font-size: 14px; font-weight: 900; color: #0F172A;">Team Grillista</div>
-                    <div style="font-size: 12px; color: #64748B; font-weight: 700;">The Ultimate Food Chain</div>
+                    <div style="font-size: 14px; font-weight: 800; color: #0F172A; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Team Grillista</div>
+                    <div style="font-size: 12px; color: #64748B; font-weight: 600; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">The Ultimate Food Chain</div>
 
-                    <!-- Social Icons Row -->
+                    <!-- Social Icons Row with High-DPI PNGs -->
                     <div style="margin-top: 14px;">
-                      <a href="https://www.instagram.com/grillista1" style="text-decoration: none; margin-right: 8px; display: inline-block; font-size: 16px;">📷</a>
-                      <a href="https://www.facebook.com/share/1EGML5sM3N/" style="text-decoration: none; margin-right: 8px; display: inline-block; font-size: 16px;">📘</a>
-                      <a href="https://linkedin.com" style="text-decoration: none; margin-right: 8px; display: inline-block; font-size: 16px;">💼</a>
-                      <a href="https://youtube.com" style="text-decoration: none; margin-right: 12px; display: inline-block; font-size: 16px;">▶️</a>
-                      <span style="font-size: 11px; font-weight: 800; color: #64748B; border-left: 1.5px solid #CBD5E1; padding-left: 10px;">Follow Our Journey</span>
-                    </div>
-                  </td>
-                  <!-- Watermark text right -->
-                  <td valign="bottom" align="right" style="width: 40%;">
-                    <div style="font-size: 11px; font-weight: 900; color: #94A3B8; letter-spacing: 1px; line-height: 1.35; text-align: right; opacity: 0.85;">
-                      🍴 FOOD<br>CREATES<br>BETTER<br>CONNECTIONS
+                      <table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td style="padding-right: 8px;" valign="middle">
+                            <a href="https://www.instagram.com/grillista1" target="_blank" style="text-decoration: none; display: inline-block;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="24" height="24" alt="Instagram" style="display: block; border-radius: 50%; border: none;">
+                            </a>
+                          </td>
+                          <td style="padding-right: 8px;" valign="middle">
+                            <a href="https://www.facebook.com/share/1EGML5sM3N/" target="_blank" style="text-decoration: none; display: inline-block;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="24" height="24" alt="Facebook" style="display: block; border-radius: 50%; border: none;">
+                            </a>
+                          </td>
+                          <td style="padding-right: 8px;" valign="middle">
+                            <a href="https://linkedin.com" target="_blank" style="text-decoration: none; display: inline-block;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/linkedin.png" width="24" height="24" alt="LinkedIn" style="display: block; border-radius: 50%; border: none;">
+                            </a>
+                          </td>
+                          <td style="padding-right: 12px;" valign="middle">
+                            <a href="https://youtube.com" target="_blank" style="text-decoration: none; display: inline-block;">
+                              <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/youtube.png" width="24" height="24" alt="YouTube" style="display: block; border-radius: 50%; border: none;">
+                            </a>
+                          </td>
+                          <td style="border-left: 1.5px solid #CBD5E1; padding-left: 10px; font-size: 11px; font-weight: 800; color: #64748B; font-family: 'Segoe UI', Roboto, Arial, sans-serif; white-space: nowrap;" valign="middle">
+                            Follow Our Journey
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </td>
                 </tr>
@@ -460,22 +475,22 @@ function sendCustomerEmail(
             <td style="background-color: #090D16; padding: 22px 28px 18px 28px; text-align: center;">
               
               <!-- 4 Value Pillars -->
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 18px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 16px;">
                 <tr>
-                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0;">
-                    <span style="color: #FFC72C; font-size: 14px; display: block; margin-bottom: 3px;">🍂</span>
+                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 4px;">✦</span>
                     Great Taste<br><span style="color: #94A3B8; font-weight: 600;">Always</span>
                   </td>
-                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0;">
-                    <span style="color: #FFC72C; font-size: 14px; display: block; margin-bottom: 3px;">👥</span>
+                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 4px;">✦</span>
                     Quality<br><span style="color: #94A3B8; font-weight: 600;">Ingredients</span>
                   </td>
-                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0;">
-                    <span style="color: #FFC72C; font-size: 14px; display: block; margin-bottom: 3px;">💛</span>
+                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 4px;">✦</span>
                     Happier<br><span style="color: #94A3B8; font-weight: 600;">Communities</span>
                   </td>
-                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0;">
-                    <span style="color: #FFC72C; font-size: 14px; display: block; margin-bottom: 3px;">🌿</span>
+                  <td class="footer-col" align="center" style="width: 25%; font-size: 10px; font-weight: 800; color: #E2E8F0; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <span style="color: #FFC72C; font-size: 12px; display: block; margin-bottom: 4px;">✦</span>
                     A Healthier<br><span style="color: #94A3B8; font-weight: 600;">Tomorrow</span>
                   </td>
                 </tr>
@@ -483,7 +498,7 @@ function sendCustomerEmail(
 
               <div style="height: 1px; background-color: rgba(255,255,255,0.12); width: 100%; margin: 12px 0;"></div>
 
-              <div style="font-size: 11px; color: #94A3B8; font-weight: 600;">
+              <div style="font-size: 11px; color: #94A3B8; font-weight: 600; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
                 © 2026 Grillista Food Private Limited. All Rights Reserved.
               </div>
 
