@@ -597,70 +597,10 @@ class App {
   }
 
   // -------------------------------------------------------------
-  // HOMEPAGE FRANCHISE APPLICATION HANDLER
+  // HOMEPAGE INQUIRY HANDLER
   // -------------------------------------------------------------
   setupHomeFranchiseForm() {
-    const form = document.getElementById('home-franchise-form');
-    const successBox = document.getElementById('franchise-success-message');
-    const resetBtn = document.getElementById('inquiry-reset-form-btn');
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('f-name')?.value.trim();
-      const phone = document.getElementById('f-phone')?.value.trim();
-      const email = document.getElementById('f-email')?.value.trim();
-      const city = document.getElementById('f-city')?.value.trim();
-      const model = document.getElementById('f-model')?.value;
-      const budget = document.getElementById('f-budget')?.value;
-      const property = document.getElementById('f-property')?.value;
-      const message = document.getElementById('f-message')?.value.trim();
-
-      if (!name || !phone || !email || !city) {
-        this.showToast('Please fill out your Name, Phone, Email, and City.', 'error');
-        return;
-      }
-
-      if (phone.replace(/\D/g, '').length < 10) {
-        this.showToast('Please enter a valid 10-digit mobile number.', 'error');
-        return;
-      }
-
-      const inquiry = {
-        name: Security.escapeHTML(name),
-        phone: Security.escapeHTML(phone),
-        email: Security.escapeHTML(email),
-        city: Security.escapeHTML(city),
-        model: model || 'express',
-        budget: budget || '10-15-lakh',
-        property: property || 'shortlisted',
-        message: Security.escapeHTML(message || ''),
-        submittedAt: new Date().toISOString()
-      };
-
-      const existing = Security.storage.get('grillista_franchise_inquiries', []);
-      existing.unshift(inquiry);
-      Security.storage.set('grillista_franchise_inquiries', existing);
-
-      this.showToast('🎉 Application submitted! Our franchise team will contact you.', 'success', 5000);
-      
-      form.style.display = 'none';
-      if (successBox) {
-        successBox.classList.add('active');
-        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        form.reset();
-        form.style.display = 'block';
-        if (successBox) {
-          successBox.classList.remove('active');
-        }
-      });
-    }
+    // Managed universally by dedicated initHomeInquiry with Google Sheets & confirmation email
   }
 
   // -------------------------------------------------------------

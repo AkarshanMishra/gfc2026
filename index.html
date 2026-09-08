@@ -1124,7 +1124,7 @@
                 <span>💬 Chat on WhatsApp</span>
                 <span>→</span>
               </a>
-              <button type="button" id="inquiry-reset-form-btn" class="success-btn-reset">
+              <button type="button" id="inquiry-reset-form-btn" onclick="window.resetHomeInquiryForm(event)" class="success-btn-reset">
                 <span>Submit Another Inquiry</span>
                 <span>→</span>
               </button>
@@ -1332,7 +1332,34 @@
       }
     })();
 
-    // Fail-safe Homepage Inquiry Form Submission Handler
+    // Bulletproof Homepage Inquiry Form Handler & Global Reset
+    window.resetHomeInquiryForm = function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      var form = document.getElementById('home-franchise-form');
+      var successCard = document.getElementById('franchise-success-message');
+      var inquiryWrap = document.querySelector('.inquiry-body-wrap');
+      var charCounter = document.getElementById('inq-char-counter');
+      var submitBtn = document.getElementById('home-inquiry-submit-btn');
+
+      if (form) {
+        form.reset();
+        form.style.display = 'block';
+      }
+      if (charCounter) charCounter.textContent = '0/500';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Submit Inquiry</span> <span class="btn-arrow">→</span>';
+      }
+      if (successCard) {
+        successCard.classList.remove('active');
+        successCard.style.display = 'none';
+      }
+      if (inquiryWrap) {
+        inquiryWrap.style.display = 'block';
+        inquiryWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
     (function() {
       function initHomeInquiry() {
         var form = document.getElementById('home-franchise-form');
@@ -1371,7 +1398,7 @@
           }
 
           var submitBtn = document.getElementById('home-inquiry-submit-btn');
-          var origBtnHtml = submitBtn ? submitBtn.innerHTML : 'Submit Inquiry →';
+          var origBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>Submit Inquiry</span> <span class="btn-arrow">→</span>';
 
           if (submitBtn) {
             submitBtn.disabled = true;
@@ -1425,6 +1452,7 @@
               var userEmailSpan = document.getElementById('inq-success-user-email');
               if (userEmailSpan) userEmailSpan.textContent = inquiryData.email;
               successCard.classList.add('active');
+              successCard.style.display = 'block';
               successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           });
@@ -1433,21 +1461,7 @@
         };
 
         if (resetBtn) {
-          resetBtn.onclick = function(e) {
-            if (e) e.preventDefault();
-            form.reset();
-            if (charCounter) charCounter.textContent = '0/500';
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = origBtnHtml;
-            }
-            var inquiryWrap = document.querySelector('.inquiry-body-wrap');
-            if (inquiryWrap) inquiryWrap.style.display = 'block';
-            if (successCard) {
-              successCard.classList.remove('active');
-              if (inquiryWrap) inquiryWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          };
+          resetBtn.onclick = window.resetHomeInquiryForm;
         }
       }
 
