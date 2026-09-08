@@ -143,9 +143,12 @@ export const ApiService = {
           name: formData.name || '',
           email: formData.email || '',
           phone: formData.phone || '',
-          inquiryType: 'Franchise - ' + (formData.model || 'Express'),
-          subject: 'Franchise Application for ' + (formData.preferredCity || 'India'),
-          message: `City: ${formData.preferredCity || 'N/A'} | Budget: ${formData.investmentBudget || 'N/A'} | Space Shortlisted: ${formData.hasCommercialSpace ? 'Yes' : 'No'} | Notes: ${formData.notes || 'None'}`
+          budget: formData.budget || formData.investmentBudget || '',
+          model: formData.model || '',
+          previousExperience: formData.previousExperience || formData.experience || '',
+          city: formData.city || formData.preferredCity || '',
+          state: formData.state || '',
+          message: formData.message || formData.notes || ''
         };
 
         fetch(webhookUrl, {

@@ -738,39 +738,88 @@
                   <span class="inq-error-msg" id="err-f-name">Please enter your full name (minimum 2 characters).</span>
                 </div>
                 <div class="form-group">
-                  <label for="f-email">Business Email *</label>
+                  <label for="f-email">Email Address *</label>
                   <input type="email" id="f-email" name="email" class="form-control" placeholder="rahul@business.com" required>
                   <span class="inq-error-msg" id="err-f-email">Please enter a valid email address (e.g. name@example.com).</span>
                 </div>
                 <div class="form-group">
-                  <label for="f-phone">Mobile Number (WhatsApp) *</label>
+                  <label for="f-phone">Phone No (WhatsApp) *</label>
                   <input type="tel" id="f-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
                   <span class="inq-error-msg" id="err-f-phone">Please enter a valid 10-digit mobile number.</span>
                 </div>
                 <div class="form-group">
-                  <label for="f-city">Preferred City / Location *</label>
-                  <input type="text" id="f-city" name="preferredCity" class="form-control" placeholder="e.g. Kanpur, Lucknow, Noida" required>
-                  <span class="inq-error-msg" id="err-f-city">Please specify your target city or location.</span>
+                  <label for="f-budget">Investment Budget *</label>
+                  <select id="f-budget" name="budget" class="form-control" required>
+                    <option value="" disabled selected>Select Budget</option>
+                    <option value="₹10 - 15 Lakhs">₹10 - 15 Lakhs</option>
+                    <option value="₹15 - 25 Lakhs">₹15 - 25 Lakhs</option>
+                    <option value="₹25 - 40 Lakhs">₹25 - 40 Lakhs</option>
+                    <option value="₹40 - 60 Lakhs">₹40 - 60 Lakhs</option>
+                    <option value="₹60 Lakhs+">₹60 Lakhs+</option>
+                  </select>
+                  <span class="inq-error-msg" id="err-f-budget">Please select an investment budget.</span>
                 </div>
                 <div class="form-group">
-                  <label for="f-budget">Model &amp; Investment Tier</label>
-                  <select id="f-budget" name="investmentBudget" class="form-control">
-                    <option value="express">Grillista Express (₹10 - 12 Lakh | 200 sq.ft)</option>
-                    <option value="bistro">Grillista Bistro (₹16 - 18 Lakh | 600 sq.ft)</option>
-                    <option value="signature">Grillista Signature (₹38 - 40 Lakh | 1000 sq.ft)</option>
+                  <label for="f-model">Franchise Model *</label>
+                  <select id="f-model" name="model" class="form-control" required>
+                    <option value="" disabled selected>Select Model</option>
+                    <option value="Grillista Express (Kiosk / Takeaway)">Grillista Express (Kiosk / Takeaway)</option>
+                    <option value="Grillista Bistro (Cafe & Quick Dine)">Grillista Bistro (Cafe & Quick Dine)</option>
+                    <option value="Grillista Signature (Full Dine-In Lounge)">Grillista Signature (Full Dine-In Lounge)</option>
+                    <option value="Master / Multi-Unit Franchise">Master / Multi-Unit Franchise</option>
                   </select>
+                  <span class="inq-error-msg" id="err-f-model">Please select a franchise model.</span>
                 </div>
-                <div class="form-group" style="justify-content: center;">
-                  <label class="checkbox-label" style="margin-top: 24px;">
-                    <input type="checkbox" name="hasCommercialSpace" id="f-commercial" value="yes">
-                    <span>I already own or have shortlisted a commercial space</span>
-                  </label>
+                <div class="form-group">
+                  <label for="f-experience">Previous Experience *</label>
+                  <select id="f-experience" name="previousExperience" class="form-control" required>
+                    <option value="" disabled selected>Select Previous Experience</option>
+                    <option value="First-time Entrepreneur / No Prior Experience">First-time Entrepreneur / No Prior Experience</option>
+                    <option value="1 - 3 Years in Food / QSR Business">1 - 3 Years in Food / QSR Business</option>
+                    <option value="3 - 5+ Years in Retail / Hospitality">3 - 5+ Years in Retail / Hospitality</option>
+                    <option value="Experienced Multi-Brand Franchisee">Experienced Multi-Brand Franchisee</option>
+                    <option value="Corporate Professional / Investor">Corporate Professional / Investor</option>
+                  </select>
+                  <span class="inq-error-msg" id="err-f-experience">Please select your previous experience.</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-city">City *</label>
+                  <input type="text" id="f-city" name="city" class="form-control" placeholder="e.g. Kanpur, Lucknow, Delhi" required>
+                  <span class="inq-error-msg" id="err-f-city">Please specify your target city.</span>
+                </div>
+                <div class="form-group">
+                  <label for="f-state">State *</label>
+                  <select id="f-state" name="state" class="form-control" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Delhi NCR">Delhi NCR</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Other State / UT">Other State / UT</option>
+                  </select>
+                  <span class="inq-error-msg" id="err-f-state">Please select your state.</span>
                 </div>
               </div>
 
               <div class="form-group" style="margin-bottom: 24px;">
-                <label for="f-notes">Previous Business / Food Experience</label>
-                <textarea id="f-notes" name="notes" class="form-control" rows="3" placeholder="Tell us about your background or target market location in your city..."></textarea>
+                <label for="f-message">Message *</label>
+                <textarea id="f-message" name="message" class="form-control" rows="3" placeholder="Tell us about your background, target location, or any questions..." required></textarea>
+                <span class="inq-error-msg" id="err-f-message">Please enter your message (minimum 5 characters).</span>
               </div>
 
               <button type="submit" id="franchise-submit-btn" class="btn btn-lg btn-primary btn-block">
@@ -1242,13 +1291,18 @@
         var submitBtn = document.getElementById('franchise-submit-btn');
 
         if (form) form.reset();
-        ['f-name', 'f-email', 'f-phone', 'f-city'].forEach(function(id) {
+        ['f-name', 'f-email', 'f-phone', 'f-budget', 'f-model', 'f-experience', 'f-city', 'f-state', 'f-message'].forEach(function(id) {
           var el = document.getElementById(id);
           if (el) {
             el.classList.remove('is-invalid', 'is-valid');
           }
           var err = document.getElementById('err-' + id);
           if (err) err.classList.remove('visible');
+        });
+
+        ['f-budget', 'f-model', 'f-experience', 'f-state'].forEach(function(id) {
+          var sel = document.getElementById(id);
+          if (sel) sel.selectedIndex = 0;
         });
 
         if (submitBtn) {
@@ -1273,10 +1327,12 @@
         var nameInput = document.getElementById('f-name');
         var emailInput = document.getElementById('f-email');
         var phoneInput = document.getElementById('f-phone');
-        var cityInput = document.getElementById('f-city');
         var budgetInput = document.getElementById('f-budget');
-        var commInput = document.getElementById('f-commercial');
-        var notesInput = document.getElementById('f-notes');
+        var modelInput = document.getElementById('f-model');
+        var expInput = document.getElementById('f-experience');
+        var cityInput = document.getElementById('f-city');
+        var stateInput = document.getElementById('f-state');
+        var msgTextarea = document.getElementById('f-message');
         var submitBtn = document.getElementById('franchise-submit-btn');
 
         if (nameInput) {
@@ -1322,7 +1378,7 @@
         if (cityInput) {
           cityInput.addEventListener('blur', function() {
             if (this.value.trim().length > 0) {
-              setFieldState(this, 'err-f-city', this.value.trim().length >= 2, 'Please specify your target city or location.');
+              setFieldState(this, 'err-f-city', this.value.trim().length >= 2, 'Please specify your target city.');
             }
           });
           cityInput.addEventListener('input', function() {
@@ -1332,15 +1388,41 @@
           });
         }
 
+        if (budgetInput) {
+          budgetInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-budget', Boolean(this.value), 'Please select an investment budget.');
+          });
+        }
+
+        if (modelInput) {
+          modelInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-model', Boolean(this.value), 'Please select a franchise model.');
+          });
+        }
+
+        if (expInput) {
+          expInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-experience', Boolean(this.value), 'Please select your previous experience.');
+          });
+        }
+
+        if (stateInput) {
+          stateInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-state', Boolean(this.value), 'Please select your state.');
+          });
+        }
+
         form.onsubmit = function(e) {
           e.preventDefault();
           var name = (nameInput || {}).value || '';
           var email = (emailInput || {}).value || '';
           var phone = (phoneInput || {}).value || '';
+          var budget = (budgetInput || {}).value || '';
+          var model = (modelInput || {}).value || '';
+          var experience = (expInput || {}).value || '';
           var city = (cityInput || {}).value || '';
-          var budget = (budgetInput || {}).value || 'express';
-          var hasComm = (commInput && commInput.checked) ? 'Yes' : 'No';
-          var notes = (notesInput || {}).value || '';
+          var state = (stateInput || {}).value || '';
+          var msg = (msgTextarea || {}).value || '';
 
           var hasError = false;
           var firstInvalid = null;
@@ -1369,12 +1451,52 @@
             setFieldState(phoneInput, 'err-f-phone', true);
           }
 
+          if (!budget) {
+            setFieldState(budgetInput, 'err-f-budget', false, 'Please select an investment budget.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = budgetInput;
+          } else {
+            setFieldState(budgetInput, 'err-f-budget', true);
+          }
+
+          if (!model) {
+            setFieldState(modelInput, 'err-f-model', false, 'Please select a franchise model.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = modelInput;
+          } else {
+            setFieldState(modelInput, 'err-f-model', true);
+          }
+
+          if (!experience) {
+            setFieldState(expInput, 'err-f-experience', false, 'Please select your previous experience.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = expInput;
+          } else {
+            setFieldState(expInput, 'err-f-experience', true);
+          }
+
           if (!city.trim() || city.trim().length < 2) {
-            setFieldState(cityInput, 'err-f-city', false, 'Please specify your target city or location.');
+            setFieldState(cityInput, 'err-f-city', false, 'Please specify your target city.');
             hasError = true;
             if (!firstInvalid) firstInvalid = cityInput;
           } else {
             setFieldState(cityInput, 'err-f-city', true);
+          }
+
+          if (!state) {
+            setFieldState(stateInput, 'err-f-state', false, 'Please select your state.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = stateInput;
+          } else {
+            setFieldState(stateInput, 'err-f-state', true);
+          }
+
+          if (!msg.trim() || msg.trim().length < 3) {
+            setFieldState(msgTextarea, 'err-f-message', false, 'Please enter your message.');
+            hasError = true;
+            if (!firstInvalid) firstInvalid = msgTextarea;
+          } else {
+            setFieldState(msgTextarea, 'err-f-message', true);
           }
 
           if (hasError) {
@@ -1392,10 +1514,12 @@
             name: name.trim(),
             email: email.trim(),
             phone: phone.trim().replace(/[\s\-+()]/g, ''),
-            preferredCity: city.trim(),
-            investmentBudget: budget,
-            hasCommercialSpace: hasComm,
-            notes: notes.trim(),
+            budget: budget,
+            model: model,
+            previousExperience: experience,
+            city: city.trim(),
+            state: state,
+            message: msg.trim(),
             inquiryType: 'Franchise Application',
             date: new Date().toISOString()
           };

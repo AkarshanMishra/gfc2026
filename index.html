@@ -920,14 +920,14 @@
           <div class="inquiry-card">
             
             <form id="home-franchise-form" novalidate>
-              <h3 class="inquiry-card-title">General Inquiry</h3>
-              <p class="inquiry-card-subtitle">Fill in your details and we'll get back to you soon.</p>
+              <h3 class="inquiry-card-title">Franchise &amp; Business Inquiry</h3>
+              <p class="inquiry-card-subtitle">Fill in your details below and our expansion team will contact you shortly.</p>
 
               <div class="inquiry-form-2row">
                 
-                <!-- Your Name -->
+                <!-- 1. Full Name -->
                 <div class="inq-group">
-                  <label for="f-name">Your Name *</label>
+                  <label for="f-name">Full Name *</label>
                   <div class="inq-input-wrap">
                     <span class="inq-icon">
                       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -940,7 +940,7 @@
                   <span class="inq-error-msg" id="err-f-name">Please enter your full name (minimum 2 characters).</span>
                 </div>
 
-                <!-- Email Address -->
+                <!-- 2. Email Address -->
                 <div class="inq-group">
                   <label for="f-email">Email Address *</label>
                   <div class="inq-input-wrap">
@@ -955,9 +955,9 @@
                   <span class="inq-error-msg" id="err-f-email">Please enter a valid email address (e.g. name@example.com).</span>
                 </div>
 
-                <!-- Phone Number -->
+                <!-- 3. Phone Number -->
                 <div class="inq-group">
-                  <label for="f-phone">Phone Number *</label>
+                  <label for="f-phone">Phone No *</label>
                   <div class="inq-input-wrap">
                     <span class="inq-icon">
                       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -969,22 +969,22 @@
                   <span class="inq-error-msg" id="err-f-phone">Please enter a valid 10-digit mobile number.</span>
                 </div>
 
-                <!-- Inquiry Type -->
+                <!-- 4. Investment Budget -->
                 <div class="inq-group">
-                  <label for="f-type">Inquiry Type *</label>
+                  <label for="f-budget">Investment Budget *</label>
                   <div class="inq-input-wrap">
                     <span class="inq-icon">
                       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                       </svg>
                     </span>
-                    <select id="f-type" name="inquiryType" class="inq-select" required>
-                      <option value="" disabled selected>Select inquiry type</option>
-                      <option value="Franchise Inquiry">Franchise Inquiry (Express, Bistro, Lounge)</option>
-                      <option value="Partnership & Business">Partnership &amp; Business Proposal</option>
-                      <option value="Bulk / Corporate Orders">Corporate Catering &amp; Bulk Orders</option>
-                      <option value="Customer Feedback & Support">Customer Support &amp; Feedback</option>
-                      <option value="General Query">General Query</option>
+                    <select id="f-budget" name="budget" class="inq-select" required>
+                      <option value="" disabled selected>Select Budget</option>
+                      <option value="₹10 - 15 Lakhs">₹10 - 15 Lakhs</option>
+                      <option value="₹15 - 25 Lakhs">₹15 - 25 Lakhs</option>
+                      <option value="₹25 - 40 Lakhs">₹25 - 40 Lakhs</option>
+                      <option value="₹40 - 60 Lakhs">₹40 - 60 Lakhs</option>
+                      <option value="₹60 Lakhs+">₹60 Lakhs+</option>
                     </select>
                     <span class="inq-select-arrow">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -992,41 +992,135 @@
                       </svg>
                     </span>
                   </div>
-                  <span class="inq-error-msg" id="err-f-type">Please select an inquiry type.</span>
+                  <span class="inq-error-msg" id="err-f-budget">Please select an investment budget.</span>
+                </div>
+
+                <!-- 5. Franchise Model -->
+                <div class="inq-group">
+                  <label for="f-model">Franchise Model *</label>
+                  <div class="inq-input-wrap">
+                    <span class="inq-icon">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                      </svg>
+                    </span>
+                    <select id="f-model" name="model" class="inq-select" required>
+                      <option value="" disabled selected>Select Model</option>
+                      <option value="Grillista Express (Kiosk / Takeaway)">Grillista Express (Kiosk / Takeaway)</option>
+                      <option value="Grillista Bistro (Cafe & Quick Dine)">Grillista Bistro (Cafe & Quick Dine)</option>
+                      <option value="Grillista Signature (Full Dine-In Lounge)">Grillista Signature (Full Dine-In Lounge)</option>
+                      <option value="Master / Multi-Unit Franchise">Master / Multi-Unit Franchise</option>
+                    </select>
+                    <span class="inq-select-arrow">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <span class="inq-error-msg" id="err-f-model">Please select a franchise model.</span>
+                </div>
+
+                <!-- 6. Previous Experience -->
+                <div class="inq-group">
+                  <label for="f-experience">Previous Experience *</label>
+                  <div class="inq-input-wrap">
+                    <span class="inq-icon">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                      </svg>
+                    </span>
+                    <select id="f-experience" name="previousExperience" class="inq-select" required>
+                      <option value="" disabled selected>Select Previous Experience</option>
+                      <option value="First-time Entrepreneur / No Prior Experience">First-time Entrepreneur / No Prior Experience</option>
+                      <option value="1 - 3 Years in Food / QSR Business">1 - 3 Years in Food / QSR Business</option>
+                      <option value="3 - 5+ Years in Retail / Hospitality">3 - 5+ Years in Retail / Hospitality</option>
+                      <option value="Experienced Multi-Brand Franchisee">Experienced Multi-Brand Franchisee</option>
+                      <option value="Corporate Professional / Investor">Corporate Professional / Investor</option>
+                    </select>
+                    <span class="inq-select-arrow">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <span class="inq-error-msg" id="err-f-experience">Please select your previous experience.</span>
+                </div>
+
+                <!-- 7. City -->
+                <div class="inq-group">
+                  <label for="f-city">City *</label>
+                  <div class="inq-input-wrap">
+                    <span class="inq-icon">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                    </span>
+                    <input type="text" id="f-city" name="city" class="inq-input" placeholder="e.g. Kanpur, Lucknow, Delhi" required>
+                  </div>
+                  <span class="inq-error-msg" id="err-f-city">Please enter your city.</span>
+                </div>
+
+                <!-- 8. State -->
+                <div class="inq-group">
+                  <label for="f-state">State *</label>
+                  <div class="inq-input-wrap">
+                    <span class="inq-icon">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                        <line x1="8" y1="2" x2="8" y2="18"></line>
+                        <line x1="16" y1="6" x2="16" y2="22"></line>
+                      </svg>
+                    </span>
+                    <select id="f-state" name="state" class="inq-select" required>
+                      <option value="" disabled selected>Select State</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Delhi NCR">Delhi NCR</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="West Bengal">West Bengal</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Other State / UT">Other State / UT</option>
+                    </select>
+                    <span class="inq-select-arrow">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <span class="inq-error-msg" id="err-f-state">Please select your state.</span>
                 </div>
 
               </div>
 
-              <!-- Subject -->
+              <!-- 9. Message -->
               <div class="inq-group full">
-                <label for="f-subject">Subject *</label>
-                <div class="inq-input-wrap">
-                  <span class="inq-icon">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                      <polyline points="14 2 14 8 20 8"></polyline>
-                      <line x1="16" y1="13" x2="8" y2="13"></line>
-                      <line x1="16" y1="17" x2="8" y2="17"></line>
-                    </svg>
-                  </span>
-                  <input type="text" id="f-subject" name="subject" class="inq-input" placeholder="Enter subject" required>
-                </div>
-                <span class="inq-error-msg" id="err-f-subject">Please enter a subject.</span>
-              </div>
-
-              <!-- Your Message -->
-              <div class="inq-group full">
-                <label for="f-message">Your Message *</label>
+                <label for="f-message">Message *</label>
                 <div class="inq-textarea-wrap">
                   <span class="inq-textarea-icon">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
                   </span>
-                  <textarea id="f-message" name="message" class="inq-textarea" maxlength="500" placeholder="Write your message here..." required></textarea>
+                  <textarea id="f-message" name="message" class="inq-textarea" maxlength="500" placeholder="Tell us about your background, target location, or any questions..." required></textarea>
                   <span class="inq-char-counter" id="inq-char-counter">0/500</span>
                 </div>
-                <span class="inq-error-msg" id="err-f-message">Please enter your message.</span>
+                <span class="inq-error-msg" id="err-f-message">Please enter your message (minimum 5 characters).</span>
               </div>
 
               <!-- Action Row: Terms & Submit Button -->
@@ -1361,7 +1455,7 @@
         form.style.setProperty('opacity', '1', 'important');
       }
 
-      ['f-name', 'f-email', 'f-phone', 'f-type', 'f-subject', 'f-message'].forEach(function(id) {
+      ['f-name', 'f-email', 'f-phone', 'f-budget', 'f-model', 'f-experience', 'f-city', 'f-state', 'f-message'].forEach(function(id) {
         var el = document.getElementById(id);
         if (el) {
           el.value = '';
@@ -1371,8 +1465,11 @@
         if (err) err.classList.remove('visible');
       });
 
-      var fType = document.getElementById('f-type');
-      if (fType) fType.selectedIndex = 0;
+      ['f-budget', 'f-model', 'f-experience', 'f-state'].forEach(function(id) {
+        var sel = document.getElementById(id);
+        if (sel) sel.selectedIndex = 0;
+      });
+
       var fTerms = document.getElementById('f-terms');
       if (fTerms) fTerms.checked = true;
 
@@ -1419,7 +1516,6 @@
 
       function isValidPhone(val) {
         var cleaned = String(val || '').replace(/[\s\-+()]/g, '');
-        // Indian 10-digit mobile starting with 6,7,8,9 or standard 10-digit number
         var indRe = /^(?:(?:\+|0{0,2})91)?[6-9]\d{9}$/;
         var stdRe = /^[0-9]{10}$/;
         return indRe.test(cleaned) || stdRe.test(cleaned);
@@ -1451,8 +1547,11 @@
         var nameInput = document.getElementById('f-name');
         var emailInput = document.getElementById('f-email');
         var phoneInput = document.getElementById('f-phone');
-        var typeInput = document.getElementById('f-type');
-        var subjectInput = document.getElementById('f-subject');
+        var budgetInput = document.getElementById('f-budget');
+        var modelInput = document.getElementById('f-model');
+        var expInput = document.getElementById('f-experience');
+        var cityInput = document.getElementById('f-city');
+        var stateInput = document.getElementById('f-state');
         var msgTextarea = document.getElementById('f-message');
         var charCounter = document.getElementById('inq-char-counter');
         var termsInput = document.getElementById('f-terms');
@@ -1489,11 +1588,10 @@
           phoneInput.addEventListener('blur', function() {
             if (this.value.trim().length > 0) {
               var ok = isValidPhone(this.value);
-              setFieldState(this, 'err-f-phone', ok, 'Please enter a valid 10-digit mobile number (e.g. 9876543210).');
+              setFieldState(this, 'err-f-phone', ok, 'Please enter a valid 10-digit mobile number.');
             }
           });
           phoneInput.addEventListener('input', function() {
-            // Keep only numbers, plus, space, hyphen
             this.value = this.value.replace(/[^\d+\s-]/g, '');
             if (this.classList.contains('is-invalid')) {
               if (isValidPhone(this.value)) {
@@ -1516,22 +1614,40 @@
           });
         }
 
-        if (subjectInput) {
-          subjectInput.addEventListener('blur', function() {
+        if (cityInput) {
+          cityInput.addEventListener('blur', function() {
             if (this.value.trim().length > 0) {
-              setFieldState(this, 'err-f-subject', this.value.trim().length >= 2, 'Please enter a subject.');
+              setFieldState(this, 'err-f-city', this.value.trim().length >= 2, 'Please enter your city.');
             }
           });
-          subjectInput.addEventListener('input', function() {
+          cityInput.addEventListener('input', function() {
             if (this.classList.contains('is-invalid') && this.value.trim().length >= 2) {
-              setFieldState(this, 'err-f-subject', true);
+              setFieldState(this, 'err-f-city', true);
             }
           });
         }
 
-        if (typeInput) {
-          typeInput.addEventListener('change', function() {
-            setFieldState(this, 'err-f-type', Boolean(this.value), 'Please select an inquiry type.');
+        if (budgetInput) {
+          budgetInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-budget', Boolean(this.value), 'Please select an investment budget.');
+          });
+        }
+
+        if (modelInput) {
+          modelInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-model', Boolean(this.value), 'Please select a franchise model.');
+          });
+        }
+
+        if (expInput) {
+          expInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-experience', Boolean(this.value), 'Please select your previous experience.');
+          });
+        }
+
+        if (stateInput) {
+          stateInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-state', Boolean(this.value), 'Please select your state.');
           });
         }
 
@@ -1540,8 +1656,11 @@
           var name = (nameInput || {}).value || '';
           var phone = (phoneInput || {}).value || '';
           var email = (emailInput || {}).value || '';
-          var inqType = (typeInput || {}).value || '';
-          var subject = (subjectInput || {}).value || '';
+          var budget = (budgetInput || {}).value || '';
+          var model = (modelInput || {}).value || '';
+          var experience = (expInput || {}).value || '';
+          var city = (cityInput || {}).value || '';
+          var state = (stateInput || {}).value || '';
           var msg = (msgTextarea || {}).value || '';
           var terms = termsInput;
 
@@ -1557,7 +1676,7 @@
             setFieldState(nameInput, 'err-f-name', true);
           }
 
-          // 2. Email validation (STRICT)
+          // 2. Email validation
           if (!email.trim() || !isValidEmail(email)) {
             setFieldState(emailInput, 'err-f-email', false, 'Please enter a valid email address (e.g. name@example.com).');
             hasError = true;
@@ -1566,7 +1685,7 @@
             setFieldState(emailInput, 'err-f-email', true);
           }
 
-          // 3. Phone / Mobile validation (STRICT 10 DIGITS)
+          // 3. Phone validation
           if (!phone.trim() || !isValidPhone(phone)) {
             setFieldState(phoneInput, 'err-f-phone', false, 'Please enter a valid 10-digit mobile number.');
             hasError = true;
@@ -1575,25 +1694,52 @@
             setFieldState(phoneInput, 'err-f-phone', true);
           }
 
-          // 4. Inquiry Type validation
-          if (!inqType) {
-            setFieldState(typeInput, 'err-f-type', false, 'Please select an inquiry type.');
+          // 4. Budget validation
+          if (!budget) {
+            setFieldState(budgetInput, 'err-f-budget', false, 'Please select an investment budget.');
             hasError = true;
-            if (!firstInvalidField) firstInvalidField = typeInput;
+            if (!firstInvalidField) firstInvalidField = budgetInput;
           } else {
-            setFieldState(typeInput, 'err-f-type', true);
+            setFieldState(budgetInput, 'err-f-budget', true);
           }
 
-          // 5. Subject validation
-          if (!subject.trim() || subject.trim().length < 2) {
-            setFieldState(subjectInput, 'err-f-subject', false, 'Please enter a subject.');
+          // 5. Model validation
+          if (!model) {
+            setFieldState(modelInput, 'err-f-model', false, 'Please select a franchise model.');
             hasError = true;
-            if (!firstInvalidField) firstInvalidField = subjectInput;
+            if (!firstInvalidField) firstInvalidField = modelInput;
           } else {
-            setFieldState(subjectInput, 'err-f-subject', true);
+            setFieldState(modelInput, 'err-f-model', true);
           }
 
-          // 6. Message validation
+          // 6. Experience validation
+          if (!experience) {
+            setFieldState(expInput, 'err-f-experience', false, 'Please select your previous experience.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = expInput;
+          } else {
+            setFieldState(expInput, 'err-f-experience', true);
+          }
+
+          // 7. City validation
+          if (!city.trim() || city.trim().length < 2) {
+            setFieldState(cityInput, 'err-f-city', false, 'Please enter your city.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = cityInput;
+          } else {
+            setFieldState(cityInput, 'err-f-city', true);
+          }
+
+          // 8. State validation
+          if (!state) {
+            setFieldState(stateInput, 'err-f-state', false, 'Please select your state.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = stateInput;
+          } else {
+            setFieldState(stateInput, 'err-f-state', true);
+          }
+
+          // 9. Message validation
           if (!msg.trim() || msg.trim().length < 3) {
             setFieldState(msgTextarea, 'err-f-message', false, 'Please enter your message.');
             hasError = true;
@@ -1602,7 +1748,7 @@
             setFieldState(msgTextarea, 'err-f-message', true);
           }
 
-          // 7. Terms & Conditions
+          // Terms
           if (terms && !terms.checked) {
             alert('Please agree to the Terms & Conditions and Privacy Policy.');
             if (!firstInvalidField) firstInvalidField = terms;
@@ -1628,8 +1774,11 @@
             name: name.trim(),
             email: email.trim(),
             phone: phone.trim().replace(/[\s\-+()]/g, ''),
-            inquiryType: inqType,
-            subject: subject.trim(),
+            budget: budget,
+            model: model,
+            previousExperience: experience,
+            city: city.trim(),
+            state: state,
             message: msg.trim(),
             date: new Date().toISOString()
           };

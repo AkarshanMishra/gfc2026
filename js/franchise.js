@@ -157,11 +157,12 @@ Helpline: +91 90290 20888 | Email: franchise@grillista.in
       name: formData.get('name') || '',
       email: formData.get('email') || '',
       phone: formData.get('phone') || '',
-      preferredCity: formData.get('preferredCity') || '',
-      investmentBudget: formData.get('investmentBudget') || '',
-      model: formData.get('model') || this.selectedModel,
-      hasCommercialSpace: formData.get('hasCommercialSpace') === 'yes',
-      notes: formData.get('notes') || ''
+      budget: formData.get('budget') || formData.get('investmentBudget') || '',
+      model: formData.get('model') || this.selectedModel || '',
+      previousExperience: formData.get('previousExperience') || formData.get('experience') || '',
+      city: formData.get('city') || formData.get('preferredCity') || '',
+      state: formData.get('state') || '',
+      message: formData.get('message') || formData.get('notes') || ''
     };
 
     // Strict validation
@@ -169,13 +170,28 @@ Helpline: +91 90290 20888 | Email: franchise@grillista.in
       return feedbackCallback({ success: false, message: 'Please enter a valid full name (minimum 2 characters).' });
     }
     if (!Security.validators.email(rawData.email)) {
-      return feedbackCallback({ success: false, message: 'Please enter a valid business email address.' });
+      return feedbackCallback({ success: false, message: 'Please enter a valid email address.' });
     }
     if (!Security.validators.phone(rawData.phone)) {
-      return feedbackCallback({ success: false, message: 'Please enter a valid 10-digit Indian contact number.' });
+      return feedbackCallback({ success: false, message: 'Please enter a valid 10-digit contact number.' });
     }
-    if (!Security.validators.safeString(rawData.preferredCity, 2, 80)) {
-      return feedbackCallback({ success: false, message: 'Please specify your target city or location.' });
+    if (!rawData.budget) {
+      return feedbackCallback({ success: false, message: 'Please select an investment budget.' });
+    }
+    if (!rawData.model) {
+      return feedbackCallback({ success: false, message: 'Please select a franchise model.' });
+    }
+    if (!rawData.previousExperience) {
+      return feedbackCallback({ success: false, message: 'Please select your previous experience.' });
+    }
+    if (!rawData.city || rawData.city.trim().length < 2) {
+      return feedbackCallback({ success: false, message: 'Please specify your target city.' });
+    }
+    if (!rawData.state) {
+      return feedbackCallback({ success: false, message: 'Please select your state.' });
+    }
+    if (!rawData.message || rawData.message.trim().length < 3) {
+      return feedbackCallback({ success: false, message: 'Please enter your message.' });
     }
 
     feedbackCallback({ loading: true, message: 'Securing transmission & verifying application...' });

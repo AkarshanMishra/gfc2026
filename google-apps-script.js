@@ -8,7 +8,8 @@
  *
  * COLUMNS POPULATED AUTOMATICALLY:
  * A: Timestamp | B: Full Name | C: Email Address | D: Phone Number |
- * E: Inquiry Type | F: Subject | G: Message | H: Reference ID
+ * E: Investment Budget | F: Franchise Model | G: Previous Experience |
+ * H: City | I: State | J: Message | K: Reference ID
  * ==============================================================================
  */
 
@@ -35,20 +36,12 @@ function doPost(e) {
     const name = (rawData.name || "Valued Guest").trim();
     const email = (rawData.email || "").trim();
     const phone = (rawData.phone || "").trim();
-    const inquiryType = (rawData.inquiryType || rawData.model || "Franchise Inquiry").trim();
-    
-    // Format Subject & Message for both General Inquiries & Franchise Applications
-    var subject = (rawData.subject || "").trim();
-    if (!subject && rawData.preferredCity) {
-      subject = "Franchise Application (" + rawData.preferredCity + (rawData.investmentBudget ? " - " + rawData.investmentBudget.toUpperCase() : "") + ")";
-    } else if (!subject) {
-      subject = "Website Lead";
-    }
-
-    var message = (rawData.message || rawData.notes || "N/A").trim();
-    if (rawData.hasCommercialSpace && rawData.hasCommercialSpace !== "N/A") {
-      message += " [Commercial Space: " + rawData.hasCommercialSpace + "]";
-    }
+    const budget = (rawData.budget || rawData.investmentBudget || "₹10 - 15 Lakhs").trim();
+    const model = (rawData.model || rawData.inquiryType || "Grillista Express (Kiosk / Takeaway)").trim();
+    const previousExperience = (rawData.previousExperience || rawData.experience || "First-time Entrepreneur / No Prior Experience").trim();
+    const city = (rawData.city || rawData.preferredCity || "Kanpur").trim();
+    const state = (rawData.state || "Uttar Pradesh").trim();
+    const message = (rawData.message || rawData.notes || "N/A").trim();
 
     // Generate unique reference ID
     const referenceId =
@@ -68,12 +61,15 @@ function doPost(e) {
         "Full Name",
         "Email Address",
         "Phone Number",
-        "Inquiry Type",
-        "Subject",
+        "Investment Budget",
+        "Franchise Model",
+        "Previous Experience",
+        "City",
+        "State",
         "Message",
         "Reference ID"
       ]);
-      sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#0F4C2A").setFontColor("#FFFFFF");
+      sheet.getRange(1, 1, 1, 11).setFontWeight("bold").setBackground("#0F4C2A").setFontColor("#FFFFFF");
     }
 
     // Append submission row
@@ -82,13 +78,14 @@ function doPost(e) {
       name,
       email,
       phone,
-      inquiryType,
-      subject,
+      budget,
+      model,
+      previousExperience,
+      city,
+      state,
       message,
       referenceId
     ]);
-
-    const city = (rawData.preferredCity || rawData.city || rawData.location || "Kanpur, Uttar Pradesh").trim();
 
     // 1. Send Exact Luxury Branded Confirmation Email to Customer
     if (email && email.indexOf("@") > -1) {
@@ -97,11 +94,13 @@ function doPost(e) {
           name,
           email,
           phone,
-          inquiryType,
-          subject,
+          budget,
+          model,
+          previousExperience,
+          city,
+          state,
           message,
-          referenceId,
-          city
+          referenceId
         );
       } catch (mailErr) {
         Logger.log("Customer email error: " + mailErr.toString());
@@ -114,11 +113,13 @@ function doPost(e) {
         name,
         email,
         phone,
-        inquiryType,
-        subject,
+        budget,
+        model,
+        previousExperience,
+        city,
+        state,
         message,
-        referenceId,
-        city
+        referenceId
       );
     } catch (adminErr) {
       Logger.log("Admin email error: " + adminErr.toString());
@@ -159,11 +160,13 @@ function sendCustomerEmail(
   name,
   email,
   phone,
-  inquiryType,
-  subject,
+  budget,
+  model,
+  previousExperience,
+  city,
+  state,
   message,
-  referenceId,
-  city
+  referenceId
 ) {
   const firstName = escapeHtml((name || 'Valued Guest').trim().split(' ')[0]);
   const formattedDate = Utilities.formatDate(
@@ -175,10 +178,12 @@ function sendCustomerEmail(
   const safeName = escapeHtml(name || 'Akash Mishra');
   const safePhone = escapeHtml(phone || '+91 98765 43210');
   const safeEmail = escapeHtml(email || 'akashmishra120799@gmail.com');
-  const safeCity = escapeHtml(city || 'Kanpur, Uttar Pradesh');
-  const safeType = escapeHtml(inquiryType || 'Franchise Inquiry');
-  const safeSubject = escapeHtml(subject || 'Franchise Opportunity');
-  const safeMessage = escapeHtml(message || 'I would like to know more about the franchise opportunity in my city. Please share the investment details, space requirements and the next steps.');
+  const safeBudget = escapeHtml(budget || '₹10 - 15 Lakhs');
+  const safeModel = escapeHtml(model || 'Grillista Express (Kiosk / Takeaway)');
+  const safeExperience = escapeHtml(previousExperience || 'First-time Entrepreneur / No Prior Experience');
+  const safeCity = escapeHtml(city || 'Kanpur');
+  const safeState = escapeHtml(state || 'Uttar Pradesh');
+  const safeMessage = escapeHtml(message || 'I would like to know more about opening a Grillista franchise outlet in my city.');
 
   const htmlBody = `
 <!DOCTYPE html>
@@ -235,12 +240,12 @@ function sendCustomerEmail(
             <td style="padding: 0 28px 16px 28px; color: #334155; font-size: 13.5px; line-height: 1.6; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
               <p style="margin: 0 0 8px 0; font-size: 15px; font-weight: 800; color: #0F172A;">Hi ${firstName},</p>
               <p style="margin: 0;">
-                Thank you for reaching out to <strong>Grillista — The Ultimate Food Chain</strong>. We're pleased to confirm that we've successfully received your inquiry. Our team will get back to you within <strong>24 business hours</strong>.
+                Thank you for reaching out to <strong>Grillista — The Ultimate Food Chain</strong>. We're pleased to confirm that we've successfully received your franchise inquiry. Our expansion team will get back to you within <strong>24 business hours</strong>.
               </p>
             </td>
           </tr>
 
-          <!-- 4. YOUR INQUIRY DETAILS CARD (MATCHING CUSTOMER REFERENCE MOCKUP) -->
+          <!-- 4. YOUR INQUIRY DETAILS CARD (MATCHING REQUESTED 9 FIELDS) -->
           <tr>
             <td style="padding: 4px 28px 18px 28px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1.5px solid #E2E8F0; border-radius: 16px; overflow: hidden; background-color: #FFFFFF;">
@@ -271,7 +276,7 @@ function sendCustomerEmail(
                   <td style="padding: 18px 20px; background-color: #FFFFFF;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <!-- Left Column: Name, Email, Phone, City -->
+                        <!-- Left Column: Name, Email, Phone, City, State -->
                         <td class="grid-col" valign="top" style="width: 48%; padding-right: 12px;">
                           
                           <!-- Name -->
@@ -281,7 +286,7 @@ function sendCustomerEmail(
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_user.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Name</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Full Name</div>
                                 <div style="font-size: 13px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeName}</div>
                               </td>
                             </tr>
@@ -294,7 +299,7 @@ function sendCustomerEmail(
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_email.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Email</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Email Address</div>
                                 <div style="font-size: 11.5px; font-weight: 700; color: #0284C7; margin-top: 1px; word-break: break-all;">
                                   <a href="mailto:${safeEmail}" style="color: #0284C7; text-decoration: none;">${safeEmail}</a>
                                 </div>
@@ -302,14 +307,14 @@ function sendCustomerEmail(
                             </tr>
                           </table>
 
-                          <!-- Phone -->
+                          <!-- Phone No -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 12px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_phone.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Phone</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Phone No</div>
                                 <div style="font-size: 13px; font-weight: 800; color: #0F172A; margin-top: 1px;">
                                   <a href="tel:${safePhone}" style="color: #0F172A; text-decoration: none;">${safePhone}</a>
                                 </div>
@@ -317,46 +322,72 @@ function sendCustomerEmail(
                             </tr>
                           </table>
 
-                          <!-- City / Location -->
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <!-- City -->
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 12px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_location.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">City / Location</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">City</div>
                                 <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeCity}</div>
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- State -->
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td width="22" valign="top" style="padding-top: 2px;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_state.png" width="16" height="16" alt="" style="display: block;">
+                              </td>
+                              <td valign="top" style="padding-left: 6px;">
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">State</div>
+                                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeState}</div>
                               </td>
                             </tr>
                           </table>
 
                         </td>
 
-                        <!-- Right Column: Inquiry Type, Subject, Message, Submitted On -->
+                        <!-- Right Column: Budget, Model, Previous Experience, Message, Submitted On -->
                         <td class="grid-col grid-col-right" valign="top" style="width: 52%; padding-left: 14px; border-left: 1px solid #F1F5F9;">
                           
-                          <!-- Inquiry Type -->
+                          <!-- Budget -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
-                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_type.png" width="16" height="16" alt="" style="display: block;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_budget.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Inquiry Type</div>
-                                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeType}</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Investment Budget</div>
+                                <div style="font-size: 12.5px; font-weight: 800; color: #065F46; margin-top: 1px;">${safeBudget}</div>
                               </td>
                             </tr>
                           </table>
 
-                          <!-- Subject -->
+                          <!-- Franchise Model -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
-                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_subject.png" width="16" height="16" alt="" style="display: block;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_model.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Subject</div>
-                                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeSubject}</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Franchise Model</div>
+                                <div style="font-size: 12px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeModel}</div>
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Previous Experience -->
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                            <tr>
+                              <td width="22" valign="top" style="padding-top: 2px;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_experience.png" width="16" height="16" alt="" style="display: block;">
+                              </td>
+                              <td valign="top" style="padding-left: 6px;">
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Previous Experience</div>
+                                <div style="font-size: 11.5px; font-weight: 700; color: #334155; margin-top: 1px;">${safeExperience}</div>
                               </td>
                             </tr>
                           </table>
@@ -579,11 +610,13 @@ function sendAdminEmail(
   name,
   email,
   phone,
-  inquiryType,
-  subject,
+  budget,
+  model,
+  previousExperience,
+  city,
+  state,
   message,
-  referenceId,
-  city
+  referenceId
 ) {
   const formattedDate = Utilities.formatDate(
     new Date(),
@@ -594,10 +627,12 @@ function sendAdminEmail(
   const safeName = escapeHtml(name || "Akash Mishra");
   const safeEmail = escapeHtml(email || "support@grillista.in");
   const safePhone = escapeHtml(phone || "+91 98765 43210");
-  const safeCity = escapeHtml(city || "Kanpur, Uttar Pradesh");
-  const safeType = escapeHtml(inquiryType || "Franchise Inquiry");
-  const safeSubject = escapeHtml(subject || "Franchise Opportunity");
-  const safeMessage = escapeHtml(message || "I would like to know more about the franchise opportunity in my city. Please share the investment details, space requirements and the next steps.");
+  const safeBudget = escapeHtml(budget || "₹10 - 15 Lakhs");
+  const safeModel = escapeHtml(model || "Grillista Express (Kiosk / Takeaway)");
+  const safeExperience = escapeHtml(previousExperience || "First-time Entrepreneur / No Prior Experience");
+  const safeCity = escapeHtml(city || "Kanpur");
+  const safeState = escapeHtml(state || "Uttar Pradesh");
+  const safeMessage = escapeHtml(message || "I would like to know more about opening a Grillista franchise outlet in my city.");
   
   // Clean phone for whatsapp
   const cleanPhone = safePhone.replace(/[^0-9]/g, "");
@@ -658,7 +693,7 @@ function sendAdminEmail(
                       You’ve Got a<br><span style="color: #DC2626;">New Inquiry!</span>
                     </div>
                     <div style="font-size: 13px; color: #475569; line-height: 1.5; margin-top: 10px;">
-                      A new inquiry has been submitted through the Grillista website. Please find the details below and take the necessary action.
+                      A new franchise application has been submitted through the Grillista website. Please find the details below and take the necessary action.
                     </div>
                   </td>
 
@@ -726,7 +761,7 @@ function sendAdminEmail(
             </td>
           </tr>
 
-          <!-- 3. INQUIRY DETAILS CARD (MATCHING ADMIN REFERENCE MOCKUP) -->
+          <!-- 3. INQUIRY DETAILS CARD (MATCHING ADMIN REFERENCE MOCKUP & 9 FIELDS) -->
           <tr>
             <td style="padding: 4px 28px 18px 28px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border: 1.5px solid #E2E8F0; border-radius: 16px; overflow: hidden; background-color: #FFFFFF;">
@@ -758,7 +793,7 @@ function sendAdminEmail(
                   <td style="padding: 18px 20px; background-color: #FFFFFF;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <!-- Left Column: Name, Email, Phone, City, Inquiry Type -->
+                        <!-- Left Column: Name, Email, Phone, City, State -->
                         <td class="grid-col" valign="top" style="width: 48%; padding-right: 12px;">
                           
                           <!-- Name -->
@@ -768,7 +803,7 @@ function sendAdminEmail(
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_user.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Name</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Full Name</div>
                                 <div style="font-size: 13px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeName}</div>
                               </td>
                             </tr>
@@ -781,7 +816,7 @@ function sendAdminEmail(
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_email.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Email</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Email Address</div>
                                 <div style="font-size: 11.5px; font-weight: 700; color: #0284C7; margin-top: 1px; word-break: break-all;">
                                   <a href="mailto:${safeEmail}" style="color: #0284C7; text-decoration: none;">${safeEmail}</a>
                                 </div>
@@ -789,14 +824,14 @@ function sendAdminEmail(
                             </tr>
                           </table>
 
-                          <!-- Phone -->
+                          <!-- Phone No -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 12px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_phone.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Phone</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Phone No</div>
                                 <div style="font-size: 13px; font-weight: 800; color: #0F172A; margin-top: 1px;">
                                   <a href="tel:${safePhone}" style="color: #0F172A; text-decoration: none;">${safePhone}</a>
                                 </div>
@@ -804,56 +839,78 @@ function sendAdminEmail(
                             </tr>
                           </table>
 
-                          <!-- City / Location -->
+                          <!-- City -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 12px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_location.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">City / Location</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">City</div>
                                 <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeCity}</div>
                               </td>
                             </tr>
                           </table>
 
-                          <!-- Inquiry Type -->
+                          <!-- State -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
-                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_type.png" width="16" height="16" alt="" style="display: block;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_state.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Inquiry Type</div>
-                                <div style="margin-top: 3px;">
-                                  <span style="display: inline-block; background-color: #DCFCE7; color: #15803D; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px;">
-                                    ${safeType}
-                                  </span>
-                                </div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">State</div>
+                                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeState}</div>
                               </td>
                             </tr>
                           </table>
 
                         </td>
 
-                        <!-- Right Column: Subject, Message, Submitted On, Source -->
+                        <!-- Right Column: Budget, Model, Previous Experience, Message, Submitted On -->
                         <td class="grid-col grid-col-right" valign="top" style="width: 52%; padding-left: 14px; border-left: 1px solid #F1F5F9;">
                           
-                          <!-- Subject -->
+                          <!-- Budget -->
                           <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
-                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_subject.png" width="16" height="16" alt="" style="display: block;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_budget.png" width="16" height="16" alt="" style="display: block;">
                               </td>
                               <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Subject</div>
-                                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeSubject}</div>
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Investment Budget</div>
+                                <div style="font-size: 12.5px; font-weight: 800; color: #065F46; margin-top: 1px;">${safeBudget}</div>
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Franchise Model -->
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                            <tr>
+                              <td width="22" valign="top" style="padding-top: 2px;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_model.png" width="16" height="16" alt="" style="display: block;">
+                              </td>
+                              <td valign="top" style="padding-left: 6px;">
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Franchise Model</div>
+                                <div style="font-size: 12px; font-weight: 800; color: #0F172A; margin-top: 1px;">${safeModel}</div>
+                              </td>
+                            </tr>
+                          </table>
+
+                          <!-- Previous Experience -->
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                            <tr>
+                              <td width="22" valign="top" style="padding-top: 2px;">
+                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_experience.png" width="16" height="16" alt="" style="display: block;">
+                              </td>
+                              <td valign="top" style="padding-left: 6px;">
+                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Previous Experience</div>
+                                <div style="font-size: 11.5px; font-weight: 700; color: #334155; margin-top: 1px;">${safeExperience}</div>
                               </td>
                             </tr>
                           </table>
 
                           <!-- Message Bubble -->
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 12px;">
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_message.png" width="16" height="16" alt="" style="display: block;">
@@ -868,7 +925,7 @@ function sendAdminEmail(
                           </table>
 
                           <!-- Submitted On -->
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 10px;">
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                               <td width="22" valign="top" style="padding-top: 2px;">
                                 <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_calendar.png" width="16" height="16" alt="" style="display: block;">
@@ -876,19 +933,6 @@ function sendAdminEmail(
                               <td valign="top" style="padding-left: 6px;">
                                 <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Submitted On</div>
                                 <div style="font-size: 12px; font-weight: 700; color: #0F172A; margin-top: 1px;">${formattedDate}</div>
-                              </td>
-                            </tr>
-                          </table>
-
-                          <!-- Source -->
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td width="22" valign="top" style="padding-top: 2px;">
-                                <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/card_web.png" width="16" height="16" alt="" style="display: block;">
-                              </td>
-                              <td valign="top" style="padding-left: 6px;">
-                                <div style="font-size: 9.5px; font-weight: 800; color: #64748B; text-transform: uppercase;">Source</div>
-                                <div style="font-size: 12px; font-weight: 700; color: #0F172A; margin-top: 1px;">Website (grillista.in)</div>
                               </td>
                             </tr>
                           </table>
@@ -903,41 +947,21 @@ function sendAdminEmail(
             </td>
           </tr>
 
-          <!-- 4. ACTION BUTTONS (3 ACTIONS: REPLY, WHATSAPP, FORWARD) -->
+          <!-- 4. QUICK ACTION BUTTONS (REPLY & WHATSAPP) -->
           <tr>
             <td style="padding: 0 28px 22px 28px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                  <!-- Button 1: Reply to User -->
-                  <td class="action-col" valign="top" style="width: 32%; padding-right: 6px;">
-                    <a href="mailto:${safeEmail}?subject=Re:%20Grillista%20Inquiry%20%23${referenceId}" style="display: block; background-color: #064E3B; color: #FFFFFF; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
-                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_reply_white.png" width="13" height="13" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px;">
-                        Reply to User
-                      </div>
-                      <div style="font-size: 9.5px; color: #A7F3D0; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Send a response via email</div>
+                  <td class="action-col" style="width: 48%; padding-right: 6px;">
+                    <a href="mailto:${safeEmail}?subject=Re:%20Grillista%20Franchise%20Inquiry%20%23${referenceId}" style="background-color: #065F46; color: #FFFFFF; text-decoration: none; padding: 12px 14px; border-radius: 12px; font-size: 12px; font-weight: 800; display: block; text-align: center; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                      <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_reply_white.png" width="12" height="12" alt="" style="display: inline-block; vertical-align: middle; margin-right: 4px; margin-top: -2px;">
+                      Reply to ${safeName.split(' ')[0]} →
                     </a>
                   </td>
-
-                  <!-- Button 2: Chat on WhatsApp -->
-                  <td class="action-col" valign="top" style="width: 34%; padding: 0 3px;">
-                    <a href="https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(name)},%20this%20is%20Grillista%20team%20regarding%20your%20inquiry%20%23${referenceId}." target="_blank" style="display: block; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #FFFFFF; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
-                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/whatsapp.png" width="14" height="14" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px; border-radius: 50%;">
-                        Chat on WhatsApp
-                      </div>
-                      <div style="font-size: 9.5px; color: #ECFDF5; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Open in WhatsApp</div>
-                    </a>
-                  </td>
-
-                  <!-- Button 3: Assign to Team -->
-                  <td class="action-col" valign="top" style="width: 34%; padding-left: 6px;">
-                    <a href="mailto:${ADMIN_EMAIL}?subject=Fwd:%20Lead%20Assignment%20%23${referenceId}&body=Please%20assign%20this%20lead%20to%20team." style="display: block; background-color: #F1F5F9; border: 1px solid #CBD5E1; color: #1E293B; text-decoration: none; border-radius: 12px; padding: 10px 8px; text-align: center;">
-                      <div style="font-size: 12px; font-weight: 900; color: #1E293B; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
-                        <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_team_dark.png" width="14" height="14" alt="" style="display: inline-block; vertical-align: middle; margin-right: 3px; margin-top: -2px;">
-                        Assign to Team
-                      </div>
-                      <div style="font-size: 9.5px; color: #64748B; margin-top: 2px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Forward to team member</div>
+                  <td class="action-col" style="width: 48%; padding-left: 6px;">
+                    <a href="https://wa.me/${cleanPhone}?text=Hello%20${encodeURIComponent(safeName)},%20thank%20you%20for%20reaching%20out%20to%20Grillista%20regarding%20the%20franchise%20opportunity%20%23${referenceId}." target="_blank" style="background-color: #10B981; color: #FFFFFF; text-decoration: none; padding: 12px 14px; border-radius: 12px; font-size: 12px; font-weight: 800; display: block; text-align: center; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                      <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/whatsapp.png" width="14" height="14" alt="" style="display: inline-block; vertical-align: middle; margin-right: 4px; margin-top: -2px;">
+                      Chat on WhatsApp →
                     </a>
                   </td>
                 </tr>
@@ -945,7 +969,23 @@ function sendAdminEmail(
             </td>
           </tr>
 
-          <!-- 5. DARK FOREST GREEN PILLARS BANNER -->
+          <!-- 5. SIGNATURE & INTERNAL ACTION NOTE -->
+          <tr>
+            <td style="padding: 0 28px 24px 28px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #F8FAFC; border-radius: 12px; padding: 12px 16px; border: 1px solid #E2E8F0;">
+                <tr>
+                  <td width="30" valign="top">
+                    <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/icon_team_dark.png" width="22" height="22" alt="" style="display: block;">
+                  </td>
+                  <td valign="top" style="padding-left: 8px; font-size: 11.5px; color: #475569; line-height: 1.5; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                    <strong style="color: #0F172A;">Action Required:</strong> Please contact this prospective partner within 24 hours to schedule an introductory franchise discovery call.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- 6. DARK FOREST GREEN PILLARS BANNER -->
           <tr>
             <td style="background-color: #052E16; padding: 14px 20px;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -971,7 +1011,7 @@ function sendAdminEmail(
             </td>
           </tr>
 
-          <!-- 6. CORPORATE FOOTER -->
+          <!-- 7. CORPORATE FOOTER WITH SOCIALS & QUICK LINKS -->
           <tr>
             <td style="background-color: #FFFFFF; padding: 22px 28px 16px 28px; border-top: 1px solid #F1F5F9;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -982,41 +1022,31 @@ function sendAdminEmail(
                   </td>
 
                   <!-- Corporate Office -->
-                  <td class="footer-grid-col" valign="top" style="width: 32%; padding-right: 10px;">
-                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 4px;">📍 Corporate Office</div>
-                    <div style="font-size: 10.5px; color: #64748B; line-height: 1.4;">
+                  <td class="footer-grid-col" valign="top" style="width: 30%; padding-right: 10px;">
+                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 4px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Corporate Office</div>
+                    <div style="font-size: 10.5px; color: #64748B; line-height: 1.4; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
                       Grillista Food Private Limited<br>
                       123, Food Street, Kakadeo,<br>
                       Kanpur, UP – 208025, India
                     </div>
                   </td>
 
-                  <!-- Quick Links -->
-                  <td class="footer-grid-col" valign="top" style="width: 22%; padding-right: 10px;">
-                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 4px;">🔗 Quick Links</div>
-                    <div style="font-size: 10.5px; color: #64748B; line-height: 1.5;">
-                      <a href="https://grillista.in" target="_blank" style="color: #64748B; text-decoration: none;">Website</a><br>
-                      <a href="https://grillista.in/franchise.html" target="_blank" style="color: #64748B; text-decoration: none;">Franchise</a><br>
-                      <a href="https://grillista.in/about.html" target="_blank" style="color: #64748B; text-decoration: none;">Contact</a>
-                    </div>
-                  </td>
-
                   <!-- Follow Us (Instagram, Facebook, Pinterest, YouTube) -->
-                  <td class="footer-grid-col" valign="top" style="width: 26%;">
+                  <td class="footer-grid-col" valign="top" style="width: 26%; padding-right: 8px;">
                     <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 6px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Follow Us</div>
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td style="padding-right: 6px;">
+                        <td style="padding-right: 5px;">
                           <a href="https://www.instagram.com/grillista1" target="_blank" style="text-decoration: none; display: inline-block;">
                             <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/instagram.png" width="22" height="22" alt="Instagram" style="display: block; border-radius: 50%; border: none;">
                           </a>
                         </td>
-                        <td style="padding-right: 6px;">
+                        <td style="padding-right: 5px;">
                           <a href="https://www.facebook.com/share/1EGML5sM3N/" target="_blank" style="text-decoration: none; display: inline-block;">
                             <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/facebook.png" width="22" height="22" alt="Facebook" style="display: block; border-radius: 50%; border: none;">
                           </a>
                         </td>
-                        <td style="padding-right: 6px;">
+                        <td style="padding-right: 5px;">
                           <a href="https://pin.it/1bi0APK1A" target="_blank" style="text-decoration: none; display: inline-block;">
                             <img src="https://raw.githubusercontent.com/AkarshanMishra/gfc2026/main/assets/icons/pinterest.png" width="22" height="22" alt="Pinterest" style="display: block; border-radius: 50%; border: none;">
                           </a>
@@ -1028,6 +1058,17 @@ function sendAdminEmail(
                         </td>
                       </tr>
                     </table>
+                  </td>
+
+                  <!-- Quick Links -->
+                  <td class="footer-grid-col" valign="top" style="width: 22%;">
+                    <div style="font-size: 11px; font-weight: 900; color: #0F172A; margin-bottom: 4px; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">Quick Links</div>
+                    <div style="font-size: 10.5px; color: #64748B; line-height: 1.5; font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+                      <a href="https://grillista.in" target="_blank" style="color: #64748B; text-decoration: none;">Website</a><br>
+                      <a href="https://grillista.in/franchise.html" target="_blank" style="color: #64748B; text-decoration: none;">Franchise</a><br>
+                      <a href="https://grillista.in/about.html" target="_blank" style="color: #64748B; text-decoration: none;">Contact</a><br>
+                      <a href="https://grillista.in/join-us.html" target="_blank" style="color: #64748B; text-decoration: none;">Careers</a>
+                    </div>
                   </td>
                 </tr>
               </table>
@@ -1057,23 +1098,20 @@ function sendAdminEmail(
 </html>
   `;
 
-  try {
-    MailApp.sendEmail({
-      to: ADMIN_EMAIL,
-      subject: "🔔 New Inquiry — " + inquiryType + " | " + safeName + " (#" + referenceId + ")",
-      htmlBody: htmlBody,
-      name: "Grillista Alert System"
-    });
-  } catch (e) {
-    Logger.log("Admin email dispatch failed: " + e.toString());
-  }
+  MailApp.sendEmail({
+    to: ADMIN_EMAIL,
+    subject: "🚨 [New Franchise Lead] " + safeName + " (" + safeCity + ", " + safeState + ") | #" + referenceId,
+    htmlBody: htmlBody,
+    name: "Grillista Web System"
+  });
 }
 
 function escapeHtml(text) {
-  return String(text || "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
