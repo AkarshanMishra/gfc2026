@@ -4,7 +4,7 @@
  * ==============================================================================
  *
  * SPREADSHEET TAB NAME: "Inquiries" (or default Active Sheet)
- * ADMIN RECIPIENT EMAIL: "support@grillista.in"
+ * ADMIN RECIPIENT EMAIL: "grillista8@gmail.com"
  *
  * COLUMNS POPULATED AUTOMATICALLY:
  * A: Timestamp | B: Full Name | C: Email Address | D: Phone Number |
@@ -13,7 +13,7 @@
  */
 
 const SHEET_NAME = "Inquiries";
-const ADMIN_EMAIL = "support@grillista.in";
+const ADMIN_EMAIL = "grillista8@gmail.com";
 const WHATSAPP_NUMBER = "916386818682"; // Grillista Official WhatsApp
 
 function doPost(e) {
