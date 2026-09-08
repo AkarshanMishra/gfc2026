@@ -1036,23 +1036,6 @@
 
             </form>
 
-            <!-- Success Confirmation Card -->
-            <div id="franchise-success-message" class="inq-success-card">
-              <div class="inq-success-icon">🎉</div>
-              <h3 class="inq-success-title">Inquiry Recorded &amp; Confirmation Email Sent!</h3>
-              <p class="inq-success-text">
-                Thank you for contacting Grillista! Your details have been recorded, and an official confirmation email has been dispatched to <strong id="inq-success-user-email" style="color: #111827;">your email address</strong>. Our team will get back to you within 24 business hours.
-              </p>
-              <div class="inq-success-actions">
-                <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Inquiry%20Form%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="inq-success-whatsapp">
-                  <span>💬 Chat on WhatsApp ↗</span>
-                </a>
-                <button type="button" id="inquiry-reset-form-btn" class="inq-success-reset">
-                  <span>Submit Another Inquiry</span>
-                </button>
-              </div>
-            </div>
-
           </div>
 
         </div>
@@ -1079,6 +1062,122 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- EXACT CONFIRMATION SUCCESS SCREEN (Matching Reference Mockup) -->
+      <div id="franchise-success-message" class="inquiry-success-view">
+        <div class="inquiry-success-container">
+          
+          <!-- Top Left Ambient Brand Graphic -->
+          <div class="success-corner-brand-left">
+            <img src="assets/logo.png" alt="Grillista" class="success-corner-logo">
+            <span class="success-corner-script-more">More<br>Than Food</span>
+            <div class="success-corner-features">
+              <div class="success-corner-feat-item">
+                <span class="success-corner-feat-icon">✨</span>
+                <span>Great Taste Always</span>
+              </div>
+              <div class="success-corner-feat-item">
+                <span class="success-corner-feat-icon">🌿</span>
+                <span>Quality Ingredients</span>
+              </div>
+              <div class="success-corner-feat-item">
+                <span class="success-corner-feat-icon">👥</span>
+                <span>Happy Communities</span>
+              </div>
+              <div class="success-corner-feat-item">
+                <span class="success-corner-feat-icon">❤️</span>
+                <span>A Healthier Tomorrow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Right Ambient Script -->
+          <div class="success-corner-top-right">
+            <span class="success-corner-top-script">Good Food<br>Brighter Tomorrow</span>
+          </div>
+
+          <!-- Bottom Right Ambient Sizzling Dish -->
+          <div class="success-corner-bottom-right">
+            <div class="success-corner-brush-tag">
+              <span class="success-corner-brush-text">Food Createtes<br>Better Connections</span>
+            </div>
+            <img src="assets/menu-dish-burger.jpg" alt="Grillista Food" class="success-corner-dish-img">
+          </div>
+
+          <!-- Centered Success Card -->
+          <div class="inquiry-success-screen-card">
+            
+            <!-- Checkmark Burst -->
+            <div class="success-checkmark-burst-wrap">
+              <svg class="success-burst-svg" width="130" height="130" viewBox="0 0 130 130" fill="none">
+                <circle cx="65" cy="10" r="3.5" fill="#22C55E"/>
+                <circle cx="105" cy="22" r="2.5" fill="#FFC72C"/>
+                <circle cx="122" cy="55" r="3" fill="#22C55E"/>
+                <circle cx="118" cy="95" r="3.5" fill="#FFC72C"/>
+                <circle cx="85" cy="122" r="2.5" fill="#22C55E"/>
+                <circle cx="45" cy="124" r="3.5" fill="#FFC72C"/>
+                <circle cx="12" cy="95" r="2.5" fill="#22C55E"/>
+                <circle cx="8" cy="48" r="3.5" fill="#FFC72C"/>
+                <circle cx="32" cy="18" r="3" fill="#22C55E"/>
+                <path d="M65 0 L66.5 6 L72.5 7.5 L66.5 9 L65 15 L63.5 9 L57.5 7.5 L63.5 6 Z" fill="#FFC72C"/>
+                <path d="M115 40 L116 44 L120 45 L116 46 L115 50 L114 46 L110 45 L114 44 Z" fill="#22C55E"/>
+                <path d="M20 70 L21 74 L25 75 L21 76 L20 80 L19 76 L15 75 L19 74 Z" fill="#FFC72C"/>
+              </svg>
+              <div class="success-checkmark-circle">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <h3 class="success-screen-title">
+              Inquiry Recorded!
+              <span class="success-screen-green">Confirmation Email Sent!</span>
+            </h3>
+
+            <div class="success-yellow-brush"></div>
+
+            <p class="success-screen-desc">
+              Thank you for contacting Grillista! Your details have been recorded, and an official confirmation email has been dispatched to the email address
+            </p>
+
+            <!-- User Email Pill -->
+            <div class="success-email-pill">
+              <span style="font-size: 1.1rem;">✉️</span>
+              <strong id="inq-success-user-email">user@example.com</strong>
+            </div>
+
+            <!-- 24-Hour Timeline Notice -->
+            <div class="success-timeline-note">
+              <span>🕒</span>
+              <span>Our team will get back to you within 24 business hours.</span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="success-screen-actions">
+              <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Inquiry%20Form%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="success-btn-whatsapp">
+                <span>💬 Chat on WhatsApp</span>
+                <span>→</span>
+              </a>
+              <button type="button" id="inquiry-reset-form-btn" class="success-btn-reset">
+                <span>Submit Another Inquiry</span>
+                <span>→</span>
+              </button>
+            </div>
+
+            <!-- Heart Divider & Tagline -->
+            <div class="success-card-bottom-divider">
+              <span>❤️</span>
+            </div>
+            <div class="success-card-tagline">
+              GOOD FOOD BRIGHTER TOMORROW
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </section>
   </main>
@@ -1357,7 +1456,8 @@
               submitBtn.disabled = false;
               submitBtn.innerHTML = origBtnHtml;
             }
-            form.style.display = 'none';
+            var inquiryWrap = document.querySelector('.inquiry-body-wrap');
+            if (inquiryWrap) inquiryWrap.style.display = 'none';
             if (successCard) {
               var userEmailSpan = document.getElementById('inq-success-user-email');
               if (userEmailSpan) userEmailSpan.textContent = inquiryData.email;
@@ -1374,9 +1474,15 @@
             if (e) e.preventDefault();
             form.reset();
             if (charCounter) charCounter.textContent = '0/500';
-            form.style.display = 'block';
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = origBtnHtml;
+            }
+            var inquiryWrap = document.querySelector('.inquiry-body-wrap');
+            if (inquiryWrap) inquiryWrap.style.display = 'block';
             if (successCard) {
               successCard.classList.remove('active');
+              if (inquiryWrap) inquiryWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           };
         }
