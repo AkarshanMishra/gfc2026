@@ -602,6 +602,7 @@ class App {
   setupHomeFranchiseForm() {
     const form = document.getElementById('home-franchise-form');
     const successBox = document.getElementById('franchise-success-message');
+    const resetBtn = document.getElementById('inquiry-reset-form-btn');
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
@@ -616,8 +617,13 @@ class App {
       const property = document.getElementById('f-property')?.value;
       const message = document.getElementById('f-message')?.value.trim();
 
-      if (!name || !phone || !email || !city || !model || !budget || !property) {
-        this.showToast('Please fill out all required application fields.', 'error');
+      if (!name || !phone || !email || !city) {
+        this.showToast('Please fill out your Name, Phone, Email, and City.', 'error');
+        return;
+      }
+
+      if (phone.replace(/\D/g, '').length < 10) {
+        this.showToast('Please enter a valid 10-digit mobile number.', 'error');
         return;
       }
 
@@ -626,9 +632,9 @@ class App {
         phone: Security.escapeHTML(phone),
         email: Security.escapeHTML(email),
         city: Security.escapeHTML(city),
-        model,
-        budget,
-        property,
+        model: model || 'express',
+        budget: budget || '10-15-lakh',
+        property: property || 'shortlisted',
         message: Security.escapeHTML(message || ''),
         submittedAt: new Date().toISOString()
       };
@@ -637,13 +643,24 @@ class App {
       existing.unshift(inquiry);
       Security.storage.set('grillista_franchise_inquiries', existing);
 
-      this.showToast('🎉 Franchise application submitted successfully! Our team will contact you.', 'success', 5000);
+      this.showToast('🎉 Application submitted! Our franchise team will contact you.', 'success', 5000);
       
       form.style.display = 'none';
       if (successBox) {
         successBox.classList.add('active');
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        form.reset();
+        form.style.display = 'block';
+        if (successBox) {
+          successBox.classList.remove('active');
+        }
+      });
+    }
   }
 
   // -------------------------------------------------------------

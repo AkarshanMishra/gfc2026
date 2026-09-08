@@ -84,7 +84,7 @@
 
       <!-- Enquire Now Right CTA Button -->
       <div class="g-nav-cta-wrap desktop-only">
-        <a href="franchise.html#franchise-apply" class="g-enquire-btn">ENQUIRE NOW</a>
+        <a href="#franchise-apply" class="g-enquire-btn">ENQUIRE NOW</a>
       </div>
 
       <!-- Mobile Header Bar: Hamburger + Logo + Apply -->
@@ -99,7 +99,7 @@
           <img src="assets/logo.png" alt="Grillista Logo" class="mobile-logo-img">
         </a>
 
-        <a href="franchise.html#franchise-apply" class="mobile-hotline-btn" title="Apply for Franchise">
+        <a href="#franchise-apply" class="mobile-hotline-btn" title="Apply for Franchise">
           <div class="m-hotline-phone">ENQUIRE NOW</div>
           <div class="m-hotline-label">FRANCHISE DESK</div>
         </a>
@@ -826,6 +826,204 @@
 
       </div>
     </section>
+
+    <!-- ==========================================================================
+         HOMEPAGE FRANCHISE & BUSINESS INQUIRY APPLICATION SECTION
+         ========================================================================== -->
+    <section class="home-inquiry-section" id="franchise-apply">
+      <div class="home-inquiry-container">
+        
+        <!-- Section Header -->
+        <div class="home-inquiry-header">
+          <div class="home-inquiry-eyebrow">
+            <span>🚀 EXPAND WITH GRILLISTA</span>
+          </div>
+          <h2 class="home-inquiry-title">
+            SUBMIT FRANCHISE &amp; <span class="gold-text">BUSINESS INQUIRY</span>
+          </h2>
+          <p class="home-inquiry-subtitle">
+            Partner with India's fastest-growing 100% Pure Veg fusion burger brand. Fill out the application below to receive our confidential prospectus and discuss rollout opportunities.
+          </p>
+        </div>
+
+        <!-- 2-Column Main Grid -->
+        <div class="home-inquiry-grid">
+          
+          <!-- Column 1: Application Form Card -->
+          <div class="inquiry-form-card">
+            
+            <form id="home-franchise-form" novalidate>
+              <div class="inquiry-form-grid-2col">
+                
+                <!-- Full Name -->
+                <div class="inquiry-form-group">
+                  <label for="f-name">Full Name <span class="req">*</span></label>
+                  <input type="text" id="f-name" name="name" class="inquiry-input" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <!-- Phone / WhatsApp -->
+                <div class="inquiry-form-group">
+                  <label for="f-phone">Mobile Number (WhatsApp) <span class="req">*</span></label>
+                  <input type="tel" id="f-phone" name="phone" class="inquiry-input" placeholder="+91 98765 43210" required>
+                </div>
+
+                <!-- Email -->
+                <div class="inquiry-form-group">
+                  <label for="f-email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="f-email" name="email" class="inquiry-input" placeholder="rahul@example.com" required>
+                </div>
+
+                <!-- Preferred City -->
+                <div class="inquiry-form-group">
+                  <label for="f-city">Preferred City / State <span class="req">*</span></label>
+                  <input type="text" id="f-city" name="city" class="inquiry-input" placeholder="e.g. Lucknow, Kanpur, Noida" required>
+                </div>
+
+                <!-- Franchise Model -->
+                <div class="inquiry-form-group">
+                  <label for="f-model">Franchise Format <span class="req">*</span></label>
+                  <select id="f-model" name="model" class="inquiry-select" required>
+                    <option value="express" selected>Grillista Express (₹10 - 12 Lakhs | 200 sq.ft)</option>
+                    <option value="bistro">Grillista Bistro (₹16 - 18 Lakhs | 600 sq.ft)</option>
+                    <option value="signature">Grillista Signature Lounge (₹38 - 40 Lakhs | 1000+ sq.ft)</option>
+                    <option value="other">General / Bulk Order Inquiry</option>
+                  </select>
+                </div>
+
+                <!-- Investment Budget -->
+                <div class="inquiry-form-group">
+                  <label for="f-budget">Investment Readiness <span class="req">*</span></label>
+                  <select id="f-budget" name="budget" class="inquiry-select" required>
+                    <option value="10-15-lakh" selected>₹10 Lakhs - ₹15 Lakhs</option>
+                    <option value="15-25-lakh">₹15 Lakhs - ₹25 Lakhs</option>
+                    <option value="25-45-lakh">₹25 Lakhs - ₹45 Lakhs</option>
+                    <option value="above-45-lakh">₹45 Lakhs+ (Multi-Unit Master Franchise)</option>
+                  </select>
+                </div>
+
+                <!-- Commercial Space Status -->
+                <div class="inquiry-form-group full-width">
+                  <label for="f-property">Commercial Location Status <span class="req">*</span></label>
+                  <select id="f-property" name="property" class="inquiry-select" required>
+                    <option value="owned">Already Own a Commercial Shop / Space</option>
+                    <option value="rented">Currently Rented Commercial Property</option>
+                    <option value="shortlisted" selected>Have Shortlisted 2-3 High-Footfall Locations</option>
+                    <option value="looking">Looking for Brand Guidance to Find Prime Location</option>
+                  </select>
+                </div>
+
+                <!-- Message / Background -->
+                <div class="inquiry-form-group full-width">
+                  <label for="f-message">Business Background / Notes (Optional)</label>
+                  <textarea id="f-message" name="message" class="inquiry-textarea" rows="3" placeholder="Tell us about your previous business experience, existing retail location, or target launch timeline..."></textarea>
+                </div>
+
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" id="home-inquiry-submit-btn" class="inquiry-submit-btn">
+                <span>🚀 SUBMIT CONFIDENTIAL INQUIRY</span>
+              </button>
+            </form>
+
+            <!-- Success Confirmation Card -->
+            <div id="franchise-success-message" class="inquiry-success-card">
+              <div class="inquiry-success-icon">🎉</div>
+              <h3 class="inquiry-success-title">Application Submitted!</h3>
+              <p class="inquiry-success-text">
+                Thank you for your interest in partnering with Grillista. Our franchise expansion team has received your details and will contact you on WhatsApp / Phone within 24 hours.
+              </p>
+              <div class="inquiry-success-actions">
+                <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Franchise%20Inquiry%20Form%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="inquiry-whatsapp-btn">
+                  <span>💬 Chat on WhatsApp Now ↗</span>
+                </a>
+                <button type="button" id="inquiry-reset-form-btn" class="inquiry-reset-btn">
+                  <span>Submit Another Inquiry</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Brand Trust & Direct Fast Channels Card -->
+          <div class="inquiry-info-card">
+            <div>
+              <div class="info-card-top-badge">
+                <span>🌱 100% PURE VEG HIGH-ROI BUSINESS</span>
+              </div>
+              <h3 class="info-card-title">Why Partner With Grillista?</h3>
+              <p class="info-card-desc">
+                Join a revolutionary fast-casual brand engineered for rapid capital payback, high operational efficiency, and maximum recurring customer loyalty.
+              </p>
+
+              <!-- Key Franchise Perks -->
+              <ul class="inquiry-perks-list">
+                <li class="inquiry-perk-item">
+                  <div class="inquiry-perk-icon">⚡</div>
+                  <div class="inquiry-perk-content">
+                    <h5>18 - 24 Months Payback</h5>
+                    <p>Optimized low Capex model with high repeat orders ensuring faster break-even.</p>
+                  </div>
+                </li>
+                <li class="inquiry-perk-item">
+                  <div class="inquiry-perk-icon">📦</div>
+                  <div class="inquiry-perk-content">
+                    <h5>360° Turnkey Support</h5>
+                    <p>Complete kitchen equipment, chef training, POS integration, and automated supply chain.</p>
+                  </div>
+                </li>
+                <li class="inquiry-perk-item">
+                  <div class="inquiry-perk-icon">📍</div>
+                  <div class="inquiry-perk-content">
+                    <h5>Prime Location Guidance</h5>
+                    <p>Data-backed footfall analysis and architectural layout tailored to your city.</p>
+                  </div>
+                </li>
+                <li class="inquiry-perk-item">
+                  <div class="inquiry-perk-icon">📢</div>
+                  <div class="inquiry-perk-content">
+                    <h5>Aggressive Brand Marketing</h5>
+                    <p>Celebrity/influencer collaborations, social media campaigns, and launch promotions.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Fast Contact Channels Box -->
+            <div class="inquiry-quick-channels">
+              <a href="tel:+919711900055" class="quick-channel-row" title="Call Franchise Hotline">
+                <div class="quick-channel-icon">📞</div>
+                <div>
+                  <div class="quick-channel-label">Direct Franchise Desk</div>
+                  <div class="quick-channel-val">+91 97119 00055</div>
+                </div>
+              </a>
+              <a href="https://wa.me/916386818682?text=Hello%20Grillista,%20I%20am%20interested%20in%20Franchise%20Opportunity" target="_blank" rel="noopener noreferrer" class="quick-channel-row" title="WhatsApp Franchise Head">
+                <div class="quick-channel-icon">💬</div>
+                <div>
+                  <div class="quick-channel-label">Instant WhatsApp Support</div>
+                  <div class="quick-channel-val">+91 63868 18682</div>
+                </div>
+              </a>
+              <a href="mailto:franchise@grillista.com" class="quick-channel-row" title="Email Business Team">
+                <div class="quick-channel-icon">✉️</div>
+                <div>
+                  <div class="quick-channel-label">Official Business Email</div>
+                  <div class="quick-channel-val">franchise@grillista.com</div>
+                </div>
+              </a>
+
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4WKoJQfpS_ipBHRx43QJVKYEQ0cswuyuXYeS9BxSt_vV_2Q/viewform" target="_blank" rel="noopener noreferrer" class="google-form-alt-link">
+                <span>📝 Open Official Google Form ↗</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- BULK ORDER MODAL -->
@@ -1012,6 +1210,77 @@
         document.addEventListener('DOMContentLoaded', initFaqClicks);
       } else {
         initFaqClicks();
+      }
+    })();
+
+    // Fail-safe Homepage Inquiry Form Submission Handler
+    (function() {
+      function initHomeInquiry() {
+        var form = document.getElementById('home-franchise-form');
+        var successCard = document.getElementById('franchise-success-message');
+        var resetBtn = document.getElementById('inquiry-reset-form-btn');
+        if (!form) return;
+
+        form.onsubmit = function(e) {
+          e.preventDefault();
+          var name = (document.getElementById('f-name') || {}).value || '';
+          var phone = (document.getElementById('f-phone') || {}).value || '';
+          var email = (document.getElementById('f-email') || {}).value || '';
+          var city = (document.getElementById('f-city') || {}).value || '';
+          var model = (document.getElementById('f-model') || {}).value || 'express';
+          var budget = (document.getElementById('f-budget') || {}).value || '10-15-lakh';
+          var property = (document.getElementById('f-property') || {}).value || 'shortlisted';
+          var msg = (document.getElementById('f-message') || {}).value || '';
+
+          if (!name.trim() || !phone.trim() || !email.trim() || !city.trim()) {
+            alert('Please fill in your Name, Phone Number, Email, and Preferred City.');
+            return false;
+          }
+
+          var inquiryData = {
+            name: name.trim(),
+            phone: phone.trim(),
+            email: email.trim(),
+            city: city.trim(),
+            model: model,
+            budget: budget,
+            property: property,
+            message: msg.trim(),
+            date: new Date().toISOString()
+          };
+
+          try {
+            var existing = JSON.parse(localStorage.getItem('grillista_franchise_inquiries') || '[]');
+            existing.unshift(inquiryData);
+            localStorage.setItem('grillista_franchise_inquiries', JSON.stringify(existing));
+          } catch(err) {
+            console.warn('Storage error:', err);
+          }
+
+          form.style.display = 'none';
+          if (successCard) {
+            successCard.classList.add('active');
+            successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return false;
+        };
+
+        if (resetBtn) {
+          resetBtn.onclick = function(e) {
+            if (e) e.preventDefault();
+            form.reset();
+            form.style.display = 'block';
+            if (successCard) {
+              successCard.classList.remove('active');
+            }
+          };
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHomeInquiry);
+      } else {
+        initHomeInquiry();
       }
     })();
   </script>
