@@ -935,8 +935,9 @@
                         <circle cx="12" cy="7" r="4"></circle>
                       </svg>
                     </span>
-                    <input type="text" id="f-name" name="name" class="inq-input" placeholder="Enter your full name" required>
+                    <input type="text" id="f-name" name="name" class="inq-input" placeholder="Enter your full name" required autocomplete="name">
                   </div>
+                  <span class="inq-error-msg" id="err-f-name">Please enter your full name (minimum 2 characters).</span>
                 </div>
 
                 <!-- Email Address -->
@@ -949,8 +950,9 @@
                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                       </svg>
                     </span>
-                    <input type="email" id="f-email" name="email" class="inq-input" placeholder="Enter your email address" required>
+                    <input type="email" id="f-email" name="email" class="inq-input" placeholder="Enter your email address" required autocomplete="email">
                   </div>
+                  <span class="inq-error-msg" id="err-f-email">Please enter a valid email address (e.g. name@example.com).</span>
                 </div>
 
                 <!-- Phone Number -->
@@ -962,8 +964,9 @@
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                       </svg>
                     </span>
-                    <input type="tel" id="f-phone" name="phone" class="inq-input" placeholder="Enter your phone number" required>
+                    <input type="tel" id="f-phone" name="phone" class="inq-input" placeholder="Enter 10-digit mobile number" maxlength="14" required autocomplete="tel">
                   </div>
+                  <span class="inq-error-msg" id="err-f-phone">Please enter a valid 10-digit mobile number.</span>
                 </div>
 
                 <!-- Inquiry Type -->
@@ -989,6 +992,7 @@
                       </svg>
                     </span>
                   </div>
+                  <span class="inq-error-msg" id="err-f-type">Please select an inquiry type.</span>
                 </div>
 
               </div>
@@ -1007,6 +1011,7 @@
                   </span>
                   <input type="text" id="f-subject" name="subject" class="inq-input" placeholder="Enter subject" required>
                 </div>
+                <span class="inq-error-msg" id="err-f-subject">Please enter a subject.</span>
               </div>
 
               <!-- Your Message -->
@@ -1021,6 +1026,7 @@
                   <textarea id="f-message" name="message" class="inq-textarea" maxlength="500" placeholder="Write your message here..." required></textarea>
                   <span class="inq-char-counter" id="inq-char-counter">0/500</span>
                 </div>
+                <span class="inq-error-msg" id="err-f-message">Please enter your message.</span>
               </div>
 
               <!-- Action Row: Terms & Submit Button -->
@@ -1347,7 +1353,7 @@
       var charCounter = document.getElementById('inq-char-counter');
       var submitBtn = document.getElementById('home-inquiry-submit-btn');
 
-      // 1. Reset all form input values
+      // 1. Reset all form input values & remove validation highlights
       if (form) {
         form.reset();
         form.style.setProperty('display', 'block', 'important');
@@ -1355,18 +1361,18 @@
         form.style.setProperty('opacity', '1', 'important');
       }
 
-      var fName = document.getElementById('f-name');
-      if (fName) fName.value = '';
-      var fEmail = document.getElementById('f-email');
-      if (fEmail) fEmail.value = '';
-      var fPhone = document.getElementById('f-phone');
-      if (fPhone) fPhone.value = '';
+      ['f-name', 'f-email', 'f-phone', 'f-type', 'f-subject', 'f-message'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.value = '';
+          el.classList.remove('is-invalid', 'is-valid');
+        }
+        var err = document.getElementById('err-' + id);
+        if (err) err.classList.remove('visible');
+      });
+
       var fType = document.getElementById('f-type');
       if (fType) fType.selectedIndex = 0;
-      var fSubject = document.getElementById('f-subject');
-      if (fSubject) fSubject.value = '';
-      var fMessage = document.getElementById('f-message');
-      if (fMessage) fMessage.value = '';
       var fTerms = document.getElementById('f-terms');
       if (fTerms) fTerms.checked = true;
 
@@ -1404,39 +1410,209 @@
     }, true);
 
     (function() {
+      // Validation Helper Functions
+      function isValidEmail(val) {
+        var str = String(val || '').trim();
+        var re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return re.test(str);
+      }
+
+      function isValidPhone(val) {
+        var cleaned = String(val || '').replace(/[\s\-+()]/g, '');
+        // Indian 10-digit mobile starting with 6,7,8,9 or standard 10-digit number
+        var indRe = /^(?:(?:\+|0{0,2})91)?[6-9]\d{9}$/;
+        var stdRe = /^[0-9]{10}$/;
+        return indRe.test(cleaned) || stdRe.test(cleaned);
+      }
+
+      function setFieldState(elem, errId, isValid, msg) {
+        if (!elem) return;
+        var errSpan = document.getElementById(errId);
+        if (isValid) {
+          elem.classList.remove('is-invalid');
+          elem.classList.add('is-valid');
+          if (errSpan) errSpan.classList.remove('visible');
+        } else {
+          elem.classList.add('is-invalid');
+          elem.classList.remove('is-valid');
+          if (errSpan) {
+            if (msg) errSpan.textContent = msg;
+            errSpan.classList.add('visible');
+          }
+        }
+      }
+
       function initHomeInquiry() {
         var form = document.getElementById('home-franchise-form');
         var successCard = document.getElementById('franchise-success-message');
         var resetBtn = document.getElementById('inquiry-reset-form-btn');
         if (!form) return;
 
-        // Character counter
+        var nameInput = document.getElementById('f-name');
+        var emailInput = document.getElementById('f-email');
+        var phoneInput = document.getElementById('f-phone');
+        var typeInput = document.getElementById('f-type');
+        var subjectInput = document.getElementById('f-subject');
         var msgTextarea = document.getElementById('f-message');
         var charCounter = document.getElementById('inq-char-counter');
+        var termsInput = document.getElementById('f-terms');
+
+        // Character counter
         if (msgTextarea && charCounter) {
           msgTextarea.addEventListener('input', function() {
             var len = this.value.length;
             charCounter.textContent = len + '/500';
+            if (len >= 5) {
+              setFieldState(msgTextarea, 'err-f-message', true);
+            }
+          });
+        }
+
+        // Live Real-Time Validation Listeners
+        if (emailInput) {
+          emailInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              var ok = isValidEmail(this.value);
+              setFieldState(this, 'err-f-email', ok, 'Please enter a valid email address (e.g. name@example.com).');
+            }
+          });
+          emailInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+              if (isValidEmail(this.value)) {
+                setFieldState(this, 'err-f-email', true);
+              }
+            }
+          });
+        }
+
+        if (phoneInput) {
+          phoneInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              var ok = isValidPhone(this.value);
+              setFieldState(this, 'err-f-phone', ok, 'Please enter a valid 10-digit mobile number (e.g. 9876543210).');
+            }
+          });
+          phoneInput.addEventListener('input', function() {
+            // Keep only numbers, plus, space, hyphen
+            this.value = this.value.replace(/[^\d+\s-]/g, '');
+            if (this.classList.contains('is-invalid')) {
+              if (isValidPhone(this.value)) {
+                setFieldState(this, 'err-f-phone', true);
+              }
+            }
+          });
+        }
+
+        if (nameInput) {
+          nameInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-name', this.value.trim().length >= 2, 'Please enter your full name (minimum 2 characters).');
+            }
+          });
+          nameInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid') && this.value.trim().length >= 2) {
+              setFieldState(this, 'err-f-name', true);
+            }
+          });
+        }
+
+        if (subjectInput) {
+          subjectInput.addEventListener('blur', function() {
+            if (this.value.trim().length > 0) {
+              setFieldState(this, 'err-f-subject', this.value.trim().length >= 2, 'Please enter a subject.');
+            }
+          });
+          subjectInput.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid') && this.value.trim().length >= 2) {
+              setFieldState(this, 'err-f-subject', true);
+            }
+          });
+        }
+
+        if (typeInput) {
+          typeInput.addEventListener('change', function() {
+            setFieldState(this, 'err-f-type', Boolean(this.value), 'Please select an inquiry type.');
           });
         }
 
         form.onsubmit = function(e) {
           e.preventDefault();
-          var name = (document.getElementById('f-name') || {}).value || '';
-          var phone = (document.getElementById('f-phone') || {}).value || '';
-          var email = (document.getElementById('f-email') || {}).value || '';
-          var inqType = (document.getElementById('f-type') || {}).value || '';
-          var subject = (document.getElementById('f-subject') || {}).value || '';
-          var msg = (document.getElementById('f-message') || {}).value || '';
-          var terms = document.getElementById('f-terms');
+          var name = (nameInput || {}).value || '';
+          var phone = (phoneInput || {}).value || '';
+          var email = (emailInput || {}).value || '';
+          var inqType = (typeInput || {}).value || '';
+          var subject = (subjectInput || {}).value || '';
+          var msg = (msgTextarea || {}).value || '';
+          var terms = termsInput;
 
-          if (!name.trim() || !phone.trim() || !email.trim() || !inqType || !subject.trim() || !msg.trim()) {
-            alert('Please fill out all required fields marked with *');
+          var hasError = false;
+          var firstInvalidField = null;
+
+          // 1. Name validation
+          if (!name.trim() || name.trim().length < 2) {
+            setFieldState(nameInput, 'err-f-name', false, 'Please enter your full name (minimum 2 characters).');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = nameInput;
+          } else {
+            setFieldState(nameInput, 'err-f-name', true);
+          }
+
+          // 2. Email validation (STRICT)
+          if (!email.trim() || !isValidEmail(email)) {
+            setFieldState(emailInput, 'err-f-email', false, 'Please enter a valid email address (e.g. name@example.com).');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = emailInput;
+          } else {
+            setFieldState(emailInput, 'err-f-email', true);
+          }
+
+          // 3. Phone / Mobile validation (STRICT 10 DIGITS)
+          if (!phone.trim() || !isValidPhone(phone)) {
+            setFieldState(phoneInput, 'err-f-phone', false, 'Please enter a valid 10-digit mobile number.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = phoneInput;
+          } else {
+            setFieldState(phoneInput, 'err-f-phone', true);
+          }
+
+          // 4. Inquiry Type validation
+          if (!inqType) {
+            setFieldState(typeInput, 'err-f-type', false, 'Please select an inquiry type.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = typeInput;
+          } else {
+            setFieldState(typeInput, 'err-f-type', true);
+          }
+
+          // 5. Subject validation
+          if (!subject.trim() || subject.trim().length < 2) {
+            setFieldState(subjectInput, 'err-f-subject', false, 'Please enter a subject.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = subjectInput;
+          } else {
+            setFieldState(subjectInput, 'err-f-subject', true);
+          }
+
+          // 6. Message validation
+          if (!msg.trim() || msg.trim().length < 3) {
+            setFieldState(msgTextarea, 'err-f-message', false, 'Please enter your message.');
+            hasError = true;
+            if (!firstInvalidField) firstInvalidField = msgTextarea;
+          } else {
+            setFieldState(msgTextarea, 'err-f-message', true);
+          }
+
+          // 7. Terms & Conditions
+          if (terms && !terms.checked) {
+            alert('Please agree to the Terms & Conditions and Privacy Policy.');
+            if (!firstInvalidField) firstInvalidField = terms;
             return false;
           }
 
-          if (terms && !terms.checked) {
-            alert('Please agree to the Terms & Conditions and Privacy Policy.');
+          if (hasError) {
+            if (firstInvalidField && firstInvalidField.focus) {
+              firstInvalidField.focus();
+            }
             return false;
           }
 
@@ -1445,13 +1621,13 @@
 
           if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Sending Data &amp; Dispatching Email...</span>';
+            submitBtn.innerHTML = '<span>Verifying &amp; Sending...</span>';
           }
 
           var inquiryData = {
             name: name.trim(),
             email: email.trim(),
-            phone: phone.trim(),
+            phone: phone.trim().replace(/[\s\-+()]/g, ''),
             inquiryType: inqType,
             subject: subject.trim(),
             message: msg.trim(),
