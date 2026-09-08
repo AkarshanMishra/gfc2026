@@ -1222,10 +1222,6 @@
 
             <!-- Buttons -->
             <div class="success-screen-actions">
-              <a href="receipt.html" id="inq-download-pdf-btn" target="_blank" class="success-btn-download">
-                <span>📥 Download Application (PDF / JPG)</span>
-                <span>→</span>
-              </a>
               <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Inquiry%20Form%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="success-btn-whatsapp">
                 <span>💬 Chat on WhatsApp</span>
                 <span>→</span>
@@ -1823,26 +1819,6 @@
             if (successCard) {
               var userEmailSpan = document.getElementById('inq-success-user-email');
               if (userEmailSpan) userEmailSpan.textContent = inquiryData.email;
-
-              var dlBtn = document.getElementById('inq-download-pdf-btn');
-              if (dlBtn) {
-                var refId = 'GRL-INQ-' + Math.floor(100000 + Math.random() * 900000);
-                var params = new URLSearchParams({
-                  ref: refId,
-                  name: inquiryData.name,
-                  email: inquiryData.email,
-                  phone: inquiryData.phone,
-                  budget: inquiryData.budget,
-                  model: inquiryData.model,
-                  experience: inquiryData.previousExperience,
-                  city: inquiryData.city,
-                  state: inquiryData.state,
-                  message: inquiryData.message,
-                  date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-                });
-                dlBtn.href = 'receipt.html?' + params.toString();
-              }
-
               successCard.classList.add('active');
               successCard.style.setProperty('display', 'block', 'important');
               successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });

@@ -879,10 +879,6 @@
               </div>
 
               <div class="success-screen-actions">
-                <a href="receipt.html" id="franchise-download-pdf-btn" target="_blank" class="success-btn-download">
-                  <span>📥 Download Application (PDF / JPG)</span>
-                  <span>→</span>
-                </a>
                 <a href="https://wa.me/916386818682?text=Hello%20Grillista%20Team%2C%20I%20just%20submitted%20the%20Franchise%20Application%20on%20your%20website" target="_blank" rel="noopener noreferrer" class="success-btn-whatsapp">
                   <span>💬 Chat on WhatsApp</span>
                   <span>→</span>
@@ -1552,26 +1548,6 @@
             if (successCard) {
               var emailSpan = document.getElementById('franchise-success-user-email');
               if (emailSpan) emailSpan.textContent = payload.email;
-
-              var dlBtn = document.getElementById('franchise-download-pdf-btn');
-              if (dlBtn) {
-                var refId = 'GRL-FR-' + Math.floor(100000 + Math.random() * 900000);
-                var params = new URLSearchParams({
-                  ref: refId,
-                  name: payload.name,
-                  email: payload.email,
-                  phone: payload.phone,
-                  budget: payload.budget,
-                  model: payload.model,
-                  experience: payload.previousExperience,
-                  city: payload.city,
-                  state: payload.state,
-                  message: payload.message,
-                  date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
-                });
-                dlBtn.href = 'receipt.html?' + params.toString();
-              }
-
               successCard.style.display = 'block';
               successCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
