@@ -88,6 +88,18 @@ function doPost(e) {
       referenceId
     ]);
 
+    // Strip any inherited "People chip" / invalid data validation rules & force plain text format
+    try {
+      var lastRow = sheet.getLastRow();
+      if (lastRow > 1) {
+        sheet.getRange(lastRow, 1, 1, 11).clearDataValidations();
+        sheet.getRange(lastRow, 3).setNumberFormat("@"); // Email as standard string
+        sheet.getRange(lastRow, 4).setNumberFormat("@"); // Phone as standard string
+      }
+    } catch(valErr) {
+      Logger.log("Validation clear notice: " + valErr.toString());
+    }
+
     // 1. Send Exact Luxury Branded Confirmation Email to Customer
     if (email && email.indexOf("@") > -1) {
       try {
